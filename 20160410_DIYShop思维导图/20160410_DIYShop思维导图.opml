@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+<head>
+<title>DIYShop</title>
+</head>
+<body>
+<outline text="DIYShop"><outline text="启动页"><outline text="启动广告（暂不显示）"></outline>
+</outline>
+<outline text="忘记密码"><outline text="根据用户名找回密码"></outline>
+<outline text="根据手机号找回密码"></outline>
+</outline>
+<outline text="登录"><outline text="一般登录"><outline text="手机号/用户名"></outline>
+<outline text="密码"></outline>
+</outline>
+<outline text="快捷登录" _note="第三方登陆后需要检查是否绑定了手机号，要绑定手机号才能购物&#10;"><outline text="微博登录"></outline>
+<outline text="QQ登录"></outline>
+<outline text="微信登录"></outline>
+</outline>
+</outline>
+<outline text="注册"><outline text="用户名（唯一）"></outline>
+<outline text="绑定手机号（唯一）"></outline>
+<outline text="密码"></outline>
+<outline text="验证码"></outline>
+</outline>
+<outline text="主要界面模块"><outline text="分类"><outline text="外套"></outline>
+<outline text="上衣👔" _note=""></outline>
+<outline text="裙子"></outline>
+<outline text="裤子👖"></outline>
+<outline text="男装专区"></outline>
+<outline text="折扣"></outline>
+<outline text="女装专区"></outline>
+</outline>
+<outline text="投票"><outline text="由管理员在后台设置哪些服装显示"></outline>
+<outline text="用户点赞（投票）"></outline>
+<outline text="用户取消点赞（取消投票）"></outline>
+</outline>
+<outline text="我的界面"><outline text="服饰列表"><outline text="列表项"><outline text="服饰图片"></outline>
+<outline text="服饰名称"></outline>
+</outline>
+</outline>
+<outline text="设置"><outline text="编辑个人资料"><outline text="编辑头像"></outline>
+<outline text="编辑用户名"></outline>
+<outline text="收货地址" _note="真实姓名&#10;收货人电话&#10;省市区&#10;街道&#10;详细地址"><outline text="编辑收货地址"><outline text="设置默认收货地址"></outline>
+<outline text="删除该地址"></outline>
+</outline>
+<outline text="新增并保存收货地址"></outline>
+</outline>
+</outline>
+<outline text="清除缓存" _note="主要由app客户端负责，清除图片缓存&#10;"></outline>
+<outline text="帮助与咨询" _note="每一个选项打开都是个H5 界面&#10;"><outline text="消费者保障说明"></outline>
+<outline text="常见问题"><outline text="如何申请退换货"></outline>
+<outline text="下单付款后多久发货"></outline>
+<outline text="如何修改账户绑定的手机号"></outline>
+</outline>
+</outline>
+<outline text="账号安全"><outline text="修改密码"></outline>
+<outline text="绑定手机"></outline>
+</outline>
+</outline>
+<outline text="购物车" _note="后台同步用户的购物车&#10;"><outline text="删除购物车项"></outline>
+<outline text="确认订单"><outline text="收货地址"></outline>
+<outline text="给商家留言"></outline>
+</outline>
+</outline>
+<outline text="我的订单"><outline text="待付款"></outline>
+<outline text="待发货"></outline>
+<outline text="待收货"></outline>
+<outline text="退换货"></outline>
+</outline>
+<outline text="全部订单"><outline text="评论已经完成交易的订单"><outline text="匿名评论"></outline>
+<outline text="实名评论"></outline>
+</outline>
+<outline text="删除已经交易完成的订单"></outline>
+<outline text="查看物流"></outline>
+<outline text="申请退货"></outline>
+<outline text="确认收货"></outline>
+<outline text="查看订单详情"><outline text="快递详情"></outline>
+<outline text="收货详情"></outline>
+</outline>
+</outline>
+<outline text="我的投票"><outline text="显示自己投票过的而且已经上架的数据"></outline>
+</outline>
+</outline>
+<outline text="服饰详情"><outline text="图片轮播图"></outline>
+<outline text="价格"></outline>
+<outline text="尺码"></outline>
+<outline text="颜色"></outline>
+<outline text="数量选择"></outline>
+<outline text="剩余件数"></outline>
+<outline text="加入购物车"></outline>
+<outline text="立即购买"></outline>
+<outline text="标签显示" _note="标签是后台管理员录入&#10;"></outline>
+<outline text="加入购物车"></outline>
+<outline text="我要设计"></outline>
+<outline text="评论列表"><outline text="用户名（可能匿名）"></outline>
+<outline text="评论日期"></outline>
+<outline text="评论内容"></outline>
+</outline>
+</outline>
+<outline text="我要设计" _note="设计这个部分比较复杂，后台对于一件衣服，录入的数据部分比较多，详细字段需要后续确认"><outline text="推荐搭配"></outline>
+<outline text="定点搭配" _note="需要管理员在后添加位置关键字和录入数据&#10;"><outline text="衣领"></outline>
+<outline text="袖口"></outline>
+<outline text="衫尾"></outline>
+<outline text="条纹"></outline>
+<outline text="..."></outline>
+</outline>
+<outline text="定点饰件"></outline>
+<outline text="自由饰件"></outline>
+<outline text="显示服饰正反面"></outline>
+</outline>
+<outline text="支付模块"><outline text="微信支付"></outline>
+<outline text="支付宝"></outline>
+<outline text="后续加入ApplePay"></outline>
+</outline>
+<outline text="搜索模块" _note="出现在分类、服饰列表上方&#10;点击关键字，转变成文本在搜索框中，多个关键字以 + 号分隔"><outline text="推荐关键字" _note="管理员从后台设置&#10;"></outline>
+<outline text="最近搜索关键字" _note="客户端本地储存就可"></outline>
+</outline>
+</outline>
+</outline>
+</body>
+</opml>
