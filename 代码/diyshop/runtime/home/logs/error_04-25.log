@@ -1,0 +1,33 @@
+LOG_START=================================
+[time=2016-04-25 11:19:09] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:4] 
+message_start
+exception 'yii\base\ErrorException' with message 'syntax error, unexpected ''roles'' (T_CONSTANT_ENCAPSED_STRING), expecting ']'' in /var/www/diyshop/rebuild/apps/home/lib/Controller.php:27
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:26
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'c12c0f0928a710d5f7bb6708eae20c0b57c542e41d034b0f44e836daddc78c07a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"2TUSYWVeBAwlwa8UHtFRAgJFEMFlpxzw\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
