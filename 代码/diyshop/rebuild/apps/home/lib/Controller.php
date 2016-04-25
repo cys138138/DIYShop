@@ -24,7 +24,7 @@ class Controller extends \yii\web\Controller{
 				],
 				'rules' => [
 					[
-						d'roles' => [Access::PLAYER],
+						'roles' => [Access::PLAYER],
 					],
 				]
 			],
