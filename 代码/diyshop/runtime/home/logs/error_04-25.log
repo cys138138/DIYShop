@@ -31,3 +31,598 @@ $_SERVER = [
 ]
 env_vars_end
 =================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:05:02] [192.168.0.175][-][-][level=error][category=yii\base\InvalidConfigException] 
+message_start
+exception 'yii\base\InvalidConfigException' with message 'The directory does not exist: /var/www/diyshop/rebuild/apps/home/web/assets' in /var/www/diyshop/framework/yiisoft/yii2/web/AssetManager.php:211
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/base/Object.php(107): yii\web\AssetManager->init()
+#1 [internal function]: yii\base\Object->__construct(Array)
+#2 /var/www/diyshop/framework/yiisoft/yii2/di/Container.php(372): ReflectionClass->newInstanceArgs(Array)
+#3 /var/www/diyshop/framework/yiisoft/yii2/di/Container.php(151): yii\di\Container->build('yii\web\AssetMa...', Array, Array)
+#4 /var/www/diyshop/framework/yiisoft/yii2/BaseYii.php(344): yii\di\Container->get('yii\web\AssetMa...', Array, Array)
+#5 /var/www/diyshop/framework/yiisoft/yii2/di/ServiceLocator.php(133): yii\BaseYii::createObject(Array)
+#6 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(600): yii\di\ServiceLocator->get('assetManager')
+#7 /var/www/diyshop/framework/yiisoft/yii2/web/View.php(223): yii\base\Application->getAssetManager()
+#8 /var/www/diyshop/framework/yiisoft/yii2/web/View.php(283): yii\web\View->getAssetManager()
+#9 /var/www/diyshop/framework/yiisoft/yii2/web/AssetBundle.php(119): yii\web\View->registerAssetBundle('home\assets\Com...')
+#10 /var/www/diyshop/rebuild/apps/home/views/layouts/main.php(9): yii\web\AssetBundle::register(Object(umeworld\lib\View))
+#11 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#12 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#13 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(386): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\controllers\LoginController))
+#14 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(372): yii\base\Controller->renderContent('<h5>hhahahahha<...')
+#15 /var/www/diyshop/rebuild/apps/home/controllers/LoginController.php(22): yii\base\Controller->render('manager')
+#16 [internal function]: home\controllers\LoginController->actionIndex()
+#17 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#18 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#19 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#20 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('login/index', Array)
+#21 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#22 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#23 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/login.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:26
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'c12c0f0928a710d5f7bb6708eae20c0b57c542e41d034b0f44e836daddc78c07a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"2TUSYWVeBAwlwa8UHtFRAgJFEMFlpxzw\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/login.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:21:31] [192.168.0.175][-][-][level=error][category=application] 
+无法解析资源 @r.js.bootstrap
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:21:31] [192.168.0.175][-][-][level=error][category=application] 
+message_start
+无法解析资源 @r.css.bootstrap
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php
+line: 44
+request_url: http://www.diyshop.com/login.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:44
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:24
+    in /var/www/diyshop/rebuild/apps/home/views/layouts/main.php:9
+    in /var/www/diyshop/rebuild/apps/home/controllers/LoginController.php:22
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'c12c0f0928a710d5f7bb6708eae20c0b57c542e41d034b0f44e836daddc78c07a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"2TUSYWVeBAwlwa8UHtFRAgJFEMFlpxzw\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/login.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:21:31] [192.168.0.175][-][-][level=error][category=application] 
+无法解析资源 @r.js.bootstrap
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:21:31] [192.168.0.175][-][-][level=error][category=application] 
+message_start
+无法解析资源 @r.css.bootstrap
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php
+line: 44
+request_url: http://www.diyshop.com/login.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:44
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:24
+    in /var/www/diyshop/rebuild/apps/home/views/layouts/main.php:9
+    in /var/www/diyshop/rebuild/apps/home/controllers/LoginController.php:22
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'c12c0f0928a710d5f7bb6708eae20c0b57c542e41d034b0f44e836daddc78c07a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"2TUSYWVeBAwlwa8UHtFRAgJFEMFlpxzw\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/login.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:21:31] [192.168.0.175][-][-][level=error][category=application] 
+无法解析资源 @r.js.bootstrap
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:21:31] [192.168.0.175][-][-][level=error][category=application] 
+message_start
+无法解析资源 @r.css.bootstrap
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php
+line: 44
+request_url: http://www.diyshop.com/login.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:44
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:24
+    in /var/www/diyshop/rebuild/apps/home/views/layouts/main.php:9
+    in /var/www/diyshop/rebuild/apps/home/controllers/LoginController.php:22
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'c12c0f0928a710d5f7bb6708eae20c0b57c542e41d034b0f44e836daddc78c07a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"2TUSYWVeBAwlwa8UHtFRAgJFEMFlpxzw\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/login.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:22:18] [192.168.0.175][-][-][level=error][category=application] 
+无法解析资源 @r.js.bootstrap
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:22:18] [192.168.0.175][-][-][level=error][category=application] 
+message_start
+无法解析资源 @r.css.bootstrap
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php
+line: 44
+request_url: http://www.diyshop.com/login.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:44
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:24
+    in /var/www/diyshop/rebuild/apps/home/views/layouts/main.php:9
+    in /var/www/diyshop/rebuild/apps/home/controllers/LoginController.php:22
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'c12c0f0928a710d5f7bb6708eae20c0b57c542e41d034b0f44e836daddc78c07a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"2TUSYWVeBAwlwa8UHtFRAgJFEMFlpxzw\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/login.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:22:18] [192.168.0.175][-][-][level=error][category=application] 
+无法解析资源 @r.js.bootstrap
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:22:18] [192.168.0.175][-][-][level=error][category=application] 
+message_start
+无法解析资源 @r.css.bootstrap
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php
+line: 44
+request_url: http://www.diyshop.com/login.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:44
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:24
+    in /var/www/diyshop/rebuild/apps/home/views/layouts/main.php:9
+    in /var/www/diyshop/rebuild/apps/home/controllers/LoginController.php:22
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'c12c0f0928a710d5f7bb6708eae20c0b57c542e41d034b0f44e836daddc78c07a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"2TUSYWVeBAwlwa8UHtFRAgJFEMFlpxzw\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/login.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:22:19] [192.168.0.175][-][-][level=error][category=application] 
+无法解析资源 @r.js.bootstrap
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:22:19] [192.168.0.175][-][-][level=error][category=application] 
+message_start
+无法解析资源 @r.css.bootstrap
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php
+line: 44
+request_url: http://www.diyshop.com/login.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:44
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:24
+    in /var/www/diyshop/rebuild/apps/home/views/layouts/main.php:9
+    in /var/www/diyshop/rebuild/apps/home/controllers/LoginController.php:22
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'c12c0f0928a710d5f7bb6708eae20c0b57c542e41d034b0f44e836daddc78c07a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"2TUSYWVeBAwlwa8UHtFRAgJFEMFlpxzw\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/login.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:22:25] [192.168.0.175][-][-][level=error][category=application] 
+无法解析资源 @r.js.bootstrap
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:22:25] [192.168.0.175][-][-][level=error][category=application] 
+message_start
+无法解析资源 @r.css.bootstrap
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php
+line: 44
+request_url: http://www.diyshop.com/login.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:44
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:24
+    in /var/www/diyshop/rebuild/apps/home/views/layouts/main.php:9
+    in /var/www/diyshop/rebuild/apps/home/controllers/LoginController.php:22
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'c12c0f0928a710d5f7bb6708eae20c0b57c542e41d034b0f44e836daddc78c07a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"2TUSYWVeBAwlwa8UHtFRAgJFEMFlpxzw\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/login.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:22:25] [192.168.0.175][-][-][level=error][category=application] 
+无法解析资源 @r.js.bootstrap
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:22:25] [192.168.0.175][-][-][level=error][category=application] 
+message_start
+无法解析资源 @r.css.bootstrap
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php
+line: 44
+request_url: http://www.diyshop.com/login.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:44
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:24
+    in /var/www/diyshop/rebuild/apps/home/views/layouts/main.php:9
+    in /var/www/diyshop/rebuild/apps/home/controllers/LoginController.php:22
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'c12c0f0928a710d5f7bb6708eae20c0b57c542e41d034b0f44e836daddc78c07a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"2TUSYWVeBAwlwa8UHtFRAgJFEMFlpxzw\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/login.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:22:26] [192.168.0.175][-][-][level=error][category=application] 
+无法解析资源 @r.js.bootstrap
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:22:26] [192.168.0.175][-][-][level=error][category=application] 
+message_start
+无法解析资源 @r.css.bootstrap
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php
+line: 44
+request_url: http://www.diyshop.com/login.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:44
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:24
+    in /var/www/diyshop/rebuild/apps/home/views/layouts/main.php:9
+    in /var/www/diyshop/rebuild/apps/home/controllers/LoginController.php:22
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'c12c0f0928a710d5f7bb6708eae20c0b57c542e41d034b0f44e836daddc78c07a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"2TUSYWVeBAwlwa8UHtFRAgJFEMFlpxzw\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/login.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:22:59] [192.168.0.175][-][-][level=error][category=application] 
+无法解析资源 @r.js.bootstrap
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:22:59] [192.168.0.175][-][-][level=error][category=application] 
+message_start
+无法解析资源 @r.css.bootstrap
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php
+line: 44
+request_url: http://www.diyshop.com/login.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:44
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:24
+    in /var/www/diyshop/rebuild/apps/home/views/layouts/main.php:11
+    in /var/www/diyshop/rebuild/apps/home/controllers/LoginController.php:22
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'c12c0f0928a710d5f7bb6708eae20c0b57c542e41d034b0f44e836daddc78c07a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"2TUSYWVeBAwlwa8UHtFRAgJFEMFlpxzw\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/login.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:23:00] [192.168.0.175][-][-][level=error][category=application] 
+无法解析资源 @r.js.bootstrap
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:23:00] [192.168.0.175][-][-][level=error][category=application] 
+message_start
+无法解析资源 @r.css.bootstrap
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php
+line: 44
+request_url: http://www.diyshop.com/login.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:44
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:24
+    in /var/www/diyshop/rebuild/apps/home/views/layouts/main.php:11
+    in /var/www/diyshop/rebuild/apps/home/controllers/LoginController.php:22
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'c12c0f0928a710d5f7bb6708eae20c0b57c542e41d034b0f44e836daddc78c07a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"2TUSYWVeBAwlwa8UHtFRAgJFEMFlpxzw\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/login.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:23:00] [192.168.0.175][-][-][level=error][category=application] 
+无法解析资源 @r.js.bootstrap
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:23:00] [192.168.0.175][-][-][level=error][category=application] 
+message_start
+无法解析资源 @r.css.bootstrap
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php
+line: 44
+request_url: http://www.diyshop.com/login.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:44
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:24
+    in /var/www/diyshop/rebuild/apps/home/views/layouts/main.php:11
+    in /var/www/diyshop/rebuild/apps/home/controllers/LoginController.php:22
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'c12c0f0928a710d5f7bb6708eae20c0b57c542e41d034b0f44e836daddc78c07a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"2TUSYWVeBAwlwa8UHtFRAgJFEMFlpxzw\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/login.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:23:42] [192.168.0.175][-][-][level=error][category=application] 
+无法解析资源 @r.js.bootstrap
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:23:42] [192.168.0.175][-][-][level=error][category=application] 
+message_start
+无法解析资源 @r.css.bootstrap
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php
+line: 44
+request_url: http://www.diyshop.com/login.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:44
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:24
+    in /var/www/diyshop/rebuild/apps/home/views/layouts/main.php:11
+    in /var/www/diyshop/rebuild/apps/home/controllers/LoginController.php:22
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'c12c0f0928a710d5f7bb6708eae20c0b57c542e41d034b0f44e836daddc78c07a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"2TUSYWVeBAwlwa8UHtFRAgJFEMFlpxzw\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/login.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:23:43] [192.168.0.175][-][-][level=error][category=application] 
+无法解析资源 @r.js.bootstrap
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:23:43] [192.168.0.175][-][-][level=error][category=application] 
+message_start
+无法解析资源 @r.css.bootstrap
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php
+line: 44
+request_url: http://www.diyshop.com/login.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:44
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:24
+    in /var/www/diyshop/rebuild/apps/home/views/layouts/main.php:11
+    in /var/www/diyshop/rebuild/apps/home/controllers/LoginController.php:22
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'c12c0f0928a710d5f7bb6708eae20c0b57c542e41d034b0f44e836daddc78c07a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"2TUSYWVeBAwlwa8UHtFRAgJFEMFlpxzw\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/login.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:23:43] [192.168.0.175][-][-][level=error][category=application] 
+无法解析资源 @r.js.bootstrap
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-25 14:23:43] [192.168.0.175][-][-][level=error][category=application] 
+message_start
+无法解析资源 @r.css.bootstrap
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php
+line: 44
+request_url: http://www.diyshop.com/login.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:44
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:24
+    in /var/www/diyshop/rebuild/apps/home/views/layouts/main.php:11
+    in /var/www/diyshop/rebuild/apps/home/controllers/LoginController.php:22
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'c12c0f0928a710d5f7bb6708eae20c0b57c542e41d034b0f44e836daddc78c07a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"2TUSYWVeBAwlwa8UHtFRAgJFEMFlpxzw\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/login.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END

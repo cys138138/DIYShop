@@ -12,6 +12,8 @@ class UserAccessControl extends \yii\filters\AccessControl{
 
 	//用户角色标记
 	const PLAYER = 'player';	//普通玩家
+	const MANAGER = 'manager';
+	const VENDER = 'vender';
 
 	public function beforeAction($action){
 		$actionId = $action->id;

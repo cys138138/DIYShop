@@ -10,13 +10,11 @@ class CommonAsset extends \umeworld\lib\AssetBundle
     public $baseUrl = '@web';
 
     public $css = [
-		'@r.css.sprite',
-		'@r.css.global',
+	
     ];
 
     public $js = [
 		'@r.js.log',
-		'@r.js.ui1',
 		'@r.js.bstool',
 		'@r.js.global',
     ];
@@ -24,5 +22,7 @@ class CommonAsset extends \umeworld\lib\AssetBundle
 	public $depends = [
 		'common\assets\JQueryAsset',
 		'home\assets\CoreAsset',
+		'common\assets\BootstrapAsset',
+		'common\assets\UBoxAsset',
 	];
 }

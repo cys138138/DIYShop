@@ -4,6 +4,11 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+use umeworld\lib\Url;
+
+\home\assets\CommonAsset::register($this);
+//$this->registerAssetBundle('common\assets\UBoxAsset');
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -19,7 +24,7 @@ use yii\helpers\Html;
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    <div class="container">
+    <div class="bodyContainer">
         <?= $content ?>
     </div>
 </div>

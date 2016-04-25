@@ -59,4 +59,8 @@ return [
 
 	//md5
 	'js.md5'		=> '@r.url/static/js/md5-min.js',
+	
+	'css.bootstrap' => '@r.url/static/plugin/bootstrap-3.3.2/css/bootstrap.css',
+	'js.bootstrap' => '@r.url/static/plugin/bootstrap-3.3.2/js/bootstrap.js',
+	'jquery.bootstrap.teninedialog.v3' => '@r.url/static/plugin/jquery.bootstrap.teninedialog.v3.js',
 ];
