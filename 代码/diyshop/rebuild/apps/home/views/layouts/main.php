@@ -6,8 +6,11 @@
 use yii\helpers\Html;
 use umeworld\lib\Url;
 
+\common\assets\JQueryAsset::register($this);
 \home\assets\CommonAsset::register($this);
-//$this->registerAssetBundle('common\assets\UBoxAsset');
+\home\assets\CoreAsset::register($this);
+\common\assets\BootstrapAsset::register($this);
+\common\assets\UBoxAsset::register($this);
 
 ?>
 <?php $this->beginPage() ?>
@@ -18,7 +21,7 @@ use umeworld\lib\Url;
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
+    <?php $this->head() ?><?php $this->endBody() ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -33,7 +36,7 @@ use umeworld\lib\Url;
 
 </footer>
 
-<?php $this->endBody() ?>
+<?php /*$this->endBody()*/ ?>
 </body>
 </html>
 <?php $this->endPage() ?>

@@ -63,4 +63,5 @@ class View extends \yii\web\View{
 	public function getBaseTitle(){
 		return $this->_baseTitle;
 	}
+	
 }
