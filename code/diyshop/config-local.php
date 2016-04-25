@@ -19,7 +19,7 @@ $aLocal = [
 			'username' => 'root',
 			'password' => '123456',
 			'node' => [
-				['dsn' => 'mysql:host=127.0.0.1;dbname=project'],
+				['dsn' => 'mysql:host=127.0.0.1;dbname=diyshop'],
 			],
 		],
 		'slaver' => [
