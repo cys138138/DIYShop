@@ -230,3 +230,476 @@ $_SERVER = [
 ]
 env_vars_end
 =================================LOG_END
+LOG_START=================================
+[time=2016-04-26 14:43:08] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:1] 
+message_start
+exception 'yii\base\ErrorException' with message 'Class 'home\assets\NaviAsset' not found' in /var/www/diyshop/rebuild/apps/home/widgets/views/navi.php:3
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/manager/index.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:26
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'b25e9a97e6e92823a463f52b3d1bcbafef2060a7b41dff63c308b2ab6e2c9215a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bE5S8uDFQ_Bd1qDd6eZM3Pg96IxxwaIT\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/manager/index.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-26 14:59:58] [192.168.0.175][-][-][level=error][category=yii\base\UnknownMethodException] 
+message_start
+exception 'yii\base\UnknownMethodException' with message 'Calling unknown method: umeworld\lib\View::getId()' in /var/www/diyshop/framework/yiisoft/yii2/base/Component.php:285
+Stack trace:
+#0 /var/www/diyshop/rebuild/apps/home/views/manager/index.php(3): yii\base\Component->__call('getId', Array)
+#1 /var/www/diyshop/rebuild/apps/home/views/manager/index.php(3): umeworld\lib\View->getId()
+#2 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#3 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\controllers\ManagerController))
+#5 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(371): yii\base\View->render('index', Array, Object(home\controllers\ManagerController))
+#6 /var/www/diyshop/rebuild/apps/home/controllers/ManagerController.php(12): yii\base\Controller->render('index')
+#7 [internal function]: home\controllers\ManagerController->actionIndex()
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#9 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#10 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#11 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('manager/index', Array)
+#12 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#14 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/manager/index.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:26
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'b25e9a97e6e92823a463f52b3d1bcbafef2060a7b41dff63c308b2ab6e2c9215a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bE5S8uDFQ_Bd1qDd6eZM3Pg96IxxwaIT\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/manager/index.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-26 15:01:04] [192.168.0.175][-][-][level=error][category=yii\base\UnknownMethodException] 
+message_start
+exception 'yii\base\UnknownMethodException' with message 'Calling unknown method: umeworld\lib\View::getId()' in /var/www/diyshop/framework/yiisoft/yii2/base/Component.php:285
+Stack trace:
+#0 /var/www/diyshop/rebuild/apps/home/views/layouts/main.php(14): yii\base\Component->__call('getId', Array)
+#1 /var/www/diyshop/rebuild/apps/home/views/layouts/main.php(14): umeworld\lib\View->getId()
+#2 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#3 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(386): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\controllers\ManagerController))
+#5 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(372): yii\base\Controller->renderContent('??<script type=...')
+#6 /var/www/diyshop/rebuild/apps/home/controllers/ManagerController.php(12): yii\base\Controller->render('index')
+#7 [internal function]: home\controllers\ManagerController->actionIndex()
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#9 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#10 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#11 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('manager/index', Array)
+#12 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#14 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/manager/index.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:26
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'b25e9a97e6e92823a463f52b3d1bcbafef2060a7b41dff63c308b2ab6e2c9215a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bE5S8uDFQ_Bd1qDd6eZM3Pg96IxxwaIT\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/manager/index.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-26 15:01:18] [192.168.0.175][-][-][level=error][category=yii\base\UnknownMethodException] 
+message_start
+exception 'yii\base\UnknownMethodException' with message 'Calling unknown method: umeworld\lib\Application::getId()' in /var/www/diyshop/framework/yiisoft/yii2/base/Component.php:285
+Stack trace:
+#0 /var/www/diyshop/rebuild/apps/home/views/layouts/main.php(14): yii\base\Component->__call('getId', Array)
+#1 /var/www/diyshop/rebuild/apps/home/views/layouts/main.php(14): umeworld\lib\Application->getId()
+#2 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#3 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(386): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\controllers\ManagerController))
+#5 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(372): yii\base\Controller->renderContent('??<script type=...')
+#6 /var/www/diyshop/rebuild/apps/home/controllers/ManagerController.php(12): yii\base\Controller->render('index')
+#7 [internal function]: home\controllers\ManagerController->actionIndex()
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#9 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#10 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#11 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('manager/index', Array)
+#12 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#14 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/manager/index.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:26
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'b25e9a97e6e92823a463f52b3d1bcbafef2060a7b41dff63c308b2ab6e2c9215a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bE5S8uDFQ_Bd1qDd6eZM3Pg96IxxwaIT\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/manager/index.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-26 15:01:47] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:1] 
+message_start
+exception 'yii\base\ErrorException' with message 'Call to undefined method Yii::app()' in /var/www/diyshop/rebuild/apps/home/views/layouts/main.php:14
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/manager/index.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:26
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'b25e9a97e6e92823a463f52b3d1bcbafef2060a7b41dff63c308b2ab6e2c9215a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bE5S8uDFQ_Bd1qDd6eZM3Pg96IxxwaIT\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/manager/index.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-26 15:04:16] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:8] 
+message_start
+exception 'yii\base\ErrorException' with message 'Undefined index: name' in /var/www/diyshop/rebuild/apps/home/widgets/views/navi.php:23
+Stack trace:
+#0 /var/www/diyshop/rebuild/apps/home/widgets/views/navi.php(23): yii\base\ErrorHandler->handleError(8, 'Undefined index...', '/var/www/diysho...', 23, Array)
+#1 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#2 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#3 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\widgets\Navi))
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/Widget.php(191): yii\base\View->render('navi', Array, Object(home\widgets\Navi))
+#5 /var/www/diyshop/rebuild/apps/home/widgets/Navi.php(19): yii\base\Widget->render('navi', Array)
+#6 /var/www/diyshop/framework/yiisoft/yii2/base/Widget.php(98): home\widgets\Navi->run()
+#7 /var/www/diyshop/rebuild/apps/home/views/layouts/main.php(32): yii\base\Widget::widget()
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#9 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#10 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(386): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\controllers\LoginController))
+#11 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(372): yii\base\Controller->renderContent('<style type="te...')
+#12 /var/www/diyshop/rebuild/apps/home/controllers/LoginController.php(19): yii\base\Controller->render('manager')
+#13 [internal function]: home\controllers\LoginController->actionIndex()
+#14 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#15 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#16 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#17 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('login/index', Array)
+#18 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#19 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#20 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/login.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:26
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'b25e9a97e6e92823a463f52b3d1bcbafef2060a7b41dff63c308b2ab6e2c9215a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bE5S8uDFQ_Bd1qDd6eZM3Pg96IxxwaIT\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/login.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-26 15:05:31] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:8] 
+message_start
+exception 'yii\base\ErrorException' with message 'Undefined index: name' in /var/www/diyshop/rebuild/apps/home/widgets/views/navi.php:23
+Stack trace:
+#0 /var/www/diyshop/rebuild/apps/home/widgets/views/navi.php(23): yii\base\ErrorHandler->handleError(8, 'Undefined index...', '/var/www/diysho...', 23, Array)
+#1 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#2 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#3 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\widgets\Navi))
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/Widget.php(191): yii\base\View->render('navi', Array, Object(home\widgets\Navi))
+#5 /var/www/diyshop/rebuild/apps/home/widgets/Navi.php(19): yii\base\Widget->render('navi', Array)
+#6 /var/www/diyshop/framework/yiisoft/yii2/base/Widget.php(98): home\widgets\Navi->run()
+#7 /var/www/diyshop/rebuild/apps/home/views/layouts/main.php(36): yii\base\Widget::widget()
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#9 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#10 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(386): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\controllers\LoginController))
+#11 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(372): yii\base\Controller->renderContent('<style type="te...')
+#12 /var/www/diyshop/rebuild/apps/home/controllers/LoginController.php(19): yii\base\Controller->render('manager')
+#13 [internal function]: home\controllers\LoginController->actionIndex()
+#14 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#15 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#16 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#17 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('login/index', Array)
+#18 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#19 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#20 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/login.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:26
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'b25e9a97e6e92823a463f52b3d1bcbafef2060a7b41dff63c308b2ab6e2c9215a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bE5S8uDFQ_Bd1qDd6eZM3Pg96IxxwaIT\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/login.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-26 15:05:32] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:8] 
+message_start
+exception 'yii\base\ErrorException' with message 'Undefined index: name' in /var/www/diyshop/rebuild/apps/home/widgets/views/navi.php:23
+Stack trace:
+#0 /var/www/diyshop/rebuild/apps/home/widgets/views/navi.php(23): yii\base\ErrorHandler->handleError(8, 'Undefined index...', '/var/www/diysho...', 23, Array)
+#1 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#2 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#3 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\widgets\Navi))
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/Widget.php(191): yii\base\View->render('navi', Array, Object(home\widgets\Navi))
+#5 /var/www/diyshop/rebuild/apps/home/widgets/Navi.php(19): yii\base\Widget->render('navi', Array)
+#6 /var/www/diyshop/framework/yiisoft/yii2/base/Widget.php(98): home\widgets\Navi->run()
+#7 /var/www/diyshop/rebuild/apps/home/views/layouts/main.php(36): yii\base\Widget::widget()
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#9 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#10 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(386): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\controllers\LoginController))
+#11 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(372): yii\base\Controller->renderContent('<style type="te...')
+#12 /var/www/diyshop/rebuild/apps/home/controllers/LoginController.php(19): yii\base\Controller->render('manager')
+#13 [internal function]: home\controllers\LoginController->actionIndex()
+#14 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#15 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#16 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#17 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('login/index', Array)
+#18 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#19 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#20 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/login.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:26
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'b25e9a97e6e92823a463f52b3d1bcbafef2060a7b41dff63c308b2ab6e2c9215a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bE5S8uDFQ_Bd1qDd6eZM3Pg96IxxwaIT\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/login.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-26 15:49:41] [192.168.0.175][-][-][level=error][category=yii\base\UnknownPropertyException] 
+message_start
+exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: umeworld\lib\Application::action' in /var/www/diyshop/framework/yiisoft/yii2/base/Component.php:143
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/di/ServiceLocator.php(73): yii\base\Component->__get('action')
+#1 /var/www/diyshop/rebuild/apps/home/widgets/views/navi.php(46): yii\di\ServiceLocator->__get('action')
+#2 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#3 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\widgets\Navi))
+#5 /var/www/diyshop/framework/yiisoft/yii2/base/Widget.php(191): yii\base\View->render('navi', Array, Object(home\widgets\Navi))
+#6 /var/www/diyshop/rebuild/apps/home/widgets/Navi.php(21): yii\base\Widget->render('navi', Array)
+#7 /var/www/diyshop/framework/yiisoft/yii2/base/Widget.php(98): home\widgets\Navi->run()
+#8 /var/www/diyshop/rebuild/apps/home/views/layouts/main.php(36): yii\base\Widget::widget()
+#9 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#10 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#11 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(386): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\controllers\ManagerController))
+#12 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(372): yii\base\Controller->renderContent('??<script type=...')
+#13 /var/www/diyshop/rebuild/apps/home/controllers/ManagerController.php(12): yii\base\Controller->render('index')
+#14 [internal function]: home\controllers\ManagerController->actionIndex()
+#15 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#16 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#17 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#18 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('manager/index', Array)
+#19 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#20 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#21 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/manager/index.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:26
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'b25e9a97e6e92823a463f52b3d1bcbafef2060a7b41dff63c308b2ab6e2c9215a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bE5S8uDFQ_Bd1qDd6eZM3Pg96IxxwaIT\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/manager/index.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-26 15:51:34] [192.168.0.175][-][-][level=error][category=yii\base\UnknownMethodException] 
+message_start
+exception 'yii\base\UnknownMethodException' with message 'Calling unknown method: home\controllers\ManagerController::getAction()' in /var/www/diyshop/framework/yiisoft/yii2/base/Component.php:285
+Stack trace:
+#0 /var/www/diyshop/rebuild/apps/home/widgets/views/navi.php(46): yii\base\Component->__call('getAction', Array)
+#1 /var/www/diyshop/rebuild/apps/home/widgets/views/navi.php(46): home\controllers\ManagerController->getAction()
+#2 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#3 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\widgets\Navi))
+#5 /var/www/diyshop/framework/yiisoft/yii2/base/Widget.php(191): yii\base\View->render('navi', Array, Object(home\widgets\Navi))
+#6 /var/www/diyshop/rebuild/apps/home/widgets/Navi.php(21): yii\base\Widget->render('navi', Array)
+#7 /var/www/diyshop/framework/yiisoft/yii2/base/Widget.php(98): home\widgets\Navi->run()
+#8 /var/www/diyshop/rebuild/apps/home/views/layouts/main.php(36): yii\base\Widget::widget()
+#9 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#10 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#11 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(386): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\controllers\ManagerController))
+#12 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(372): yii\base\Controller->renderContent('??<script type=...')
+#13 /var/www/diyshop/rebuild/apps/home/controllers/ManagerController.php(12): yii\base\Controller->render('index')
+#14 [internal function]: home\controllers\ManagerController->actionIndex()
+#15 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#16 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#17 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#18 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('manager/index', Array)
+#19 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#20 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#21 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/manager/index.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:26
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'b25e9a97e6e92823a463f52b3d1bcbafef2060a7b41dff63c308b2ab6e2c9215a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bE5S8uDFQ_Bd1qDd6eZM3Pg96IxxwaIT\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/manager/index.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END

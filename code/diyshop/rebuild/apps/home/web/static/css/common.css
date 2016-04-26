@@ -1,0 +1,5 @@
+.navbar-nav a.active {
+    outline: none;
+    background-color: #000 !important;
+    color: #FFF;
+}

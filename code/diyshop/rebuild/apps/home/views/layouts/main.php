@@ -26,11 +26,21 @@ use umeworld\lib\Url;
 <body>
 <?php $this->beginBody() ?>
 
-<div class="wrap">
-    <div class="bodyContainer">
-        <?= $content ?>
-    </div>
-</div>
+<?php if(Yii::$app->controller->id == 'login'){ ?>
+	<div id="page-wrapper">
+		<?= $content ?>
+	</div>
+<?php }else{ ?>
+	<div id="wrapper">
+		<div class="container-fluid">
+			<?php echo \home\widgets\Navi::widget(); ?>
+		</div>
+		<div id="page-wrapper">
+			<?= $content ?>
+		</div>
+		<!-- /#page-wrapper -->
+	</div>
+<?php } ?>
 
 <footer class="footer">
 

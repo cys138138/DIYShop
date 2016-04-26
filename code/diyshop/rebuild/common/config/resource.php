@@ -4,10 +4,16 @@ return [
 
 	//核心前端组件
 	'js.core' => '@r.url/static/js/core.js',
+	'js.common' => '@r.url/static/js/common.js',
+	'js.morris' => '@r.url/static/plugin/morris/morris.min.js',
+	'js.raphael' => '@r.url/static/plugin/morris/raphael.min.js',
 
 
 	//系统响应页面样式
 	'css.error' => '@r.url/static/css/error.css',
+	'css.morris' => '@r.url/static/css/morris.css',
+	'css.awesome' => '@r.url/static/plugin/bootstrap-3.3.2/font-awesome/css/font-awesome.min.css',
+	'css.common' => '@r.url/static/css/common.css',
 
 	'js.layer' => '@r.url/static/plugin/layer/layer.min.js',
 
@@ -61,6 +67,8 @@ return [
 	'js.md5'		=> '@r.url/static/js/md5-min.js',
 	
 	'css.bootstrap' => '@r.url/static/plugin/bootstrap-3.3.2/css/bootstrap.css',
+	'css.sb.admin' => '@r.url/static/plugin/bootstrap-3.3.2/css/sb-admin.css',
 	'js.bootstrap' => '@r.url/static/plugin/bootstrap-3.3.2/js/bootstrap.js',
+	'js.bootstrap.min' => '@r.url/static/plugin/bootstrap-3.3.2/js/bootstrap.min.js',
 	'jquery.bootstrap.teninedialog.v3' => '@r.url/static/plugin/jquery.bootstrap.teninedialog.v3.js',
 ];
