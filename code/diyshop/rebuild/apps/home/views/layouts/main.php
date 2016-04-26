@@ -36,7 +36,9 @@ use umeworld\lib\Url;
 			<?php echo \home\widgets\Navi::widget(); ?>
 		</div>
 		<div id="page-wrapper">
-			<?= $content ?>
+			<div class="container-fluid">
+				<?= $content ?>
+			</div>
 		</div>
 		<!-- /#page-wrapper -->
 	</div>

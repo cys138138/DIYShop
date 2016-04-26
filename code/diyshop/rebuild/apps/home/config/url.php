@@ -25,6 +25,10 @@ return [
 		'manager/index.html'													=> 'manager/index',
 		'manager/logout.html'													=> 'manager/logout',
 		
+		
+		'advertisement/show-manage.html'										=> 'advertisement/show-manage-advertisement',
+		'advertisement/upload-file.html'										=> 'advertisement/upload-file',
+		
 		//跳转页面
 		'jump/<jumpType:\w+>.html'						=> 'jump/jump',
 

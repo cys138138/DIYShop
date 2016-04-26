@@ -771,3 +771,79 @@ $_SERVER = [
 ]
 env_vars_end
 =================================LOG_END
+LOG_START=================================
+[time=2016-04-26 17:20:31] [192.168.0.175][-][-][level=error][category=yii\base\InvalidParamException] 
+message_start
+exception 'yii\base\InvalidParamException' with message 'The view file does not exist: /var/www/diyshop/rebuild/apps/home/views/advertisement/show-edit.php' in /var/www/diyshop/framework/yiisoft/yii2/base/View.php:226
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\controllers\AdvertisementController))
+#1 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(371): yii\base\View->render('show-edit', Array, Object(home\controllers\AdvertisementController))
+#2 /var/www/diyshop/rebuild/apps/home/controllers/AdvertisementController.php(12): yii\base\Controller->render('show-edit')
+#3 [internal function]: home\controllers\AdvertisementController->actionShowManageAdvertisement()
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#5 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#6 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('show-manage-adv...', Array)
+#7 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('advertisement/s...', Array)
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#10 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/advertisement/show-manage.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:26
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'b25e9a97e6e92823a463f52b3d1bcbafef2060a7b41dff63c308b2ab6e2c9215a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bE5S8uDFQ_Bd1qDd6eZM3Pg96IxxwaIT\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/advertisement/show-manage.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/manager/index.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-26 17:45:01] [192.168.0.175][-][-][level=error][category=application] 
+message_start
+无法解析资源 @r.js.ajax-upload
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php
+line: 44
+request_url: http://www.diyshop.com/advertisement/show-manage.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:44
+    in /var/www/diyshop/rebuild/umeworld/lib/AssetBundle.php:19
+    in /var/www/diyshop/rebuild/apps/home/views/advertisement/show-manage.php:4
+    in /var/www/diyshop/rebuild/apps/home/controllers/AdvertisementController.php:14
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'b25e9a97e6e92823a463f52b3d1bcbafef2060a7b41dff63c308b2ab6e2c9215a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bE5S8uDFQ_Bd1qDd6eZM3Pg96IxxwaIT\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/advertisement/show-manage.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/manager/index.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
