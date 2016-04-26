@@ -23,6 +23,7 @@ return [
 		
 		
 		'manager/index.html'													=> 'manager/index',
+		'manager/logout.html'													=> 'manager/logout',
 		
 		//跳转页面
 		'jump/<jumpType:\w+>.html'						=> 'jump/jump',

@@ -4,12 +4,12 @@ namespace common\role;
 use Yii;
 use umeworld\lib\Cookie;
 use umeworld\lib\Url;
-use \common\model\Manager as UserModel;
+use \common\model\Vender as UserModel;
 
 /**
  * 用户登陆控制类
  */
-class Manager extends \yii\web\User{
+class Vender extends \yii\web\User{
 
 	public $allowMultipleToken = false;
 	public $reloginOvertime = 0;
@@ -83,7 +83,7 @@ class Manager extends \yii\web\User{
 		$this->setIdentity($oUser);
 
 		//写入cookie
-		Cookie::setEncrypt('managerId', $userId, NOW_TIME + $this->rememberLoginTime);
+		Cookie::setEncrypt('venderId', $userId, NOW_TIME + $this->rememberLoginTime);
 
 		return true;
 	 }
@@ -110,7 +110,7 @@ class Manager extends \yii\web\User{
 	 */
 	public function initLoginStatus(){
 		Yii::info('进行登陆检查', 'login');
-		$userId = (int)Cookie::getDecrypt('managerId');
+		$userId = (int)Cookie::getDecrypt('venderId');
 		if(!$userId){
 			Yii::info('cookie里没有用户id', 'login');
 			return false;
@@ -123,7 +123,7 @@ class Manager extends \yii\web\User{
 
 		$this->setIdentity($oIdentity);
 		//延长cookie时间
-		Cookie::setEncrypt('managerId', $userId, NOW_TIME + $this->rememberLoginTime);
+		Cookie::setEncrypt('venderId', $userId, NOW_TIME + $this->rememberLoginTime);
 		return $oIdentity;
 	}
 
@@ -141,7 +141,7 @@ class Manager extends \yii\web\User{
 		}
 
 		//删除客户端保存的令牌
-		Cookie::delete('managerId');
+		Cookie::delete('venderId');
 		$this->setIdentity(null);	//清除身份
 		return $this->getIsGuest();
 	}
