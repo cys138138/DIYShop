@@ -1,0 +1,232 @@
+LOG_START=================================
+[time=2016-04-26 10:29:20] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:1] 
+message_start
+exception 'yii\base\ErrorException' with message 'Class 'Url' not found' in /var/www/diyshop/rebuild/apps/home/views/login/manager.php:36
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/login.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:26
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'b25e9a97e6e92823a463f52b3d1bcbafef2060a7b41dff63c308b2ab6e2c9215a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bE5S8uDFQ_Bd1qDd6eZM3Pg96IxxwaIT\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/login.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-26 10:29:42] [192.168.0.175][-][-][level=error][category=ReflectionException:-1] 
+message_start
+exception 'ReflectionException' with message 'Class common\ui\CommonUi1 does not exist' in /var/www/diyshop/framework/yiisoft/yii2/di/Container.php:415
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/di/Container.php(415): ReflectionClass->__construct('common\ui\Commo...')
+#1 /var/www/diyshop/framework/yiisoft/yii2/di/Container.php(358): yii\di\Container->getDependencies('common\ui\Commo...')
+#2 /var/www/diyshop/framework/yiisoft/yii2/di/Container.php(151): yii\di\Container->build('common\ui\Commo...', Array, Array)
+#3 /var/www/diyshop/framework/yiisoft/yii2/BaseYii.php(344): yii\di\Container->get('common\ui\Commo...', Array, Array)
+#4 /var/www/diyshop/framework/yiisoft/yii2/di/ServiceLocator.php(133): yii\BaseYii::createObject(Array)
+#5 /var/www/diyshop/framework/yiisoft/yii2/di/ServiceLocator.php(71): yii\di\ServiceLocator->get('ui')
+#6 /var/www/diyshop/rebuild/umeworld/lib/Response.php(19): yii\di\ServiceLocator->__get('ui')
+#7 /var/www/diyshop/rebuild/apps/home/controllers/LoginController.php(26): umeworld\lib\Response->__construct('????????????', 1)
+#8 [internal function]: home\controllers\LoginController->actionManagerLogin()
+#9 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#10 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#11 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('manager-login', Array)
+#12 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('login/manager-l...', Array)
+#13 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#14 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#15 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/manager/login.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:26
+trace_end
+
+env_vars_start:
+$_POST = [
+    'account' => 'aaaa'
+    'password' => 'ffff'
+    '_csrf' => 'RENqSW40aXMmBl8aVkEtNRUcKC1fRS0XciYwBF1kDkpyChIxGVUgJw=='
+]
+
+$_COOKIE = [
+    '_csrf' => 'b25e9a97e6e92823a463f52b3d1bcbafef2060a7b41dff63c308b2ab6e2c9215a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bE5S8uDFQ_Bd1qDd6eZM3Pg96IxxwaIT\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/manager/login.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'POST',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-26 10:39:37] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:1] 
+message_start
+exception 'yii\base\ErrorException' with message 'Class 'home\controllers\PhoneValidator' not found' in /var/www/diyshop/rebuild/apps/home/controllers/LoginController.php:32
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/manager/login.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:26
+trace_end
+
+env_vars_start:
+$_POST = [
+    'account' => '15014191886'
+    'password' => 'fsff'
+    '_csrf' => 'VElJalhMaW82DHw5YDktKQUWCw5pPS0LYiwTJ2scDlZiADESLy0gOw=='
+]
+
+$_COOKIE = [
+    '_csrf' => 'b25e9a97e6e92823a463f52b3d1bcbafef2060a7b41dff63c308b2ab6e2c9215a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bE5S8uDFQ_Bd1qDd6eZM3Pg96IxxwaIT\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/manager/login.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'POST',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-26 11:09:22] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:64] 
+message_start
+exception 'yii\base\ErrorException' with message 'Cannot declare class home\controllers\ManagerController because the name is already in use' in /var/www/diyshop/rebuild/apps/home/controllers/ManagerController.php:11
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/manager/index.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:26
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'b25e9a97e6e92823a463f52b3d1bcbafef2060a7b41dff63c308b2ab6e2c9215a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bE5S8uDFQ_Bd1qDd6eZM3Pg96IxxwaIT\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/manager/index.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-26 11:22:56] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:4] 
+message_start
+exception 'yii\base\ErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /var/www/diyshop/rebuild/common/role/AuthManager.php:25
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/manager/index.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:26
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'b25e9a97e6e92823a463f52b3d1bcbafef2060a7b41dff63c308b2ab6e2c9215a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bE5S8uDFQ_Bd1qDd6eZM3Pg96IxxwaIT\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/manager/index.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-26 11:40:45] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:4] 
+message_start
+exception 'yii\base\ErrorException' with message 'syntax error, unexpected '}'' in /var/www/diyshop/rebuild/common/model/Manager.php:116
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/manager/login.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:26
+trace_end
+
+env_vars_start:
+$_POST = [
+    'account' => 'admin'
+    'password' => 'admin'
+    '_csrf' => 'UGNZTDRIbmUyJmwfDD0qIwE8GygFOSoBZgYDAQcYCVxmKiE0QyknMQ=='
+]
+
+$_COOKIE = [
+    '_csrf' => 'b25e9a97e6e92823a463f52b3d1bcbafef2060a7b41dff63c308b2ab6e2c9215a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bE5S8uDFQ_Bd1qDd6eZM3Pg96IxxwaIT\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/manager/login.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/login.html',
+	'REQUEST_METHOD' => 'POST',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END

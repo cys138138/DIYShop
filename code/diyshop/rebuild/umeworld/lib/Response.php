@@ -16,7 +16,7 @@ class Response extends \yii\web\Response{
 
 		$oRequest = Yii::$app->request;
 		$isAjax = $oRequest->isAjax || $oRequest->post('_is_ajax') || $oRequest->get('_is_ajax');
-		if(!Yii::$app->ui->isRequestByPageManager && $isAjax){
+		if($isAjax){
 			$this->format = self::FORMAT_JSON;
 		}else{
 			$this->format = self::FORMAT_HTML;

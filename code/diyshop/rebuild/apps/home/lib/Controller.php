@@ -30,4 +30,13 @@ class Controller extends \yii\web\Controller{
 			],
 		];
 	}
+	
+	
+	public function actions(){
+		return [
+			'error' => [
+				'class' => 'umeworld\lib\ErrorAction',
+			],
+		];
+	}
 }

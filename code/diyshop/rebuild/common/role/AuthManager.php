@@ -25,8 +25,15 @@ class AuthManager extends \yii\base\Component{
 		if(!$userId){
 			return false;
 		}
+		
+		$mUser = null;
+		if($permissionName = \common\filter\ManagerAccessControl::MANAGER){
+			$mUser = \common\model\Manager::findOne($userId);
+		}elseif($permissionName = \common\filter\VenderAccessControl::VENDER){
+			$mUser = \common\model\Vender::findOne($userId);
+		}
 
-		if(!$mUser = \common\model\User::findOne($userId)){
+		if(!$mUser){
 			throw new \yii\base\InvalidParamException('无效的用户ID');
 		}
 

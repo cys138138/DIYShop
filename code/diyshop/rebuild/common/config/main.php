@@ -1,7 +1,7 @@
 <?php
 return [
     'vendorPath' => FRAMEWORK_PATH,
-    'domain' => 'project.' . $aLocal['domain_suffix'][YII_ENV],
+    'domain' => $aLocal['domain_name'] . '.' . $aLocal['domain_suffix'][YII_ENV],
     'aWebAppList' => [
 		'home'
 	],
@@ -22,15 +22,6 @@ return [
         'request' => [
             'cookieValidationKey' => 'EArv76QW-Dc8ngUP-qndrD0BDlodbqw-',
         ],
-
-		'ui' => [
-			'class' => 'common\ui\CommonUi1',
-			'aTips' => [
-				'error' => [
-					'common' => '抱歉,系统繁忙,请重试',
-				],
-			]
-		],
 
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
@@ -115,6 +106,26 @@ return [
 			//用户控制组件
 			'class' => 'common\role\User',
             'identityClass' => 'common\model\User',
+            'reloginOvertime' => 1800,
+            'rememberLoginTime' => 3000000,
+            'enableAutoLogin' => false,
+            'loginUrl' => ['login/index'],
+        ],
+		
+        'manager' => [
+			//用户控制组件
+			'class' => 'common\role\Manager',
+            'identityClass' => 'common\model\Manager',
+            'reloginOvertime' => 1800,
+            'rememberLoginTime' => 3000000,
+            'enableAutoLogin' => false,
+            'loginUrl' => ['login/index'],
+        ],
+		
+        'vender' => [
+			//用户控制组件
+			'class' => 'common\role\Vender',
+            'identityClass' => 'common\model\Vender',
             'reloginOvertime' => 1800,
             'rememberLoginTime' => 3000000,
             'enableAutoLogin' => false,

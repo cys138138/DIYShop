@@ -6,13 +6,11 @@ use umeworld\lib\Query;
 use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
 use yii\base\NotSupportedException;
-use yii\validators\EmailValidator;
-use umeworld\lib\PhoneValidator;
 
-class Manager extends \common\lib\DbOrmModel implements IdentityInterface{
+class Vender extends \common\lib\DbOrmModel implements IdentityInterface{
 
 	public static function tableName(){
-		return Yii::$app->db->parseTable('_@manager');
+		return Yii::$app->db->parseTable('_@vender');
 	}
 	
 	public function allow($permissionName){
@@ -81,37 +79,5 @@ class Manager extends \common\lib\DbOrmModel implements IdentityInterface{
 
 	public static function encryPassword($password){
 		return md5($password);
-	}
-	
-	public static function getManagerByAccountAndPassword($account, $password){
-		if(!$account){
-			return false;
-		}
-		if(!$password){
-			return false;
-		}
-		
-		$isEmail = (new EmailValidator())->validate($account);
-		$isMobile = (new PhoneValidator())->validate($account);
-		$mManager = null;
-		if($isEmail){
-			$mManager = self::findOne([
-				'email' => $account,
-				'password' => self::encryPassword($password)
-			]);
-		}
-		if($isMobile){
-			$mManager = self::findOne([
-				'mobile' => $account,
-				'password' => self::encryPassword($password)
-			]);
-		}
-		if(!$isEmail && !$isMobile){
-			$mManager = self::findOne([
-				'user_name' => $account,
-				'password' => self::encryPassword($password)
-			]);
-		}
-		return $mManager;
 	}
 }

@@ -19,6 +19,10 @@ return [
 		
 		
 		'login.html'															=> 'login/index',
+		'manager/login.html'													=> 'login/manager-login',
+		
+		
+		'manager/index.html'													=> 'manager/index',
 		
 		//跳转页面
 		'jump/<jumpType:\w+>.html'						=> 'jump/jump',

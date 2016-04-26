@@ -1,24 +1,15 @@
 <?php
 namespace home\controllers;
 
+use Yii;
 use home\lib\Controller;
 use umeworld\lib\Response;
 use umeworld\lib\Url;
-use Yii;
-use yii\helpers\ArrayHelper;
-use common\filter\UserAccessControl as Access;
 
 /**
  * 站点控制器
  */
 class SiteController extends Controller{
-	public function actions(){
-		return [
-			'error' => [
-				'class' => 'umeworld\lib\ErrorAction',
-			],
-		];
-	}
 
     public function actionIndex(){
 		//debug(Yii::$app->user->getIdentity());

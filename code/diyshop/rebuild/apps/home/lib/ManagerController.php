@@ -2,7 +2,7 @@
 namespace home\lib;
 
 use Yii;
-use common\filter\UserAccessControl as Access;
+use common\filter\ManagerAccessControl as Access;
 
 /**
  * 主站基本控制器,主要封装了大量页面通用的登陆验证
@@ -27,6 +27,15 @@ class ManagerController extends \yii\web\Controller{
 						'roles' => [Access::MANAGER],
 					],
 				]
+			],
+		];
+	}
+	
+	
+	public function actions(){
+		return [
+			'error' => [
+				'class' => 'umeworld\lib\ErrorAction',
 			],
 		];
 	}

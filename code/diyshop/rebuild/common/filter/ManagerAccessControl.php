@@ -5,13 +5,13 @@ use Yii;
 /**
  * 用户访问控制过滤器
  */
-class UserAccessControl extends \yii\filters\AccessControl{
-	public $user = 'user';	//控制哪个APP用户组件的访问
+class ManagerAccessControl extends \yii\filters\AccessControl{
+	public $user = 'manager';	//控制哪个APP用户组件的访问
 	public $aUmRules = [];		//自定义的规则
 	public $denyMessage = '';
 
 	//用户角色标记
-	const PLAYER = 'player';	//普通玩家
+	const MANAGER = 'manager';
 
 	public function beforeAction($action){
 		$actionId = $action->id;
