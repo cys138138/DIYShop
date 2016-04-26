@@ -80,10 +80,8 @@ class AppCreater extends Component{
 	 * 初始化全局别名路径
 	 */
 	public function initPaths(){
-		Yii::setAlias('p.resource',		PROJECT_PATH . '/resource');
-		Yii::setAlias('p.temp_upload',	'data/user/tmp');
-		Yii::setAlias('p.bbs_image',	'data/bbs');
-		Yii::setAlias('p.teacher_bbs_image',	'data/teacher_bbs');
+		//Yii::setAlias('p.resource',		PROJECT_PATH . '/resource');
+		//Yii::setAlias('p.temp_upload',	'data/user/tmp');
 	}
 
 	/**

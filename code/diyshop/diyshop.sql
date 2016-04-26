@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 192.168.0.177
-Source Server Version : 50540
-Source Host           : 192.168.0.177:3306
+Source Server         : phpstudyLocalhost
+Source Server Version : 50547
+Source Host           : localhost:3306
 Source Database       : diyshop
 
 Target Server Type    : MYSQL
-Target Server Version : 50540
+Target Server Version : 50547
 File Encoding         : 65001
 
-Date: 2016-04-26 16:42:38
+Date: 2016-04-26 23:15:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -33,6 +33,22 @@ CREATE TABLE `manager` (
 -- Records of manager
 -- ----------------------------
 INSERT INTO `manager` VALUES ('1', 'admin', null, null, '21232f297a57a5a743894a0e4a801fc3', '管理员');
+
+-- ----------------------------
+-- Table structure for `setting`
+-- ----------------------------
+DROP TABLE IF EXISTS `setting`;
+CREATE TABLE `setting` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID自增',
+  `keystr` varchar(50) DEFAULT NULL COMMENT '键',
+  `valuestr` text COMMENT '值',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of setting
+-- ----------------------------
+INSERT INTO `setting` VALUES ('1', 'advertisement_catalog_config', '[{\"id\":1,\"name\":\"\\u4e3b\\u754c\\u9762\",\"pics\":[]},{\"id\":2,\"name\":\"\\u54c1\\u724c\",\"pics\":[]},{\"id\":3,\"name\":\"\\u81ea\\u8425\",\"pics\":[]}]');
 
 -- ----------------------------
 -- Table structure for `user`

@@ -27,6 +27,10 @@ return [
 		
 		
 		'advertisement/show-manage.html'										=> 'advertisement/show-manage-advertisement',
+		'advertisement/show-list.html'											=> 'advertisement/show-list',
+		'advertisement/show-edit.html'											=> 'advertisement/show-edit',
+		'advertisement/save.html'												=> 'advertisement/save',
+		'advertisement/delete.html'												=> 'advertisement/delete',
 		'advertisement/upload-file.html'										=> 'advertisement/upload-file',
 		
 		//跳转页面

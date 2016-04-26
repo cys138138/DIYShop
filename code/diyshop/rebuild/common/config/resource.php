@@ -11,7 +11,7 @@ return [
 
 	//系统响应页面样式
 	'css.error' => '@r.url/static/css/error.css',
-	'css.morris' => '@r.url/static/css/morris.css',
+	'css.morris' => '@r.url/static/plugin/bootstrap-3.3.2/css/morris.css',
 	'css.awesome' => '@r.url/static/plugin/bootstrap-3.3.2/font-awesome/css/font-awesome.min.css',
 	'css.common' => '@r.url/static/css/common.css',
 

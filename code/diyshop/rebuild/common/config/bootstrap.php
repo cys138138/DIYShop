@@ -18,6 +18,9 @@ Yii::setAlias('url.home',			'http://' . $domainPrefix . '.' . $domainName . '.' 
 
 Yii::setAlias('umeworld',			$appPath . '/umeworld');
 Yii::setAlias('r.url', 'http://' . $domainPrefix . '.' . $domainName . '.' . $domainSuffix);
+Yii::setAlias('p.resource',		$appPath . '/apps/home/web/static');
+Yii::setAlias('p.temp_upload',		'/data/temp_upload');
+Yii::setAlias('p.advertisement_position_img',	'/data/advertisement_position_img');
 Yii::setAlias('p.system_view',		$appPath . '/common/views/system');
 Yii::setAlias('Endroid', Yii::getAlias('@umeworld') . '/lib');	//二维码扩展
 Yii::setAlias('@p.alipay', Yii::getAlias('@umeworld') . '/lib/Alipay');	//支付宝扩展

@@ -1,11 +1,31 @@
 <?php 
 use umeworld\lib\Url;
-$this->setTitle('广告位管理');
+use home\widgets\Table;
+use home\widgets\ModuleNavi;
+use yii\widgets\LinkPager;
+$this->setTitle('广告位图片');
 $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 ?>
 <div class="row">
+	<?php echo ModuleNavi::widget([
+		'aMenus' => [
+			[
+				'title' => '广告位图片',
+				'url' => Url::to(['advertisement/show-manage-advertisement']),
+				'active' => true,
+			],
+			[
+				'title' => '广告位分类',
+				'url' => Url::to(['advertisement/show-list']),
+			],
+			[
+				'title' => '添加广告位分类',
+				'url' => Url::to(['advertisement/show-edit']),
+			],
+		],
+	]); ?>
 	<div class="col-lg-12">
-		<h1 class="page-header">广告位管理</h1>
+		<h1 class="page-header">管理广告位图片</h1>
 	</div>
 </div>
 
@@ -21,7 +41,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		</div>
 		<br />
 		<div class="form-group">
-			<button type="button" class="J-form-upload-btn btn btn-default">添加图片</button>
+			<button type="button" class="J-form-upload-btn btn btn-primary">添加图片</button>
 		</div>
 	</div>
 </div>
@@ -32,7 +52,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			fileKey : 'image',
 			callback : function(aResult){
 				if(aResult.status == 1){
-				
+					
 				}else{
 					UBox.show(aResult.msg, aResult.status);
 				}
