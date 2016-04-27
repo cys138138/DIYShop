@@ -11,7 +11,7 @@ use common\model\Setting;
 
 class AdvertisementController extends MController{
 	const DATA_SETTING_KEY = 'advertisement_catalog_config';
-	
+
 	private function _getAdvertisementCatalogConfig(){
 		return json_decode(Setting::getSetting(self::DATA_SETTING_KEY), true);
 	}
@@ -69,7 +69,8 @@ class AdvertisementController extends MController{
 		if(!$aAdvertisementCatalog){
 			$aAdvertisementCatalog = [
 				'id' => $maxId + 1,
-				'name' => $name
+				'name' => $name,
+				'pics' => []
 			];
 			array_push($aAdvertisementCatalogConfig, $aAdvertisementCatalog);
 			$isSuccess = $this->_setAdvertisementCatalogConfig($aAdvertisementCatalogConfig);
@@ -101,6 +102,15 @@ class AdvertisementController extends MController{
 			return new Response('删除失败', 0);
 		}
 		return new Response('删除成功', 1);
+	}
+	
+	public function actionSaveAdvertisementCatalogConfig(){
+		$aAdvertisementCatalogConfig = (array)Yii::$app->request->post('aData');
+		$isSuccess = $this->_setAdvertisementCatalogConfig($aAdvertisementCatalogConfig);
+		if(!$isSuccess){
+			return new Response('保存失败', 0);
+		}
+		return new Response('保存成功', 1);
 	}
 	
 	public function actionUploadFile(){

@@ -1,9 +1,3 @@
-try{//防止运营商广告iframe嵌套
-	if(top != self && top.location.hostname.search('umfun') == -1){throw 'iframejacking';}
-}catch(e){
-	top.location = self.location;
-}
-
 //IE方法修复
 if(!Array.indexOf){
     Array.prototype.indexOf = function(obj){               
@@ -275,7 +269,7 @@ win.Component.prototype.triggerEvent = function(eventName, oContextEvent){
 				$.extend(self.url, aConfig.url);
 				if(self.url.resource.substr(-1) != '/'){
 					//resource地址自动加上/号结尾
-					self.url.resource += '/';
+					//self.url.resource += '/';
 				}
 			}
 

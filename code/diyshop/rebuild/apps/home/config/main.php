@@ -20,6 +20,9 @@ return [
 		'view' => [
 			'commonTitle' => 'DiyShop',
 			'baseTitle' => 'DiyShop',
+			'on beginBody' => function(){
+				echo Yii::$app->view->renderFile('@home/views/common/page-init.php');
+			},
 		],
     ],
 	'urlManagerName' => 'urlManagerHome',

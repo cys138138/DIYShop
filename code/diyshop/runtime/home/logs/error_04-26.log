@@ -847,3 +847,120 @@ $_SERVER = [
 ]
 env_vars_end
 =================================LOG_END
+LOG_START=================================
+[time=2016-04-26 18:11:32] [192.168.0.175][-][-][level=error][category=yii\db\Exception:42] 
+message_start
+exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'diyshop.setting' doesn't exist' in /var/www/diyshop/framework/yiisoft/yii2/db/Command.php:837
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/db/Command.php(837): PDOStatement->execute()
+#1 /var/www/diyshop/framework/yiisoft/yii2/db/Command.php(373): yii\db\Command->queryInternal('fetch', NULL)
+#2 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(243): yii\db\Command->queryOne()
+#3 /var/www/diyshop/rebuild/umeworld/lib/Query.php(44): yii\db\Query->one(NULL)
+#4 /var/www/diyshop/rebuild/common/lib/DbOrmModel.php(29): umeworld\lib\Query->one()
+#5 /var/www/diyshop/rebuild/common/model/Setting.php(19): common\lib\DbOrmModel::findOne(Array)
+#6 /var/www/diyshop/rebuild/apps/home/controllers/AdvertisementController.php(16): common\model\Setting::getSetting('advertisement_c...')
+#7 /var/www/diyshop/rebuild/apps/home/controllers/AdvertisementController.php(25): home\controllers\AdvertisementController->_getAdvertisementCatalogConfig()
+#8 [internal function]: home\controllers\AdvertisementController->actionShowManageAdvertisement()
+#9 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#10 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#11 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('show-manage-adv...', Array)
+#12 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('advertisement/s...', Array)
+#13 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#14 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#15 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'diyshop.setting' doesn't exist
+The SQL being executed was: SELECT * FROM `setting` WHERE `keystr`='advertisement_catalog_config' LIMIT 1' in /var/www/diyshop/framework/yiisoft/yii2/db/Schema.php:628
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/db/Command.php(852): yii\db\Schema->convertException(Object(PDOException), 'SELECT * FROM `...')
+#1 /var/www/diyshop/framework/yiisoft/yii2/db/Command.php(373): yii\db\Command->queryInternal('fetch', NULL)
+#2 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(243): yii\db\Command->queryOne()
+#3 /var/www/diyshop/rebuild/umeworld/lib/Query.php(44): yii\db\Query->one(NULL)
+#4 /var/www/diyshop/rebuild/common/lib/DbOrmModel.php(29): umeworld\lib\Query->one()
+#5 /var/www/diyshop/rebuild/common/model/Setting.php(19): common\lib\DbOrmModel::findOne(Array)
+#6 /var/www/diyshop/rebuild/apps/home/controllers/AdvertisementController.php(16): common\model\Setting::getSetting('advertisement_c...')
+#7 /var/www/diyshop/rebuild/apps/home/controllers/AdvertisementController.php(25): home\controllers\AdvertisementController->_getAdvertisementCatalogConfig()
+#8 [internal function]: home\controllers\AdvertisementController->actionShowManageAdvertisement()
+#9 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#10 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#11 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('show-manage-adv...', Array)
+#12 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('advertisement/s...', Array)
+#13 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#14 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#15 {main}
+Additional Information:
+Array
+(
+    [0] => 42S02
+    [1] => 1146
+    [2] => Table 'diyshop.setting' doesn't exist
+)
+
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/advertisement/show-manage.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:26
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'f61316471ff850e692e52a52375e295e6481a5f3728c2c2bb1c0309c9f062aeda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"fdmlkHXbYoRB5x9To7sxpSxOTObU0VLj\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/advertisement/show-manage.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/manager/index.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-04-26 18:17:35] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:8] 
+message_start
+exception 'yii\base\ErrorException' with message 'Undefined variable: aAdvertisementCatalogConfig' in /var/www/diyshop/rebuild/apps/home/controllers/AdvertisementController.php:29
+Stack trace:
+#0 /var/www/diyshop/rebuild/apps/home/controllers/AdvertisementController.php(29): yii\base\ErrorHandler->handleError(8, 'Undefined varia...', '/var/www/diysho...', 29, Array)
+#1 [internal function]: home\controllers\AdvertisementController->actionShowList()
+#2 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#3 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('show-list', Array)
+#5 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('advertisement/s...', Array)
+#6 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#8 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/advertisement/show-list.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:26
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'f61316471ff850e692e52a52375e295e6481a5f3728c2c2bb1c0309c9f062aeda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"fdmlkHXbYoRB5x9To7sxpSxOTObU0VLj\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/advertisement/show-list.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/advertisement/show-manage.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
