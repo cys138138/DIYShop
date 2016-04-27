@@ -41,48 +41,58 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	</div>
 </div>
 
+<div class="J-advertisement-catalog-config row"></div>
+<br />
 <div class="row">
-	<div class="col-lg-12">
-		<div class="form-group">
-			<label>广告位分类</label>
-			<select class="J-catalog form-control">
-				<?php foreach($aAdvertisementCatalogConfig as $aValue){ ?>
-				<option value="<?php echo $aValue['id']; ?>"><?php echo $aValue['name']; ?></option>
-				<?php } ?>
-			</select>
-		</div>
-		<div class="form-group">
-			<div class="row">
-				<div class="col-lg-12">
-					<ul class="J-pics-list list-group"></ul>
-				</div>
-			</div>
-		</div>
-		<br />
-		<div class="form-group">
-			<button type="button" class="J-form-upload-btn btn btn-primary">添加图片</button>
-			<button type="button" class="J-form-save-btn btn btn-primary" onclick="save(this);">保存</button>
-		</div>
+	<div class="form-group">
+		<button type="button" class="J-form-save-btn btn btn-primary" onclick="save(this);">保存设置</button>
 	</div>
 </div>
 <script type="text/javascript">
+	var currentUploadId = 0;
 	var maxPicCount = <?php echo $maxPicCount; ?>;
 	var aAdvertisementCatalogConfig = <?php echo json_encode($aAdvertisementCatalogConfig); ?>;
+	
+	function show(){
+		var htmlStr = '';
+		for(var i in aAdvertisementCatalogConfig){
+			var aTemp = aAdvertisementCatalogConfig[i];
+			htmlStr += '\
+				<div class="col-lg-12" style="border:1px solid #ccc;margin-bottom:10px;">\
+					<div class="form-group">\
+						<h1>' + aTemp.name + '</h1>\
+					</div>\
+					<div class="form-group">\
+						<div class="row">\
+							<div class="col-lg-12">\
+								<ul class="J-pics-list_' + aTemp.id + ' list-group"></ul>\
+							</div>\
+						</div>\
+					</div>\
+					<br />\
+					<div class="form-group">\
+						<button type="button" data-id="' + aTemp.id + '" class="J-form-upload-btn_' + aTemp.id + ' btn btn-primary">添加图片</button>\
+					</div>\
+				</div>\
+			';
+		}
+		$('.J-advertisement-catalog-config').html(htmlStr);
+		for(var i in aAdvertisementCatalogConfig){
+			showPics(aAdvertisementCatalogConfig[i].id, aAdvertisementCatalogConfig[i].pics);
+		}
+	}
 	
 	function checkLimit(){
 		return true;
 	}
 	
 	function updateAdvertisementCatalogConfig(){
-		var id = $('.J-catalog').val();
 		for(var i in aAdvertisementCatalogConfig){
-			if(aAdvertisementCatalogConfig[i].id == id){
-				var aPicData = [];
-				$('.J-pics-list li').each(function(){
-					aPicData.push($(this).attr('data-pic'));
-				});
-				aAdvertisementCatalogConfig[i].pics = aPicData;
-			}
+			var aPicData = [];
+			$('.J-pics-list_' + aAdvertisementCatalogConfig[i].id + ' li').each(function(){
+				aPicData.push($(this).attr('data-pic'));
+			});
+			aAdvertisementCatalogConfig[i].pics = aPicData;
 		}
 	}
 	
@@ -96,12 +106,12 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		return htmlStr;
 	}
 	
-	function showPics(aPics){
+	function showPics(id, aPics){
 		var htmlStr = '';
 		for(var i in aPics){
 			htmlStr += bulidImgHtml(aPics[i]);
 		}
-		$('.J-pics-list').html(htmlStr);
+		$('.J-pics-list_' + id).html(htmlStr);
 	}
 	
 	function save(o){
@@ -127,38 +137,29 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		updateAdvertisementCatalogConfig();
 	}
 	
-	function showPicsByCatalogId(id){
-		for(var i in aAdvertisementCatalogConfig){
-			if(aAdvertisementCatalogConfig[i].id == id){
-				showPics(aAdvertisementCatalogConfig[i].pics);
-			}
-		}
-	}
-	
 	$(function(){
-		$('.J-catalog').on('change', function(){
-			showPicsByCatalogId($(this).val());
-		});
-		
-		$('.J-form-upload-btn').AjaxUpload({
-			uploadUrl : '<?php echo Url::to(['advertisement/upload-file']); ?>',
-			fileKey : 'image',
-			isUploadEnable : function(){
-				if(parseInt($('.J-pics-list li').length) >= maxPicCount){
-					UBox.show('只能上传 ' + maxPicCount + ' 张图片！', -1);
-					return false;
+		show();	
+		for(var i in aAdvertisementCatalogConfig){
+			$('.J-form-upload-btn_' + aAdvertisementCatalogConfig[i].id).AjaxUpload({
+				uploadUrl : '<?php echo Url::to(['advertisement/upload-file']); ?>',
+				fileKey : 'image',
+				isUploadEnable : function(o){
+					currentUploadId = $(o).attr('data-id');console.log(currentUploadId);
+					if(parseInt($('.J-pics-list_' + currentUploadId + ' li').length) >= maxPicCount){
+						UBox.show('只能上传 ' + maxPicCount + ' 张图片！', -1);
+						return false;
+					}
+					return true;
+				},
+				callback : function(aResult){
+					if(aResult.status == 1){
+						$('.J-pics-list_' + currentUploadId).append(bulidImgHtml(aResult.data));
+						updateAdvertisementCatalogConfig();
+					}else{
+						UBox.show(aResult.msg, aResult.status);
+					}
 				}
-				return true;
-			},
-			callback : function(aResult){
-				if(aResult.status == 1){
-					$('.J-pics-list').append(bulidImgHtml(aResult.data));
-					updateAdvertisementCatalogConfig();
-				}else{
-					UBox.show(aResult.msg, aResult.status);
-				}
-			}
-		});
-		showPicsByCatalogId($('.J-catalog').val());
+			});
+		}
 	});
 </script>

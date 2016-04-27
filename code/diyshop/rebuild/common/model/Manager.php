@@ -83,7 +83,7 @@ class Manager extends \common\lib\DbOrmModel implements IdentityInterface{
 		return md5($password);
 	}
 	
-	public static function getManagerByAccountAndPassword($account, $password){
+	public static function getOneByAccountAndPassword($account, $password){
 		if(!$account){
 			return false;
 		}
@@ -93,25 +93,25 @@ class Manager extends \common\lib\DbOrmModel implements IdentityInterface{
 		
 		$isEmail = (new EmailValidator())->validate($account);
 		$isMobile = (new PhoneValidator())->validate($account);
-		$mManager = null;
+		$mUser = null;
 		if($isEmail){
-			$mManager = self::findOne([
+			$mUser = self::findOne([
 				'email' => $account,
 				'password' => self::encryPassword($password)
 			]);
 		}
 		if($isMobile){
-			$mManager = self::findOne([
+			$mUser = self::findOne([
 				'mobile' => $account,
 				'password' => self::encryPassword($password)
 			]);
 		}
 		if(!$isEmail && !$isMobile){
-			$mManager = self::findOne([
+			$mUser = self::findOne([
 				'user_name' => $account,
 				'password' => self::encryPassword($password)
 			]);
 		}
-		return $mManager;
+		return $mUser;
 	}
 }

@@ -2,9 +2,9 @@
 return [
 	'menu_config' => [
 		[
-			'title' => '广告位',
-			'en_title' => 'adv_position',
-			'url' => ['advertisement/show-manage-advertisement'],
+			'title' => '商家管理',
+			'en_title' => 'vender_manage',
+			'url' => ['vender-manage/show-list'],
 			'permission' => ['manager'],
 			'icon_class' => 'star',	//菜单的图标,参照 http://fontawesome.io/icons/ 图标右边的名字写到这里即可,大部分可用
 			'child' => [
@@ -23,6 +23,22 @@ return [
 					'icon_class' => 'star-o',
 				],*/
 			],
+		],
+		[
+			'title' => '服饰分类',
+			'en_title' => 'dress_catalog',
+			'url' => ['dress-catalog/show-list'],
+			'permission' => ['manager'],
+			'icon_class' => 'star',	
+			'child' => [],
+		],
+		[
+			'title' => '广告位',
+			'en_title' => 'adv_position',
+			'url' => ['advertisement/show-manage-advertisement'],
+			'permission' => ['manager'],
+			'icon_class' => 'star',	
+			'child' => [],
 		],
 		[
 			'title' => '猜你喜欢',

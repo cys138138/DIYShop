@@ -30,7 +30,7 @@ class LoginController extends \yii\web\Controller{
 			return new Response('请填写密码', -1);
 		}
 		
-		$mManager = Manager::getManagerByAccountAndPassword($account, $password);
+		$mManager = Manager::getOneByAccountAndPassword($account, $password);
 		if(!$mManager){
 			return new Response('账号或密码不正确', -1);
 		}

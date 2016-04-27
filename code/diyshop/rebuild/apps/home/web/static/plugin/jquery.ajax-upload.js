@@ -9,13 +9,13 @@
 				callback : $.noop,
 				fileKey : 'ume_upload_file',
 				beforeSend : $.noop,
-				isUploadEnable : function(){
+				isUploadEnable : function(o){
 					return true;
 				}
 			}, aOptions);
 
 			$(this).click(function(){
-				if(!aOptions.isUploadEnable()){
+				if(!aOptions.isUploadEnable(this)){
 					return;
 				}
 				var $file = $('<input type="file" name="' + aOptions.fileKey + '" />');

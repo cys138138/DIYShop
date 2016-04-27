@@ -34,6 +34,17 @@ return [
 		'advertisement/save-advertisement-catalog-config.json'					=> 'advertisement/save-advertisement-catalog-config',
 		'advertisement/upload-file.html'										=> 'advertisement/upload-file',
 		
+		
+		'vender-manage/show-list.html'											=> 'vender-manage/show-list',
+		'vender-manage/show-edit.html'											=> 'vender-manage/show-edit',
+		
+		
+		'dress-catalog/show-list.html'											=> 'dress-catalog/show-list',
+		'dress-catalog/show-edit.html'											=> 'dress-catalog/show-edit',
+		'dress-catalog/save.json'												=> 'dress-catalog/save',
+		'dress-catalog/delete.json'												=> 'dress-catalog/delete',
+		
+		
 		//跳转页面
 		'jump/<jumpType:\w+>.html'						=> 'jump/jump',
 

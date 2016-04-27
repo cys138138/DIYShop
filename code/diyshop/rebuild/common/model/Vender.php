@@ -80,4 +80,36 @@ class Vender extends \common\lib\DbOrmModel implements IdentityInterface{
 	public static function encryPassword($password){
 		return md5($password);
 	}
+	
+	public static function getOneByAccountAndPassword($account, $password){
+		if(!$account){
+			return false;
+		}
+		if(!$password){
+			return false;
+		}
+		
+		$isEmail = (new EmailValidator())->validate($account);
+		$isMobile = (new PhoneValidator())->validate($account);
+		$mUser = null;
+		if($isEmail){
+			$mUser = self::findOne([
+				'email' => $account,
+				'password' => self::encryPassword($password)
+			]);
+		}
+		if($isMobile){
+			$mUser = self::findOne([
+				'mobile' => $account,
+				'password' => self::encryPassword($password)
+			]);
+		}
+		if(!$isEmail && !$isMobile){
+			$mUser = self::findOne([
+				'user_name' => $account,
+				'password' => self::encryPassword($password)
+			]);
+		}
+		return $mUser;
+	}
 }
