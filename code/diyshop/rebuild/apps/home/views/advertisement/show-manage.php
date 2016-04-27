@@ -66,7 +66,12 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	</div>
 </div>
 <script type="text/javascript">
+	var maxPicCount = <?php echo $maxPicCount; ?>;
 	var aAdvertisementCatalogConfig = <?php echo json_encode($aAdvertisementCatalogConfig); ?>;
+	
+	function checkLimit(){
+		return true;
+	}
 	
 	function updateAdvertisementCatalogConfig(){
 		var id = $('.J-catalog').val();
@@ -138,6 +143,13 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		$('.J-form-upload-btn').AjaxUpload({
 			uploadUrl : '<?php echo Url::to(['advertisement/upload-file']); ?>',
 			fileKey : 'image',
+			isUploadEnable : function(){
+				if(parseInt($('.J-pics-list li').length) >= maxPicCount){
+					UBox.show('只能上传 ' + maxPicCount + ' 张图片！', -1);
+					return false;
+				}
+				return true;
+			},
 			callback : function(aResult){
 				if(aResult.status == 1){
 					$('.J-pics-list').append(bulidImgHtml(aResult.data));

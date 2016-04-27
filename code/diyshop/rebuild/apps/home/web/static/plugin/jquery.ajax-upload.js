@@ -1,6 +1,5 @@
 /**
  * AjaxUpload 基于jQuery的微型异步上传插件
- * @author 黄文非
  */
 (function($){
 	$.fn.extend({
@@ -9,10 +8,16 @@
 				uploadUrl : '',
 				callback : $.noop,
 				fileKey : 'ume_upload_file',
-				beforeSend : $.noop
+				beforeSend : $.noop,
+				isUploadEnable : function(){
+					return true;
+				}
 			}, aOptions);
 
 			$(this).click(function(){
+				if(!aOptions.isUploadEnable()){
+					return;
+				}
 				var $file = $('<input type="file" name="' + aOptions.fileKey + '" />');
 				$file.change(function(){
 					var $this = $(this);

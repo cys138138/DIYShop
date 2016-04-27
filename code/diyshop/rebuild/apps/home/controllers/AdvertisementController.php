@@ -11,6 +11,7 @@ use common\model\Setting;
 
 class AdvertisementController extends MController{
 	const DATA_SETTING_KEY = 'advertisement_catalog_config';
+	const MAX_PIC_COUNT = 5;
 
 	private function _getAdvertisementCatalogConfig(){
 		return json_decode(Setting::getSetting(self::DATA_SETTING_KEY), true);
@@ -22,6 +23,7 @@ class AdvertisementController extends MController{
 
     public function actionShowManageAdvertisement(){
 		return $this->render('show-manage', [
+			'maxPicCount' => self::MAX_PIC_COUNT,
 			'aAdvertisementCatalogConfig' => $this->_getAdvertisementCatalogConfig()
 		]);
     }
