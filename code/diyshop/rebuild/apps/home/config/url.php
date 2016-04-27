@@ -18,12 +18,18 @@ return [
 		'home.html'																=> 'site/show-home',
 		
 		
-		'login.html'															=> 'login/index',
-		'manager/login.html'													=> 'login/manager-login',
+		'index.html'															=> 'login/index',
+		'manager/login.html'													=> 'login/show-manager-login',
+		'manager/login.json'													=> 'login/manager-login',
+		'vender/login.html'														=> 'login/show-vender-login',
+		'vender/login.json'														=> 'login/vender-login',
 		
 		
 		'manager/index.html'													=> 'manager/index',
 		'manager/logout.html'													=> 'manager/logout',
+		
+		'vender/index.html'														=> 'vender/index',
+		'vender/logout.html'													=> 'vender/logout',
 		
 		
 		'advertisement/show-manage.html'										=> 'advertisement/show-manage-advertisement',

@@ -11,7 +11,7 @@ $this->beginPage();
 <!doctype html>
 <html>
 <head>
-<title>Error - XXXX</title>
+<title>Error</title>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -48,7 +48,7 @@ $this->beginPage();
 				echo Html::a('回上一页', $referer);
 			}
 		?>
-		<!--<a href="<?php //echo \umeworld\lib\Url::to(['site/index']); ?>">回到优满分首页</a>-->
+		<!--<a href="<?php //echo \umeworld\lib\Url::to(['site/index']); ?>">回到首页</a>-->
 	</div>
 </div>
 

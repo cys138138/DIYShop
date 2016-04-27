@@ -9,13 +9,24 @@ use umeworld\lib\Url;
 /**
  * 站点控制器
  */
-class SiteController extends Controller{
-
+class SiteController extends \yii\web\Controller{
+	public function actions(){
+		return [
+			'error' => [
+				'class' => 'umeworld\lib\ErrorAction',
+			],
+		];
+	}
+	
     public function actionIndex(){
-		//debug(Yii::$app->user->getIdentity());
-		//$mUser = \common\model\User::findOne(2);debug($mUser);
-		//Yii::$app->user->login($mUser);
-		//Yii::$app->user->logout();
+		$mManager = Yii::$app->manager->getIdentity();
+		if($mManager){
+			return Yii::$app->response->redirect(Url::to(['manager/index']));
+		}
+		$mVender = Yii::$app->vender->getIdentity();
+		if($mVender){
+			return Yii::$app->response->redirect(Url::to(['vender/index']));
+		}
         return $this->render('index');
     }
 

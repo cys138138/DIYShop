@@ -13,6 +13,11 @@ class Navi extends Widget{
 			$aUser = $mManager->toArray();
 			$role = 'manager';
 		}
+		$mVender = Yii::$app->vender->getIdentity();
+		if($mVender){
+			$aUser = $mVender->toArray();
+			$role = 'vender';
+		}
 		$aMenuConfig = Yii::$app->params['menu_config'];
 		return $this->render('navi', [
 			'aUser' => $aUser,

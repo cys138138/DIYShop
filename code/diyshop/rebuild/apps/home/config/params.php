@@ -76,27 +76,9 @@ return [
 			'title' => '搭配',
 			'en_title' => 'dress_match',
 			'url' => ['site/index'],
-			'permission' => ['manager'],
+			'permission' => ['manager', 'vender'],
 			'icon_class' => 'star',	
 			'child' => [],
-		],
-	],
-	
-	'advertisement_catalog_config' => [
-		[
-			'id' => 1,
-			'name' => '主界面',
-			'pics' => [],
-		],
-		[
-			'id' => 2,
-			'name' => '品牌',
-			'pics' => [],
-		],
-		[
-			'id' => 3,
-			'name' => '自营',
-			'pics' => [],
 		],
 	],
 ];

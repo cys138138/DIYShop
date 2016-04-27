@@ -10,8 +10,7 @@ class ErrorHandler extends \umeworld\lib\ErrorHandler{
 	public function logException($oException){
 		if($oException instanceof \yii\base\ErrorException){
 			$message = $oException->getMessage();
-			if(strstr($message, 'fsockopen(): unable to connect to')
-				&& strstr($oException->getFile(), 'common/xxt/gd/InterfaceGd.php')){
+			if(strstr($message, 'fsockopen(): unable to connect to')){
 				return;
 			}elseif(strstr($message, 'unserialize(): Error at offset')){
 				/*$oUrlErr = Yii::$app->buildError('xx', false, [

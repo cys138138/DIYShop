@@ -119,7 +119,7 @@ return [
             'reloginOvertime' => 1800,
             'rememberLoginTime' => 3000000,
             'enableAutoLogin' => false,
-            'loginUrl' => ['login/index'],
+            'loginUrl' => ['login/show-manager-login'],
         ],
 		
         'vender' => [
@@ -129,7 +129,7 @@ return [
             'reloginOvertime' => 1800,
             'rememberLoginTime' => 3000000,
             'enableAutoLogin' => false,
-            'loginUrl' => ['login/index'],
+            'loginUrl' => ['login/show-vender-login'],
         ],
 		
 		'authManager' => [

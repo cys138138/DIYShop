@@ -8,6 +8,8 @@ use umeworld\lib\Url;
 		<a class="navbar-brand" href="index.html">
 			<?php if($role == 'manager'){ ?>
 				DiyShop后台管理
+			<?php }elseif($role == 'vender'){ ?>
+				DiyShop商家管理
 			<?php } ?>
 		</a>
 	</div>
@@ -27,7 +29,7 @@ use umeworld\lib\Url;
 				</li>
 				<li class="divider"></li>
 				<li>
-					<a href="<?php echo Url::to(['manager/logout']); ?>"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+					<a href="<?php echo $role == 'manager' ? Url::to(['manager/logout']) : Url::to(['vender/logout']); ?>"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
 				</li>
 			</ul>
 		</li>
@@ -38,7 +40,10 @@ use umeworld\lib\Url;
 		<?php 
 			$controllerId = Yii::$app->controller->id;
 			$actionId = Yii::$app->controller->action->id;
-			foreach($aMenuConfig as $key => $aValue){ 
+			foreach($aMenuConfig as $key => $aValue){
+				if(!in_array($role, $aValue['permission'])){
+					continue;
+				}
 				$hasChild = false;
 				$isCurrent = false;
 				$isChildCurrent = false;

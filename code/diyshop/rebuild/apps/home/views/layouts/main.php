@@ -26,7 +26,7 @@ use umeworld\lib\Url;
 <body>
 <?php $this->beginBody() ?>
 
-<?php if(Yii::$app->controller->id == 'login'){ ?>
+<?php if(in_array(Yii::$app->controller->id, ['login', 'site'])){ ?>
 	<div id="page-wrapper">
 		<?= $content ?>
 	</div>

@@ -26,14 +26,6 @@ class ErrorAction extends \yii\web\ErrorAction{
         if (Yii::$app->getRequest()->getIsAjax()){
 			if($isSendToUser){
 				return $message;
-			}else{
-				//!!!!!以下$aMarkData处理为临时代码,BUG解决后可去除
-				$aMarkData = Yii::$app->notifytion->get(\home\modules\bbs\controllers\ThreadController::MARK_UPLOAD_DEBUG);
-				if($aMarkData){
-					$oException = Yii::$app->buildError('监测到BBS上传文件出错', false, $aMarkData);
-					Yii::error((string)$oException);
-				}
-				return Yii::$app->ui->getTips('error.common');
 			}
 
         } else {
