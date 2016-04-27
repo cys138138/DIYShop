@@ -29,8 +29,12 @@ $this->setTitle('商家管理');
 		<?php
 			echo Table::widget([
 				'aColumns'	=>	[
-					'id'	=>	['title' => '分类ID'],
-					'name'	=>	['title' => '分类名称'],
+					'id'	=>	['title' => '商家ID'],
+					'name'	=>	['title' => '厂商名称'],
+					'user_name'	=>	['title' => '用户名'],
+					'email'	=>	['title' => '邮箱'],
+					'mobile'	=>	['title' => '手机号'],
+					'company_code'	=>	['title' => '公司码'],
 					'operate' => [
 						'title' => '操作',
 						'class' => 'col-sm-1',
@@ -41,6 +45,7 @@ $this->setTitle('商家管理');
 				],
 				'aDataList'	=>	$aVenderList,
 			]);
+			echo LinkPager::widget(['pagination' => $oPage]);
 		?>
 	</div>
 </div>

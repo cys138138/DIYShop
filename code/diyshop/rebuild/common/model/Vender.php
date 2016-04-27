@@ -6,6 +6,8 @@ use umeworld\lib\Query;
 use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
 use yii\base\NotSupportedException;
+use yii\validators\EmailValidator;
+use umeworld\lib\PhoneValidator;
 
 class Vender extends \common\lib\DbOrmModel implements IdentityInterface{
 
@@ -112,4 +114,40 @@ class Vender extends \common\lib\DbOrmModel implements IdentityInterface{
 		}
 		return $mUser;
 	}
+	
+	public static function initData($aData){
+		(new Query())->createCommand()->insert(static::tableName(), $aData)->execute();
+		return self::findOne(Yii::$app->db->getLastInsertID());
+	}
+	
+	public static function getList($aCondition = [], $aControl = []){
+		$aWhere = self::_parseWhereCondition($aCondition);
+		$oQuery = new Query();
+		$oQuery->from(static::tableName())->where($aWhere);
+		if(isset($aControl['order_by'])){
+			$oQuery->orderBy($aControl['order_by']);
+		}
+		if(isset($aControl['page']) && isset($aControl['page_size'])){
+			$offset = ($aControl['page'] - 1) * $aControl['page_size'];
+			$oQuery->offset($offset)->limit($aControl['page_size']);
+		}
+		$aList = $oQuery->all();
+		
+		return $aList;
+	}
+	
+	public static function getCount($aCondition = []){
+		$aWhere = self::_parseWhereCondition($aCondition);
+		return (new Query())->from(self::tableName())->where($aWhere)->count();
+	}
+	
+	private static function _parseWhereCondition($aCondition = []){
+		$aWhere = ['and'];
+		if(isset($aCondition['id'])){
+			$aWhere[] = ['id' => $aCondition['id']];
+		}
+
+		return $aWhere;
+	}
+	
 }

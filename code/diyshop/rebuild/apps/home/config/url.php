@@ -37,6 +37,8 @@ return [
 		
 		'vender-manage/show-list.html'											=> 'vender-manage/show-list',
 		'vender-manage/show-edit.html'											=> 'vender-manage/show-edit',
+		'vender-manage/save.json'												=> 'vender-manage/save',
+		'vender-manage/delete.json'												=> 'vender-manage/delete',
 		
 		
 		'dress-catalog/show-list.html'											=> 'dress-catalog/show-list',

@@ -10,10 +10,31 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-04-27 11:44:27
+Date: 2016-04-27 17:46:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `dress_catalog`
+-- ----------------------------
+DROP TABLE IF EXISTS `dress_catalog`;
+CREATE TABLE `dress_catalog` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID自增',
+  `name` varchar(50) DEFAULT NULL COMMENT '服饰分类名称',
+  `is_show` tinyint(4) DEFAULT NULL COMMENT '是否显示：1是0否',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of dress_catalog
+-- ----------------------------
+INSERT INTO `dress_catalog` VALUES ('1', '外套', '1');
+INSERT INTO `dress_catalog` VALUES ('2', '上衣', '1');
+INSERT INTO `dress_catalog` VALUES ('3', '裙子', '1');
+INSERT INTO `dress_catalog` VALUES ('4', '男装专区', '1');
+INSERT INTO `dress_catalog` VALUES ('5', '女装专区', '1');
+INSERT INTO `dress_catalog` VALUES ('6', '折扣', '1');
 
 -- ----------------------------
 -- Table structure for `manager`
@@ -48,7 +69,7 @@ CREATE TABLE `setting` (
 -- ----------------------------
 -- Records of setting
 -- ----------------------------
-INSERT INTO `setting` VALUES ('1', 'advertisement_catalog_config', '[{\"id\":\"1\",\"name\":\"\\u4e3b\\u754c\\u9762\",\"pics\":[\"\\/static\\/data\\/advertisement_position_img\\/369f530a6b9a428a14b9531e5d8645b2.jpeg\"]},{\"id\":\"2\",\"name\":\"\\u54c1\\u724c\",\"pics\":[\"\\/static\\/data\\/advertisement_position_img\\/3c3eb4abcc73a0fbdab95a4a3a2490c5.jpeg\"]},{\"id\":\"3\",\"name\":\"\\u81ea\\u8425\",\"pics\":[\"\\/static\\/data\\/advertisement_position_img\\/6fb10781b5b07c84e34c7e3df6528593.jpeg\"]}]');
+INSERT INTO `setting` VALUES ('1', 'advertisement_catalog_config', '[{\"id\":\"1\",\"name\":\"\\u4e3b\\u754c\\u9762\",\"pics\":[\"\\/static\\/data\\/advertisement_position_img\\/6ef030fa9ae071bc7e2218a715efc5ef.jpeg\"]},{\"id\":\"2\",\"name\":\"\\u54c1\\u724c\",\"pics\":[\"\\/static\\/data\\/advertisement_position_img\\/cce8218c8ad80180ca133b149c4dad1d.jpeg\"]},{\"id\":\"3\",\"name\":\"\\u81ea\\u8425\",\"pics\":[\"\\/static\\/data\\/advertisement_position_img\\/f591926c72767baf3563cf5a02595013.jpeg\"]}]');
 
 -- ----------------------------
 -- Table structure for `user`
@@ -63,3 +84,23 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for `vender`
+-- ----------------------------
+DROP TABLE IF EXISTS `vender`;
+CREATE TABLE `vender` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(30) DEFAULT NULL COMMENT '用户名',
+  `mobile` varchar(12) DEFAULT NULL COMMENT '手机号',
+  `email` varchar(200) DEFAULT NULL COMMENT '邮箱',
+  `password` varchar(100) DEFAULT NULL COMMENT '密码',
+  `name` varchar(50) DEFAULT NULL COMMENT '厂商名称',
+  `company_code` varchar(200) DEFAULT NULL COMMENT '公司码',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of vender
+-- ----------------------------
+INSERT INTO `vender` VALUES ('1', 'peter', '15012121551', '45855@qq.com', 'e10adc3949ba59abbe56e057f20f883e', '以纯厂商', 'asadssasasasasa');
