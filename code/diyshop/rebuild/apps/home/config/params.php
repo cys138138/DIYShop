@@ -73,6 +73,14 @@ return [
 			'child' => [],
 		],
 		[
+			'title' => '商店设置',
+			'en_title' => 'vender_shop_setting',
+			'url' => ['vender-shop-setting/show-setting'],
+			'permission' => ['vender'],
+			'icon_class' => 'star',	
+			'child' => [],
+		],
+		[
 			'title' => '搭配',
 			'en_title' => 'dress_match',
 			'url' => ['site/index'],

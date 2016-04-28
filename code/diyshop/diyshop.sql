@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : phpstudyLocalhost
-Source Server Version : 50547
-Source Host           : localhost:3306
+Source Server         : 192.168.0.177
+Source Server Version : 50540
+Source Host           : 192.168.0.177:3306
 Source Database       : diyshop
 
 Target Server Type    : MYSQL
-Target Server Version : 50547
+Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-04-28 00:05:56
+Date: 2016-04-28 17:52:45
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -103,4 +103,4 @@ CREATE TABLE `vender` (
 -- ----------------------------
 -- Records of vender
 -- ----------------------------
-INSERT INTO `vender` VALUES ('1', 'peter', '15012121551', '45855@qq.com', 'e10adc3949ba59abbe56e057f20f883e', '以纯厂商', 'asadssasasasasa');
+INSERT INTO `vender` VALUES ('1', 'jack', '15012121551', '45855@qq.com', '4ff9fc6e4e5d5f590c4f2134a8cc96d1', '以纯厂商', 'asadssasasasasa');
