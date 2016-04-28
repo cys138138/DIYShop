@@ -23,13 +23,29 @@ $this->setTitle('商家管理');
 		<h1 class="page-header">商家列表</h1>
 	</div>
 </div>
-
+<div class="row">
+	<div class="col-lg-12">
+		<form role="form" class="J-search-form form-horizontal" name="J-search-form">
+			<div class="J-condition-line">
+				<label class="control-label" style="float:left;">商家编号</label>
+				<div class="col-sm-2" style="width:130px;">
+					<input type="text" class="J-vender-id form-control" name="venderId" value="<?php echo $venderId ? $venderId : ''; ?>" />
+				</div>
+				<div class="form-group">
+					<div class="col-sm-2" style="width:90px;">
+						<button type="button" class="btn btn-primary" onclick="search();">搜索</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
 <div class="row">
 	<div class="table-responsive">
 		<?php
 			echo Table::widget([
 				'aColumns'	=>	[
-					'id'	=>	['title' => '商家ID'],
+					'id'	=>	['title' => '商家编号'],
 					'name'	=>	['title' => '厂商名称'],
 					'user_name'	=>	['title' => '用户名'],
 					'email'	=>	['title' => '邮箱'],
@@ -50,6 +66,10 @@ $this->setTitle('商家管理');
 	</div>
 </div>
 <script type="text/javascript">
+	function search(){
+		var condition = $('form[name=J-search-form]').serialize();
+		location.href = '<?php echo Url::to(['vender-manage/show-list']); ?>?' + condition;
+	}
 	function deleteItem(o, id){
 		UBox.confirm('确定要删除？', function(){
 			ajax({

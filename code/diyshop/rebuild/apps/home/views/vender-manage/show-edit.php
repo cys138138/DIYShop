@@ -54,11 +54,16 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			<br />
 		</div>
 		<div class="form-group">
+			<label>服饰限制数量</label>
+			<input class="J-dress-count-limit form-control" placeholder="请输服饰限制数量" value="<?php echo $aVender ? $aVender['dress_count_limit'] : 0; ?>">
+			<br />
+		</div>
+		<div class="form-group" <?php echo $aVender ? 'style="display:none;"' : ''; ?>>
 			<label>密码</label>
 			<input class="J-password form-control" type="password" placeholder="请输入密码" value="">
 			<br />
 		</div>
-		<div class="form-group">
+		<div class="form-group" <?php echo $aVender ? 'style="display:none;"' : ''; ?>>
 			<label>确认密码</label>
 			<input class="J-en-password form-control" type="password" placeholder="再输入一次密码" value="">
 			<br />
@@ -77,6 +82,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		var mobile = $('.J-mobile').val();
 		var email = $('.J-email').val();
 		var companyCode = $('.J-company-code').val();
+		var dressCountLimit = $('.J-dress-count-limit').val();
 		var password = $('.J-password').val();
 		var enPassword = $('.J-en-password').val();
 		if(userName == ''){
@@ -96,6 +102,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				mobile : mobile,
 				email : email,
 				companyCode : companyCode,
+				dressCountLimit : dressCountLimit,
 				password : password
 			},
 			beforeSend : function(){

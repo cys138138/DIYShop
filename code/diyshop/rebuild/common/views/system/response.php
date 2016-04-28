@@ -6,7 +6,7 @@ $this->beginPage();
 <!doctype html>
 <html>
 <head>
-<title>Response - UMFun</title>
+<title>出错啦</title>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -21,9 +21,6 @@ $this->beginPage();
 	</div>
 	<div class="content">
 		<h3><?php echo $msg; ?></h3>
-		<?php if(!YII_ENV_PROD){ ?>
-		<h4><?php echo is_string($xData) ? $xData : json_encode($xData); ?></h4>
-		<?php } ?>
 	</div>
 	<div class="redirect">
 		<?php
@@ -32,26 +29,11 @@ $this->beginPage();
 				echo Html::a('回上一页', $referer);
 			}
 		?>
-		<a href="javascript:(history.back())"></a>
-		<a href="<?php echo \umeworld\lib\Url::to(['site/index']); ?>">回到优满分首页</a>
+		<a href="<?php echo \umeworld\lib\Url::to(['site/index']); ?>">回到首页</a>
 	</div>
 </div>
 
-<?php if(!YII_ENV_PROD):
-	$_oHandler = Yii::$app->errorHandler;
-?>
-<div class="dataWrapper">
-	<pre>
-		<?php
-		\umeworld\lib\Debug::$sliceTraceRows = 3;
-		echo json_encode($xData);
-		?>
-	</pre>
-	<h4>请求相关数据:</h4>
-	<?php echo $_oHandler->renderRequest(); ?>
-</div>
-<?php endif;
-$this->endBody(); ?>
+<?php $this->endBody(); ?>
 </body>
 </html>
 <?php $this->endPage(); ?>

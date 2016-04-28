@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 192.168.0.177
-Source Server Version : 50540
-Source Host           : 192.168.0.177:3306
+Source Server         : phpstudyLocalhost
+Source Server Version : 50547
+Source Host           : localhost:3306
 Source Database       : diyshop
 
 Target Server Type    : MYSQL
-Target Server Version : 50540
+Target Server Version : 50547
 File Encoding         : 65001
 
-Date: 2016-04-28 17:52:45
+Date: 2016-04-28 22:20:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -97,10 +97,11 @@ CREATE TABLE `vender` (
   `password` varchar(100) DEFAULT NULL COMMENT '密码',
   `name` varchar(50) DEFAULT NULL COMMENT '厂商名称',
   `company_code` varchar(200) DEFAULT NULL COMMENT '公司码',
+  `dress_count_limit` int(11) DEFAULT '0' COMMENT '商家服饰数量限制',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of vender
 -- ----------------------------
-INSERT INTO `vender` VALUES ('1', 'jack', '15012121551', '45855@qq.com', '4ff9fc6e4e5d5f590c4f2134a8cc96d1', '以纯厂商', 'asadssasasasasa');
+INSERT INTO `vender` VALUES ('1', 'jack', '15012121551', '45855@qq.com', '4ff9fc6e4e5d5f590c4f2134a8cc96d1', '以纯厂商', 'asadssasasasasa', '50');

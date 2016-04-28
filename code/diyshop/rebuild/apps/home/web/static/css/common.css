@@ -9,11 +9,13 @@
 
 .container-fluid form{width:1000px;}
 
-.condition-line{font-size:14px; font-family:Microsoft YaHei; font-weight:bold;}
+.condition-line{font-size:14px; font-family:"Helvetica Neue", Helvetica, Arial, sans-serif; font-weight:bold;}
 .condition-line a{margin-left:10px;font-family:'Microsoft Yahei'; font-weight:normal;color:#999;}
 .condition-line a.select{color:#337ab7;font-weight:bold;}
 .condition-line select,.condition-line input{width:110px; display:inline-block;}
 .condition-line i{display:inline-block; font-style: normal;width:110px; text-align:right;}
+
+.J-condition-line{height:34px;margin-bottom:20px;}
 
 /*用于抵消代码（*=》border-box）样式*/
 .edui-container * {

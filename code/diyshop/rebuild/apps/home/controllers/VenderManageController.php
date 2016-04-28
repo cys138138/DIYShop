@@ -22,6 +22,7 @@ class VenderManageController extends MController{
 		$oPage = $oVenderListForm->getPageObject();
 		
 		return $this->render('show-list', [
+			'venderId' => $oVenderListForm->venderId,
 			'aVenderList' => $aList,
 			'oPage' => $oPage,
 		]);
@@ -47,6 +48,7 @@ class VenderManageController extends MController{
 		$mobile = (string)Yii::$app->request->post('mobile');
 		$email = (string)Yii::$app->request->post('email');
 		$companyCode = (string)Yii::$app->request->post('companyCode');
+		$dressCountLimit = (int)Yii::$app->request->post('dressCountLimit');
 		$password = (string)Yii::$app->request->post('password');
 		if(!$userName){
 			return new Response('请填写用户名', -1);
@@ -90,6 +92,7 @@ class VenderManageController extends MController{
 				$mVender->set('mobile', $mobile);
 				$mVender->set('email', $email);
 				$mVender->set('company_code', $companyCode);
+				$mVender->set('dress_count_limit', $dressCountLimit);
 				if($password){
 					$mVender->set('password', Vender::encryPassword($password));
 				}
@@ -111,6 +114,7 @@ class VenderManageController extends MController{
 				'mobile' => $mobile,
 				'email' => $email,
 				'company_code' => $companyCode,
+				'dress_count_limit' => $dressCountLimit,
 				'password' => Vender::encryPassword($password),
 			]);
 		}

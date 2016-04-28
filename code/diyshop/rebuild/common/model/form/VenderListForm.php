@@ -8,11 +8,25 @@ use yii\data\Pagination;
 class VenderListForm extends \yii\base\Model{
 	public $page = 1;
 	public $pageSize = 15;
+	public $venderId = 0;
 
 	public function rules(){
 		return [
 			['page', 'compare', 'compareValue' => 0, 'operator' => '>'],
+			['venderId', 'checkVenderId'],
 		];
+	}
+	
+	public function checkVenderId(){
+		/*if($this->venderId){
+			$mVender = Vender::findOne($this->venderId);
+			if(!$mVender){
+				$this->addError('venderId', '找不到商家信息');
+				return false;
+				
+			}
+		}*/
+		return true;
 	}
 
 	public function getList(){
@@ -28,9 +42,9 @@ class VenderListForm extends \yii\base\Model{
 
 	public function getListCondition(){
 		$aCondition = [];
-		/*if($this->id){
-			$aCondition['id'] = $this->id;
-		}*/
+		if($this->venderId){
+			$aCondition['id'] = $this->venderId;
+		}
 		return $aCondition;
 	}
 
