@@ -32,8 +32,6 @@ $this->beginPage();
 			}else{
 				if(in_array($statusCode, [400, 401, 403, 404])){
 					echo $message;
-				}else{
-					echo Yii::$app->ui->getTips('error.common');
 				}
 			}
 		?></h3>
