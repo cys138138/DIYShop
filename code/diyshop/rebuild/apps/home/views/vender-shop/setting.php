@@ -15,6 +15,9 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		width:375px;
 		height:234px;
 	}
+	.J-logo{
+		cursor:pointer;
+	}
 </style>
 <div class="row">
 	<?php echo ModuleNavi::widget([
@@ -137,7 +140,8 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			fileKey : 'image',
 			callback : function(aResult){
 				if(aResult.status == 1){
-					$('.J-logo').attr('src', aResult.data);
+					$('.J-logo').attr('src', App.url.resource + aResult.data);
+					$('.J-logo').attr('data-pic', aResult.data);
 				}else{
 					UBox.show(aResult.msg, aResult.status);
 				}

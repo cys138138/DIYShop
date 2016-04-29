@@ -44,14 +44,15 @@ class VenderShopController extends VController{
 				'name' => $name,
 				'logo' => $logo,
 				'description' => $description,
-				'pics' => json_encode($aPics),
+				'pics' => $aPics,
 			]);
 		}else{
 			$mVenderShop->set('name', $name);
 			$mVenderShop->set('logo', $logo);
 			$mVenderShop->set('description', $description);
-			$mVenderShop->set('pics', json_encode($aPics));
-			$isSuccess = $mVenderShop->save();
+			$mVenderShop->set('pics', $aPics);
+			$mVenderShop->save();
+			$isSuccess = true;
 		}
 		if(!$isSuccess){
 			return new Response('保存失败', 0);

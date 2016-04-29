@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 192.168.0.177
-Source Server Version : 50540
-Source Host           : 192.168.0.177:3306
+Source Server         : phpstudyLocalhost
+Source Server Version : 50547
+Source Host           : localhost:3306
 Source Database       : diyshop
 
 Target Server Type    : MYSQL
-Target Server Version : 50540
+Target Server Version : 50547
 File Encoding         : 65001
 
-Date: 2016-04-29 13:02:27
+Date: 2016-04-29 23:43:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -111,14 +111,15 @@ INSERT INTO `vender` VALUES ('1', 'jack', '15012121551', '45855@qq.com', '4ff9fc
 -- ----------------------------
 DROP TABLE IF EXISTS `vender_shop`;
 CREATE TABLE `vender_shop` (
-  `id` int(11) NOT NULL DEFAULT '0' COMMENT '商家id',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '商家id',
   `name` varchar(500) DEFAULT NULL COMMENT '商店名称',
   `logo` varchar(500) DEFAULT NULL COMMENT '商店Logo',
   `description` text COMMENT '商店说明',
   `pics` text COMMENT '轮播图片',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of vender_shop
 -- ----------------------------
+INSERT INTO `vender_shop` VALUES ('1', 'jack服饰商店', '/static/data/vender_shop_img/1/d845f884f76dc5916a316440caff76f7.jpg', 'jack服饰商店说明jack服饰商店说明jack服饰商店说明', '[\"\\/static\\/data\\/vender_shop_img\\/1\\/a547ce501430d26a861fb5d3b6b3779c.jpeg\",\"\\/static\\/data\\/vender_shop_img\\/1\\/7086ce468e50c8214da6d5ee8daa16a5.jpeg\"]');

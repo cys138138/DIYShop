@@ -44,7 +44,8 @@ class DressCatalogController extends MController{
 			if($mDressCatalog){
 				$mDressCatalog->set('name', $name);
 				$mDressCatalog->set('is_show', $isShow);
-				$isSuccess = $mDressCatalog->save();
+				$mDressCatalog->save();
+				$isSuccess = true;
 			}
 		}else{
 			$isSuccess = DressCatalog::initData([

@@ -96,7 +96,8 @@ class VenderManageController extends MController{
 				if($password){
 					$mVender->set('password', Vender::encryPassword($password));
 				}
-				$isSuccess = $mVender->save();
+				$mVender->save();
+				$isSuccess = true;
 			}
 		}else{
 			if($mVender1){

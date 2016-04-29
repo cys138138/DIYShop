@@ -81,6 +81,47 @@ abstract class DbOrmModel extends \yii\base\Model{
 	}
 
 	public function __set($name, $xValue){
+		/*if(in_array($name, $this->_aEncodeFields)){
+			if($xValue && is_string($xValue)){
+				$xValue = json_decode($xValue, true);
+				if($jsonErrCode = json_last_error()){
+					throw Yii::$app->buildError('模型字段 ' . $name . ' 解码失败', false, $jsonErrCode);
+				}
+			}elseif(!$xValue){
+				$xValue = [];
+			}
+
+		}elseif(array_key_exists($name, $this->_aEncodeFields)){
+			$xType = $this->_aEncodeFields[$name];
+			if($xType == 'json' && is_string($xValue)){
+				if($xValue){
+					$xValue = json_decode($xValue, true);
+					if($jsonErrCode = json_last_error()){
+						throw Yii::$app->buildError('模型字段 ' . $name . ' 解码失败', false, $jsonErrCode);
+					}
+				}else{
+					$xValue = [];
+				}
+
+			}elseif($xType == ',' && is_string($xValue)){
+				if($xValue){
+					$xValue = explode(',', $xValue);
+				}else{
+					$xValue = [];
+				}
+
+			}elseif(gettype($xType) == 'function'){
+				$xValue = $xType($this, $name, $xValue);
+			}elseif(is_array($xType)){
+				$oParser = Yii::createObject($xType);
+				$xValue = $oParser->{$xType['method']}();
+			}
+		}
+		$this->$name = $xValue;*/
+		$this->$name = $this->_decodeFields($name, $xValue);;
+	}
+
+	public function _decodeFields($name, $xValue){
 		if(in_array($name, $this->_aEncodeFields)){
 			if($xValue && is_string($xValue)){
 				$xValue = json_decode($xValue, true);
@@ -117,7 +158,7 @@ abstract class DbOrmModel extends \yii\base\Model{
 				$xValue = $oParser->{$xType['method']}();
 			}
 		}
-		$this->$name = $xValue;
+		return $xValue;
 	}
 
 	/**
@@ -175,7 +216,8 @@ abstract class DbOrmModel extends \yii\base\Model{
 	 */
 	protected static function _addFields($mInstance, $aData){
 		foreach($aData as $field => $value){
-			$mInstance->$field = $value;
+			//$mInstance->$field = $value;
+			$mInstance->$field = $mInstance->_decodeFields($field, $value);
 		}
 		return $mInstance;
 	}
@@ -188,7 +230,8 @@ abstract class DbOrmModel extends \yii\base\Model{
 	public static function toModel($aData){
 		$mInstance = new static();
 		foreach($aData as $field => $value){
-			$mInstance->$field = $value;
+			//$mInstance->$field = $value;
+			$mInstance->$field = $mInstance->_decodeFields($field, $value);
 		}
 		return $mInstance;
 	}
@@ -207,6 +250,19 @@ abstract class DbOrmModel extends \yii\base\Model{
 	 * @return int 新增记录id
 	 */
 	public static function insert($aData){
+		$mInstance = new static();
+		foreach($aData as $field => $value){
+			if(in_array($field, $mInstance->_aEncodeFields)){
+				$aData[$field] = json_encode($aData[$field]);
+			}elseif(array_key_exists($field, $mInstance->_aEncodeFields)){
+				$xType = $mInstance->_aEncodeFields[$field];
+				if($xType == 'json'){
+					$aData[$field] = json_encode($aData[$field]);
+				}elseif($xType == ','){
+					$aData[$field] = implode(',', $aData[$field]);
+				}
+			}
+		}
 		(new Query())->createCommand()->insert(static::tableName(), $aData)->execute();
 		return Yii::$app->db->getLastInsertID();
 	}
