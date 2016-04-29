@@ -4,6 +4,18 @@ use home\widgets\ModuleNavi;
 $this->setTitle('商店设置');
 $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 ?>
+<style type="text/css">
+	.list-group-item{
+		width:375px;
+		height:298px;
+		float:left;
+		margin:10px;
+	}
+	.list-group-item img{
+		width:375px;
+		height:234px;
+	}
+</style>
 <div class="row">
 	<?php echo ModuleNavi::widget([
 		'aMenus' => [
@@ -91,6 +103,31 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	
 	function checkLimit(){
 		return true;
+	}
+	
+	function save(o){
+		var name = $('.J-name').val();
+		var description = $('.J-description').val();
+		var logo = $('.J-logo').attr('data-pic');
+		var aPics = aVenderShop.pics;
+		ajax({
+			url : '<?php echo Url::to(['vender-shop/save-setting']); ?>',
+			data : {
+				name : name,
+				description : description,
+				logo : logo,
+				aPics : aPics
+			},
+			beforeSend : function(){
+				$(o).attr('disabled', 'disabled');
+			},
+			complete : function(){
+				$(o).attr('disabled', false);
+			},
+			success : function(aResult){
+				UBox.show(aResult.msg, aResult.status);
+			}
+		});
 	}
 	
 	$(function(){

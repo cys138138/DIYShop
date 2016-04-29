@@ -48,6 +48,7 @@ return [
 		
 		'vender-shop/show-setting.html'											=> 'vender-shop/show-setting',
 		'vender-shop/upload-file.html'											=> 'vender-shop/upload-file',
+		'vender-shop/save-setting.json'											=> 'vender-shop/save-setting',
 		
 		
 		'dress-catalog/show-list.html'											=> 'dress-catalog/show-list',

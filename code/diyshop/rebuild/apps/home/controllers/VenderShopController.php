@@ -19,8 +19,44 @@ class VenderShopController extends VController{
 		]);
     }
 	
-	public function actionShowSetting(){
+	public function actionSaveSetting(){
+		$name = (string)Yii::$app->request->post('name');
+		$description = (string)Yii::$app->request->post('description');
+		$logo = (string)Yii::$app->request->post('logo');
+		$aPics = (array)Yii::$app->request->post('aPics');
 		
+		if(!$name){
+			return new Response('请填写商店名称', -1);
+		}
+		if(!$description){
+			return new Response('请填写商店说明', -1);
+		}
+		if(!$logo){
+			return new Response('请上传商店Logo', -1);
+		}
+		
+		$mVender = Yii::$app->vender->getIdentity();
+		$mVenderShop = VenderShop::findOne($mVender->id);
+		$isSuccess = false;
+		if(!$mVenderShop){
+			$isSuccess = VenderShop::insert([
+				'id' => $mVender->id,
+				'name' => $name,
+				'logo' => $logo,
+				'description' => $description,
+				'pics' => json_encode($aPics),
+			]);
+		}else{
+			$mVenderShop->set('name', $name);
+			$mVenderShop->set('logo', $logo);
+			$mVenderShop->set('description', $description);
+			$mVenderShop->set('pics', json_encode($aPics));
+			$isSuccess = $mVenderShop->save();
+		}
+		if(!$isSuccess){
+			return new Response('保存失败', 0);
+		}
+		return new Response('保存成功', 1);
 	}
 
 	public function actionUploadFile(){
