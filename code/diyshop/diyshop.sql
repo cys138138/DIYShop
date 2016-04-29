@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : phpstudyLocalhost
-Source Server Version : 50547
-Source Host           : localhost:3306
+Source Server         : 192.168.0.177
+Source Server Version : 50540
+Source Host           : 192.168.0.177:3306
 Source Database       : diyshop
 
 Target Server Type    : MYSQL
-Target Server Version : 50547
+Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-04-28 22:20:00
+Date: 2016-04-29 13:02:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -90,7 +90,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 DROP TABLE IF EXISTS `vender`;
 CREATE TABLE `vender` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '商家id',
   `user_name` varchar(30) DEFAULT NULL COMMENT '用户名',
   `mobile` varchar(12) DEFAULT NULL COMMENT '手机号',
   `email` varchar(200) DEFAULT NULL COMMENT '邮箱',
@@ -105,3 +105,20 @@ CREATE TABLE `vender` (
 -- Records of vender
 -- ----------------------------
 INSERT INTO `vender` VALUES ('1', 'jack', '15012121551', '45855@qq.com', '4ff9fc6e4e5d5f590c4f2134a8cc96d1', '以纯厂商', 'asadssasasasasa', '50');
+
+-- ----------------------------
+-- Table structure for `vender_shop`
+-- ----------------------------
+DROP TABLE IF EXISTS `vender_shop`;
+CREATE TABLE `vender_shop` (
+  `id` int(11) NOT NULL DEFAULT '0' COMMENT '商家id',
+  `name` varchar(500) DEFAULT NULL COMMENT '商店名称',
+  `logo` varchar(500) DEFAULT NULL COMMENT '商店Logo',
+  `description` text COMMENT '商店说明',
+  `pics` text COMMENT '轮播图片',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of vender_shop
+-- ----------------------------

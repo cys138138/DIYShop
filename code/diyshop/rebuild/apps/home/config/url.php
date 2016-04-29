@@ -46,6 +46,9 @@ return [
 		'vender-manage/save.json'												=> 'vender-manage/save',
 		'vender-manage/delete.json'												=> 'vender-manage/delete',
 		
+		'vender-shop/show-setting.html'											=> 'vender-shop/show-setting',
+		'vender-shop/upload-file.html'											=> 'vender-shop/upload-file',
+		
 		
 		'dress-catalog/show-list.html'											=> 'dress-catalog/show-list',
 		'dress-catalog/show-edit.html'											=> 'dress-catalog/show-edit',

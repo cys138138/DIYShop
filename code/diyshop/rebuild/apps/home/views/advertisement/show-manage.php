@@ -144,7 +144,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				uploadUrl : '<?php echo Url::to(['advertisement/upload-file']); ?>',
 				fileKey : 'image',
 				isUploadEnable : function(o){
-					currentUploadId = $(o).attr('data-id');console.log(currentUploadId);
+					currentUploadId = $(o).attr('data-id');
 					if(parseInt($('.J-pics-list_' + currentUploadId + ' li').length) >= maxPicCount){
 						UBox.show('只能上传 ' + maxPicCount + ' 张图片！', -1);
 						return false;

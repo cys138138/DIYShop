@@ -39,15 +39,6 @@ $this->beginPage();
 			<h4>您可能输错了网址或您访问的页面已经被删除，如需帮助请联系客服人员，或返回请重新进行操作！</h4>
 		<?php } ?>
 	</div>
-	<div class="redirect">
-		<?php
-			$referer = Yii::$app->request->headers->get('referer');
-			if($referer){
-				echo Html::a('回上一页', $referer);
-			}
-		?>
-		<!--<a href="<?php //echo \umeworld\lib\Url::to(['site/index']); ?>">回到首页</a>-->
-	</div>
 </div>
 
 <?php
