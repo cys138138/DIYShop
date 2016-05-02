@@ -266,4 +266,5 @@ abstract class DbOrmModel extends \yii\base\Model{
 		(new Query())->createCommand()->insert(static::tableName(), $aData)->execute();
 		return Yii::$app->db->getLastInsertID();
 	}
+	
 }

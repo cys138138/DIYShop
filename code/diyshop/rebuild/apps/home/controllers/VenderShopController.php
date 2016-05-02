@@ -73,7 +73,7 @@ class VenderShopController extends VController{
 		};
 		
 		$isUploadFromUEditor = false;
-		$savePath = Yii::getAlias('@p.vender_shop_img') . '/' . $mVender->id;
+		$savePath = Yii::getAlias('@p.vender_shop_img') . '/' . mt_rand(10, 99);
 		if(!is_dir(Yii::getAlias('@p.resource') . $savePath)){
 			@mkdir(Yii::getAlias('@p.resource') . $savePath);
 		}

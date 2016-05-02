@@ -81,6 +81,14 @@ return [
 			'child' => [],
 		],
 		[
+			'title' => '服饰管理',
+			'en_title' => 'dress_manage',
+			'url' => ['dress-manage/show-list'],
+			'permission' => ['vender'],
+			'icon_class' => 'star',	
+			'child' => [],
+		],
+		[
 			'title' => '搭配',
 			'en_title' => 'dress_match',
 			'url' => ['site/index'],

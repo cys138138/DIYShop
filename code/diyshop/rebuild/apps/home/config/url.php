@@ -57,6 +57,12 @@ return [
 		'dress-catalog/delete.json'												=> 'dress-catalog/delete',
 		
 		
+		'dress-manage/show-list.html'											=> 'dress-manage/show-list',
+		'dress-manage/show-edit.html'											=> 'dress-manage/show-edit',
+		'dress-manage/save.json'												=> 'dress-manage/save',
+		'dress-manage/delete.json'												=> 'dress-manage/delete',
+		
+		
 		//跳转页面
 		'jump/<jumpType:\w+>.html'						=> 'jump/jump',
 

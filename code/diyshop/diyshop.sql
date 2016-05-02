@@ -10,10 +10,28 @@ Target Server Type    : MYSQL
 Target Server Version : 50547
 File Encoding         : 65001
 
-Date: 2016-04-29 23:43:22
+Date: 2016-05-03 02:16:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `dress`
+-- ----------------------------
+DROP TABLE IF EXISTS `dress`;
+CREATE TABLE `dress` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '服饰ID，自增',
+  `catalog_id` int(11) DEFAULT NULL COMMENT '服饰分类ID',
+  `name` varchar(500) DEFAULT NULL COMMENT '服饰标题',
+  `price` decimal(10,2) DEFAULT NULL COMMENT '价格',
+  `pics` text COMMENT '服饰轮播图片',
+  `status` int(11) DEFAULT NULL COMMENT '服饰状态：1未上架2已上架3已删除',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of dress
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `dress_catalog`
@@ -35,6 +53,54 @@ INSERT INTO `dress_catalog` VALUES ('3', '裙子', '1');
 INSERT INTO `dress_catalog` VALUES ('4', '男装专区', '1');
 INSERT INTO `dress_catalog` VALUES ('5', '女装专区', '1');
 INSERT INTO `dress_catalog` VALUES ('6', '折扣', '1');
+
+-- ----------------------------
+-- Table structure for `dress_comment`
+-- ----------------------------
+DROP TABLE IF EXISTS `dress_comment`;
+CREATE TABLE `dress_comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '服饰评论ID，自增',
+  `dress_id` int(11) DEFAULT NULL COMMENT '服饰ID',
+  `user_id` int(11) DEFAULT NULL COMMENT '用户id',
+  `comment` text COMMENT '评论内容',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of dress_comment
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `dress_size_color_count`
+-- ----------------------------
+DROP TABLE IF EXISTS `dress_size_color_count`;
+CREATE TABLE `dress_size_color_count` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '服饰尺码颜色库存记录ID，自增',
+  `dress_id` int(11) DEFAULT NULL COMMENT '服饰ID',
+  `size_name` varchar(100) DEFAULT NULL COMMENT '尺码名称',
+  `color_name` varchar(100) DEFAULT NULL COMMENT '颜色名称',
+  `stock` int(11) DEFAULT NULL COMMENT '库存',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of dress_size_color_count
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `dress_tag`
+-- ----------------------------
+DROP TABLE IF EXISTS `dress_tag`;
+CREATE TABLE `dress_tag` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '服饰标签ID',
+  `dress_id` int(11) DEFAULT NULL COMMENT '服饰ID',
+  `name` varchar(50) DEFAULT NULL COMMENT '标签名称',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of dress_tag
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `manager`
