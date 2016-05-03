@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-05-03 17:04:09
+Date: 2016-05-03 17:12:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -148,7 +148,7 @@ CREATE TABLE `setting` (
 -- Records of setting
 -- ----------------------------
 INSERT INTO `setting` VALUES ('1', 'advertisement_catalog_config', '[{\"id\":\"1\",\"name\":\"\\u4e3b\\u754c\\u9762\",\"pics\":[\"\\/static\\/data\\/advertisement_position_img\\/6ef030fa9ae071bc7e2218a715efc5ef.jpeg\"]},{\"id\":\"2\",\"name\":\"\\u54c1\\u724c\",\"pics\":[\"\\/static\\/data\\/advertisement_position_img\\/cce8218c8ad80180ca133b149c4dad1d.jpeg\"]},{\"id\":\"3\",\"name\":\"\\u81ea\\u8425\",\"pics\":[\"\\/static\\/data\\/advertisement_position_img\\/f591926c72767baf3563cf5a02595013.jpeg\"]}]');
-INSERT INTO `setting` VALUES ('2', 'guess_like_config', '[{\"dress_id\":1,\"pic_index\":0}]');
+INSERT INTO `setting` VALUES ('2', 'guess_like_config', '[{\"vender_id\":\"1\",\"dress_id\":1,\"pic_index\":1}]');
 
 -- ----------------------------
 -- Table structure for `user`

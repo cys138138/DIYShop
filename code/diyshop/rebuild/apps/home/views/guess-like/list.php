@@ -28,7 +28,8 @@ $this->setTitle('猜你喜欢');
 		<?php
 			echo Table::widget([
 				'aColumns'	=>	[
-					'name'	=>	['title' => '服饰名称'],
+					'vender_id'	=>	['title' => '商家编号'],
+					'dress_id'	=>	['title' => '服饰编号'],
 					'pic'	=>	[
 						'title' => '服饰图片',
 						'content' => function($aData){

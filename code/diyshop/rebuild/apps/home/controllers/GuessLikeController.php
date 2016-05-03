@@ -26,6 +26,7 @@ class GuessLikeController extends MController{
 				$mDress = Dress::findOne($aValue['dress_id']);
 				if($mDress){
 					$aList[$key]['name'] = $mDress->name;
+					$aList[$key]['vender_id'] = $mDress->vender_id;
 					if(isset($mDress->pics[$aValue['pic_index']])){
 						$aList[$key]['pic'] = $mDress->pics[$aValue['pic_index']];
 					}else{
@@ -92,6 +93,7 @@ class GuessLikeController extends MController{
 		}
 		if(!$isFind){
 			array_push($aList, [
+				'vender_id' => $mDress->vender_id,
 				'dress_id' => $dressId,
 				'pic_index' => $picIndex
 			]);
