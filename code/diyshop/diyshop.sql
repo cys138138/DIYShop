@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-05-03 14:32:32
+Date: 2016-05-03 17:04:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -142,12 +142,13 @@ CREATE TABLE `setting` (
   `keystr` varchar(50) DEFAULT NULL COMMENT '键',
   `valuestr` text COMMENT '值',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of setting
 -- ----------------------------
 INSERT INTO `setting` VALUES ('1', 'advertisement_catalog_config', '[{\"id\":\"1\",\"name\":\"\\u4e3b\\u754c\\u9762\",\"pics\":[\"\\/static\\/data\\/advertisement_position_img\\/6ef030fa9ae071bc7e2218a715efc5ef.jpeg\"]},{\"id\":\"2\",\"name\":\"\\u54c1\\u724c\",\"pics\":[\"\\/static\\/data\\/advertisement_position_img\\/cce8218c8ad80180ca133b149c4dad1d.jpeg\"]},{\"id\":\"3\",\"name\":\"\\u81ea\\u8425\",\"pics\":[\"\\/static\\/data\\/advertisement_position_img\\/f591926c72767baf3563cf5a02595013.jpeg\"]}]');
+INSERT INTO `setting` VALUES ('2', 'guess_like_config', '[{\"dress_id\":1,\"pic_index\":0}]');
 
 -- ----------------------------
 -- Table structure for `user`

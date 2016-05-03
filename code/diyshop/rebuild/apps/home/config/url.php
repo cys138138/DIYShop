@@ -40,6 +40,14 @@ return [
 		'advertisement/save-advertisement-catalog-config.json'					=> 'advertisement/save-advertisement-catalog-config',
 		'advertisement/upload-file.html'										=> 'advertisement/upload-file',
 		
+	
+		'guess-like/show-list.html'												=> 'guess-like/show-list',
+		'guess-like/show-setting.html'											=> 'guess-like/show-setting',
+		'guess-like/search-dress.json'											=> 'guess-like/search-dress',
+		'guess-like/save-setting.json'											=> 'guess-like/save-setting',
+		'guess-like/delete-setting.json'										=> 'guess-like/delete',
+		
+		
 		
 		'vender-manage/show-list.html'											=> 'vender-manage/show-list',
 		'vender-manage/show-edit.html'											=> 'vender-manage/show-edit',

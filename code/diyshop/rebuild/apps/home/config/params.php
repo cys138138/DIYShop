@@ -43,7 +43,7 @@ return [
 		[
 			'title' => '猜你喜欢',
 			'en_title' => 'guess_like',
-			'url' => ['site/index'],
+			'url' => ['guess-like/show-list'],
 			'permission' => ['manager'],
 			'icon_class' => 'star',	
 			'child' => [],
@@ -59,14 +59,6 @@ return [
 		[
 			'title' => '投票',
 			'en_title' => 'vote',
-			'url' => ['site/index'],
-			'permission' => ['manager'],
-			'icon_class' => 'star',	
-			'child' => [],
-		],
-		[
-			'title' => '服饰数量',
-			'en_title' => 'dress_num',
 			'url' => ['site/index'],
 			'permission' => ['manager'],
 			'icon_class' => 'star',	

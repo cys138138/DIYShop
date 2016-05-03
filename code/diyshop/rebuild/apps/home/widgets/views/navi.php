@@ -5,7 +5,7 @@ use umeworld\lib\Url;
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<!-- Brand and toggle get grouped for better mobile display -->
 	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">
+		<a class="navbar-brand">
 			<?php if($role == 'manager'){ ?>
 				DiyShop后台管理
 			<?php }elseif($role == 'vender'){ ?>

@@ -534,3 +534,147 @@ $_SERVER = [
 ]
 env_vars_end
 =================================LOG_END
+LOG_START=================================
+[time=2016-05-03 15:50:12] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:1] 
+message_start
+exception 'yii\base\ErrorException' with message 'Class 'ModuleNavi' not found' in /var/www/diyshop/rebuild/apps/home/views/guess-like/list.php:6
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/guess-like/show-list.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '95aef2f2e258d0a33000b0d38c4e521f34a1dd3e56a6e5fef04fc838e7d2884ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"pbNbpnMXrqZa9lLuWCATIbG4Ii5Vu1AJ\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/guess-like/show-list.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/advertisement/show-manage.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-05-03 16:55:17] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:8] 
+message_start
+exception 'yii\base\ErrorException' with message 'Undefined index: pics' in /var/www/diyshop/rebuild/apps/home/views/guess-like/list.php:36
+Stack trace:
+#0 /var/www/diyshop/rebuild/apps/home/views/guess-like/list.php(36): yii\base\ErrorHandler->handleError(8, 'Undefined index...', '/var/www/diysho...', 36, Array)
+#1 /var/www/diyshop/rebuild/apps/home/widgets/Table.php(42): yii\base\View->{closure}(Array, 0)
+#2 /var/www/diyshop/rebuild/apps/home/widgets/views/table/base.php(33): home\widgets\Table->parseColumnItemContent(Array, 0, Array, 'pic')
+#3 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#5 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\widgets\Table))
+#6 /var/www/diyshop/framework/yiisoft/yii2/base/Widget.php(191): yii\base\View->render('table/base', Array, Object(home\widgets\Table))
+#7 /var/www/diyshop/rebuild/apps/home/widgets/Table.php(25): yii\base\Widget->render('table/base', Array)
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/Widget.php(98): home\widgets\Table->run()
+#9 /var/www/diyshop/rebuild/apps/home/views/guess-like/list.php(48): yii\base\Widget::widget(Array)
+#10 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#11 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#12 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\controllers\GuessLikeController))
+#13 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(371): yii\base\View->render('list', Array, Object(home\controllers\GuessLikeController))
+#14 /var/www/diyshop/rebuild/apps/home/controllers/GuessLikeController.php(39): yii\base\Controller->render('list', Array)
+#15 [internal function]: home\controllers\GuessLikeController->actionShowList()
+#16 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#17 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#18 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('show-list', Array)
+#19 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('guess-like/show...', Array)
+#20 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#21 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#22 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/guess-like/show-list.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '95aef2f2e258d0a33000b0d38c4e521f34a1dd3e56a6e5fef04fc838e7d2884ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"pbNbpnMXrqZa9lLuWCATIbG4Ii5Vu1AJ\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/guess-like/show-list.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/guess-like/show-setting.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-05-03 16:55:38] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:8] 
+message_start
+exception 'yii\base\ErrorException' with message 'Undefined index: id' in /var/www/diyshop/rebuild/apps/home/views/guess-like/list.php:43
+Stack trace:
+#0 /var/www/diyshop/rebuild/apps/home/views/guess-like/list.php(43): yii\base\ErrorHandler->handleError(8, 'Undefined index...', '/var/www/diysho...', 43, Array)
+#1 /var/www/diyshop/rebuild/apps/home/widgets/Table.php(42): yii\base\View->{closure}(Array, 0)
+#2 /var/www/diyshop/rebuild/apps/home/widgets/views/table/base.php(33): home\widgets\Table->parseColumnItemContent(Array, 0, Array, 'operate')
+#3 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#5 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\widgets\Table))
+#6 /var/www/diyshop/framework/yiisoft/yii2/base/Widget.php(191): yii\base\View->render('table/base', Array, Object(home\widgets\Table))
+#7 /var/www/diyshop/rebuild/apps/home/widgets/Table.php(25): yii\base\Widget->render('table/base', Array)
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/Widget.php(98): home\widgets\Table->run()
+#9 /var/www/diyshop/rebuild/apps/home/views/guess-like/list.php(48): yii\base\Widget::widget(Array)
+#10 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#11 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#12 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\controllers\GuessLikeController))
+#13 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(371): yii\base\View->render('list', Array, Object(home\controllers\GuessLikeController))
+#14 /var/www/diyshop/rebuild/apps/home/controllers/GuessLikeController.php(39): yii\base\Controller->render('list', Array)
+#15 [internal function]: home\controllers\GuessLikeController->actionShowList()
+#16 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#17 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#18 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('show-list', Array)
+#19 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('guess-like/show...', Array)
+#20 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#21 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#22 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/guess-like/show-list.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '95aef2f2e258d0a33000b0d38c4e521f34a1dd3e56a6e5fef04fc838e7d2884ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"pbNbpnMXrqZa9lLuWCATIbG4Ii5Vu1AJ\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/guess-like/show-list.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/guess-like/show-setting.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
