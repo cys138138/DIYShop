@@ -3,9 +3,14 @@ namespace common\model;
 
 use Yii;
 use umeworld\lib\Query;
+use yii\helpers\ArrayHelper;
 
 class Dress extends \common\lib\DbOrmModel{
 	protected $_aEncodeFields = ['pics'];
+	
+	const OFF_SALES_STATUS = 1;	//未上架
+	const ON_SALES_STATUS = 2;	//已上架
+	const DELETE_STATUS = 3;	//已删除
 
 	public static function tableName(){
 		return Yii::$app->db->parseTable('_@dress');
@@ -19,12 +24,14 @@ class Dress extends \common\lib\DbOrmModel{
 				$mDress->catalog_name = $mDressCatalog->name;
 			}
 			$aDressSizeColorCount = DressSizeColorCount::findAll(['dress_id' => $mDress->id]);
+			ArrayHelper::multisort($aDressSizeColorCount, 'id', SORT_ASC);
 			if($aDressSizeColorCount){
 				$mDress->dress_size_color_count = $aDressSizeColorCount;
 			}else{
 				$mDress->dress_size_color_count = [];
 			}
 			$aDressTag = DressTag::findAll(['dress_id' => $mDress->id]);
+			ArrayHelper::multisort($aDressTag, 'id', SORT_ASC);
 			if($aDressTag){
 				$mDress->dress_tag = $aDressTag;
 			}else{
@@ -64,4 +71,40 @@ class Dress extends \common\lib\DbOrmModel{
 
 		return $aWhere;
 	}
+	
+	public function saveSizeColorCount($aData){
+		Yii::$app->db->createCommand()->delete(DressSizeColorCount::tableName(), ['dress_id' => $this->id])->execute();
+		foreach($aData as $key => $aValue){
+			(new Query())->createCommand()->insert(DressSizeColorCount::tableName(), [
+				'vender_id' => $this->vender_id,
+				'dress_id' => $this->id,
+				'size_name' => $aValue['size'],
+				'color_name' => $aValue['color'],
+				'stock' => $aValue['count']
+			])->execute();
+		}
+	}
+	
+	public function saveTag($aData){
+		Yii::$app->db->createCommand()->delete(DressTag::tableName(), ['dress_id' => $this->id])->execute();
+		foreach($aData as $key => $value){
+			(new Query())->createCommand()->insert(DressTag::tableName(), [
+				'vender_id' => $this->vender_id,
+				'dress_id' => $this->id,
+				'name' => $value
+			])->execute();
+		}
+	}
+	
+	public static function getSizeColorList($id){
+		return [
+			'size_list' => (new Query())->select('size_name')->distinct('size_name')->from(DressSizeColorCount::tableName())->where(['vender_id' => $id])->all(),
+			'color_list' => (new Query())->select('color_name')->distinct('color_name')->from(DressSizeColorCount::tableName())->where(['vender_id' => $id])->all(),
+		];
+	}
+	
+	public static function getTagList($id){
+		return (new Query())->select('name')->distinct('name')->from(DressTag::tableName())->where(['vender_id' => $id])->all();
+	}
+	
 }

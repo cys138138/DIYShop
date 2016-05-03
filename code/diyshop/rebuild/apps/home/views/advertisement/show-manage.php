@@ -100,7 +100,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		var htmlStr = '\
 			<li class="list-group-item" data-pic="' + pic + '">\
 				<p><img class="img-thumbnail" src="' + App.url.resource + pic + '" alt=""></p>\
-				<p><center><button type="button" class="btn btn-sm btn-danger" onclick="deletePic(this, \'' + pic + '\');">删除</button></center></p>\
+				<p><center><button type="button" class="btn btn-sm btn-danger" onclick="deletePic(this);">删除</button></center></p>\
 			</li>\
 		';
 		return htmlStr;
@@ -132,7 +132,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		});
 	}
 	
-	function deletePic(o, pic){
+	function deletePic(o){
 		$(o).parent().parent().remove();
 		updateAdvertisementCatalogConfig();
 	}

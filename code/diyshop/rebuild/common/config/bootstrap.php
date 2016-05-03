@@ -22,6 +22,7 @@ Yii::setAlias('p.resource',		$appPath . '/apps/home/web');
 Yii::setAlias('p.temp_upload',		'/static/data/temp_upload');
 Yii::setAlias('p.vender_shop_img',	'/static/data/vender_shop_img');
 Yii::setAlias('p.advertisement_position_img',	'/static/data/advertisement_position_img');
+Yii::setAlias('p.dress',	'/static/data/dress');
 Yii::setAlias('p.system_view',		$appPath . '/common/views/system');
 Yii::setAlias('Endroid', Yii::getAlias('@umeworld') . '/lib');	//二维码扩展
 Yii::setAlias('@p.alipay', Yii::getAlias('@umeworld') . '/lib/Alipay');	//支付宝扩展

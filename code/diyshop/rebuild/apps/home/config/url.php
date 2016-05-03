@@ -61,6 +61,7 @@ return [
 		'dress-manage/show-edit.html'											=> 'dress-manage/show-edit',
 		'dress-manage/save.json'												=> 'dress-manage/save',
 		'dress-manage/delete.json'												=> 'dress-manage/delete',
+		'dress-manage/upload-file.html'											=> 'dress-manage/upload-file',
 		
 		
 		//跳转页面

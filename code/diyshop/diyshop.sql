@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : phpstudyLocalhost
-Source Server Version : 50547
-Source Host           : localhost:3306
+Source Server         : 192.168.0.177
+Source Server Version : 50540
+Source Host           : 192.168.0.177:3306
 Source Database       : diyshop
 
 Target Server Type    : MYSQL
-Target Server Version : 50547
+Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-05-03 02:16:25
+Date: 2016-05-03 14:32:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,17 +21,19 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `dress`;
 CREATE TABLE `dress` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '服饰ID，自增',
+  `vender_id` int(11) DEFAULT NULL COMMENT '商家ID',
   `catalog_id` int(11) DEFAULT NULL COMMENT '服饰分类ID',
   `name` varchar(500) DEFAULT NULL COMMENT '服饰标题',
   `price` decimal(10,2) DEFAULT NULL COMMENT '价格',
   `pics` text COMMENT '服饰轮播图片',
   `status` int(11) DEFAULT NULL COMMENT '服饰状态：1未上架2已上架3已删除',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dress
 -- ----------------------------
+INSERT INTO `dress` VALUES ('1', '1', '1', '测试服饰1', '50.00', '[\"\\/static\\/data\\/dress\\/48\\/7ea7a7c4e8d0a986a34d1bec0b85b88c.jpeg\",\"\\/static\\/data\\/dress\\/67\\/863840619527ceecba13b58b9b8a8186.jpeg\"]', '2');
 
 -- ----------------------------
 -- Table structure for `dress_catalog`
@@ -76,16 +78,23 @@ CREATE TABLE `dress_comment` (
 DROP TABLE IF EXISTS `dress_size_color_count`;
 CREATE TABLE `dress_size_color_count` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '服饰尺码颜色库存记录ID，自增',
+  `vender_id` int(11) DEFAULT NULL COMMENT '商家ID',
   `dress_id` int(11) DEFAULT NULL COMMENT '服饰ID',
   `size_name` varchar(100) DEFAULT NULL COMMENT '尺码名称',
   `color_name` varchar(100) DEFAULT NULL COMMENT '颜色名称',
   `stock` int(11) DEFAULT NULL COMMENT '库存',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dress_size_color_count
 -- ----------------------------
+INSERT INTO `dress_size_color_count` VALUES ('1', '1', '1', 'S', '白', '1');
+INSERT INTO `dress_size_color_count` VALUES ('2', '1', '1', 'S', '黑', '2');
+INSERT INTO `dress_size_color_count` VALUES ('3', '1', '1', 'M', '白', '3');
+INSERT INTO `dress_size_color_count` VALUES ('4', '1', '1', 'M', '黑', '4');
+INSERT INTO `dress_size_color_count` VALUES ('5', '1', '1', 'L', '白', '5');
+INSERT INTO `dress_size_color_count` VALUES ('6', '1', '1', 'L', '黑', '6');
 
 -- ----------------------------
 -- Table structure for `dress_tag`
@@ -93,14 +102,17 @@ CREATE TABLE `dress_size_color_count` (
 DROP TABLE IF EXISTS `dress_tag`;
 CREATE TABLE `dress_tag` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '服饰标签ID',
+  `vender_id` int(11) DEFAULT NULL COMMENT '商家ID',
   `dress_id` int(11) DEFAULT NULL COMMENT '服饰ID',
   `name` varchar(50) DEFAULT NULL COMMENT '标签名称',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dress_tag
 -- ----------------------------
+INSERT INTO `dress_tag` VALUES ('1', '1', '1', '夹克');
+INSERT INTO `dress_tag` VALUES ('2', '1', '1', '秋冬');
 
 -- ----------------------------
 -- Table structure for `manager`

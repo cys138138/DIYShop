@@ -11,6 +11,8 @@ use common\model\DressTag;
 use common\model\DressSizeColorCount;
 use common\model\Dress;
 use common\model\form\DressListForm;
+use common\model\form\ImageUploadForm;
+use yii\web\UploadedFile;
 
 class DressManageController extends VController{
 	
@@ -40,39 +42,98 @@ class DressManageController extends VController{
 				$aDress = $mDress->toArray();
 			}
 		}
-		
 		return $this->render('show-edit', [
 			'aDressCatalogList' => DressCatalog::findAll(),
-			'aDress' => $aDress
+			'aDress' => $aDress,
+			'aTagList' => Dress::getTagList(Yii::$app->vender->id),
+			'aSizeColorList' => Dress::getSizeColorList(Yii::$app->vender->id),
 		]);
     }
 	
 	public function actionSave(){
 		$id = (int)Yii::$app->request->post('id');
 		$name = (string)Yii::$app->request->post('name');
-		$isShow = (int)Yii::$app->request->post('isShow');
+		$catalogId = (int)Yii::$app->request->post('catalogId');
+		$price = (string)Yii::$app->request->post('price');
+		$status = (int)Yii::$app->request->post('status');
+		$aSizeColorCount = (array)Yii::$app->request->post('aSizeColorCount');
+		$aTag = (array)Yii::$app->request->post('aTag');
+		$aPics = (array)Yii::$app->request->post('aPics');
+		
 		if(!$name){
-			return new Response('请填写分类名称', -1);
+			return new Response('请填写服饰名称', -1);
+		}
+		if(!DressCatalog::findOne($catalogId)){
+			return new Response('请选择服饰分类', -1);
+		}
+		if(!is_numeric($price)){
+			return new Response('服饰价格必须是数字', -1);
+		}
+		if(!in_array($status, [Dress::OFF_SALES_STATUS, Dress::ON_SALES_STATUS])){
+			return new Response('服饰状态不正确', -1);
+		}
+		if($aSizeColorCount){
+			$aTempList = [];
+			foreach($aSizeColorCount as $key => $aValue){
+				if(count($aSizeColorCount) != 1 && !$aValue['size'] && !$aValue['color'] && $aValue['count'] == ''){
+					continue;
+				}
+				if(!$aValue['size']){
+					return new Response('请填写第' . (intval($key) + 1) . '项尺码', -1, $aSizeColorCount);
+				}
+				if(!$aValue['color']){
+					return new Response('请填写第' . (intval($key) + 1) . '项颜色', -1);
+				}
+				if($aValue['count'] == ''){
+					return new Response('请填写第' . (intval($key) + 1) . '项数量', -1);
+				}
+				array_push($aTempList, $aValue);
+			}
+			$aSizeColorCount = $aTempList;
+		}else{
+			return new Response('请填写尺码颜色库存', -1);
+		}
+		if($aTag){
+			foreach($aTag as $key => $value){
+				if(!$value){
+					return new Response('服饰标签不能为空', -1);
+				}
+			}
+		}else{
+			return new Response('请添加服饰标签', -1);
 		}
 		$isSuccess = false;
+		$mDress = null;
+		$mVender = Yii::$app->vender->getIdentity();
 		if($id){
 			$mDress = Dress::findOne($id);
 			if($mDress){
 				$mDress->set('name', $name);
-				$mDress->set('is_show', $isShow);
+				$mDress->set('catalog_id', $catalogId);
+				$mDress->set('price', $price);
+				$mDress->set('pics', $aPics);
+				$mDress->set('status', $status);
 				$mDress->save();
 				$isSuccess = true;
 			}
 		}else{
 			$isSuccess = Dress::insert([
 				'name' => $name,
-				'is_show' => $isShow
+				'vender_id' => $mVender->id,
+				'catalog_id' => $catalogId,
+				'price' => $price,
+				'pics' => $aPics,
+				'status' => $status
 			]);
+			$mDress = Dress::findOne($isSuccess);
 		}
 		
 		if(!$isSuccess){
 			return new Response('保存失败', 0);
 		}
+		$mDress->saveSizeColorCount($aSizeColorCount);
+		$mDress->saveTag($aTag);
+		
 		return new Response('保存成功', 1);
 	}
 	
@@ -88,5 +149,31 @@ class DressManageController extends VController{
 			return new Response('删除失败', 0);
 		}
 		return new Response('删除成功', 1);
+	}
+	
+	public function actionUploadFile(){
+		$oForm = new ImageUploadForm();
+		$oForm->fCustomValidator = function($oForm){
+			list($width, $height) = getimagesize($oForm->oImage->tempName);
+			/*if($width != 340 || $height != 235){
+				$oForm->addError('oImage', '图片宽高应为340px*235px');
+				return false;
+			}*/
+			return true;
+		};
+		
+		$isUploadFromUEditor = false;
+		$savePath = Yii::getAlias('@p.dress') . '/' . mt_rand(10, 99);
+		if(!is_dir(Yii::getAlias('@p.resource') . $savePath)){
+			@mkdir(Yii::getAlias('@p.resource') . $savePath);
+		}
+
+		$oForm->oImage = UploadedFile::getInstanceByName('image');
+		if(!$oForm->upload($savePath)){
+			$message = current($oForm->getErrors())[0];
+			return new Response($message, 0);
+		}else{
+			return new Response('', 1, $oForm->savedFile);
+		}
 	}
 }
