@@ -48,6 +48,12 @@ return [
 		'guess-like/delete-setting.json'										=> 'guess-like/delete',
 		
 		
+		'discount-activity/show-list.html'										=> 'discount-activity/show-list',
+		'discount-activity/show-setting.html'									=> 'discount-activity/show-setting',
+		'discount-activity/save-setting.json'									=> 'discount-activity/save-setting',
+		'discount-activity/delete-setting.json'									=> 'discount-activity/delete',
+		
+		
 		
 		'vender-manage/show-list.html'											=> 'vender-manage/show-list',
 		'vender-manage/show-edit.html'											=> 'vender-manage/show-edit',

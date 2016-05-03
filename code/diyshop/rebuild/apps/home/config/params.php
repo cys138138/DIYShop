@@ -51,7 +51,7 @@ return [
 		[
 			'title' => '优惠活动',
 			'en_title' => 'discount_activity',
-			'url' => ['site/index'],
+			'url' => ['discount-activity/show-list'],
 			'permission' => ['manager'],
 			'icon_class' => 'star',	
 			'child' => [],
