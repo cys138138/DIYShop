@@ -87,17 +87,17 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	
 	$(function(){
 		$('.J-form-upload-btn').AjaxUpload({
-				uploadUrl : '<?php echo Url::to(['vote/upload-file']); ?>',
-				fileKey : 'image',
-				callback : function(aResult){
-					if(aResult.status == 1){
-						currentPic = aResult.data;
-						$('.J-pic-wraper').html('<p><img class="img-thumbnail" src="' + App.url.resource + currentPic + '" alt=""></p>');
-						$('.J-pic-wraper').show();
-					}else{
-						UBox.show(aResult.msg, aResult.status);
-					}
+			uploadUrl : '<?php echo Url::to(['vote/upload-file']); ?>',
+			fileKey : 'image',
+			callback : function(aResult){
+				if(aResult.status == 1){
+					currentPic = aResult.data;
+					$('.J-pic-wraper').html('<p><img class="img-thumbnail" src="' + App.url.resource + currentPic + '" alt=""></p>');
+					$('.J-pic-wraper').show();
+				}else{
+					UBox.show(aResult.msg, aResult.status);
 				}
-			});
+			}
+		});
 	});
 </script>
