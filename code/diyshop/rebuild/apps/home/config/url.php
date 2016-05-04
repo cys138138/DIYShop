@@ -55,6 +55,13 @@ return [
 		'discount-activity/upload-file.html'									=> 'discount-activity/upload-file',
 		
 		
+		'vote/show-list.html'													=> 'vote/show-list',
+		'vote/show-setting.html'												=> 'vote/show-setting',
+		'vote/save-setting.json'												=> 'vote/save-setting',
+		'vote/delete-setting.json'												=> 'vote/delete',
+		'vote/upload-file.html'													=> 'vote/upload-file',
+		
+		
 		
 		'vender-manage/show-list.html'											=> 'vender-manage/show-list',
 		'vender-manage/show-edit.html'											=> 'vender-manage/show-edit',

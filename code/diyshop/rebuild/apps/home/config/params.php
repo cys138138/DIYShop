@@ -59,7 +59,7 @@ return [
 		[
 			'title' => '投票',
 			'en_title' => 'vote',
-			'url' => ['site/index'],
+			'url' => ['vote/show-list'],
 			'permission' => ['manager'],
 			'icon_class' => 'star',	
 			'child' => [],
