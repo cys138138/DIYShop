@@ -43,7 +43,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			<br />
 		</div>
 		<div class="form-group">
-			<button type="button" class="J-form-upload-btn btn btn-primary">添加活动图片</button>
+			<button type="button" class="J-form-upload-btn btn btn-primary">上传活动图片</button>
 		</div>
 		<div class="form-group">
 			<div class="row">
