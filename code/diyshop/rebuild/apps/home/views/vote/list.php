@@ -34,7 +34,7 @@ $this->setTitle('投票');
 							return '<img width="234" height="375" class="img-thumbnail" src="' . Yii::getAlias('@r.url') . $aData['pic'] . '" alt="">';
 						}
 					],
-					'link_url'	=>	['title' => '链接'],
+					'description'	=>	['title' => '投票说明'],
 					'operate' => [
 						'title' => '操作',
 						'class' => 'col-sm-1',
