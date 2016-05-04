@@ -7,6 +7,8 @@ use umeworld\lib\Response;
 use umeworld\lib\Url;
 use common\model\Setting;
 use common\model\Dress;
+use common\model\form\ImageUploadForm;
+use yii\web\UploadedFile;
 
 class DiscountActivityController extends MController{
 	const DATA_SETTING_KEY = 'discount_activity_config';
@@ -28,60 +30,25 @@ class DiscountActivityController extends MController{
 		return $this->render('setting');
 	}
 	
-	public function actionSearchDress(){
-		$venderId = (int)Yii::$app->request->post('venderId');
-		$dressId = (int)Yii::$app->request->post('dressId');
-		
-		if(!$venderId){
-			return new Response('请输入商家编号', -1);
-		}
-		if(!$dressId){
-			return new Response('请输入服饰编号', -1);
-		}
-		
-		$mDress = Dress::findOne([
-			'id' => $dressId,
-			'vender_id' => $venderId,
-		]);
-		
-		if(!$mDress){
-			return new Response('服饰不存在！', -1);
-		}
-		
-		return new Response('服饰信息', 1, $mDress->toArray());
-	}
-	
 	public function actionSaveSetting(){
-		$dressId = (int)Yii::$app->request->post('dressId');
-		$picIndex = (int)Yii::$app->request->post('picIndex');
+		$pic = (string)Yii::$app->request->post('pic');
+		$linkUrl = (string)Yii::$app->request->post('linkUrl');
 		
-		if(!$dressId){
-			return new Response('服饰不存在！', -1);
+		if(!$linkUrl){
+			return new Response('请填写活动链接', -1);
 		}
-		$mDress = Dress::findOne($dressId);
-		if(!$mDress){
-			return new Response('服饰不存在！', -1);
+		if(!$pic){
+			return new Response('请上传活动图片', -1);
 		}
 		
 		$aList = $this->_getConfig();
-		$isFind = false;
-		if($aList){
-			foreach($aList as $key => $aValue){
-				if($aValue['dress_id'] == $dressId){
-					$aList[$key]['pic_index'] = $picIndex;
-					$isFind = true;
-				}
-			}
-		}else{
+		if(!$aList){
 			$aList = [];
 		}
-		if(!$isFind){
-			array_push($aList, [
-				'vender_id' => $mDress->vender_id,
-				'dress_id' => $dressId,
-				'pic_index' => $picIndex
-			]);
-		}
+		array_push($aList, [
+			'pic' => $pic,
+			'link_url' => $linkUrl
+		]);
 		
 		$this->_setConfig($aList);
 		
@@ -89,12 +56,12 @@ class DiscountActivityController extends MController{
 	}
 	
 	public function actionDelete(){
-		$dressId = (int)Yii::$app->request->post('dressId');
+		$pic = (int)Yii::$app->request->post('pic');
 		$aList = $this->_getConfig();
 		$aData = [];
 		if($aList){
 			foreach($aList as $key => $aValue){
-				if($aValue['dress_id'] != $dressId){
+				if($aValue['pic'] != $pic){
 					array_push($aData, $aValue);
 				}
 			}
@@ -102,5 +69,28 @@ class DiscountActivityController extends MController{
 		$this->_setConfig($aData);
 		
 		return new Response('删除成功', 1);
+	}
+	
+	public function actionUploadFile(){
+		$oForm = new ImageUploadForm();
+		$oForm->fCustomValidator = function($oForm){
+			list($width, $height) = getimagesize($oForm->oImage->tempName);
+			/*if($width != 340 || $height != 235){
+				$oForm->addError('oImage', '图片宽高应为340px*235px');
+				return false;
+			}*/
+			return true;
+		};
+		
+		$isUploadFromUEditor = false;
+		$savePath = Yii::getAlias('@p.advertisement_position_img');
+
+		$oForm->oImage = UploadedFile::getInstanceByName('image');
+		if(!$oForm->upload($savePath)){
+			$message = current($oForm->getErrors())[0];
+			return new Response($message, 0);
+		}else{
+			return new Response('', 1, $oForm->savedFile);
+		}
 	}
 }

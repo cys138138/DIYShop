@@ -13,7 +13,7 @@ $this->setTitle('优惠活动');
 				'active' => true,
 			],
 			[
-				'title' => '设置优惠活动',
+				'title' => '添加优惠活动',
 				'url' => Url::to(['discount-activity/show-setting']),
 			],
 		],
@@ -29,7 +29,7 @@ $this->setTitle('优惠活动');
 			echo Table::widget([
 				'aColumns'	=>	[
 					'pic'	=>	[
-						'title' => '服饰图片',
+						'title' => '活动图片',
 						'content' => function($aData){
 							return '<img width="234" height="375" class="img-thumbnail" src="' . Yii::getAlias('@r.url') . $aData['pic'] . '" alt="">';
 						}
@@ -39,7 +39,7 @@ $this->setTitle('优惠活动');
 						'title' => '操作',
 						'class' => 'col-sm-1',
 						'content' => function($aData){
-							return '<a href="javascript:;" onclick="deleteItem(this, ' . $aData['dress_id'] . ');">删除</a>';
+							return '<a href="javascript:;" onclick="deleteItem(this, \'' . $aData['pic'] . '\');">删除</a>';
 						}
 					],
 				],
@@ -49,12 +49,12 @@ $this->setTitle('优惠活动');
 	</div>
 </div>
 <script type="text/javascript">
-	function deleteItem(o, dressId){
+	function deleteItem(o, id){
 		UBox.confirm('确定要删除？', function(){
 			ajax({
 				url : '<?php echo Url::to(['discount-activity/delete']); ?>',
 				data : {
-					dressId : dressId
+					id : id
 				},
 				beforeSend : function(){
 					$(o).attr('disabled', 'disabled');

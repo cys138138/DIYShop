@@ -52,6 +52,7 @@ return [
 		'discount-activity/show-setting.html'									=> 'discount-activity/show-setting',
 		'discount-activity/save-setting.json'									=> 'discount-activity/save-setting',
 		'discount-activity/delete-setting.json'									=> 'discount-activity/delete',
+		'discount-activity/upload-file.html'									=> 'discount-activity/upload-file',
 		
 		
 		

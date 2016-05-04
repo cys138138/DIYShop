@@ -3,20 +3,17 @@ use umeworld\lib\Url;
 use home\widgets\Table;
 use home\widgets\ModuleNavi;
 $this->setTitle('优惠活动');
+$this->registerAssetBundle('common\assets\AjaxUploadAsset');
 ?>
 <style type="text/css">
-	.list-group-item{
+	.J-pic-wraper{
 		width:375px;
-		height:298px;
-		float:left;
-		margin:10px;
+		height:264px;
+		display:none;
 	}
-	.list-group-item img{
+	.J-pic-wraper img{
 		width:375px;
 		height:234px;
-	}
-	.li-select{
-		background-color: #ccc;
 	}
 </style>
 <div class="row">
@@ -27,124 +24,52 @@ $this->setTitle('优惠活动');
 				'url' => Url::to(['discount-activity/show-list']),
 			],
 			[
-				'title' => '设置优惠活动',
+				'title' => '添加优惠活动',
 				'url' => Url::to(['discount-activity/show-setting']),
 				'active' => true,
 			],
 		],
 	]); ?>
 	<div class="col-lg-12">
-		<h1 class="page-header">设置优惠活动</h1>
+		<h1 class="page-header">添加优惠活动</h1>
 	</div>
 </div>
 
 <div class="row">
-	<div class="col-lg-12">
-		<form role="form" class="J-search-form form-horizontal" name="J-search-form">
-			<div class="J-condition-line">
-				<label class="control-label" style="float:left;">商家编号</label>
-				<div class="col-sm-2" style="width:160px;">
-					<input type="text" class="J-vender-id form-control" name="venderId" placeholder="请输入商家编号" value="" />
-				</div>
-				<label class="control-label" style="float:left;">服饰编号</label>
-				<div class="col-sm-2" style="width:160px;">
-					<input type="text" class="J-dress-id form-control" name="dressId" placeholder="请输入服饰编号" value="" />
-				</div>
-				<div class="form-group">
-					<div class="col-sm-2" style="width:90px;">
-						<button type="button" class="btn btn-primary" onclick="search(this);">查找</button>
-					</div>
-				</div>
-			</div>
-		</form>
-	</div>
-</div>
-
-<div class="row">
-	<div class="J-result col-lg-12"></div>
-</div>
-<br />
-<br />
-<div class="J-save-setting row" style="display:none;">
 	<div class="col-lg-12">
 		<div class="form-group">
-			<button type="button" class="J-save-btn btn btn-primary" onclick="save(this);">保存设置</button>
+			<label>活动链接</label>
+			<input class="J-link-url form-control" placeholder="请输入活动链接" value="">
+			<br />
+		</div>
+		<div class="form-group">
+			<button type="button" class="J-form-upload-btn btn btn-primary">添加活动图片</button>
+		</div>
+		<div class="form-group">
+			<div class="row">
+				<div class="J-pic-wraper col-lg-12"></div>
+			</div>
+		</div>
+		<br />
+		<div class="form-group">
+			<button type="button" class="J-save-btn btn btn-primary" onclick="save(this);">保存</button>
 		</div>
 	</div>
 </div>
 <script type="text/javascript">
-	var aDress = [];
-	function showResult(aData){
-		var picHtml = '';
-		for(var i in aData.pics){
-			picHtml += '<li class="list-group-item" data-index="' + i + '">\
-				<p><img class="img-thumbnail" src="' + App.url.resource + aData.pics[i] + '" alt=""></p>\
-				<p><center><button type="button" class="btn btn-sm btn-danger" onclick="selectPic(this);">选择</button></center></p>\
-			</li>';
-		}
-		var htmlStr = '<h3>查找结果</h3>\
-			<br />\
-			<label class="control-label">服饰名称:' + aData.name + '</label>\
-			<ul class="J-pics-list list-group">' + picHtml  + '</ul>\
-			<br />\
-		';
-		$('.J-result').html(htmlStr);
-		$('.J-save-setting').show();
-	}
-	
-	function selectPic(o){
-		$('.J-pics-list li').removeClass('li-select');
-		$(o).parent().parent().addClass('li-select');
-	}
-
-	function search(o){
-		var venderId = $('.J-vender-id').val();
-		var dressId = $('.J-dress-id').val();
-		if(venderId == ''){
-			UBox.show('请输入商家编号', -1);
-			return;
-		}
-		if(dressId == ''){
-			UBox.show('请输入服饰编号', -1);
-			return;
-		}
-		ajax({
-			url : '<?php echo Url::to(['discount-activity/search-dress']); ?>',
-			data : {
-				venderId : venderId,
-				dressId : dressId
-			},
-			beforeSend : function(){
-				$(o).attr('disabled', 'disabled');
-			},
-			complete : function(){
-				$(o).attr('disabled', false);
-			},
-			success : function(aResult){
-				if(aResult.status == 1){
-					aDress = aResult.data
-					showResult(aResult.data);
-				}else{
-					$('.J-save-setting').hide();
-					UBox.show(aResult.msg, aResult.status);
-				}
-			}
-		});
-	}
+	var currentPic = '';
 	
 	function save(o){
-		if($('.li-select').length == 0){
-			UBox.show('请选择图片', -1);
+		var linkUrl = $('.J-link-url').val();
+		if(linkUrl == ''){
+			UBox.show('请输入活动链接', -1);
 			return;
 		}
-		
-		var picIndex = $('.li-select').attr('data-index');
-
 		ajax({
 			url : '<?php echo Url::to(['discount-activity/save-setting']); ?>',
 			data : {
-				picIndex : picIndex,
-				dressId : aDress.id
+				linkUrl : linkUrl,
+				pic : currentPic
 			},
 			beforeSend : function(){
 				$(o).attr('disabled', 'disabled');
@@ -153,12 +78,26 @@ $this->setTitle('优惠活动');
 				$(o).attr('disabled', false);
 			},
 			success : function(aResult){
-				UBox.show(aResult.msg, aResult.status);
+				UBox.show(aResult.msg, aResult.status, function(){
+					location.href = '<?php echo Url::to(['discount-activity/show-list']); ?>';
+				}, 3);
 			}
 		});
 	}
 	
 	$(function(){
-		
+		$('.J-form-upload-btn').AjaxUpload({
+				uploadUrl : '<?php echo Url::to(['discount-activity/upload-file']); ?>',
+				fileKey : 'image',
+				callback : function(aResult){
+					if(aResult.status == 1){
+						currentPic = aResult.data;
+						$('.J-pic-wraper').html('<p><img class="img-thumbnail" src="' + App.url.resource + currentPic + '" alt=""></p>');
+						$('.J-pic-wraper').show();
+					}else{
+						UBox.show(aResult.msg, aResult.status);
+					}
+				}
+			});
 	});
 </script>
