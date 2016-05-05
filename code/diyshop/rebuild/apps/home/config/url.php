@@ -63,6 +63,10 @@ return [
 		
 		
 		
+		'user-manage/show-list.html'											=> 'user-manage/show-list',
+		'user-manage/delete.json'												=> 'user-manage/delete',
+		
+		
 		'vender-manage/show-list.html'											=> 'vender-manage/show-list',
 		'vender-manage/show-edit.html'											=> 'vender-manage/show-edit',
 		'vender-manage/save.json'												=> 'vender-manage/save',

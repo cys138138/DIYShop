@@ -117,6 +117,7 @@ class VenderManageController extends MController{
 				'company_code' => $companyCode,
 				'dress_count_limit' => $dressCountLimit,
 				'password' => Vender::encryPassword($password),
+				'create_time' => NOW_TIME
 			]);
 		}
 		

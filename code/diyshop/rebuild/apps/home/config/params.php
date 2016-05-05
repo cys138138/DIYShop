@@ -25,6 +25,14 @@ return [
 			],
 		],
 		[
+			'title' => '用户管理',
+			'en_title' => 'user_manage',
+			'url' => ['user-manage/show-list'],
+			'permission' => ['manager'],
+			'icon_class' => 'star',	
+			'child' => [],
+		],
+		[
 			'title' => '服饰分类',
 			'en_title' => 'dress_catalog',
 			'url' => ['dress-catalog/show-list'],

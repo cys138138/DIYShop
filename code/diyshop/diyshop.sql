@@ -10,10 +10,30 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-05-04 10:51:38
+Date: 2016-05-05 15:42:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `delivery_address`
+-- ----------------------------
+DROP TABLE IF EXISTS `delivery_address`;
+CREATE TABLE `delivery_address` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '收货地址记录ID自增',
+  `user_id` int(11) DEFAULT NULL COMMENT '用户ID',
+  `province_id` int(11) DEFAULT NULL COMMENT '省ID',
+  `city_id` int(11) DEFAULT NULL COMMENT '市ID',
+  `area_id` int(11) DEFAULT NULL COMMENT '地区ID',
+  `address` text COMMENT '详细地址',
+  `is_default` tinyint(4) DEFAULT NULL COMMENT '是否默认的收货地址',
+  `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of delivery_address
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `dress`
@@ -125,13 +145,35 @@ CREATE TABLE `manager` (
   `email` varchar(200) DEFAULT NULL COMMENT '邮箱',
   `password` varchar(100) DEFAULT NULL COMMENT '密码',
   `name` varchar(50) DEFAULT NULL COMMENT '姓名',
+  `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of manager
 -- ----------------------------
-INSERT INTO `manager` VALUES ('1', 'admin', null, null, '21232f297a57a5a743894a0e4a801fc3', '管理员');
+INSERT INTO `manager` VALUES ('1', 'admin', null, null, '21232f297a57a5a743894a0e4a801fc3', '管理员', '1461635974');
+
+-- ----------------------------
+-- Table structure for `order`
+-- ----------------------------
+DROP TABLE IF EXISTS `order`;
+CREATE TABLE `order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '订单记录ID自增',
+  `order_number` varchar(200) DEFAULT NULL COMMENT '订单号',
+  `order_info` text COMMENT '订单信息',
+  `status` int(11) DEFAULT NULL COMMENT '订单状态:1确认订单2待付款3待发货4待收货5申请退货6退换货7确认收货',
+  `express_info` text COMMENT '快递信息',
+  `create_time` int(11) DEFAULT NULL COMMENT '确认订单时间',
+  `pay_time` int(11) DEFAULT NULL COMMENT '付款时间',
+  `deliver_time` int(11) DEFAULT NULL COMMENT '发货时间',
+  `end_time` int(11) DEFAULT NULL COMMENT '确认收货时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of order
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `setting`
@@ -157,8 +199,14 @@ INSERT INTO `setting` VALUES ('4', 'vote_config', '[{\"pic\":\"\\/static\\/data\
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+  `user_name` varchar(30) DEFAULT NULL COMMENT '用户名',
+  `name` varchar(50) DEFAULT NULL COMMENT '姓名',
+  `mobile` varchar(12) DEFAULT NULL COMMENT '手机号',
+  `email` varchar(200) DEFAULT NULL COMMENT '邮箱',
+  `password` varchar(100) DEFAULT NULL COMMENT '密码',
+  `avatar` varchar(500) DEFAULT NULL COMMENT '头像',
+  `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -179,13 +227,14 @@ CREATE TABLE `vender` (
   `name` varchar(50) DEFAULT NULL COMMENT '厂商名称',
   `company_code` varchar(200) DEFAULT NULL COMMENT '公司码',
   `dress_count_limit` int(11) DEFAULT '0' COMMENT '商家服饰数量限制',
+  `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of vender
 -- ----------------------------
-INSERT INTO `vender` VALUES ('1', 'jack', '15012121551', '45855@qq.com', '4ff9fc6e4e5d5f590c4f2134a8cc96d1', '以纯厂商', 'asadssasasasasa', '50');
+INSERT INTO `vender` VALUES ('1', 'jack', '15012121551', '45855@qq.com', '4ff9fc6e4e5d5f590c4f2134a8cc96d1', '以纯厂商', 'asadssasasasasa', '50', '1461635974');
 
 -- ----------------------------
 -- Table structure for `vender_shop`
