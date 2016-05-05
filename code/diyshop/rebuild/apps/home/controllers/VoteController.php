@@ -46,6 +46,7 @@ class VoteController extends MController{
 			$aList = [];
 		}
 		array_push($aList, [
+			'identity' => md5(NOW_TIME),
 			'pic' => $pic,
 			'description' => $description
 		]);

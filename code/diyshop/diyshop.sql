@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-05-05 15:42:55
+Date: 2016-05-05 16:24:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -192,7 +192,7 @@ CREATE TABLE `setting` (
 INSERT INTO `setting` VALUES ('1', 'advertisement_catalog_config', '[{\"id\":\"1\",\"name\":\"\\u4e3b\\u754c\\u9762\",\"pics\":[\"\\/static\\/data\\/advertisement_position_img\\/6ef030fa9ae071bc7e2218a715efc5ef.jpeg\"]},{\"id\":\"2\",\"name\":\"\\u54c1\\u724c\",\"pics\":[\"\\/static\\/data\\/advertisement_position_img\\/cce8218c8ad80180ca133b149c4dad1d.jpeg\"]},{\"id\":\"3\",\"name\":\"\\u81ea\\u8425\",\"pics\":[\"\\/static\\/data\\/advertisement_position_img\\/f591926c72767baf3563cf5a02595013.jpeg\"]}]');
 INSERT INTO `setting` VALUES ('2', 'guess_like_config', '[{\"vender_id\":\"1\",\"dress_id\":1,\"pic_index\":1}]');
 INSERT INTO `setting` VALUES ('3', 'discount_activity_config', '[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/bb6db92becfaeba6c1032050134ebe06.jpeg\",\"link_url\":\"www.baidu.com\"}]');
-INSERT INTO `setting` VALUES ('4', 'vote_config', '[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/df3eb3f1bc3f85f3a646f767e03760a3.jpeg\",\"description\":\"\\u6295\\u7968\\u8bf4\\u660e\\u6295\\u7968\\u8bf4\\u660e\\u6295\\u7968\\u8bf4\\u660e\\u6295\\u7968\\u8bf4\\u660e\"}]');
+INSERT INTO `setting` VALUES ('4', 'vote_config', '[{\"identity\":\"0c7e3645eda540d7ae0aa5cec145803d\",\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/26df5e0f2812e68cd3e31abe0d541e3f.jpeg\",\"description\":\"\\u6295\\u7968\\u8bf4\\u660e\\u6295\\u7968\\u8bf4\\u660e\\u6295\\u7968\\u8bf4\\u660e\\u6295\\u7968\\u8bf4\\u660e\"}]');
 
 -- ----------------------------
 -- Table structure for `user`
@@ -253,3 +253,19 @@ CREATE TABLE `vender_shop` (
 -- Records of vender_shop
 -- ----------------------------
 INSERT INTO `vender_shop` VALUES ('1', 'jack服饰商店', '/static/data/vender_shop_img/1/d845f884f76dc5916a316440caff76f7.jpg', 'jack服饰商店说明jack服饰商店说明jack服饰商店说明', '[\"\\/static\\/data\\/vender_shop_img\\/1\\/a547ce501430d26a861fb5d3b6b3779c.jpeg\",\"\\/static\\/data\\/vender_shop_img\\/1\\/7086ce468e50c8214da6d5ee8daa16a5.jpeg\"]');
+
+-- ----------------------------
+-- Table structure for `vote_record`
+-- ----------------------------
+DROP TABLE IF EXISTS `vote_record`;
+CREATE TABLE `vote_record` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '投票记录ID，自增',
+  `user_id` int(11) DEFAULT NULL COMMENT '用户ID',
+  `identity` varchar(100) DEFAULT NULL COMMENT '投票标识',
+  `create_time` int(11) DEFAULT NULL COMMENT '投票时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of vote_record
+-- ----------------------------
