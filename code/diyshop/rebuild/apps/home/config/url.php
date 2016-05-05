@@ -63,6 +63,10 @@ return [
 		
 		
 		
+		'order-manage/show-list.html'											=> 'order-manage/show-list',
+		
+		
+		
 		'user-manage/show-list.html'											=> 'user-manage/show-list',
 		'user-manage/delete.json'												=> 'user-manage/delete',
 		

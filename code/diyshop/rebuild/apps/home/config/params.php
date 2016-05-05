@@ -89,6 +89,14 @@ return [
 			'child' => [],
 		],
 		[
+			'title' => '订单管理',
+			'en_title' => 'order_manage',
+			'url' => ['order-manage/show-list'],
+			'permission' => ['vender'],
+			'icon_class' => 'star',	
+			'child' => [],
+		],
+		[
 			'title' => '搭配',
 			'en_title' => 'dress_match',
 			'url' => ['site/index'],
