@@ -23,17 +23,13 @@ class Qiniu extends \yii\base\Component {
 	public function uploadFile($filePath) {
 		$auth = new Auth($this->accessKey, $this->secretKey);
 		$uptoken = $auth->uploadToken($this->bucket);
-
 		$uploadMgr = new UploadManager();
-
-		list($ret, $err) = $uploadMgr->putFile($uptoken, null, $filePath);
-		echo "\n====> putFile result: \n";
-		if ($err !== null) {
+		list($aReturn, $err) = $uploadMgr->putFile($uptoken, null, $filePath);
+		if($err !== null){
 			return false;
-		} else {
-			return $ret['key'];
+		}else{
+			return $aReturn['key'];
 		}
-
 	}
 	
 	/**
@@ -41,7 +37,6 @@ class Qiniu extends \yii\base\Component {
 	 */
 	public function downloadFile($fileKey, $savePath){
 		$auth = new Auth($accessKey, $secretKey);
-
 		//baseUrl构造成私有空间的域名/key的形式
 		$baseUrl = 'http://' . $this->privateDomain . '/' . $fileKey;
 		$authUrl = $auth->privateDownloadUrl($baseUrl);
