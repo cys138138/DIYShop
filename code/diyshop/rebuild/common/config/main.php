@@ -51,6 +51,14 @@ return [
 			'masterSecret' => 'f728efd3424a124159ca4eb7',
 		],
 
+		'qiniu'=>[
+			'class' => 'umeworld\lib\Qiniu',
+			'accessKey' => 'EeXMPOC5rp20yZhzI5Nu4gGyx05H2yKr9RsqrABj',
+			'secretKey' => 'bUJ6SAZBteLCaVx7hX67LropeOFCMrJffo83UkuR',
+			'bucket' => 'picture',
+			'privateDomain' => 'o6qtdzzxr.bkt.clouddn.com',
+		],
+
 		'assetManager' => [
 			'bundles' => [
 				'yii\web\JqueryAsset' => [
