@@ -28,6 +28,16 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 <div class="row">
 	<div class="col-lg-12">
 		<div class="form-group">
+			<label>所属分类</label>
+			<select class="J-catalog form-control">
+				<option value="0">顶级分类</option>
+			<?php foreach($aDressCatalogList as $key => $aValue){ ?>
+				<option value="<?php echo $aValue['id']; ?>"><?php echo $aValue['name']; ?></option>
+			<?php } ?>
+			</select>
+			<br />
+		</div>
+		<div class="form-group">
 			<input class="J-id form-control" type="hidden" value="<?php echo $aDressCatalog ? $aDressCatalog['id'] : ''; ?>">
 			<label>分类名称</label>
 			<input class="J-name form-control" placeholder="分类名称" value="<?php echo $aDressCatalog ? $aDressCatalog['name'] : ''; ?>">
@@ -51,6 +61,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 <script type="text/javascript">
 	function save(o){
 		var id = $('.J-id').val();
+		var pid = $('.J-catalog').val();
 		var name = $('.J-name').val();
 		var isShow = $('.J-is-show:checked').val();
 		if(name == ''){
@@ -61,6 +72,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			url : '<?php echo Url::to(['dress-catalog/save']); ?>',
 			data : {
 				id : id,
+				pid : pid,
 				name : name,
 				isShow : isShow
 			},
@@ -82,6 +94,6 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		});
 	}
 	$(function(){
-		
+		$('.J-catalog').val(<?php echo $aDressCatalog ? $aDressCatalog['pid'] : 0; ?>);
 	});
 </script>

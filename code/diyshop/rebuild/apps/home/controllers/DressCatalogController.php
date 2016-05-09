@@ -10,8 +10,27 @@ use common\model\DressCatalog;
 class DressCatalogController extends MController{
 	
     public function actionShowList(){
+		$aDressCatalogList = DressCatalog::findAll();
+		$aList = [];
+		foreach($aDressCatalogList as $key => $aValue){
+			if(!$aValue['pid']){
+				array_push($aList, $aValue);
+			}
+		}
+		
+		foreach($aList as $k => $aData){
+			if(!isset($aData['child'])){
+				$aList[$k]['child'] = [];
+			}
+			foreach($aDressCatalogList as $key => $aValue){
+				if($aData['id'] == $aValue['pid']){
+					array_push($aList[$k]['child'], $aValue);
+				}
+			}
+		}
+		
 		return $this->render('show-list', [
-			'aDressCatalogList' => DressCatalog::findAll()
+			'aDressCatalogList' => $aList
 		]);
     }
 	
@@ -19,6 +38,7 @@ class DressCatalogController extends MController{
 		$id = (int)Yii::$app->request->get('id');
 		
 		$aDressCatalog = [];
+		$aDressCatalogList = DressCatalog::findAll(['pid' => 0]);
 		if($id){
 			$mDressCatalog = DressCatalog::findOne($id);
 			if($mDressCatalog){
@@ -27,12 +47,14 @@ class DressCatalogController extends MController{
 		}
 		
 		return $this->render('show-edit', [
+			'aDressCatalogList' => $aDressCatalogList,
 			'aDressCatalog' => $aDressCatalog
 		]);
     }
 	
 	public function actionSave(){
 		$id = (int)Yii::$app->request->post('id');
+		$pid = (int)Yii::$app->request->post('pid');
 		$name = (string)Yii::$app->request->post('name');
 		$isShow = (int)Yii::$app->request->post('isShow');
 		if(!$name){
@@ -42,6 +64,7 @@ class DressCatalogController extends MController{
 		if($id){
 			$mDressCatalog = DressCatalog::findOne($id);
 			if($mDressCatalog){
+				$mDressCatalog->set('pid', $pid);
 				$mDressCatalog->set('name', $name);
 				$mDressCatalog->set('is_show', $isShow);
 				$mDressCatalog->save();
@@ -49,6 +72,7 @@ class DressCatalogController extends MController{
 			}
 		}else{
 			$isSuccess = DressCatalog::initData([
+				'pid' => $pid,
 				'name' => $name,
 				'is_show' => $isShow
 			]);

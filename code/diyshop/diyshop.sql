@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-05-05 16:24:46
+Date: 2016-05-09 15:13:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -61,20 +61,23 @@ INSERT INTO `dress` VALUES ('1', '1', '1', '测试服饰1', '50.00', '[\"\\/stat
 DROP TABLE IF EXISTS `dress_catalog`;
 CREATE TABLE `dress_catalog` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID自增',
+  `pid` int(11) DEFAULT '0' COMMENT '父id',
   `name` varchar(50) DEFAULT NULL COMMENT '服饰分类名称',
   `is_show` tinyint(4) DEFAULT NULL COMMENT '是否显示：1是0否',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dress_catalog
 -- ----------------------------
-INSERT INTO `dress_catalog` VALUES ('1', '外套', '1');
-INSERT INTO `dress_catalog` VALUES ('2', '上衣', '1');
-INSERT INTO `dress_catalog` VALUES ('3', '裙子', '1');
-INSERT INTO `dress_catalog` VALUES ('4', '男装专区', '1');
-INSERT INTO `dress_catalog` VALUES ('5', '女装专区', '1');
-INSERT INTO `dress_catalog` VALUES ('6', '折扣', '1');
+INSERT INTO `dress_catalog` VALUES ('1', '0', '外套', '1');
+INSERT INTO `dress_catalog` VALUES ('2', '0', '上衣', '1');
+INSERT INTO `dress_catalog` VALUES ('3', '0', '裙子', '1');
+INSERT INTO `dress_catalog` VALUES ('4', '0', '男装专区', '1');
+INSERT INTO `dress_catalog` VALUES ('5', '0', '女装专区', '1');
+INSERT INTO `dress_catalog` VALUES ('6', '0', '折扣', '1');
+INSERT INTO `dress_catalog` VALUES ('7', '1', '衣领', '1');
+INSERT INTO `dress_catalog` VALUES ('8', '1', '衣袖', '1');
 
 -- ----------------------------
 -- Table structure for `dress_comment`
