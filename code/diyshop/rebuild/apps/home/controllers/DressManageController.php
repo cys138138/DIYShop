@@ -43,7 +43,7 @@ class DressManageController extends VController{
 			}
 		}
 		return $this->render('show-edit', [
-			'aDressCatalogList' => DressCatalog::findAll(),
+			'aDressCatalogList' => DressCatalog::findAll(['pid' => 0]),
 			'aDress' => $aDress,
 			'aTagList' => Dress::getTagList(Yii::$app->vender->id),
 			'aSizeColorList' => Dress::getSizeColorList(Yii::$app->vender->id),

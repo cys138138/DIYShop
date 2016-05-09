@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-05-09 15:13:55
+Date: 2016-05-09 17:20:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -106,18 +106,19 @@ CREATE TABLE `dress_size_color_count` (
   `size_name` varchar(100) DEFAULT NULL COMMENT '尺码名称',
   `color_name` varchar(100) DEFAULT NULL COMMENT '颜色名称',
   `stock` int(11) DEFAULT NULL COMMENT '库存',
+  `pic` text COMMENT '图片',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dress_size_color_count
 -- ----------------------------
-INSERT INTO `dress_size_color_count` VALUES ('1', '1', '1', 'S', '白', '1');
-INSERT INTO `dress_size_color_count` VALUES ('2', '1', '1', 'S', '黑', '2');
-INSERT INTO `dress_size_color_count` VALUES ('3', '1', '1', 'M', '白', '3');
-INSERT INTO `dress_size_color_count` VALUES ('4', '1', '1', 'M', '黑', '4');
-INSERT INTO `dress_size_color_count` VALUES ('5', '1', '1', 'L', '白', '5');
-INSERT INTO `dress_size_color_count` VALUES ('6', '1', '1', 'L', '黑', '6');
+INSERT INTO `dress_size_color_count` VALUES ('1', '1', '1', 'S', '白', '1', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
+INSERT INTO `dress_size_color_count` VALUES ('2', '1', '1', 'S', '黑', '2', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
+INSERT INTO `dress_size_color_count` VALUES ('3', '1', '1', 'M', '白', '3', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
+INSERT INTO `dress_size_color_count` VALUES ('4', '1', '1', 'M', '黑', '4', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
+INSERT INTO `dress_size_color_count` VALUES ('5', '1', '1', 'L', '白', '5', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
+INSERT INTO `dress_size_color_count` VALUES ('6', '1', '1', 'L', '黑', '6', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
 
 -- ----------------------------
 -- Table structure for `dress_tag`
@@ -176,6 +177,22 @@ CREATE TABLE `order` (
 
 -- ----------------------------
 -- Records of order
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `qiniu_pic_key_map`
+-- ----------------------------
+DROP TABLE IF EXISTS `qiniu_pic_key_map`;
+CREATE TABLE `qiniu_pic_key_map` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '七牛图key对照表ID，自增',
+  `file_key` varchar(500) DEFAULT NULL COMMENT '七牛文件key',
+  `file_name` varchar(500) DEFAULT NULL COMMENT '本地图片文件名，无后缀',
+  `file_path` varchar(500) DEFAULT NULL COMMENT '本地图片路径',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of qiniu_pic_key_map
 -- ----------------------------
 
 -- ----------------------------

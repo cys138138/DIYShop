@@ -80,7 +80,8 @@ class Dress extends \common\lib\DbOrmModel{
 				'dress_id' => $this->id,
 				'size_name' => $aValue['size'],
 				'color_name' => $aValue['color'],
-				'stock' => $aValue['count']
+				'stock' => $aValue['count'],
+				'pic' => $aValue['pic']
 			])->execute();
 		}
 	}

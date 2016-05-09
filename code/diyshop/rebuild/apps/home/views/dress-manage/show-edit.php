@@ -46,6 +46,21 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	.J-input-select-list a{
 		background-color:#ddd;
 	}
+	
+	.J-big-pic{
+		position:absolute;
+		height:200px;
+		width:200px;
+	}
+	.J-big-pic img{
+		height:200px;
+		width:200px;
+	}
+	#wrapper .J-scc-pic{
+		width:34px;
+		height:34px;
+		cursor:pointer;
+	}
 </style>
 <div class="row">
 	<?php echo ModuleNavi::widget([
@@ -97,12 +112,13 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			<br />
 		</div>
 		<div class="form-group" style="margin-bottom: 0px;">
-			<label>尺码颜色库存</label>
+			<label>尺码颜色库存图片</label>
 		</div>
 		<div class="J-size-color-count form-group">
 			<input class="J-line-input J-size form-control" placeholder="请输入服饰尺码" value="" onfocus="showSizeList(this);" onblur="removeList();">
 			<input class="J-line-input J-color form-control" placeholder="请输入服饰颜色" value="" onfocus="showColorList(this);" onblur="removeList();">
 			<input class="J-line-input J-count form-control" placeholder="请输入服饰数量" value="">
+			<img class="J-line-input J-scc-pic" data-pic="" src="" title="上传图片" onmouseover="showBigPic(this);" onmouseout="removeBigPic();" />
 			<button type="button" class="J-line-input btn btn-info" onclick="addSizeAndColorCount(this);" style="width:55px;">添加</button>
 			<br />
 		</div>
@@ -144,11 +160,11 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	var oCurrentInputDom = {};
 	
 	function init(){
-		if(aDress.dress_size_color_count != 0){
+		if(typeof(aDress.dress_size_color_count) != 'undefined'){
 			var oDom = $('.J-size-color-count');
 			for(var i in aDress.dress_size_color_count){
 				var aTemp = aDress.dress_size_color_count[i];
-				var htmlStr = buildSCCHtml(aTemp.size_name, aTemp.color_name, aTemp.stock);
+				var htmlStr = buildSCCHtml(aTemp.size_name, aTemp.color_name, aTemp.stock, aTemp.pic);
 				var oTempDom = $(htmlStr);
 				oDom.after(oTempDom);
 				oDom.find('button').text('删除');
@@ -156,6 +172,19 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				oDom = oTempDom;
 			}
 			$('.J-size-color-count')[0].remove();
+		}else{
+			$('.J-scc-pic').AjaxUpload({
+				uploadUrl : '<?php echo Url::to(['dress-manage/upload-file']); ?>',
+				fileKey : 'image',
+				callback : function(aResult){
+					if(aResult.status == 1){
+						$('.J-scc-pic').attr('src', App.url.resource + aResult.data);
+						$('.J-scc-pic').attr('data-pic', aResult.data);
+					}else{
+						UBox.show(aResult.msg, aResult.status);
+					}
+				}
+			});
 		}
 		if(aDress.dress_tag != 0){
 			for(var i in aDress.dress_tag){
@@ -196,7 +225,8 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			var aTemp = {
 				size : $('.J-size').val(), 
 				color : $('.J-color').val(), 
-				count : $('.J-count').val()
+				count : $('.J-count').val(),
+				pic : $('.J-scc-pic').attr('data-pic')
 			};
 			aSizeColorCount.push(aTemp);
 		}else{
@@ -204,7 +234,8 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				var aTemp = {
 					size : $(this).find('.J-size').val(), 
 					color : $(this).find('.J-color').val(), 
-					count : $(this).find('.J-count').val()
+					count : $(this).find('.J-count').val(),
+					pic : $(this).find('.J-scc-pic').attr('data-pic')
 				};
 				aSizeColorCount.push(aTemp);
 			});
@@ -294,19 +325,49 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		});
 	}
 	
-	function buildSCCHtml(size, color, count){
-		return '<div class="J-size-color-count form-group">\
+	function buildSCCHtml(size, color, count, img){
+		var imgSrc = '';
+		if(img != ''){
+			imgSrc = App.url.resource + img;
+		}
+		var oDom = $('<div class="J-size-color-count form-group">\
 				<input class="J-line-input J-size form-control" placeholder="请输入服饰尺码" value="' + size + '" onfocus="showSizeList(this);" onblur="removeList();">\
 				<input class="J-line-input J-color form-control" placeholder="请输入服饰颜色" value="' + color + '" onfocus="showColorList(this);" onblur="removeList();">\
 				<input class="J-line-input J-count form-control" placeholder="请输入服饰数量" value="' + count + '">\
+				<img class="J-line-input J-scc-pic" data-pic="' + img + '" src="' + imgSrc + '" title="上传图片" onmouseover="showBigPic(this);" onmouseout="removeBigPic();" />\
 				<button type="button" class="J-line-input btn btn-info" onclick="addSizeAndColorCount(this);" style="width:55px;">添加</button>\
 				<br />\
 			</div>\
-		';
+		');
+		
+		oDom.find('img').AjaxUpload({
+			uploadUrl : '<?php echo Url::to(['dress-manage/upload-file']); ?>',
+			fileKey : 'image',
+			callback : function(aResult){
+				if(aResult.status == 1){
+					oDom.find('img').attr('src', App.url.resource + aResult.data);
+					oDom.find('img').attr('data-pic', aResult.data);
+				}else{
+					UBox.show(aResult.msg, aResult.status);
+				}
+			}
+		});
+		
+		return oDom;
+	}
+	
+	function removeBigPic(){
+		$('.J-big-pic').remove();
+	}
+	
+	function showBigPic(o, e){
+		var oDom = $('<div class="J-big-pic"><img class="img-thumbnail" src="' + $(o).attr('src') + '" alt=""></div>');
+		$('body').append(oDom);
+		oDom.css({top: $(o).offset().top + 40, left: $(o).offset().left + 40});
 	}
 	
 	function addSizeAndColorCount(o){
-		$(o).parent().after(buildSCCHtml('', '', ''));
+		$(o).parent().after(buildSCCHtml('', '', '', ''));
 		$(o).text('删除');
 		$(o).attr('onclick', 'delSizeAndColorCount(this);');
 	}
@@ -388,12 +449,16 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	
 	function setValue(o){
 		oCurrentInputDom.val($(o).text());
-		removeList();
+		removeList(o);
 	}
 	
-	function removeList(){
+	function removeList(o){
+		var oDom = $('.J-input-select-list');
+		if(o){
+			oDom = $(o).parent();
+		}
 		setTimeout(function(){
-			$('.J-input-select-list').remove();
+			oDom.remove();
 		}, 200);
 	}
 	
