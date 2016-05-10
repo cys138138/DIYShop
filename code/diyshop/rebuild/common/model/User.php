@@ -8,7 +8,9 @@ use yii\web\IdentityInterface;
 use yii\base\NotSupportedException;
 
 class User extends \common\lib\DbOrmModel implements IdentityInterface{
-
+	const SEX_BOY = 1;
+	const SEX_GIRL = 2;
+	
 	public static function tableName(){
 		return Yii::$app->db->parseTable('_@user');
 	}

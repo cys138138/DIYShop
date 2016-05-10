@@ -7,8 +7,6 @@ use umeworld\lib\Response;
 use umeworld\lib\Url;
 use common\model\Order;
 use common\model\form\OrderListForm;
-use yii\validators\EmailValidator;
-use umeworld\lib\PhoneValidator;
 
 class OrderManageController extends VController{
 	

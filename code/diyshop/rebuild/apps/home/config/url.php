@@ -94,6 +94,20 @@ return [
 		'dress-manage/upload-file.html'											=> 'dress-manage/upload-file',
 		
 		
+		'manager-dress-match/show-list.html'									=> 'manager-dress-match/show-list',
+		'manager-dress-match/show-edit.html'									=> 'manager-dress-match/show-edit',
+		'manager-dress-match/save.json'											=> 'manager-dress-match/save',
+		'manager-dress-match/delete.json'										=> 'manager-dress-match/delete',
+		'manager-dress-match/upload-file.html'									=> 'manager-dress-match/upload-file',
+		
+		
+		'vender-dress-match/show-list.html'										=> 'vender-dress-match/show-list',
+		'vender-dress-match/show-edit.html'										=> 'vender-dress-match/show-edit',
+		'vender-dress-match/save.json'											=> 'vender-dress-match/save',
+		'vender-dress-match/delete.json'										=> 'vender-dress-match/delete',
+		'vender-dress-match/upload-file.html'									=> 'vender-dress-match/upload-file',
+		
+		
 		//跳转页面
 		'jump/<jumpType:\w+>.html'						=> 'jump/jump',
 

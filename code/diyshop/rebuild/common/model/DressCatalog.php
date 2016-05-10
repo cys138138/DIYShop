@@ -16,4 +16,15 @@ class DressCatalog extends \common\lib\DbOrmModel{
 		(new Query())->createCommand()->insert(static::tableName(), $aData)->execute();
 		return self::findOne(Yii::$app->db->getLastInsertID());
 	}
+	
+	public static function getDressCatalogPath($id){
+		$mDressChildCatalog = self::findOne($id);
+		if($mDressChildCatalog){
+			$mDressCatalog = self::findOne($mDressChildCatalog->pid);
+			if($mDressCatalog){
+				return $mDressCatalog->name . ' -> ' . $mDressChildCatalog->name;
+			}
+		}
+		return '';
+	}
 }

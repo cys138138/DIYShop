@@ -4,11 +4,11 @@ namespace common\model;
 use Yii;
 use umeworld\lib\Query;
 
-class Order extends \common\lib\DbOrmModel{
-	protected $_aEncodeFields = ['order_info', 'express_info'];
+class ManagerDressMatch extends \common\lib\DbOrmModel{
+	protected $_aEncodeFields = ['pics'];
 
 	public static function tableName(){
-		return Yii::$app->db->parseTable('_@order');
+		return Yii::$app->db->parseTable('_@manager_dress_match');
 	}
 	
 	public static function getList($aCondition = [], $aControl = []){

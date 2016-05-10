@@ -1,0 +1,374 @@
+LOG_START=================================
+[time=2016-05-10 11:46:47] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:1] 
+message_start
+exception 'yii\base\ErrorException' with message 'Class 'home\controllers\ImageUploadForm' not found' in /var/www/diyshop/rebuild/apps/home/controllers/ManagerDressMatchController.php:109
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/manager-dress-match/upload-file.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_POST = [
+    '_csrf' => 'ZnhMLkkuWE4qHSVBBV8eFxJIOUURRDUWPDsKRwxgPCZQEXpYHhcCdw=='
+    '_is_ajax' => '1'
+]
+
+$_FILES = [
+    'image' => [
+        'name' => 'raw_1457683026.jpeg'
+        'type' => 'image/jpeg'
+        'tmp_name' => '/tmp/phpeiCKPz'
+        'error' => 0
+        'size' => 125574
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => 'b91b9813f7444544af9e6a43da7ead681a127ea73f89b5f428b7a2a235a4b03ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"LeioLqFYt0ukXjmXZCFiENdh6i6vW9Z9\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/manager-dress-match/upload-file.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/manager-dress-match/show-edit.html',
+	'REQUEST_METHOD' => 'POST',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-05-10 11:47:01] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:1] 
+message_start
+exception 'yii\base\ErrorException' with message 'Class 'home\controllers\ImageUploadForm' not found' in /var/www/diyshop/rebuild/apps/home/controllers/ManagerDressMatchController.php:109
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/manager-dress-match/upload-file.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_POST = [
+    '_csrf' => 'ZnhMLkkuWE4qHSVBBV8eFxJIOUURRDUWPDsKRwxgPCZQEXpYHhcCdw=='
+    '_is_ajax' => '1'
+]
+
+$_FILES = [
+    'image' => [
+        'name' => 'raw_1457683026.jpeg'
+        'type' => 'image/jpeg'
+        'tmp_name' => '/tmp/phpTkchFh'
+        'error' => 0
+        'size' => 125574
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => 'b91b9813f7444544af9e6a43da7ead681a127ea73f89b5f428b7a2a235a4b03ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"LeioLqFYt0ukXjmXZCFiENdh6i6vW9Z9\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/manager-dress-match/upload-file.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/manager-dress-match/show-edit.html',
+	'REQUEST_METHOD' => 'POST',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-05-10 11:49:13] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:1] 
+message_start
+exception 'yii\base\ErrorException' with message 'Class 'home\controllers\ManagerDressMatch' not found' in /var/www/diyshop/rebuild/apps/home/controllers/ManagerDressMatchController.php:82
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/manager-dress-match/save.json
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_POST = [
+    'id' => ''
+    'sex' => '2'
+    'catalogId' => '7'
+    'aPics' => [
+        0 => '/static/data/dress/51/89182f0bf496a7c4341a3a14f91dafca.jpeg'
+        1 => '/static/data/dress/24/4c78344cb602bd1b605b8c80f630c3e5.jpeg'
+    ]
+    '_csrf' => 'TWt4VFljdmUBDhE7FRIwPDlbDT8BCRs9Fyg.PRwtEg17Ak4iDlosXA=='
+]
+
+$_COOKIE = [
+    '_csrf' => 'b91b9813f7444544af9e6a43da7ead681a127ea73f89b5f428b7a2a235a4b03ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"LeioLqFYt0ukXjmXZCFiENdh6i6vW9Z9\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/manager-dress-match/save.json',
+	'HTTP_REFERER' => 'http://www.diyshop.com/manager-dress-match/show-edit.html',
+	'REQUEST_METHOD' => 'POST',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-05-10 11:49:51] [192.168.0.175][-][-][level=error][category=yii\db\Exception:2] 
+message_start
+exception 'yii\base\ErrorException' with message 'PDOStatement::bindValue() expects parameter 3 to be long, string given' in /var/www/diyshop/framework/yiisoft/yii2/db/Command.php:279
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleError(2, 'PDOStatement::b...', '/var/www/diysho...', 279, Array)
+#1 /var/www/diyshop/framework/yiisoft/yii2/db/Command.php(279): PDOStatement->bindValue(':qp2', '/static/data/dr...', '/static/data/dr...')
+#2 /var/www/diyshop/framework/yiisoft/yii2/db/Command.php(223): yii\db\Command->bindPendingParams()
+#3 /var/www/diyshop/framework/yiisoft/yii2/db/Command.php(775): yii\db\Command->prepare(false)
+#4 /var/www/diyshop/rebuild/umeworld/lib/DbCommand.php(20): yii\db\Command->execute()
+#5 /var/www/diyshop/rebuild/common/lib/DbOrmModel.php(266): umeworld\lib\DbCommand->execute()
+#6 /var/www/diyshop/rebuild/apps/home/controllers/ManagerDressMatchController.php(88): common\lib\DbOrmModel::insert(Array)
+#7 [internal function]: home\controllers\ManagerDressMatchController->actionSave()
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#9 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#10 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('save', Array)
+#11 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('manager-dress-m...', Array)
+#12 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#14 {main}
+
+Next exception 'yii\db\Exception' with message 'PDOStatement::bindValue() expects parameter 3 to be long, string given
+Failed to prepare SQL: INSERT INTO `manager_dress_match` (`sex`, `catalog_id`, `pics`, `create_time`) VALUES (:qp0, :qp1, :qp2, :qp3)' in /var/www/diyshop/framework/yiisoft/yii2/db/Command.php:227
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/db/Command.php(775): yii\db\Command->prepare(false)
+#1 /var/www/diyshop/rebuild/umeworld/lib/DbCommand.php(20): yii\db\Command->execute()
+#2 /var/www/diyshop/rebuild/common/lib/DbOrmModel.php(266): umeworld\lib\DbCommand->execute()
+#3 /var/www/diyshop/rebuild/apps/home/controllers/ManagerDressMatchController.php(88): common\lib\DbOrmModel::insert(Array)
+#4 [internal function]: home\controllers\ManagerDressMatchController->actionSave()
+#5 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#6 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#7 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('save', Array)
+#8 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('manager-dress-m...', Array)
+#9 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#11 {main}
+Additional Information:
+
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/manager-dress-match/save.json
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_POST = [
+    'id' => ''
+    'sex' => '2'
+    'catalogId' => '7'
+    'aPics' => [
+        0 => '/static/data/dress/51/89182f0bf496a7c4341a3a14f91dafca.jpeg'
+        1 => '/static/data/dress/24/4c78344cb602bd1b605b8c80f630c3e5.jpeg'
+    ]
+    '_csrf' => 'TWt4VFljdmUBDhE7FRIwPDlbDT8BCRs9Fyg.PRwtEg17Ak4iDlosXA=='
+]
+
+$_COOKIE = [
+    '_csrf' => 'b91b9813f7444544af9e6a43da7ead681a127ea73f89b5f428b7a2a235a4b03ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"LeioLqFYt0ukXjmXZCFiENdh6i6vW9Z9\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/manager-dress-match/save.json',
+	'HTTP_REFERER' => 'http://www.diyshop.com/manager-dress-match/show-edit.html',
+	'REQUEST_METHOD' => 'POST',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-05-10 15:00:09] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:8] 
+message_start
+exception 'yii\base\ErrorException' with message 'Undefined index: pic' in /var/www/diyshop/rebuild/apps/home/views/manager-dress-match/show-list.php:38
+Stack trace:
+#0 /var/www/diyshop/rebuild/apps/home/views/manager-dress-match/show-list.php(38): yii\base\ErrorHandler->handleError(8, 'Undefined index...', '/var/www/diysho...', 38, Array)
+#1 /var/www/diyshop/rebuild/apps/home/widgets/Table.php(42): yii\base\View->{closure}(Array, 0)
+#2 /var/www/diyshop/rebuild/apps/home/widgets/views/table/base.php(33): home\widgets\Table->parseColumnItemContent(Array, 0, Array, 'operation')
+#3 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#5 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\widgets\Table))
+#6 /var/www/diyshop/framework/yiisoft/yii2/base/Widget.php(191): yii\base\View->render('table/base', Array, Object(home\widgets\Table))
+#7 /var/www/diyshop/rebuild/apps/home/widgets/Table.php(25): yii\base\Widget->render('table/base', Array)
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/Widget.php(98): home\widgets\Table->run()
+#9 /var/www/diyshop/rebuild/apps/home/views/manager-dress-match/show-list.php(43): yii\base\Widget::widget(Array)
+#10 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#11 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#12 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\controllers\ManagerDressMatchController))
+#13 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(371): yii\base\View->render('show-list', Array, Object(home\controllers\ManagerDressMatchController))
+#14 /var/www/diyshop/rebuild/apps/home/controllers/ManagerDressMatchController.php(28): yii\base\Controller->render('show-list', Array)
+#15 [internal function]: home\controllers\ManagerDressMatchController->actionShowList()
+#16 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#17 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#18 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('show-list', Array)
+#19 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('manager-dress-m...', Array)
+#20 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#21 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#22 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/manager-dress-match/show-list.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'b91b9813f7444544af9e6a43da7ead681a127ea73f89b5f428b7a2a235a4b03ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"LeioLqFYt0ukXjmXZCFiENdh6i6vW9Z9\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/manager-dress-match/show-list.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/manager-dress-match/show-edit.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-05-10 15:10:30] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:8] 
+message_start
+exception 'yii\base\ErrorException' with message 'Undefined index: pid' in /var/www/diyshop/rebuild/apps/home/views/manager-dress-match/show-edit.php:181
+Stack trace:
+#0 /var/www/diyshop/rebuild/apps/home/views/manager-dress-match/show-edit.php(181): yii\base\ErrorHandler->handleError(8, 'Undefined index...', '/var/www/diysho...', 181, Array)
+#1 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#2 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#3 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\controllers\ManagerDressMatchController))
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(371): yii\base\View->render('show-edit', Array, Object(home\controllers\ManagerDressMatchController))
+#5 /var/www/diyshop/rebuild/apps/home/controllers/ManagerDressMatchController.php(61): yii\base\Controller->render('show-edit', Array)
+#6 [internal function]: home\controllers\ManagerDressMatchController->actionShowEdit()
+#7 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#9 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('show-edit', Array)
+#10 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('manager-dress-m...', Array)
+#11 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#13 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/manager-dress-match/show-edit.html?id=1
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_GET = [
+    'id' => '1'
+]
+
+$_COOKIE = [
+    '_csrf' => 'b91b9813f7444544af9e6a43da7ead681a127ea73f89b5f428b7a2a235a4b03ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"LeioLqFYt0ukXjmXZCFiENdh6i6vW9Z9\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/manager-dress-match/show-edit.html?id=1',
+	'HTTP_REFERER' => 'http://www.diyshop.com/manager-dress-match/show-list.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-05-10 15:45:46] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:8] 
+message_start
+exception 'yii\base\ErrorException' with message 'Undefined variable: aDressCatalog' in /var/www/diyshop/rebuild/apps/home/views/manager-dress-match/show-edit.php:46
+Stack trace:
+#0 /var/www/diyshop/rebuild/apps/home/views/manager-dress-match/show-edit.php(46): yii\base\ErrorHandler->handleError(8, 'Undefined varia...', '/var/www/diysho...', 46, Array)
+#1 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#2 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#3 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\controllers\ManagerDressMatchController))
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(371): yii\base\View->render('show-edit', Array, Object(home\controllers\ManagerDressMatchController))
+#5 /var/www/diyshop/rebuild/apps/home/controllers/ManagerDressMatchController.php(65): yii\base\Controller->render('show-edit', Array)
+#6 [internal function]: home\controllers\ManagerDressMatchController->actionShowEdit()
+#7 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#9 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('show-edit', Array)
+#10 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('manager-dress-m...', Array)
+#11 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#13 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/manager-dress-match/show-edit.html?id=1
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_GET = [
+    'id' => '1'
+]
+
+$_COOKIE = [
+    '_csrf' => 'b91b9813f7444544af9e6a43da7ead681a127ea73f89b5f428b7a2a235a4b03ea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"LeioLqFYt0ukXjmXZCFiENdh6i6vW9Z9\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/manager-dress-match/show-edit.html?id=1',
+	'HTTP_REFERER' => 'http://www.diyshop.com/manager-dress-match/show-list.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
