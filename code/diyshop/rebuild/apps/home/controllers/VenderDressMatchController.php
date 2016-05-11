@@ -42,7 +42,13 @@ class VenderDressMatchController extends VController{
 			$mDressMatch = VenderDressMatch::findOne($id);
 			if($mDressMatch){
 				$aDressMatch = $mDressMatch->toArray();
-				$mDressCatalog = DressCatalog::findOne($mDressMatch->catalog_id);
+				$mManagerDressMatch = ManagerDressMatch::findOne($mDressMatch->manager_dress_match_id);
+				if($mManagerDressMatch){
+					$aDressMatch['manager_dress_match'] = $mManagerDressMatch->toArray();
+					$aDressMatch['catalog_id'] = $mManagerDressMatch->catalog_id;
+					$aDressMatch['sex'] = $mManagerDressMatch->sex;
+				}
+				$mDressCatalog = DressCatalog::findOne($aDressMatch['catalog_id']);
 				if($mDressCatalog){
 					$aDressMatch['dress_catalog'] = $mDressCatalog;
 				}
@@ -66,6 +72,15 @@ class VenderDressMatchController extends VController{
 		]);
     }
 	
+	public function actionGetManagerDressMatchList(){
+		$catalogId = (int)Yii::$app->request->post('catalogId');
+		$sex = (int)Yii::$app->request->post('sex');
+		
+		$aList = ManagerDressMatch::findAll(['catalog_id' => $catalogId, 'sex' => $sex]);
+		
+		return new Response('', 1, $aList);
+	}
+	
 	public function actionSave(){
 		$id = (int)Yii::$app->request->post('id');
 		$name = (string)Yii::$app->request->post('name');
@@ -80,7 +95,7 @@ class VenderDressMatchController extends VController{
 		if(!$mManagerDressMatch){
 			return new Response('找不到搭配信息', -1);
 		}
-	
+		$aPics = array_values(array_diff($aPics, $mManagerDressMatch->pics));
 		$isSuccess = false;
 		if($id){
 			$mVenderDressMatch = VenderDressMatch::findOne($id);

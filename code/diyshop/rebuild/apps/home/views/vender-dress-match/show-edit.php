@@ -74,6 +74,11 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			<br />
 		</div>
 		<div class="form-group">
+			<label>服饰搭配</label>
+			<select class="J-manager-dress-match-list form-control"></select>
+			<br />
+		</div>
+		<div class="form-group">
 			<label>搭配图片</label>
 			<div class="form-group">
 				<button type="button" class="J-add-pics-btn btn btn-info">上传搭配图片</button>
@@ -91,6 +96,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	</div>
 </div>
 <script type="text/javascript">
+	var aManagerDressMatchCache = {};
 	var aDressCatalogChildList = <?php echo json_encode($aDressCatalogChildList); ?>;
 	function getPics(){
 		var aPics = [];
@@ -123,7 +129,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		var id = $('.J-id').val();
 		var name = $('.J-name').val();
 		var sex = $('.J-sex').val();
-		var catalogId = $('.J-catalog-id').val();
+		var managerDressMatchId = $('.J-manager-dress-match-list').val();
 		var aPics = getPics();
 		if(name == ''){
 			UBox.show('请填写搭配别名', -1);
@@ -138,8 +144,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			data : {
 				id : id,
 				name : name,
-				sex : sex,
-				catalogId : catalogId,
+				managerDressMatchId : managerDressMatchId,
 				aPics : aPics
 			},
 			beforeSend : function(){
@@ -169,12 +174,92 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		}
 		
 		$('.J-catalog-id').html(htmlStr);
+		showManagerDressMatchList($('.J-catalog-id').val(), $('.J-sex').val());
+	}
+	
+	function showManagerDressMatchPics(id){
+		$('.J-pics-list').html('');
+		var aData = aManagerDressMatchCache[getCacheKey($('.J-catalog-id').val(), $('.J-sex').val())];
+		for(var i in aData){
+			if(aData[i].id == id){
+				for(var j in aData[i].pics){
+					addPic(aData[i].pics[j]);
+				}
+				<?php if($aDressMatch){ ?>
+					if(id == <?php echo $aDressMatch['manager_dress_match_id']; ?>){
+					<?php foreach($aDressMatch['pics'] as $value){ ?>
+						addPic('<?php echo $value; ?>');
+					<?php } ?>
+					}
+				<?php } ?>
+				break;
+			}
+		}
+	}
+	
+	function appendManagerDressMatchList(aData){
+		var htmlStr = '';
+		var flag = false;
+		for(var i in aData){
+			<?php if($aDressMatch){ ?>
+				if(aData[i].id == <?php echo $aDressMatch['manager_dress_match_id']; ?>){
+					flag = true;
+				}
+			<?php } ?>
+			htmlStr += '<option value="' + aData[i].id + '">' + aData[i].name + '</option>';
+		}
+		$('.J-manager-dress-match-list').html(htmlStr);
+		<?php if($aDressMatch){ ?>
+			if(flag){
+				$('.J-manager-dress-match-list').val(<?php echo $aDressMatch['manager_dress_match_id']; ?>);
+			}
+		<?php } ?>
+		showManagerDressMatchPics($('.J-manager-dress-match-list').val());
+	}
+	
+	function getCacheKey(catalogId, sex){
+		return 'key_' + catalogId + '_' + sex;
+	}
+	
+	function showManagerDressMatchList(catalogId, sex){
+		if(!catalogId){
+			appendManagerDressMatchList([]);
+			return;
+		}
+		var keyStr = getCacheKey(catalogId, sex);
+		if(typeof(aManagerDressMatchCache[keyStr]) != 'undefined'){
+			appendManagerDressMatchList(aManagerDressMatchCache[keyStr]);
+			return;
+		}
+		ajax({
+			url : '<?php echo Url::to(['vender-dress-match/get-manager-dress-match-list']); ?>',
+			data : {
+				catalogId : catalogId,
+				sex : sex,
+			},
+			success : function(aResult){
+				if(aResult.status == 1){
+					aManagerDressMatchCache[keyStr] = aResult.data;
+					appendManagerDressMatchList(aManagerDressMatchCache[keyStr]);
+				}
+			}
+		});
 	}
 	
 	$(function(){
 		showChildCatalog($('.J-catalog').val());
 		$('.J-catalog').on('change', function(){
 			showChildCatalog($(this).val());
+			showManagerDressMatchList($('.J-catalog-id').val(), $('.J-sex').val());
+		});
+		$('.J-catalog-id').on('change', function(){
+			showManagerDressMatchList($(this).val(), $('.J-sex').val());
+		});
+		$('.J-sex').on('change', function(){
+			showManagerDressMatchList($('.J-catalog-id').val(), $(this).val());
+		});
+		$('.J-manager-dress-match-list').on('change', function(){
+			showManagerDressMatchPics($(this).val());
 		});
 		
 		$('.J-add-pics-btn').AjaxUpload({
@@ -192,9 +277,6 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			$('.J-catalog').val(<?php echo $aDressMatch['dress_catalog']['pid']; ?>);
 			$('.J-catalog-id').val(<?php echo $aDressMatch['dress_catalog']['id']; ?>);
 			$('.J-sex').val(<?php echo $aDressMatch['sex']; ?>);
-			<?php foreach($aDressMatch['pics'] as $value){ ?>
-				addPic('<?php echo $value; ?>');
-			<?php } ?>
 		<?php } ?>
 	});
 </script>

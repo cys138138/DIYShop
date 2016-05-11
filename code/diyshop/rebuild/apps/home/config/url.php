@@ -105,6 +105,7 @@ return [
 		'vender-dress-match/show-edit.html'										=> 'vender-dress-match/show-edit',
 		'vender-dress-match/save.json'											=> 'vender-dress-match/save',
 		'vender-dress-match/delete.json'										=> 'vender-dress-match/delete',
+		'vender-dress-match/get-manager-dress-match-list.json'					=> 'vender-dress-match/get-manager-dress-match-list',
 		'vender-dress-match/upload-file.html'									=> 'vender-dress-match/upload-file',
 		
 		

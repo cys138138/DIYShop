@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-05-10 16:59:13
+Date: 2016-05-11 11:21:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -175,8 +175,8 @@ CREATE TABLE `manager_dress_match` (
 -- ----------------------------
 -- Records of manager_dress_match
 -- ----------------------------
-INSERT INTO `manager_dress_match` VALUES ('1', '外套衣领白色', '7', '2', '[\"\\/static\\/data\\/dress\\/51\\/89182f0bf496a7c4341a3a14f91dafca.jpeg\",\"\\/static\\/data\\/dress\\/24\\/4c78344cb602bd1b605b8c80f630c3e5.jpeg\"]', '1462852377');
-INSERT INTO `manager_dress_match` VALUES ('3', '外套衣领黑色', '7', '2', '[\"\\/static\\/data\\/dress\\/26\\/196c006af0daa6a3ad90f70fc83bd25d.jpeg\",\"\\/static\\/data\\/dress\\/50\\/e5ac373b7fd3ff4224ffdb8b89e8f2c2.jpeg\"]', '1462866961');
+INSERT INTO `manager_dress_match` VALUES ('1', '外套衣领白色', '7', '1', '[\"\\/static\\/data\\/dress\\/51\\/89182f0bf496a7c4341a3a14f91dafca.jpeg\",\"\\/static\\/data\\/dress\\/24\\/4c78344cb602bd1b605b8c80f630c3e5.jpeg\"]', '1462852377');
+INSERT INTO `manager_dress_match` VALUES ('3', '外套衣领黑色', '7', '1', '[\"\\/static\\/data\\/dress\\/26\\/196c006af0daa6a3ad90f70fc83bd25d.jpeg\",\"\\/static\\/data\\/dress\\/50\\/e5ac373b7fd3ff4224ffdb8b89e8f2c2.jpeg\"]', '1462866961');
 
 -- ----------------------------
 -- Table structure for `order`
@@ -287,11 +287,12 @@ CREATE TABLE `vender_dress_match` (
   `pics` text COMMENT '正反面图片',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of vender_dress_match
 -- ----------------------------
+INSERT INTO `vender_dress_match` VALUES ('1', '外套衣领白色0001', '1', '[\"\\/static\\/data\\/dress\\/46\\/6501a622cfe0b3bf8fc06c042779a708.jpeg\",\"\\/static\\/data\\/dress\\/47\\/5fe8ec7e6e5df441f1f1fe5d93ae1e54.jpeg\"]', '1462935809');
 
 -- ----------------------------
 -- Table structure for `vender_shop`

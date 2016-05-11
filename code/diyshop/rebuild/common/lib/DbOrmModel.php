@@ -52,13 +52,22 @@ abstract class DbOrmModel extends \yii\base\Model{
 		$page > 0 && $pageSize > 0 && $oQuery->offset(($page - 1) * $pageSize);
 		$aSortList && $oQuery->orderBy($aSortList);
 
-		return static::_beforeFindAll($oQuery, [
+		$aList = static::_beforeFindAll($oQuery, [
 			'fileds' => $aFields,
 			'where' => $xWhere,
 			'page' => $page,
 			'page_size' => $pageSize,
 			'sort_list' => $aSortList,
 		])->all();
+		$mInstance = new static();
+		if($aList && $mInstance->_aEncodeFields){
+			foreach($aList as $key => $aValue){
+				foreach($aValue as $k => $v){
+					$aList[$key][$k] = $mInstance->_decodeFields($k, $v);
+				}
+			}
+		}
+		return $aList;
 	}
 
 	/**
@@ -118,7 +127,7 @@ abstract class DbOrmModel extends \yii\base\Model{
 			}
 		}
 		$this->$name = $xValue;*/
-		$this->$name = $this->_decodeFields($name, $xValue);;
+		$this->$name = $this->_decodeFields($name, $xValue);
 	}
 
 	public function _decodeFields($name, $xValue){

@@ -3,6 +3,7 @@ namespace common\model;
 
 use Yii;
 use umeworld\lib\Query;
+use yii\helpers\ArrayHelper;
 
 class VenderDressMatch extends \common\lib\DbOrmModel{
 	protected $_aEncodeFields = ['pics'];
@@ -23,6 +24,26 @@ class VenderDressMatch extends \common\lib\DbOrmModel{
 			$oQuery->offset($offset)->limit($aControl['page_size']);
 		}
 		$aList = $oQuery->all();
+		
+		$aManagerDressMatchIds = ArrayHelper::getColumn($aList, 'manager_dress_match_id');
+		$aManagerDressMatchList = ManagerDressMatch::findAll(['id' => $aManagerDressMatchIds]);
+		$aDressCatalogIds = ArrayHelper::getColumn($aManagerDressMatchList, 'catalog_id');
+		$aDressCatalogList = DressCatalog::findAll(['id' => $aDressCatalogIds]);
+		foreach($aManagerDressMatchList as $k => $v){
+			foreach($aDressCatalogList as $n => $m){
+				if($m['id'] == $v['catalog_id']){
+					$aManagerDressMatchList[$k]['catalog_info'] = $m;
+				}
+			}
+		}
+		foreach($aList as $key => $aValue){
+			foreach($aManagerDressMatchList as $k => $v){
+				if($v['id'] == $aValue['manager_dress_match_id']){
+					$aList[$key]['catalog_id'] = $v['catalog_id'];
+					$aList[$key]['sex'] = $v['sex'];
+				}
+			}
+		}
 		
 		return $aList;
 	}
