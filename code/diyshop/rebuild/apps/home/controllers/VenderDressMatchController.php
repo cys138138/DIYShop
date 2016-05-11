@@ -100,6 +100,7 @@ class VenderDressMatchController extends VController{
 		if($id){
 			$mVenderDressMatch = VenderDressMatch::findOne($id);
 			if($mVenderDressMatch){
+				$mVenderDressMatch->set('vender_id', Yii::$app->vender->id);
 				$mVenderDressMatch->set('name', $name);
 				$mVenderDressMatch->set('manager_dress_match_id', $managerDressMatchId);
 				$mVenderDressMatch->set('pics', $aPics);
@@ -108,6 +109,7 @@ class VenderDressMatchController extends VController{
 			}
 		}else{
 			$isSuccess = VenderDressMatch::insert([
+				'vender_id' => Yii::$app->vender->id,
 				'name' => $name,
 				'manager_dress_match_id' => $managerDressMatchId,
 				'pics' => $aPics,

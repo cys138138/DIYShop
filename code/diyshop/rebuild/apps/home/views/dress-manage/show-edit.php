@@ -136,7 +136,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			</div>
 		</div>
 		<div class="form-group">
-			<label>服饰轮播图片</label>
+			<label>服饰图片</label>
 			<div class="form-group">
 				<button type="button" class="J-add-pics-btn btn btn-info">添加图片</button>
 			</div>
@@ -146,6 +146,27 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				</div>
 			</div>
 			<br />
+		</div>
+		<div class="form-group">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" value="" class="J-dress-match-chk"><b>适用搭配</b>
+				</label>
+			</div>
+		</div>
+		<div class="J-dress-match-content form-group" style="display:none;">
+			<select class="J-dress-match form-control" style="float:left;width:400px;margin-right:10px;">
+			<?php foreach($aDressMatchList as $key => $aDressMatch){ ?>
+				<option value="<?php echo $aDressMatch['id']; ?>"><?php echo $aDressMatch['name']; ?></option>
+			<?php } ?>
+			</select>
+			<button type="button" class="J-add-dress-match-btn btn btn-primary" onclick="addDressMatch();" style="float:left;">添加</button>
+			<br />
+		</div>
+		<div class="J-dress-match-content row" style="display:none;">
+			<div class="col-lg-12">
+				<ul class="J-dress-match-list list-group"></ul>
+			</div>
 		</div>
 		<br />
 		<div class="form-group">
@@ -255,11 +276,20 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		
 		return aTag;
 	}
+	
+	function getDressMatch(){
+		var aList = [];
+		$('.J-dress-match-list li').each(function(){
+			aList.push($(this).attr('data-id'));
+		});
+		
+		return aList;
+	}
 
 	function getPics(){
 		var aPics = [];
 		if($('.J-pics-list li').length == 0){
-			UBox.show('请上传服饰轮播图片', -1);
+			UBox.show('请上传服饰图片', -1);
 			return false;
 		}
 		$('.J-pics-list li').each(function(){
@@ -295,6 +325,10 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		if(!aPics){
 			return;
 		}
+		var aDressMatchIds = [];
+		if($('.J-dress-match-chk').is(':checked')){
+			aDressMatchIds = getDressMatch();
+		}
 		ajax({
 			url : '<?php echo Url::to(['dress-manage/save']); ?>',
 			data : {
@@ -305,7 +339,8 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				status : status,
 				aSizeColorCount : aSizeColorCount,
 				aTag : aTag,
-				aPics : aPics
+				aPics : aPics,
+				aDressMatchIds : aDressMatchIds
 			},
 			beforeSend : function(){
 				$(o).attr('disabled', 'disabled');
@@ -377,6 +412,10 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	}
 	
 	function addTag(o){
+		if($('.J-tag-list li').length >= 3){
+			UBox.show('最多只能添加3个服饰标签', -1);
+			return false;
+		}
 		var tag = $('.J-tag').val();
 		if(tag == ''){
 			UBox.show('标签不能为空', -1);
@@ -389,9 +428,21 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	function buildTagHtml(tag){
 		return '<li class="list-group-item"><p><a>' + tag + '</a><i onclick="deleteTag(this);">&nbsp;&nbsp;×</i></p></li>';
 	}
+	
+	function buildDressMatchHtml(id, txt){
+		return '<li class="list-group-item" data-id="' + id + '"><p><a>' + txt + '</a><i onclick="deleteDressMatch(this);">&nbsp;&nbsp;×</i></p></li>';
+	}
+		
+	function deleteDressMatch(o){
+		$(o).parent().parent().remove();
+	}
 		
 	function deleteTag(o){
 		$(o).parent().parent().remove();
+	}
+	
+	function addDressMatch(){
+		$('.J-dress-match-list').append(buildDressMatchHtml($('.J-dress-match').val(), $('.J-dress-match').text()));
 	}
 	
 	function deletePic(o){
@@ -478,5 +529,19 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				}
 			}
 		});
+		$('.J-dress-match-chk').on('click', function(){
+			if($(this).is(':checked')){
+				$('.J-dress-match-content').show();
+			}else{
+				$('.J-dress-match-content').hide();
+			}
+		});
+		<?php if($aDress && $aDress['dress_match_ids']){ ?>
+			$('.J-dress-match-chk').click();
+			for(var i in aDress.dress_match_ids){
+				$('.J-dress-match').val(aDress.dress_match_ids[i]);
+				addDressMatch();
+			}
+		<?php } ?>
 	});
 </script>

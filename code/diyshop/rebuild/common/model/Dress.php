@@ -6,7 +6,7 @@ use umeworld\lib\Query;
 use yii\helpers\ArrayHelper;
 
 class Dress extends \common\lib\DbOrmModel{
-	protected $_aEncodeFields = ['pics'];
+	protected $_aEncodeFields = ['pics', 'dress_match_ids'];
 	
 	const OFF_SALES_STATUS = 1;	//未上架
 	const ON_SALES_STATUS = 2;	//已上架

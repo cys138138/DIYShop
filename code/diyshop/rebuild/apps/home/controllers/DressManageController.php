@@ -10,6 +10,7 @@ use common\model\DressComment;
 use common\model\DressTag;
 use common\model\DressSizeColorCount;
 use common\model\Dress;
+use common\model\VenderDressMatch;
 use common\model\form\DressListForm;
 use common\model\form\ImageUploadForm;
 use yii\web\UploadedFile;
@@ -47,6 +48,7 @@ class DressManageController extends VController{
 			'aDress' => $aDress,
 			'aTagList' => Dress::getTagList(Yii::$app->vender->id),
 			'aSizeColorList' => Dress::getSizeColorList(Yii::$app->vender->id),
+			'aDressMatchList' => VenderDressMatch::findAll(['vender_id' => Yii::$app->vender->id]),
 		]);
     }
 	
@@ -59,6 +61,7 @@ class DressManageController extends VController{
 		$aSizeColorCount = (array)Yii::$app->request->post('aSizeColorCount');
 		$aTag = (array)Yii::$app->request->post('aTag');
 		$aPics = (array)Yii::$app->request->post('aPics');
+		$aDressMatchIds = array_unique((array)Yii::$app->request->post('aDressMatchIds'));
 		
 		if(!$name){
 			return new Response('请填写服饰名称', -1);
@@ -94,6 +97,9 @@ class DressManageController extends VController{
 			return new Response('请填写尺码颜色库存', -1);
 		}
 		if($aTag){
+			if(count($aTag) > 3){
+				return new Response('最多只能添加3个服饰标签', -1);
+			}
 			foreach($aTag as $key => $value){
 				if(!$value){
 					return new Response('服饰标签不能为空', -1);
@@ -112,6 +118,7 @@ class DressManageController extends VController{
 				$mDress->set('catalog_id', $catalogId);
 				$mDress->set('price', $price);
 				$mDress->set('pics', $aPics);
+				$mDress->set('dress_match_ids', $aDressMatchIds);
 				$mDress->set('status', $status);
 				$mDress->save();
 				$isSuccess = true;
@@ -123,6 +130,7 @@ class DressManageController extends VController{
 				'catalog_id' => $catalogId,
 				'price' => $price,
 				'pics' => $aPics,
+				'dress_match_ids' => $aDressMatchIds,
 				'status' => $status
 			]);
 			$mDress = Dress::findOne($isSuccess);
