@@ -6,6 +6,7 @@ use Qiniu\Auth;
 use Qiniu\Storage\UploadManager;
 
 class Qiniu extends \yii\base\Component {
+	public $enable;
 	public $accessKey;
 	public $secretKey;
 	public $bucket;

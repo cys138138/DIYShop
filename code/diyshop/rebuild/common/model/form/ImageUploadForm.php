@@ -34,6 +34,8 @@ class ImageUploadForm extends \yii\base\Model{
 	 * @var callable 命名函数
 	 */
 	public $fBuildFilename = null;
+	
+	public $tfn = '';
 
 	/**
 	 * @inheritedoc
@@ -98,6 +100,16 @@ class ImageUploadForm extends \yii\base\Model{
 			return false;
 		}else{
 			$this->savedFile = $filePath;
+			if(isset(Yii::$app->qiniu) && Yii::$app->qiniu->enable){
+				$fileKey = Yii::$app->qiniu->uploadFile($resourcePath . '/' . $filePath);
+				if($fileKey){
+					\common\model\QiNiuPicKeyMap::insert([
+						'file_key' => $fileKey,
+						'file_name' => $this->tfn,
+						'file_path' => $filePath,
+					]);
+				}
+			}
 			return true;
 		}
 	}
@@ -108,6 +120,7 @@ class ImageUploadForm extends \yii\base\Model{
 	 * @return string
 	 */
 	private function _buildFileName($oImage){
-		return md5(microtime()) . '.' . $oImage->getExtension();
+		$this->tfn = md5(microtime());
+		return $this->tfn . '.' . $oImage->getExtension();
 	}
 }
