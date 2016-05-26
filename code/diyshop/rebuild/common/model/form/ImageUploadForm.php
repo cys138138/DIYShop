@@ -103,11 +103,18 @@ class ImageUploadForm extends \yii\base\Model{
 			if(isset(Yii::$app->qiniu) && Yii::$app->qiniu->enable){
 				$fileKey = Yii::$app->qiniu->uploadFile($resourcePath . '/' . $filePath);
 				if($fileKey){
-					\common\model\QiNiuPicKeyMap::insert([
+					$isSuccess = \common\model\QiNiuPicKeyMap::insert([
 						'file_key' => $fileKey,
 						'file_name' => $this->tfn,
 						'file_path' => $filePath,
 					]);
+					if(!$isSuccess){
+						$this->addError('oImage', '保存七牛图片失败');
+						return false;
+					}
+				}else{
+					$this->addError('oImage', '上传七牛失败');
+					return false;
 				}
 			}
 			return true;
