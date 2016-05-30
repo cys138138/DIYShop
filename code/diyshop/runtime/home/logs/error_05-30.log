@@ -1,7 +1,7 @@
 LOG_START=================================
-[time=2016-04-28 19:45:36] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:1] 
+[time=2016-05-30 10:40:03] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:4] 
 message_start
-exception 'yii\base\ErrorException' with message 'Class 'ModuleNavi' not found' in /var/www/diyshop/rebuild/apps/home/views/vender-shop/setting.php:6
+exception 'yii\base\ErrorException' with message 'syntax error, unexpected '$version' (T_VARIABLE)' in /var/www/diyshop/rebuild/apps/home/controllers/ApiController.php:54
 Stack trace:
 #0 [internal function]: yii\base\ErrorHandler->handleFatalError()
 #1 {main}
@@ -9,7 +9,7 @@ message_end
 
 file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
 line: 25
-request_url: http://www.diyshop.com/vender-shop/show-setting.html
+request_url: http://www.diyshop.com/api/test.html
 
 trace_start:
     in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
@@ -18,15 +18,15 @@ trace_end
 
 env_vars_start:
 $_COOKIE = [
-    '_csrf' => '4ca31df985ce177750ca75e96bc5f6584648d10378fe23b2e6a01be411a701bea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"eEl1OefA3UTYSR3X9JcpJzNyVo0-A1pk\";}'
+    '_csrf' => '27e947ea689047ff4c695646bc77b08b11ac72c6238f8030aa557774c9485073a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"CH-LnxtG_pi2BAUaPuIu8dpdEy6uhhD1\";}'
     'venderId' => 'T2aJb2L68_ugsadu_w_e83ce_'
 ]
 
 
 $_SERVER = [
 	'HTTP_HOST' => 'www.diyshop.com',
-	'REQUEST_URI' => '/vender-shop/show-setting.html',
-	'HTTP_REFERER' => 'http://www.diyshop.com/vender/index.html',
+	'REQUEST_URI' => '/api/test.html',
+	'HTTP_REFERER' => '',
 	'REQUEST_METHOD' => 'GET',
 	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36',
 ]

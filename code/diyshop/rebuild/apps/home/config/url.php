@@ -109,6 +109,11 @@ return [
 		'vender-dress-match/upload-file.html'									=> 'vender-dress-match/upload-file',
 		
 		
+		
+		'api/test.html'															=> 'api/test',
+		'api.json'																=> 'api/index',
+		
+		
 		//跳转页面
 		'jump/<jumpType:\w+>.html'						=> 'jump/jump',
 
