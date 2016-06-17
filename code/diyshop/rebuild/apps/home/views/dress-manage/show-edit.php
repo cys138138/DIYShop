@@ -61,6 +61,9 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		height:34px;
 		cursor:pointer;
 	}
+	.J-select-tag-list li{
+		cursor:pointer;
+	}
 </style>
 <div class="row">
 	<?php echo ModuleNavi::widget([
@@ -99,6 +102,14 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			<br />
 		</div>
 		<div class="form-group">
+			<label>性别</label>
+			<select class="J-sex form-control">
+				<option value="1">男</option>
+				<option value="2">女</option>
+			</select>
+			<br />
+		</div>
+		<div class="form-group">
 			<label>服饰价格</label>
 			<input class="J-price form-control" placeholder="请输入服饰价格" value="<?php echo $aDress ? $aDress['price'] : ''; ?>">
 			<br />
@@ -123,9 +134,19 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			<br />
 		</div>
 		<div class="form-group" style="margin-top:45px;">
-			<label>服饰标签</label>		
+			<label>服饰标签</label>
+			<div class="row">
+				<div class="col-lg-12">
+					<ul class="J-select-tag-list list-group">
+					<?php foreach($aTagList as $key => $aValue){ ?>
+						<li class="list-group-item" onclick="addTag(this, 1);"><p><a><?php echo $aValue['name']; ?></a></p></li>
+					<?php } ?>
+					</ul>
+				</div>
+			</div>
 			<div class="form-group">
-				<input class="J-line-input J-tag form-control" placeholder="请输入服饰标签" value="" onfocus="showTagList(this);" onblur="removeList();">
+				<!--<input class="J-line-input J-tag form-control" placeholder="请输入服饰标签" value="" onfocus="showTagList(this);" onblur="removeList();">-->
+				<input class="J-line-input J-tag form-control" placeholder="请输入服饰标签" value="">
 				<button type="button" class="J-line-input btn btn-info" onclick="addTag(this);" style="width:55px;">添加</button>
 				<br />
 			</div>
@@ -305,6 +326,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		var catalogId = $('.J-catalog').val();
 		var price = $('.J-price').val();
 		var status = $('.J-status').val();
+		var sex = $('.J-sex').val();
 		if(name == ''){
 			UBox.show('请填写服饰名称', -1);
 			return;
@@ -337,6 +359,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				catalogId : catalogId,
 				price : price,
 				status : status,
+				sex : sex,
 				aSizeColorCount : aSizeColorCount,
 				aTag : aTag,
 				aPics : aPics,
@@ -411,12 +434,15 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		$(o).parent().remove();
 	}
 	
-	function addTag(o){
+	function addTag(o, type){
 		if($('.J-tag-list li').length >= 3){
 			UBox.show('最多只能添加3个服饰标签', -1);
 			return false;
 		}
 		var tag = $('.J-tag').val();
+		if(type){
+			tag = $(o).find('a').text();
+		}
 		if(tag == ''){
 			UBox.show('标签不能为空', -1);
 			return;
@@ -516,6 +542,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	$(function(){
 		<?php if($aDress){ ?>
 		$('.J-status').val(<?php echo $aDress['status']; ?>);
+		$('.J-sex').val(<?php echo $aDress['sex']; ?>);
 		<?php } ?>
 		init();
 		$('.J-add-pics-btn').AjaxUpload({

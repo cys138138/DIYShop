@@ -54,10 +54,20 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			<br />
 		</div>
 		<div class="form-group">
+			<label>公司性质</label>
+			<input class="J-company-property form-control" placeholder="请输入公司性质" value="<?php echo $aVender ? $aVender['company_property'] : ''; ?>">
+			<br />
+		</div>
+		<div class="form-group">
+			<label>公司地址</label>
+			<textarea class="J-company-address form-control" rows="3" placeholder="请输入公司地址"><?php echo $aVender ? $aVender['company_address'] : ''; ?></textarea>
+			<br />
+		</div>
+		<!--<div class="form-group">
 			<label>服饰限制数量</label>
 			<input class="J-dress-count-limit form-control" placeholder="请输服饰限制数量" value="<?php echo $aVender ? $aVender['dress_count_limit'] : 0; ?>">
 			<br />
-		</div>
+		</div>-->
 		<div class="form-group" <?php echo $aVender ? 'style="display:none;"' : ''; ?>>
 			<label>密码</label>
 			<input class="J-password form-control" type="password" placeholder="请输入密码" value="">
@@ -82,7 +92,9 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		var mobile = $('.J-mobile').val();
 		var email = $('.J-email').val();
 		var companyCode = $('.J-company-code').val();
-		var dressCountLimit = $('.J-dress-count-limit').val();
+		var companyProperty = $('.J-company-property').val();
+		var companyAddress = $('.J-company-address').val();
+		//var dressCountLimit = $('.J-dress-count-limit').val();
 		var password = $('.J-password').val();
 		var enPassword = $('.J-en-password').val();
 		if(userName == ''){
@@ -102,7 +114,9 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				mobile : mobile,
 				email : email,
 				companyCode : companyCode,
-				dressCountLimit : dressCountLimit,
+				companyProperty : companyProperty,
+				companyAddress : companyAddress,
+				//dressCountLimit : dressCountLimit,
 				password : password
 			},
 			beforeSend : function(){

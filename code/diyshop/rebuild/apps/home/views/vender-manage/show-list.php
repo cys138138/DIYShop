@@ -48,9 +48,26 @@ $this->setTitle('商家管理');
 					'id'	=>	['title' => '商家编号'],
 					'name'	=>	['title' => '厂商名称'],
 					'user_name'	=>	['title' => '用户名'],
-					'email'	=>	['title' => '邮箱'],
-					'mobile'	=>	['title' => '手机号'],
+					/*'email'	=>	['title' => '邮箱'],
+					'mobile'	=>	['title' => '手机号'],*/
 					'company_code'	=>	['title' => '公司码'],
+					'company_property'	=>	['title' => '公司性质'],
+					'company_address' => [
+						'title' => '公司地址',
+						'content' => function($aData){
+							return '<a title="' . $aData['company_address'] . '" target="_blank">' . mb_substr(strip_tags($aData['company_address']), 0, 10, 'utf-8') . '</a>';
+						}
+					],
+					'monthSalesStatic' => [
+						'title' => '销售情况',
+						'content' => function($aData){
+							$str = '';
+							foreach($aData['monthSalesStatic'] as $key => $aValue){
+								$str .= $key . '月总销售额:' . intval($aValue['total_price']) . '，月销量:' . intval($aValue['sales_count']) . '；';
+							}
+							return '<a title="' . $str . '" target="_blank">' . mb_substr(strip_tags($str), 0, 20, 'utf-8') . '</a>';
+						}
+					],
 					'operate' => [
 						'title' => '操作',
 						'class' => 'col-sm-1',

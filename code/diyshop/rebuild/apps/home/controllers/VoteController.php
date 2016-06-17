@@ -7,6 +7,7 @@ use umeworld\lib\Response;
 use umeworld\lib\Url;
 use common\model\Setting;
 use common\model\Dress;
+use common\model\VoteRecord;
 use common\model\form\ImageUploadForm;
 use yii\web\UploadedFile;
 
@@ -23,6 +24,9 @@ class VoteController extends MController{
 
     public function actionShowList(){
 		$aList = $this->_getConfig();
+		foreach($aList as $key => $aValue){
+			$aList[$key]['vote_count'] = VoteRecord::getVoteCountByIdentity($aValue['identity']);
+		}
         return $this->render('list', ['aList' => $aList ? $aList : []]);
     }
 

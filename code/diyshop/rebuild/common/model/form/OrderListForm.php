@@ -33,7 +33,11 @@ class OrderListForm extends \yii\base\Model{
 	}
 
 	public function getListCondition(){
-		$aCondition = [];
+		$mVender = Yii::$app->vender->getIdentity();
+		$aCondition = [
+			'order_type' => 0,
+			'vender_id' => $mVender->id,
+		];
 		if($this->orderNumber){
 			$aCondition['order_number'] = $this->orderNumber;
 		}

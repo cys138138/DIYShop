@@ -58,6 +58,7 @@ class DressManageController extends VController{
 		$catalogId = (int)Yii::$app->request->post('catalogId');
 		$price = (string)Yii::$app->request->post('price');
 		$status = (int)Yii::$app->request->post('status');
+		$sex = (int)Yii::$app->request->post('sex');
 		$aSizeColorCount = (array)Yii::$app->request->post('aSizeColorCount');
 		$aTag = (array)Yii::$app->request->post('aTag');
 		$aPics = (array)Yii::$app->request->post('aPics');
@@ -74,6 +75,9 @@ class DressManageController extends VController{
 		}
 		if(!in_array($status, [Dress::OFF_SALES_STATUS, Dress::ON_SALES_STATUS])){
 			return new Response('服饰状态不正确', -1);
+		}
+		if(!in_array($sex, [Dress::DRESS_SEX_BOY, Dress::DRESS_SEX_GIRL])){
+			return new Response('性别不正确', -1);
 		}
 		if($aSizeColorCount){
 			$aTempList = [];
@@ -120,6 +124,7 @@ class DressManageController extends VController{
 				$mDress->set('pics', $aPics);
 				$mDress->set('dress_match_ids', $aDressMatchIds);
 				$mDress->set('status', $status);
+				$mDress->set('sex', $sex);
 				$mDress->save();
 				$isSuccess = true;
 			}
@@ -131,6 +136,7 @@ class DressManageController extends VController{
 				'price' => $price,
 				'pics' => $aPics,
 				'dress_match_ids' => $aDressMatchIds,
+				'sex' => $sex,
 				'status' => $status
 			]);
 			$mDress = Dress::findOne($isSuccess);

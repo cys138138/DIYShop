@@ -37,7 +37,22 @@ class Order extends \common\lib\DbOrmModel{
 		if(isset($aCondition['id'])){
 			$aWhere[] = ['id' => $aCondition['id']];
 		}
+		if(isset($aCondition['order_type'])){
+			$aWhere[] = ['order_type' => $aCondition['order_type']];
+		}
+		if(isset($aCondition['vender_id'])){
+			$aWhere[] = ['vender_id' => $aCondition['vender_id']];
+		}
+		if(isset($aCondition['order_number'])){
+			$aWhere[] = ['order_number' => $aCondition['order_number']];
+		}
 
 		return $aWhere;
+	}
+	
+	public static function getVenderSalesCountAndPrices($venderId, $startTime, $endTime){
+		$sql = 'select sum(dress_count) as sales_count,sum(total_price) as total_price from `order` where vender_id=' . $venderId . ' and end_time>=' . $startTime . ' and end_time<=' . $endTime;
+		$aResults = Yii::$app->db->createCommand($sql)->queryAll();
+		return $aResults[0];
 	}
 }

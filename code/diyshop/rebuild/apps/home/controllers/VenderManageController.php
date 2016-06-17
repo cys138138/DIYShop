@@ -6,6 +6,7 @@ use home\lib\ManagerController as MController;
 use umeworld\lib\Response;
 use umeworld\lib\Url;
 use common\model\Vender;
+use common\model\Order;
 use common\model\form\VenderListForm;
 use yii\validators\EmailValidator;
 use umeworld\lib\PhoneValidator;
@@ -20,6 +21,14 @@ class VenderManageController extends MController{
 		}
 		$aList = $oVenderListForm->getList();
 		$oPage = $oVenderListForm->getPageObject();
+		foreach($aList as $key => $aValue){
+			$aLastOneMonthSalesStatic = Order::getVenderSalesCountAndPrices($aValue['id'], strtotime(date('Y-m', strtotime('-1 month'))), strtotime(date('Y-m')));
+			$aLastTwoMonthSalesStatic = Order::getVenderSalesCountAndPrices($aValue['id'], strtotime(date('Y-m', strtotime('-2 month'))), strtotime(date('Y-m', strtotime('-1 month'))));
+			$aList[$key]['monthSalesStatic'] = [
+				date('Ym', strtotime('-1 month')) => $aLastOneMonthSalesStatic,
+				date('Ym', strtotime('-2 month')) => $aLastTwoMonthSalesStatic,
+			];
+		}
 		
 		return $this->render('show-list', [
 			'venderId' => $oVenderListForm->venderId,
@@ -48,7 +57,9 @@ class VenderManageController extends MController{
 		$mobile = (string)Yii::$app->request->post('mobile');
 		$email = (string)Yii::$app->request->post('email');
 		$companyCode = (string)Yii::$app->request->post('companyCode');
-		$dressCountLimit = (int)Yii::$app->request->post('dressCountLimit');
+		$companyProperty = (string)Yii::$app->request->post('companyProperty');
+		$companyAddress = (string)Yii::$app->request->post('companyAddress');
+		//$dressCountLimit = (int)Yii::$app->request->post('dressCountLimit');
 		$password = (string)Yii::$app->request->post('password');
 		if(!$userName){
 			return new Response('请填写用户名', -1);
@@ -92,7 +103,9 @@ class VenderManageController extends MController{
 				$mVender->set('mobile', $mobile);
 				$mVender->set('email', $email);
 				$mVender->set('company_code', $companyCode);
-				$mVender->set('dress_count_limit', $dressCountLimit);
+				$mVender->set('company_property', $companyProperty);
+				$mVender->set('company_address', $companyAddress);
+				//$mVender->set('dress_count_limit', $dressCountLimit);
 				if($password){
 					$mVender->set('password', Vender::encryPassword($password));
 				}
@@ -115,7 +128,9 @@ class VenderManageController extends MController{
 				'mobile' => $mobile,
 				'email' => $email,
 				'company_code' => $companyCode,
-				'dress_count_limit' => $dressCountLimit,
+				'company_property' => $companyProperty,
+				'company_address' => $companyAddress,
+				//'dress_count_limit' => $dressCountLimit,
 				'password' => Vender::encryPassword($password),
 				'create_time' => NOW_TIME
 			]);

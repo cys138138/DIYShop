@@ -8,6 +8,10 @@ use yii\helpers\ArrayHelper;
 class Dress extends \common\lib\DbOrmModel{
 	protected $_aEncodeFields = ['pics', 'dress_match_ids'];
 	
+	const DRESS_SEX_BOY = 1;	//男
+	const DRESS_SEX_GIRL = 2;	//女
+	
+	
 	const OFF_SALES_STATUS = 1;	//未上架
 	const ON_SALES_STATUS = 2;	//已上架
 	const DELETE_STATUS = 3;	//已删除
