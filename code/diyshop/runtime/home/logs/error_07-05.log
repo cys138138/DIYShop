@@ -1,0 +1,791 @@
+LOG_START=================================
+[time=2016-07-05 10:39:42] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:42] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:42] [192.168.0.175][-][-][level=error][category=yii\base\InvalidConfigException] 
+message_start
+exception 'yii\base\InvalidConfigException' with message 'None of the master DB servers is available.' in /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php:518
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#1 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(796): yii\db\Connection->getSlavePdo()
+#3 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(680): yii\db\Connection->getDriverName()
+#4 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(698): yii\db\Connection->getSchema()
+#5 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(122): yii\db\Connection->getQueryBuilder()
+#6 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(243): yii\db\Query->createCommand(NULL)
+#7 /var/www/diyshop/rebuild/umeworld/lib/Query.php(44): yii\db\Query->one(NULL)
+#8 /var/www/diyshop/rebuild/common/lib/DbOrmModel.php(29): umeworld\lib\Query->one()
+#9 /var/www/diyshop/rebuild/common/role/Manager.php(119): common\lib\DbOrmModel::findOne(1)
+#10 /var/www/diyshop/rebuild/common/role/Manager.php(75): common\role\Manager->initLoginStatus()
+#11 /var/www/diyshop/rebuild/apps/home/controllers/SiteController.php(22): common\role\Manager->getIdentity()
+#12 [internal function]: home\controllers\SiteController->actionIndex()
+#13 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#15 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#16 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('site/index', Array)
+#17 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#19 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '5a53b2937b63a19507c888034d381e95ba1d0c0c15e6150880335cd5c64d145ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"RdeuO6ZtCAoje9KGMtkf-Fyxio22bTeq\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:45] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:45] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:45] [192.168.0.175][-][-][level=error][category=yii\base\InvalidConfigException] 
+message_start
+exception 'yii\base\InvalidConfigException' with message 'None of the master DB servers is available.' in /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php:518
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#1 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(796): yii\db\Connection->getSlavePdo()
+#3 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(680): yii\db\Connection->getDriverName()
+#4 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(698): yii\db\Connection->getSchema()
+#5 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(122): yii\db\Connection->getQueryBuilder()
+#6 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(243): yii\db\Query->createCommand(NULL)
+#7 /var/www/diyshop/rebuild/umeworld/lib/Query.php(44): yii\db\Query->one(NULL)
+#8 /var/www/diyshop/rebuild/common/lib/DbOrmModel.php(29): umeworld\lib\Query->one()
+#9 /var/www/diyshop/rebuild/common/role/Manager.php(119): common\lib\DbOrmModel::findOne(1)
+#10 /var/www/diyshop/rebuild/common/role/Manager.php(75): common\role\Manager->initLoginStatus()
+#11 /var/www/diyshop/rebuild/apps/home/controllers/SiteController.php(22): common\role\Manager->getIdentity()
+#12 [internal function]: home\controllers\SiteController->actionIndex()
+#13 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#15 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#16 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('site/index', Array)
+#17 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#19 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '5a53b2937b63a19507c888034d381e95ba1d0c0c15e6150880335cd5c64d145ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"RdeuO6ZtCAoje9KGMtkf-Fyxio22bTeq\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:48] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:48] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:48] [192.168.0.175][-][-][level=error][category=yii\base\InvalidConfigException] 
+message_start
+exception 'yii\base\InvalidConfigException' with message 'None of the master DB servers is available.' in /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php:518
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#1 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(796): yii\db\Connection->getSlavePdo()
+#3 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(680): yii\db\Connection->getDriverName()
+#4 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(698): yii\db\Connection->getSchema()
+#5 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(122): yii\db\Connection->getQueryBuilder()
+#6 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(243): yii\db\Query->createCommand(NULL)
+#7 /var/www/diyshop/rebuild/umeworld/lib/Query.php(44): yii\db\Query->one(NULL)
+#8 /var/www/diyshop/rebuild/common/lib/DbOrmModel.php(29): umeworld\lib\Query->one()
+#9 /var/www/diyshop/rebuild/common/role/Manager.php(119): common\lib\DbOrmModel::findOne(1)
+#10 /var/www/diyshop/rebuild/common/role/Manager.php(75): common\role\Manager->initLoginStatus()
+#11 /var/www/diyshop/rebuild/apps/home/controllers/SiteController.php(22): common\role\Manager->getIdentity()
+#12 [internal function]: home\controllers\SiteController->actionIndex()
+#13 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#15 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#16 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('site/index', Array)
+#17 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#19 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '5a53b2937b63a19507c888034d381e95ba1d0c0c15e6150880335cd5c64d145ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"RdeuO6ZtCAoje9KGMtkf-Fyxio22bTeq\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:49] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:49] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:49] [192.168.0.175][-][-][level=error][category=yii\base\InvalidConfigException] 
+message_start
+exception 'yii\base\InvalidConfigException' with message 'None of the master DB servers is available.' in /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php:518
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#1 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(796): yii\db\Connection->getSlavePdo()
+#3 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(680): yii\db\Connection->getDriverName()
+#4 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(698): yii\db\Connection->getSchema()
+#5 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(122): yii\db\Connection->getQueryBuilder()
+#6 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(243): yii\db\Query->createCommand(NULL)
+#7 /var/www/diyshop/rebuild/umeworld/lib/Query.php(44): yii\db\Query->one(NULL)
+#8 /var/www/diyshop/rebuild/common/lib/DbOrmModel.php(29): umeworld\lib\Query->one()
+#9 /var/www/diyshop/rebuild/common/role/Manager.php(119): common\lib\DbOrmModel::findOne(1)
+#10 /var/www/diyshop/rebuild/common/role/Manager.php(75): common\role\Manager->initLoginStatus()
+#11 /var/www/diyshop/rebuild/apps/home/controllers/SiteController.php(22): common\role\Manager->getIdentity()
+#12 [internal function]: home\controllers\SiteController->actionIndex()
+#13 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#15 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#16 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('site/index', Array)
+#17 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#19 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '5a53b2937b63a19507c888034d381e95ba1d0c0c15e6150880335cd5c64d145ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"RdeuO6ZtCAoje9KGMtkf-Fyxio22bTeq\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:50] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:50] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:50] [192.168.0.175][-][-][level=error][category=yii\base\InvalidConfigException] 
+message_start
+exception 'yii\base\InvalidConfigException' with message 'None of the master DB servers is available.' in /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php:518
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#1 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(796): yii\db\Connection->getSlavePdo()
+#3 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(680): yii\db\Connection->getDriverName()
+#4 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(698): yii\db\Connection->getSchema()
+#5 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(122): yii\db\Connection->getQueryBuilder()
+#6 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(243): yii\db\Query->createCommand(NULL)
+#7 /var/www/diyshop/rebuild/umeworld/lib/Query.php(44): yii\db\Query->one(NULL)
+#8 /var/www/diyshop/rebuild/common/lib/DbOrmModel.php(29): umeworld\lib\Query->one()
+#9 /var/www/diyshop/rebuild/common/role/Manager.php(119): common\lib\DbOrmModel::findOne(1)
+#10 /var/www/diyshop/rebuild/common/role/Manager.php(75): common\role\Manager->initLoginStatus()
+#11 /var/www/diyshop/rebuild/apps/home/controllers/SiteController.php(22): common\role\Manager->getIdentity()
+#12 [internal function]: home\controllers\SiteController->actionIndex()
+#13 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#15 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#16 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('site/index', Array)
+#17 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#19 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '5a53b2937b63a19507c888034d381e95ba1d0c0c15e6150880335cd5c64d145ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"RdeuO6ZtCAoje9KGMtkf-Fyxio22bTeq\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:51] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:51] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:51] [192.168.0.175][-][-][level=error][category=yii\base\InvalidConfigException] 
+message_start
+exception 'yii\base\InvalidConfigException' with message 'None of the master DB servers is available.' in /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php:518
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#1 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(796): yii\db\Connection->getSlavePdo()
+#3 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(680): yii\db\Connection->getDriverName()
+#4 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(698): yii\db\Connection->getSchema()
+#5 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(122): yii\db\Connection->getQueryBuilder()
+#6 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(243): yii\db\Query->createCommand(NULL)
+#7 /var/www/diyshop/rebuild/umeworld/lib/Query.php(44): yii\db\Query->one(NULL)
+#8 /var/www/diyshop/rebuild/common/lib/DbOrmModel.php(29): umeworld\lib\Query->one()
+#9 /var/www/diyshop/rebuild/common/role/Manager.php(119): common\lib\DbOrmModel::findOne(1)
+#10 /var/www/diyshop/rebuild/common/role/Manager.php(75): common\role\Manager->initLoginStatus()
+#11 /var/www/diyshop/rebuild/apps/home/controllers/SiteController.php(22): common\role\Manager->getIdentity()
+#12 [internal function]: home\controllers\SiteController->actionIndex()
+#13 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#15 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#16 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('site/index', Array)
+#17 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#19 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '5a53b2937b63a19507c888034d381e95ba1d0c0c15e6150880335cd5c64d145ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"RdeuO6ZtCAoje9KGMtkf-Fyxio22bTeq\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:52] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:52] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:52] [192.168.0.175][-][-][level=error][category=yii\base\InvalidConfigException] 
+message_start
+exception 'yii\base\InvalidConfigException' with message 'None of the master DB servers is available.' in /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php:518
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#1 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(796): yii\db\Connection->getSlavePdo()
+#3 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(680): yii\db\Connection->getDriverName()
+#4 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(698): yii\db\Connection->getSchema()
+#5 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(122): yii\db\Connection->getQueryBuilder()
+#6 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(243): yii\db\Query->createCommand(NULL)
+#7 /var/www/diyshop/rebuild/umeworld/lib/Query.php(44): yii\db\Query->one(NULL)
+#8 /var/www/diyshop/rebuild/common/lib/DbOrmModel.php(29): umeworld\lib\Query->one()
+#9 /var/www/diyshop/rebuild/common/role/Manager.php(119): common\lib\DbOrmModel::findOne(1)
+#10 /var/www/diyshop/rebuild/common/role/Manager.php(75): common\role\Manager->initLoginStatus()
+#11 /var/www/diyshop/rebuild/apps/home/controllers/SiteController.php(22): common\role\Manager->getIdentity()
+#12 [internal function]: home\controllers\SiteController->actionIndex()
+#13 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#15 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#16 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('site/index', Array)
+#17 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#19 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '5a53b2937b63a19507c888034d381e95ba1d0c0c15e6150880335cd5c64d145ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"RdeuO6ZtCAoje9KGMtkf-Fyxio22bTeq\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:53] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:53] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:53] [192.168.0.175][-][-][level=error][category=yii\base\InvalidConfigException] 
+message_start
+exception 'yii\base\InvalidConfigException' with message 'None of the master DB servers is available.' in /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php:518
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#1 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(796): yii\db\Connection->getSlavePdo()
+#3 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(680): yii\db\Connection->getDriverName()
+#4 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(698): yii\db\Connection->getSchema()
+#5 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(122): yii\db\Connection->getQueryBuilder()
+#6 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(243): yii\db\Query->createCommand(NULL)
+#7 /var/www/diyshop/rebuild/umeworld/lib/Query.php(44): yii\db\Query->one(NULL)
+#8 /var/www/diyshop/rebuild/common/lib/DbOrmModel.php(29): umeworld\lib\Query->one()
+#9 /var/www/diyshop/rebuild/common/role/Manager.php(119): common\lib\DbOrmModel::findOne(1)
+#10 /var/www/diyshop/rebuild/common/role/Manager.php(75): common\role\Manager->initLoginStatus()
+#11 /var/www/diyshop/rebuild/apps/home/controllers/SiteController.php(22): common\role\Manager->getIdentity()
+#12 [internal function]: home\controllers\SiteController->actionIndex()
+#13 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#15 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#16 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('site/index', Array)
+#17 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#19 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '5a53b2937b63a19507c888034d381e95ba1d0c0c15e6150880335cd5c64d145ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"RdeuO6ZtCAoje9KGMtkf-Fyxio22bTeq\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:54] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:54] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:54] [192.168.0.175][-][-][level=error][category=yii\base\InvalidConfigException] 
+message_start
+exception 'yii\base\InvalidConfigException' with message 'None of the master DB servers is available.' in /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php:518
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#1 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(796): yii\db\Connection->getSlavePdo()
+#3 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(680): yii\db\Connection->getDriverName()
+#4 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(698): yii\db\Connection->getSchema()
+#5 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(122): yii\db\Connection->getQueryBuilder()
+#6 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(243): yii\db\Query->createCommand(NULL)
+#7 /var/www/diyshop/rebuild/umeworld/lib/Query.php(44): yii\db\Query->one(NULL)
+#8 /var/www/diyshop/rebuild/common/lib/DbOrmModel.php(29): umeworld\lib\Query->one()
+#9 /var/www/diyshop/rebuild/common/role/Manager.php(119): common\lib\DbOrmModel::findOne(1)
+#10 /var/www/diyshop/rebuild/common/role/Manager.php(75): common\role\Manager->initLoginStatus()
+#11 /var/www/diyshop/rebuild/apps/home/controllers/SiteController.php(22): common\role\Manager->getIdentity()
+#12 [internal function]: home\controllers\SiteController->actionIndex()
+#13 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#15 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#16 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('site/index', Array)
+#17 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#19 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '5a53b2937b63a19507c888034d381e95ba1d0c0c15e6150880335cd5c64d145ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"RdeuO6ZtCAoje9KGMtkf-Fyxio22bTeq\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:55] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:55] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:55] [192.168.0.175][-][-][level=error][category=yii\base\InvalidConfigException] 
+message_start
+exception 'yii\base\InvalidConfigException' with message 'None of the master DB servers is available.' in /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php:518
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#1 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(796): yii\db\Connection->getSlavePdo()
+#3 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(680): yii\db\Connection->getDriverName()
+#4 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(698): yii\db\Connection->getSchema()
+#5 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(122): yii\db\Connection->getQueryBuilder()
+#6 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(243): yii\db\Query->createCommand(NULL)
+#7 /var/www/diyshop/rebuild/umeworld/lib/Query.php(44): yii\db\Query->one(NULL)
+#8 /var/www/diyshop/rebuild/common/lib/DbOrmModel.php(29): umeworld\lib\Query->one()
+#9 /var/www/diyshop/rebuild/common/role/Manager.php(119): common\lib\DbOrmModel::findOne(1)
+#10 /var/www/diyshop/rebuild/common/role/Manager.php(75): common\role\Manager->initLoginStatus()
+#11 /var/www/diyshop/rebuild/apps/home/controllers/SiteController.php(22): common\role\Manager->getIdentity()
+#12 [internal function]: home\controllers\SiteController->actionIndex()
+#13 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#15 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#16 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('site/index', Array)
+#17 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#19 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '5a53b2937b63a19507c888034d381e95ba1d0c0c15e6150880335cd5c64d145ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"RdeuO6ZtCAoje9KGMtkf-Fyxio22bTeq\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:55] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:55] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:55] [192.168.0.175][-][-][level=error][category=yii\base\InvalidConfigException] 
+message_start
+exception 'yii\base\InvalidConfigException' with message 'None of the master DB servers is available.' in /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php:518
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#1 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(796): yii\db\Connection->getSlavePdo()
+#3 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(680): yii\db\Connection->getDriverName()
+#4 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(698): yii\db\Connection->getSchema()
+#5 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(122): yii\db\Connection->getQueryBuilder()
+#6 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(243): yii\db\Query->createCommand(NULL)
+#7 /var/www/diyshop/rebuild/umeworld/lib/Query.php(44): yii\db\Query->one(NULL)
+#8 /var/www/diyshop/rebuild/common/lib/DbOrmModel.php(29): umeworld\lib\Query->one()
+#9 /var/www/diyshop/rebuild/common/role/Manager.php(119): common\lib\DbOrmModel::findOne(1)
+#10 /var/www/diyshop/rebuild/common/role/Manager.php(75): common\role\Manager->initLoginStatus()
+#11 /var/www/diyshop/rebuild/apps/home/controllers/SiteController.php(22): common\role\Manager->getIdentity()
+#12 [internal function]: home\controllers\SiteController->actionIndex()
+#13 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#15 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#16 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('site/index', Array)
+#17 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#19 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '5a53b2937b63a19507c888034d381e95ba1d0c0c15e6150880335cd5c64d145ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"RdeuO6ZtCAoje9KGMtkf-Fyxio22bTeq\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:56] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:56] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:39:56] [192.168.0.175][-][-][level=error][category=yii\base\InvalidConfigException] 
+message_start
+exception 'yii\base\InvalidConfigException' with message 'None of the master DB servers is available.' in /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php:518
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#1 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(796): yii\db\Connection->getSlavePdo()
+#3 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(680): yii\db\Connection->getDriverName()
+#4 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(698): yii\db\Connection->getSchema()
+#5 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(122): yii\db\Connection->getQueryBuilder()
+#6 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(243): yii\db\Query->createCommand(NULL)
+#7 /var/www/diyshop/rebuild/umeworld/lib/Query.php(44): yii\db\Query->one(NULL)
+#8 /var/www/diyshop/rebuild/common/lib/DbOrmModel.php(29): umeworld\lib\Query->one()
+#9 /var/www/diyshop/rebuild/common/role/Manager.php(119): common\lib\DbOrmModel::findOne(1)
+#10 /var/www/diyshop/rebuild/common/role/Manager.php(75): common\role\Manager->initLoginStatus()
+#11 /var/www/diyshop/rebuild/apps/home/controllers/SiteController.php(22): common\role\Manager->getIdentity()
+#12 [internal function]: home\controllers\SiteController->actionIndex()
+#13 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#14 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#15 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#16 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('site/index', Array)
+#17 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#19 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '5a53b2937b63a19507c888034d381e95ba1d0c0c15e6150880335cd5c64d145ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"RdeuO6ZtCAoje9KGMtkf-Fyxio22bTeq\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:40:40] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:40:40] [192.168.0.175][-][-][level=warning][category=yii\db\Connection::openFromPool] 
+Connection (mysql:host=127.0.0.1;dbname=diyshop) failed: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=================================LOG_END
+LOG_START=================================
+[time=2016-07-05 10:40:40] [192.168.0.175][-][-][level=error][category=yii\base\InvalidConfigException] 
+message_start
+exception 'yii\base\InvalidConfigException' with message 'None of the master DB servers is available.' in /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php:518
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#1 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(796): yii\db\Connection->getSlavePdo()
+#3 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(680): yii\db\Connection->getDriverName()
+#4 /var/www/diyshop/framework/yiisoft/yii2/db/Connection.php(698): yii\db\Connection->getSchema()
+#5 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(122): yii\db\Connection->getQueryBuilder()
+#6 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(243): yii\db\Query->createCommand(NULL)
+#7 /var/www/diyshop/rebuild/umeworld/lib/Query.php(44): yii\db\Query->one(NULL)
+#8 /var/www/diyshop/rebuild/common/lib/DbOrmModel.php(29): umeworld\lib\Query->one()
+#9 /var/www/diyshop/rebuild/common/role/Manager.php(119): common\lib\DbOrmModel::findOne(1)
+#10 /var/www/diyshop/rebuild/common/role/Manager.php(57): common\role\Manager->initLoginStatus()
+#11 /var/www/diyshop/framework/yiisoft/yii2/web/User.php(661): common\role\Manager->getId()
+#12 /var/www/diyshop/framework/yiisoft/yii2/filters/AccessRule.php(152): yii\web\User->can('manager')
+#13 /var/www/diyshop/framework/yiisoft/yii2/filters/AccessRule.php(104): yii\filters\AccessRule->matchRole(Object(common\role\Manager))
+#14 /var/www/diyshop/framework/yiisoft/yii2/filters/AccessControl.php(118): yii\filters\AccessRule->allows(Object(yii\base\InlineAction), Object(common\role\Manager), Object(yii\web\Request))
+#15 /var/www/diyshop/rebuild/common/filter/ManagerAccessControl.php(45): yii\filters\AccessControl->beforeAction(Object(yii\base\InlineAction))
+#16 /var/www/diyshop/framework/yiisoft/yii2/base/ActionFilter.php(71): common\filter\ManagerAccessControl->beforeAction(Object(yii\base\InlineAction))
+#17 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#18 /var/www/diyshop/framework/yiisoft/yii2/base/Component.php(541): call_user_func(Array, Object(yii\base\ActionEvent))
+#19 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(263): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#20 /var/www/diyshop/framework/yiisoft/yii2/web/Controller.php(108): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#21 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(149): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#22 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('show-edit', Array)
+#23 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('manager-dress-m...', Array)
+#24 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#25 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#26 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/manager-dress-match/show-edit.html?id=1
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_GET = [
+    'id' => '1'
+]
+
+$_COOKIE = [
+    '_csrf' => '5a53b2937b63a19507c888034d381e95ba1d0c0c15e6150880335cd5c64d145ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"RdeuO6ZtCAoje9KGMtkf-Fyxio22bTeq\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/manager-dress-match/show-edit.html?id=1',
+	'HTTP_REFERER' => 'http://www.diyshop.com/manager-dress-match/show-list.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
