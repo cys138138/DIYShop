@@ -6,8 +6,8 @@ defined('FRAMEWORK_PATH') || define('FRAMEWORK_PATH', PROJECT_PATH . '/framework
 $aLocal = [
 	'is_debug' => true,
 	'env' => 'prod',
-	'domain_prefix' => 'www',
-	'domain_name' => 'diyshop',
+	'domain_prefix' => 'weixin',
+	'domain_name' => 'qydxc',
 	'domain_suffix' => [
 		'dev' => 'dev',
 		'test' => 'test',
@@ -17,7 +17,7 @@ $aLocal = [
 		'master' => [
 			'host' => '127.0.0.1',
 			'username' => 'root',
-			'password' => '123456',
+			'password' => 'root',
 			'node' => [
 				['dsn' => 'mysql:host=127.0.0.1;dbname=diyshop'],
 			],
@@ -25,7 +25,7 @@ $aLocal = [
 		'slaver' => [
 			'host' => '127.0.0.1',
 			'username' => 'root',
-			'password' => '123456',
+			'password' => 'root',
 			'node' => [
 				['dsn' => 'mysql:host=127.0.0.1;dbname=diyshop'],
 			],
