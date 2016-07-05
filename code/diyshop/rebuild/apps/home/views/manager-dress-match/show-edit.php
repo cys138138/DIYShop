@@ -74,9 +74,9 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			<br />
 		</div>
 		<div class="form-group">
-			<label>搭配图片</label>
+			<label>搭配正反面图片</label>
 			<div class="form-group">
-				<button type="button" class="J-add-pics-btn btn btn-info">上传搭配图片</button>
+				<button type="button" class="J-add-pics-btn btn btn-info">上传搭配正反面图片</button>
 			</div>
 			<div class="row">
 				<div class="col-lg-12">
