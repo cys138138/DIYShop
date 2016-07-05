@@ -31,6 +31,12 @@ $this->setTitle('搭配管理');
 				'aColumns'	=>	[
 					'id'	=>	['title' => '搭配编号'],
 					'name'	=>	['title' => '搭配别名'],
+					'pic'	=>	[
+						'title' => '搭配图片',
+						'content' => function($aData){
+							return '<img width="150" height="100" src="' . Yii::getAlias('@r.url') . (isset($aData['pics'][0]) ? $aData['pics'][0] : '') . '" alt="" />';
+						}
+					],
 					'catalog_path'	=>	['title' => '服饰分类'],
 					'sex_str'	=>	['title' => '性别'],
 					'operation'	=>	[

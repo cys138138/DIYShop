@@ -45,6 +45,10 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			<textarea class="J-description form-control" rows="3" placeholder="请输入商店说明"><?php echo $aVenderShop ? $aVenderShop['description'] : ''; ?></textarea>
 		</div>
 		<div class="form-group">
+			<label>客服电话</label>
+			<input class="J-kefu-tel form-control" placeholder="请输入客服电话" value="<?php echo $aVenderShop ? $aVenderShop['kefu_tel'] : ''; ?>">
+		</div>
+		<div class="form-group">
 			<label>商店Logo</label>
 			<img class="J-logo img-thumbnail" data-pic="<?php echo $aVenderShop ? $aVenderShop['logo'] : ''; ?>" src="<?php echo $aVenderShop ? Yii::getAlias('@r.url') . $aVenderShop['logo'] : 'http://placehold.it/100x100'; ?>" width="100" height="100" alt="">
 		</div>
@@ -112,6 +116,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		var name = $('.J-name').val();
 		var description = $('.J-description').val();
 		var logo = $('.J-logo').attr('data-pic');
+		var kefuTel = $('.J-kefu-tel').val();
 		var aPics = aVenderShop.pics;
 		ajax({
 			url : '<?php echo Url::to(['vender-shop/save-setting']); ?>',
@@ -119,6 +124,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				name : name,
 				description : description,
 				logo : logo,
+				kefuTel : kefuTel,
 				aPics : aPics
 			},
 			beforeSend : function(){

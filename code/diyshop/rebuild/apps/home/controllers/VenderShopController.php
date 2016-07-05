@@ -23,6 +23,7 @@ class VenderShopController extends VController{
 		$name = (string)Yii::$app->request->post('name');
 		$description = (string)Yii::$app->request->post('description');
 		$logo = (string)Yii::$app->request->post('logo');
+		$kefuTel = (string)Yii::$app->request->post('kefuTel');
 		$aPics = (array)Yii::$app->request->post('aPics');
 		
 		if(!$name){
@@ -43,12 +44,14 @@ class VenderShopController extends VController{
 				'id' => $mVender->id,
 				'name' => $name,
 				'logo' => $logo,
+				'kefu_tel' => $kefuTel,
 				'description' => $description,
 				'pics' => $aPics,
 			]);
 		}else{
 			$mVenderShop->set('name', $name);
 			$mVenderShop->set('logo', $logo);
+			$mVenderShop->set('kefu_tel', $kefuTel);
 			$mVenderShop->set('description', $description);
 			$mVenderShop->set('pics', $aPics);
 			$mVenderShop->save();

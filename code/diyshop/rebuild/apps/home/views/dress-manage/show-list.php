@@ -47,6 +47,12 @@ $this->setTitle('服饰管理');
 				'aColumns'	=>	[
 					'id'	=>	['title' => '服饰编号'],
 					'name'	=>	['title' => '服饰名称'],
+					'pic'	=>	[
+						'title' => '服饰图片',
+						'content' => function($aData){
+							return '<img width="150" height="100" src="' . Yii::getAlias('@r.url') . (isset($aData['pics'][0]) ? $aData['pics'][0] : '') . '" alt="" />';
+						}
+					],
 					'price'	=>	['title' => '服饰价格'],
 					'status'	=>	['title' => '服饰状态'],
 					'operate' => [

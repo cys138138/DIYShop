@@ -6,7 +6,7 @@ use umeworld\lib\Query;
 use yii\helpers\ArrayHelper;
 
 class VenderDressMatch extends \common\lib\DbOrmModel{
-	protected $_aEncodeFields = ['pics'];
+	protected $_aEncodeFields = ['pics', 'detail_pics'];
 
 	public static function tableName(){
 		return Yii::$app->db->parseTable('_@vender_dress_match');
@@ -37,6 +37,8 @@ class VenderDressMatch extends \common\lib\DbOrmModel{
 			}
 		}
 		foreach($aList as $key => $aValue){
+			$aList[$key]['detail_pics'] = json_decode($aValue['detail_pics'], 1);
+			$aList[$key]['pics'] = json_decode($aValue['pics'], 1);
 			foreach($aManagerDressMatchList as $k => $v){
 				if($v['id'] == $aValue['manager_dress_match_id']){
 					$aList[$key]['catalog_id'] = $v['catalog_id'];

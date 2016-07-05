@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-06-17 09:34:34
+Date: 2016-07-05 14:06:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -294,6 +294,7 @@ CREATE TABLE `vender_dress_match` (
   `vender_id` int(11) DEFAULT NULL COMMENT '商家ID',
   `name` varchar(500) DEFAULT NULL COMMENT '搭配别名',
   `manager_dress_match_id` int(11) DEFAULT NULL COMMENT '管理员服饰搭配ID',
+  `detail_pics` text COMMENT '详细图片',
   `pics` text COMMENT '正反面图片',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
@@ -302,7 +303,7 @@ CREATE TABLE `vender_dress_match` (
 -- ----------------------------
 -- Records of vender_dress_match
 -- ----------------------------
-INSERT INTO `vender_dress_match` VALUES ('1', '1', '外套衣领白色0001', '1', '[\"\\/static\\/data\\/dress\\/46\\/6501a622cfe0b3bf8fc06c042779a708.jpeg\",\"\\/static\\/data\\/dress\\/47\\/5fe8ec7e6e5df441f1f1fe5d93ae1e54.jpeg\"]', '1462935809');
+INSERT INTO `vender_dress_match` VALUES ('1', '1', '外套衣领白色0001', '1', '[\"\\/static\\/data\\/dress\\/41\\/35f9416708830811138ac57387719d4f.jpeg\",\"\\/static\\/data\\/dress\\/67\\/316ff858004dd3f2abdc9daab065b90c.jpeg\"]', '[\"\\/static\\/data\\/dress\\/46\\/6501a622cfe0b3bf8fc06c042779a708.jpeg\",\"\\/static\\/data\\/dress\\/47\\/5fe8ec7e6e5df441f1f1fe5d93ae1e54.jpeg\"]', '1462935809');
 
 -- ----------------------------
 -- Table structure for `vender_shop`
@@ -314,13 +315,14 @@ CREATE TABLE `vender_shop` (
   `logo` varchar(500) DEFAULT NULL COMMENT '商店Logo',
   `description` text COMMENT '商店说明',
   `pics` text COMMENT '轮播图片',
+  `kefu_tel` varchar(50) DEFAULT NULL COMMENT '客服电话',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of vender_shop
 -- ----------------------------
-INSERT INTO `vender_shop` VALUES ('1', 'jack服饰商店', '/static/data/vender_shop_img/1/d845f884f76dc5916a316440caff76f7.jpg', 'jack服饰商店说明jack服饰商店说明jack服饰商店说明', '[\"\\/static\\/data\\/vender_shop_img\\/1\\/a547ce501430d26a861fb5d3b6b3779c.jpeg\",\"\\/static\\/data\\/vender_shop_img\\/1\\/7086ce468e50c8214da6d5ee8daa16a5.jpeg\"]');
+INSERT INTO `vender_shop` VALUES ('1', 'jack服饰商店', '/static/data/vender_shop_img/1/d845f884f76dc5916a316440caff76f7.jpg', 'jack服饰商店说明jack服饰商店说明jack服饰商店说明', '[\"\\/static\\/data\\/vender_shop_img\\/1\\/a547ce501430d26a861fb5d3b6b3779c.jpeg\",\"\\/static\\/data\\/vender_shop_img\\/1\\/7086ce468e50c8214da6d5ee8daa16a5.jpeg\"]', '020-5656566');
 
 -- ----------------------------
 -- Table structure for `vote_record`

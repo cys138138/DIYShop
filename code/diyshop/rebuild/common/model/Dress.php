@@ -59,6 +59,11 @@ class Dress extends \common\lib\DbOrmModel{
 		}
 		$aList = $oQuery->all();
 		
+		foreach($aList as $k => $v){
+			$aList[$k]['pics'] = json_decode($v['pics'], 1);
+			$aList[$k]['dress_match_ids'] = json_decode($v['dress_match_ids'], 1);
+		}
+		
 		return $aList;
 	}
 	

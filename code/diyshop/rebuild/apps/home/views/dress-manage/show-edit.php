@@ -143,7 +143,9 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 					<?php } ?>
 					</ul>
 				</div>
+				<br />
 			</div>
+			<br />
 			<div class="form-group">
 				<!--<input class="J-line-input J-tag form-control" placeholder="请输入服饰标签" value="" onfocus="showTagList(this);" onblur="removeList();">-->
 				<input class="J-line-input J-tag form-control" placeholder="请输入服饰标签" value="">
@@ -155,18 +157,6 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 					<ul class="J-tag-list list-group"></ul>
 				</div>
 			</div>
-		</div>
-		<div class="form-group">
-			<label>服饰图片</label>
-			<div class="form-group">
-				<button type="button" class="J-add-pics-btn btn btn-info">添加图片</button>
-			</div>
-			<div class="row">
-				<div class="col-lg-12">
-					<ul class="J-pics-list list-group"></ul>
-				</div>
-			</div>
-			<br />
 		</div>
 		<div class="form-group">
 			<div class="checkbox">
@@ -190,6 +180,18 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			</div>
 		</div>
 		<br />
+		<div class="J-pics-content form-group" style="display:none;">
+			<label>服饰正反面图片</label>
+			<div class="form-group">
+				<button type="button" class="J-add-pics-btn btn btn-info">添加图片</button>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<ul class="J-pics-list list-group"></ul>
+				</div>
+			</div>
+			<br />
+		</div>
 		<div class="form-group">
 			<button type="button" class="J-save-btn btn btn-primary" onclick="save(this);">保存服饰</button>
 		</div>
@@ -350,6 +352,8 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		var aDressMatchIds = [];
 		if($('.J-dress-match-chk').is(':checked')){
 			aDressMatchIds = getDressMatch();
+		}else{
+			aPics = [];
 		}
 		ajax({
 			url : '<?php echo Url::to(['dress-manage/save']); ?>',
@@ -559,8 +563,10 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		$('.J-dress-match-chk').on('click', function(){
 			if($(this).is(':checked')){
 				$('.J-dress-match-content').show();
+				$('.J-pics-content').show();
 			}else{
 				$('.J-dress-match-content').hide();
+				$('.J-pics-content').hide();
 			}
 		});
 		<?php if($aDress && $aDress['dress_match_ids']){ ?>

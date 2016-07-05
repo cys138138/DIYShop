@@ -79,9 +79,22 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			<br />
 		</div>
 		<div class="form-group">
-			<label>搭配图片</label>
+			<label>搭配详细图片</label>
 			<div class="form-group">
-				<button type="button" class="J-add-pics-btn btn btn-info">上传搭配图片</button>
+				<button type="button" class="J-add-detail-pics-btn btn btn-info">上传搭配详细图片</button>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<ul class="J-detail-pics-list list-group"></ul>
+				</div>
+			</div>
+			<br />
+		</div>
+		<br />
+		<div class="form-group">
+			<label>搭配正反面图片</label>
+			<div class="form-group">
+				<button type="button" class="J-add-pics-btn btn btn-info">上传搭配正反面图片</button>
 			</div>
 			<div class="row">
 				<div class="col-lg-12">
@@ -101,10 +114,23 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	function getPics(){
 		var aPics = [];
 		if($('.J-pics-list li').length == 0){
-			UBox.show('请上传图片', -1);
+			UBox.show('请上传搭配正反面图片', -1);
 			return false;
 		}
 		$('.J-pics-list li').each(function(){
+			aPics.push($(this).attr('data-pic'));
+		});
+		
+		return aPics;
+	}
+	
+	function getDetailPics(){
+		var aPics = [];
+		if($('.J-detail-pics-list li').length == 0){
+			UBox.show('请上传详细图片', -1);
+			return false;
+		}
+		$('.J-detail-pics-list li').each(function(){
 			aPics.push($(this).attr('data-pic'));
 		});
 		
@@ -125,18 +151,33 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		$('.J-pics-list').append(htmlStr);
 	}
 	
+	function addDetailPic(pic){
+		var htmlStr = '\
+			<li class="list-group-item J-pic-item" data-pic="' + pic + '">\
+				<p><img class="img-thumbnail" src="' + App.url.resource + pic + '" alt=""></p>\
+				<p><center><button type="button" class="btn btn-sm btn-danger" onclick="deletePic(this);">删除</button></center></p>\
+			</li>\
+		';
+		$('.J-detail-pics-list').append(htmlStr);
+	}
+	
 	function save(o){
 		var id = $('.J-id').val();
 		var name = $('.J-name').val();
 		var sex = $('.J-sex').val();
 		var managerDressMatchId = $('.J-manager-dress-match-list').val();
 		var aPics = getPics();
+		var aDetailPics = getDetailPics();
 		if(name == ''){
 			UBox.show('请填写搭配别名', -1);
 			return;
 		}
+		if(!aDetailPics){
+			UBox.show('请上传详细图片', -1);
+			return;
+		}
 		if(!aPics){
-			UBox.show('请上传图片', -1);
+			UBox.show('请上传正反面图片', -1);
 			return;
 		}
 		ajax({
@@ -145,6 +186,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				id : id,
 				name : name,
 				managerDressMatchId : managerDressMatchId,
+				aDetailPics : aDetailPics,
 				aPics : aPics
 			},
 			beforeSend : function(){
@@ -195,6 +237,14 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				break;
 			}
 		}
+	}
+	
+	function showManagerDressMatchDetailPics(){
+		<?php if($aDressMatch){ ?>
+			<?php foreach($aDressMatch['detail_pics'] as $value){ ?>
+				addDetailPic('<?php echo $value; ?>');
+			<?php } ?>
+		<?php } ?>
 	}
 	
 	function appendManagerDressMatchList(aData){
@@ -248,6 +298,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	
 	$(function(){
 		showChildCatalog($('.J-catalog').val());
+		showManagerDressMatchDetailPics();
 		$('.J-catalog').on('change', function(){
 			showChildCatalog($(this).val());
 			showManagerDressMatchList($('.J-catalog-id').val(), $('.J-sex').val());
@@ -260,6 +311,18 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		});
 		$('.J-manager-dress-match-list').on('change', function(){
 			showManagerDressMatchPics($(this).val());
+		});
+		
+		$('.J-add-detail-pics-btn').AjaxUpload({
+			uploadUrl : '<?php echo Url::to(['vender-dress-match/upload-file']); ?>',
+			fileKey : 'image',
+			callback : function(aResult){
+				if(aResult.status == 1){
+					addDetailPic(aResult.data);
+				}else{
+					UBox.show(aResult.msg, aResult.status);
+				}
+			}
 		});
 		
 		$('.J-add-pics-btn').AjaxUpload({

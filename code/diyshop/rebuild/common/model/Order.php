@@ -24,6 +24,11 @@ class Order extends \common\lib\DbOrmModel{
 		}
 		$aList = $oQuery->all();
 		
+		foreach($aList as $k => $v){
+			$aList[$k]['order_info'] = json_decode($v['order_info'], 1);
+			$aList[$k]['express_info'] = json_decode($v['express_info'], 1);
+		}
+		
 		return $aList;
 	}
 	

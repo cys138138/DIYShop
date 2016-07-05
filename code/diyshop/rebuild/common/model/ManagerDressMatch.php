@@ -24,6 +24,10 @@ class ManagerDressMatch extends \common\lib\DbOrmModel{
 		}
 		$aList = $oQuery->all();
 		
+		foreach($aList as $key => $aValue){
+			$aList[$key]['pics'] = json_decode($aValue['pics'], 1);
+		}
+		
 		return $aList;
 	}
 	
