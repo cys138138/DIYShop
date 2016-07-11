@@ -6,6 +6,8 @@ use umeworld\lib\Query;
 use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
 use yii\base\NotSupportedException;
+use yii\validators\EmailValidator;
+use umeworld\lib\PhoneValidator;
 
 class User extends \common\lib\DbOrmModel implements IdentityInterface{
 	const SEX_BOY = 1;
@@ -107,6 +109,50 @@ class User extends \common\lib\DbOrmModel implements IdentityInterface{
 		}
 
 		return $aWhere;
+	}
+	
+	public static function encryPassword($password){
+		return md5($password);
+	}
+	
+	public static function getOneByAccountAndPassword($account, $password){
+		if(!$account){
+			return false;
+		}
+		if(!$password){
+			return false;
+		}
+		
+		$isEmail = (new EmailValidator())->validate($account);
+		$isMobile = (new PhoneValidator())->validate($account);
+		$mUser = null;
+		if($isEmail){
+			$mUser = self::findOne([
+				'email' => $account,
+				'password' => self::encryPassword($password)
+			]);
+		}
+		if($isMobile){
+			$mUser = self::findOne([
+				'mobile' => $account,
+				'password' => self::encryPassword($password)
+			]);
+		}
+		if(!$isEmail && !$isMobile){
+			$mUser = self::findOne([
+				'user_name' => $account,
+				'password' => self::encryPassword($password)
+			]);
+		}
+		return $mUser;
+	}
+	
+	public static function registerUser($aData){
+		if(isset($aData['password']) && $aData['password']){
+			$aData['password'] = self::encryPassword($aData['password']);
+		}
+		(new Query())->createCommand()->insert(static::tableName(), $aData)->execute();
+		return self::findOne(Yii::$app->db->getLastInsertID());
 	}
 
 }

@@ -41,8 +41,8 @@ return [
         ],
 		'sms'=>[
 			'class' => 'umeworld\lib\Sms',
-			'username' => '792599135@qq.com',
-			'password' => '0cde8ab6c57b0ada8aac',
+			'username' => 'jay_hbb',
+			'password' => 'de08d18e75163bf33ea9',
 		],
 
 		'jpush'=>[

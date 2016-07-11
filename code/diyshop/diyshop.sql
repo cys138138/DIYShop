@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-07-05 14:06:37
+Date: 2016-07-11 17:15:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -181,6 +181,23 @@ INSERT INTO `manager_dress_match` VALUES ('1', '外套衣领白色', '7', '1', '
 INSERT INTO `manager_dress_match` VALUES ('3', '外套衣领黑色', '7', '1', '[\"\\/static\\/data\\/dress\\/26\\/196c006af0daa6a3ad90f70fc83bd25d.jpeg\",\"\\/static\\/data\\/dress\\/50\\/e5ac373b7fd3ff4224ffdb8b89e8f2c2.jpeg\"]', '1462866961');
 
 -- ----------------------------
+-- Table structure for `mobile_verify`
+-- ----------------------------
+DROP TABLE IF EXISTS `mobile_verify`;
+CREATE TABLE `mobile_verify` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID自增',
+  `mobile` varchar(12) DEFAULT NULL COMMENT '手机号',
+  `verify_code` varchar(10) DEFAULT NULL COMMENT '验证码',
+  `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of mobile_verify
+-- ----------------------------
+INSERT INTO `mobile_verify` VALUES ('1', '15014191886', '658339', '1468228203');
+
+-- ----------------------------
 -- Table structure for `order`
 -- ----------------------------
 DROP TABLE IF EXISTS `order`;
@@ -255,11 +272,12 @@ CREATE TABLE `user` (
   `avatar` varchar(500) DEFAULT NULL COMMENT '头像',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
+INSERT INTO `user` VALUES ('1', null, null, '15014191886', null, 'e10adc3949ba59abbe56e057f20f883e', null, '1468226675');
 
 -- ----------------------------
 -- Table structure for `vender`

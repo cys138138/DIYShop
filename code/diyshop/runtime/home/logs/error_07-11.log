@@ -1,0 +1,46 @@
+LOG_START=================================
+[time=2016-07-11 16:44:09] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:1] 
+message_start
+exception 'yii\base\ErrorException' with message 'Class 'home\controllers\User' not found' in /var/www/diyshop/rebuild/apps/home/controllers/ApiController.php:176
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/api.json
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_POST = [
+    'version' => '1.0'
+    'timestamp' => '2016-07-11 16:43:03'
+    'app_code' => 'ios_diyshop'
+    'token' => '5892dee34467b5808b05e4c8d2ec45ce'
+    'api_name' => 'registerUser'
+    'mobile' => '15014191886'
+    'password' => '123456'
+    'verify_code' => '481260'
+    '_csrf' => 'VS5RckJSbnoBXDA/LzY2NTpZFC0jMT8vA086EXYwHDAgXws3CAcaKQ=='
+]
+
+$_COOKIE = [
+    '_csrf' => '6970498274d7530bb2b0a76c87681288643e40edd3bd49450fb38b5d2ce01ad2a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"TraMmdXOowE_acQUVakc4brJuqZEJUtS\";}'
+    'venderId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/api.json',
+	'HTTP_REFERER' => 'http://www.diyshop.com/api/test.html',
+	'REQUEST_METHOD' => 'POST',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END

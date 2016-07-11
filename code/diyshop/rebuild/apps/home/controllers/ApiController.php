@@ -4,6 +4,10 @@ namespace home\controllers;
 use Yii;
 use umeworld\lib\Response;
 use umeworld\lib\Url;
+use umeworld\lib\PhoneValidator;
+use umeworld\lib\Xxtea;
+use common\model\User;
+use common\model\MobileVerify;
 
 class ApiController extends \yii\web\Controller{
 	private $_version = 1.0;
@@ -26,9 +30,45 @@ class ApiController extends \yii\web\Controller{
 		$appCode = 'ios_diyshop';
 		$timestamp = date('Y-m-d H:i:s');
 		
+		//getUserInfo
 		$aParams = [
 			'api_name' => 'getUserInfo',
 			'user_id' => 111,
+		];
+		
+		//sendVerifyCode
+		$aParams = [
+			'api_name' => 'sendVerifyCode',
+			'mobile' => 15014191886,
+		];
+		
+		//registerUser
+		$aParams = [
+			'api_name' => 'registerUser',
+			'mobile' => 15014191886,
+			'password' => 123456,
+			'verify_code' => 481260,
+		];
+		
+		//loginUser
+		$aParams = [
+			'api_name' => 'loginUser',
+			'mobile' => 15014191886,
+			'password' => 123456,
+		];
+		
+		//verifyCode
+		$aParams = [
+			'api_name' => 'verifyCode',
+			'mobile' => 15014191886,
+			'verify_code' => 658339,
+		];
+		
+		//setNewPassword
+		$aParams = [
+			'api_name' => 'setNewPassword',
+			'mobile' => 15014191886,
+			'password' => 123456,
 		];
 		
 		$aData = [
@@ -93,6 +133,142 @@ class ApiController extends \yii\web\Controller{
 	
 	private function getUserInfo(){
 		return new Response('test', 1);
+	}
+	
+	private function sendVerifyCode(){
+		$mobile = Yii::$app->request->post('mobile');
+		
+		if(!(new PhoneValidator())->validate($mobile)){
+			return new Response('手机格式不正确', 1101);
+		}
+		
+		$verifyCode = mt_rand(100000, 999999);
+		$isNew = false;
+		$mMobileVerify = MobileVerify::findOne(['mobile' => $mobile]);
+		if(!$mMobileVerify){
+			$isNew = true;
+			$id = MobileVerify::insert([
+				'mobile' => $mobile,
+				'verify_code' => $verifyCode,
+				'create_time' => NOW_TIME,
+			]);
+			$mMobileVerify = MobileVerify::findOne($id);
+		}
+		if(NOW_TIME - $mMobileVerify->create_time < 60){
+			if(!$isNew){
+				return new Response('请1分钟后再试', 1102);	
+			}
+		}else{
+			$mMobileVerify->set('verify_code', $verifyCode);
+			$mMobileVerify->set('create_time', NOW_TIME);
+			$mMobileVerify->save();
+		}
+		$oSms = Yii::$app->sms;
+		$oSms->sendTo = $mobile;
+		$oSms->content = '您好，您的验证码是：' . $verifyCode;
+		$returnCode = $oSms->send();
+		if($returnCode <= 0){
+			return new Response('发送失败', 1103);	
+		}else{
+			return new Response('发送成功', 1);	
+		}
+	}
+	
+	private function registerUser(){
+		$mobile = Yii::$app->request->post('mobile');
+		$password = Yii::$app->request->post('password');
+		$verifyCode = Yii::$app->request->post('verify_code');
+		
+		if(!(new PhoneValidator())->validate($mobile)){
+			return new Response('手机格式不正确', 1201);
+		}
+		if(!$password){
+			return new Response('缺少密码', 1202);
+		}
+		$mMobileVerify = MobileVerify::findOne(['mobile' => $mobile]);
+		if(!$mMobileVerify){
+			return new Response('找不到验证码', 1203);	
+		}
+		if(NOW_TIME - $mMobileVerify->create_time > 300){
+			return new Response('验证码超时', 1204);	
+		}
+		if($mMobileVerify->verify_code != $verifyCode){
+			return new Response('验证码不正确', 1205);	
+		}
+		
+		$mUser = User::getOneByAccountAndPassword($mobile, $password);
+		if($mUser){
+			return new Response('该手机已被注册了', 1206);	
+		}
+		
+		$mUser = User::registerUser([
+			'mobile' => $mobile,
+			'password' => $password,
+			'create_time' => NOW_TIME,
+		]);
+		
+		if(!$mUser){
+			return new Response('注册失败', 1207);	
+		}
+		
+		return new Response('注册成功', 1);
+	}
+	
+	private function loginUser(){
+		$mobile = Yii::$app->request->post('mobile');
+		$password = Yii::$app->request->post('password');
+		
+		if(!(new PhoneValidator())->validate($mobile)){
+			return new Response('手机格式不正确', 1301);
+		}
+		if(!$password){
+			return new Response('缺少密码', 1302);
+		}
+		$mUser = User::getOneByAccountAndPassword($mobile, $password);
+		if(!$mUser){
+			return new Response('账号或密码错误', 1303);	
+		}
+		return new Response('登录成功', 1, ['user_token' => Xxtea::encrypt($mUser->id . ':' . NOW_TIME)]);
+	}
+	
+	private function verifyCode(){
+		$mobile = Yii::$app->request->post('mobile');
+		$verifyCode = Yii::$app->request->post('verify_code');
+		
+		if(!(new PhoneValidator())->validate($mobile)){
+			return new Response('手机格式不正确', 1401);
+		}
+		$mMobileVerify = MobileVerify::findOne(['mobile' => $mobile]);
+		if(!$mMobileVerify){
+			return new Response('找不到验证码', 1402);	
+		}
+		if(NOW_TIME - $mMobileVerify->create_time > 300){
+			return new Response('验证码超时', 1403);	
+		}
+		if($mMobileVerify->verify_code != $verifyCode){
+			return new Response('验证码不正确', 1404);	
+		}
+		return new Response('验证成功', 1);
+	}
+	
+	private function setNewPassword(){
+		$mobile = Yii::$app->request->post('mobile');
+		$password = Yii::$app->request->post('password');
+		
+		if(!(new PhoneValidator())->validate($mobile)){
+			return new Response('手机格式不正确', 1501);
+		}
+		if(!$password){
+			return new Response('缺少密码', 1502);
+		}
+		$mUser = User::findOne(['mobile' => $mobile]);
+		if(!$mUser){
+			return new Response('找不到用户信息', 1503);
+		}
+		$mUser->set('password', User::encryPassword($password));
+		$mUser->save();
+		
+		return new Response('设置密码成功', 1);
 	}
 	
 }
