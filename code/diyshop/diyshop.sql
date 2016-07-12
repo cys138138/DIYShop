@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-07-11 17:15:20
+Date: 2016-07-12 11:57:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,15 +25,18 @@ CREATE TABLE `delivery_address` (
   `province_id` int(11) DEFAULT NULL COMMENT '省ID',
   `city_id` int(11) DEFAULT NULL COMMENT '市ID',
   `area_id` int(11) DEFAULT NULL COMMENT '地区ID',
+  `name` varchar(50) DEFAULT NULL COMMENT '收货人',
+  `contact` varchar(200) DEFAULT NULL COMMENT '联系电话',
   `address` text COMMENT '详细地址',
   `is_default` tinyint(4) DEFAULT NULL COMMENT '是否默认的收货地址',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of delivery_address
 -- ----------------------------
+INSERT INTO `delivery_address` VALUES ('1', '1', null, null, '14000', 'jay', '020-8889898', '广州', '1', '1468295387');
 
 -- ----------------------------
 -- Table structure for `dress`
@@ -269,7 +272,9 @@ CREATE TABLE `user` (
   `mobile` varchar(12) DEFAULT NULL COMMENT '手机号',
   `email` varchar(200) DEFAULT NULL COMMENT '邮箱',
   `password` varchar(100) DEFAULT NULL COMMENT '密码',
+  `sex` tinyint(4) DEFAULT NULL COMMENT '性别：1男2女',
   `avatar` varchar(500) DEFAULT NULL COMMENT '头像',
+  `desc` varchar(500) DEFAULT NULL COMMENT '个人说明',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -277,7 +282,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', null, null, '15014191886', null, 'e10adc3949ba59abbe56e057f20f883e', null, '1468226675');
+INSERT INTO `user` VALUES ('1', 'jay', null, '15014191886', null, 'e10adc3949ba59abbe56e057f20f883e', '1', null, null, '1468226675');
 
 -- ----------------------------
 -- Table structure for `vender`

@@ -8,6 +8,7 @@ use umeworld\lib\PhoneValidator;
 use umeworld\lib\Xxtea;
 use common\model\User;
 use common\model\MobileVerify;
+use common\model\DeliveryAddress;
 
 class ApiController extends \yii\web\Controller{
 	private $_version = 1.0;
@@ -71,6 +72,39 @@ class ApiController extends \yii\web\Controller{
 			'password' => 123456,
 		];
 		
+		//editUserInfo
+		$aParams = [
+			'api_name' => 'editUserInfo',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+			'user_name' => 'jay',
+			'sex' => 1,
+		];
+		
+		//getUserInfo
+		$aParams = [
+			'api_name' => 'getUserInfo',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+		];
+		
+		//saveUserDeliveryAddress
+		$aParams = [
+			'api_name' => 'saveUserDeliveryAddress',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+			'id' => 1,
+			'name' => 'jay',
+			'contact' => '020-8889898',
+			'area_id' => '14000',
+			'is_default' => 1,
+			'address' => '广州',
+		];
+		
+		//deleteUserDeliveryAddress
+		$aParams = [
+			'api_name' => 'deleteUserDeliveryAddress',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+			'id' => 2,
+		];
+		
 		$aData = [
 			'version' => $version,
 			'timestamp' => $timestamp,
@@ -131,8 +165,13 @@ class ApiController extends \yii\web\Controller{
 		return $this->$apiName();
 	}
 	
-	private function getUserInfo(){
-		return new Response('test', 1);
+	private function _getUserIdByUserToken($userToken){
+		$str = Xxtea::decrypt($userToken);
+		$aData = explode(':', $str);
+		if(isset($aData[0]) && $aData[0]){
+			return $aData[0];
+		}
+		return 0;
 	}
 	
 	private function sendVerifyCode(){
@@ -269,6 +308,152 @@ class ApiController extends \yii\web\Controller{
 		$mUser->save();
 		
 		return new Response('设置密码成功', 1);
+	}
+	
+	private function editUserInfo(){
+		$userToken = Yii::$app->request->post('user_token');
+		$userName = Yii::$app->request->post('user_name');
+		$sex = (int)Yii::$app->request->post('sex');
+		$desc = Yii::$app->request->post('desc');
+		$avatar = Yii::$app->request->post('avatar');
+		
+		if(!$userToken){
+			return new Response('缺少user_token', 1601);
+		}
+		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 1602);
+		}
+		$updateFlag = false;
+		if($userName){
+			$updateFlag = true;
+			$mUser->set('user_name', $userName);
+		}
+		if($sex){
+			$updateFlag = true;
+			$mUser->set('sex', $sex);
+		}
+		if($desc){
+			$updateFlag = true;
+			$mUser->set('desc', $desc);
+		}
+		if($avatar){
+			$updateFlag = true;
+			$mUser->set('avatar', $avatar);
+		}
+		if($updateFlag){
+			$mUser->save();
+		}
+		return new Response('保存成功', 1);
+	}
+	
+	private function getUserInfo(){
+		$userToken = Yii::$app->request->post('user_token');
+		
+		if(!$userToken){
+			return new Response('缺少user_token', 1701);
+		}
+		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 1702);
+		}
+		
+		$aUser = $mUser->toArray();
+		
+		return new Response('用户信息', 1, $aUser);
+	}
+	
+	private function getUserDeliveryAddressList(){
+		$userToken = Yii::$app->request->post('user_token');
+		
+		if(!$userToken){
+			return new Response('缺少user_token', 1801);
+		}
+		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 1802);
+		}
+		
+		$aList = DeliveryAddress::findAll(['user_id' => $mUser->id]);
+		
+		return new Response('收货地址列表', 1, $aList);
+	}
+	
+	private function saveUserDeliveryAddress(){
+		$userToken = Yii::$app->request->post('user_token');
+		$id = Yii::$app->request->post('id');
+		$name = Yii::$app->request->post('name');
+		$contact = Yii::$app->request->post('contact');
+		$areaId = (int)Yii::$app->request->post('area_id');
+		$address = Yii::$app->request->post('address');
+		$isDefault = (int)Yii::$app->request->post('is_default');
+		
+		if(!$userToken){
+			return new Response('缺少user_token', 1901);
+		}
+		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 1902);
+		}
+		
+		if($isDefault){
+			DeliveryAddress::clearUserDefaultAddress($userId);
+		}
+		
+		if($id){
+			$mDeliveryAddress = DeliveryAddress::findOne($id);
+			if(!$mDeliveryAddress){
+				return new Response('找不到收货地址信息', 1903);
+			}
+			if($mDeliveryAddress->user_id != $mUser->id){
+				return new Response('异常操作', 1904);
+			}
+			$mDeliveryAddress->set('name', $name);
+			$mDeliveryAddress->set('contact', $contact);
+			$mDeliveryAddress->set('area_id', $areaId);
+			$mDeliveryAddress->set('address', $address);
+			$mDeliveryAddress->set('is_default', $isDefault);
+			$mDeliveryAddress->save();
+		}else{
+			DeliveryAddress::insert([
+				'user_id' => $mUser->id,
+				'name' => $name,
+				'contact' => $contact,
+				'area_id' => $areaId,
+				'address' => $address,
+				'is_default' => $isDefault,
+				'create_time' => NOW_TIME,
+			]);
+		}
+		return new Response('保存成功', 1);
+	}
+	
+	private function deleteUserDeliveryAddress(){
+		$userToken = Yii::$app->request->post('user_token');
+		$id = Yii::$app->request->post('id');
+		
+		if(!$userToken){
+			return new Response('缺少user_token', 2001);
+		}
+		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 2002);
+		}
+		$mDeliveryAddress = DeliveryAddress::findOne($id);
+		if(!$mDeliveryAddress){
+			return new Response('找不到收货地址信息', 2003);
+		}
+		if($mDeliveryAddress->user_id != $mUser->id){
+			return new Response('异常操作', 1904);
+		}
+		$mDeliveryAddress->delete();
+		
+		return new Response('删除成功', 1);
 	}
 	
 }
