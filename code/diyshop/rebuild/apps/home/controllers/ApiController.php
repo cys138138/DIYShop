@@ -27,7 +27,7 @@ class ApiController extends \yii\web\Controller{
 	}
 	
 	public function actionTest(){
-		$version = '1.0';
+		$version = '1.0.0';
 		$appCode = 'ios_diyshop';
 		$timestamp = date('Y-m-d H:i:s');
 		
