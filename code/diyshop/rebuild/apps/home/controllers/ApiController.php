@@ -124,8 +124,9 @@ class ApiController extends \yii\web\Controller{
 		5、app_key:应用码(隐)	string(50) 如：Android:ce854c997d463edcfb54ac4e0732d139	IOS:538982ef3dcdad018e59d2884fd8add1
 		6、token:数据有效签名	string(50) 如：md5(app_code + timestamp + api_name + app_key)
 	*/
-	public function actionIndex(){
-		$version = Yii::$app->request->post('version');
+	public function actionIndex(){ 
+		$_POST['_is_ajax'] = 1;
+        $version = Yii::$app->request->post('version');
 		$apiName = Yii::$app->request->post('api_name');
 		$timeStamp = Yii::$app->request->post('timestamp');
 		$appCode = Yii::$app->request->post('app_code');
