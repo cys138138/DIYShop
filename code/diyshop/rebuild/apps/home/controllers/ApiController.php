@@ -114,6 +114,10 @@ class ApiController extends \yii\web\Controller{
 		
 		return $this->render('test', ['aReturn' => array_merge($aData, $aParams)]);
 	}
+	
+	private function _getUserToken($id){
+		return ['user_token' => Xxtea::encrypt($id . ':' . NOW_TIME)];
+	}
 		
 	/*
 		接口Http POST请求权限参数：
@@ -251,7 +255,7 @@ class ApiController extends \yii\web\Controller{
 			return new Response('注册失败', 1207);	
 		}
 		
-		return new Response('注册成功', 1);
+		return new Response('注册成功', 1, ['user_token' => $this->_getUserToken($mUser->id)]);
 	}
 	
 	private function loginUser(){
@@ -268,7 +272,7 @@ class ApiController extends \yii\web\Controller{
 		if(!$mUser){
 			return new Response('账号或密码错误', 1303);	
 		}
-		return new Response('登录成功', 1, ['user_token' => Xxtea::encrypt($mUser->id . ':' . NOW_TIME)]);
+		return new Response('登录成功', 1, ['user_token' => $this->_getUserToken($mUser->id)]);
 	}
 	
 	private function verifyCode(){
