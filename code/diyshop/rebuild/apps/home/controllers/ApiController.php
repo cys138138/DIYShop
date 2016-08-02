@@ -229,14 +229,14 @@ class ApiController extends \yii\web\Controller{
 		if(!$password){
 			return new Response('缺少密码', 1202);
 		}
-		$mMobileVerify = MobileVerify::findOne(['mobile' => $mobile]);
+		/*$mMobileVerify = MobileVerify::findOne(['mobile' => $mobile]);
 		if(!$mMobileVerify){
 			return new Response('找不到验证码', 1203);	
 		}
 		if(NOW_TIME - $mMobileVerify->create_time > 300){
 			return new Response('验证码超时', 1204);	
 		}
-		/*if($mMobileVerify->verify_code != $verifyCode){
+		if($mMobileVerify->verify_code != $verifyCode){
 			return new Response('验证码不正确', 1205);	
 		}*/
 		
