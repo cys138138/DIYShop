@@ -6,6 +6,17 @@ use umeworld\lib\Query;
 
 class Order extends \common\lib\DbOrmModel{
 	protected $_aEncodeFields = ['order_info', 'express_info'];
+	
+	const ORDER_TYPE_NORMAL = 0;
+	const ORDER_TYPE_SPECIAL = 1;
+	
+	const ORDER_STATUS_CONFIRM = 1;			//确认订单
+	const ORDER_STATUS_WAIT_PAY = 2; 		//待付款
+	const ORDER_STATUS_WAIT_SEND = 3; 		//待发货
+	const ORDER_STATUS_WAIT_RECEIVE = 4;	//待收货
+	const ORDER_STATUS_APPLY_RETURN = 5; 	//申请退货
+	const ORDER_STATUS_EXCHANGE = 6;		//退换货
+	const ORDER_STATUS_FINISH = 7;			//确认收货
 
 	public static function tableName(){
 		return Yii::$app->db->parseTable('_@order');

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-07-12 11:57:33
+Date: 2016-08-29 17:46:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,7 +31,7 @@ CREATE TABLE `delivery_address` (
   `is_default` tinyint(4) DEFAULT NULL COMMENT '是否默认的收货地址',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of delivery_address
@@ -53,12 +53,14 @@ CREATE TABLE `dress` (
   `dress_match_ids` text COMMENT '商家服饰搭配ID',
   `status` int(11) DEFAULT NULL COMMENT '服饰状态：1未上架2已上架3已删除',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dress
 -- ----------------------------
 INSERT INTO `dress` VALUES ('1', '1', '1', '测试服饰1', '2', '50.00', '[\"\\/static\\/data\\/dress\\/48\\/7ea7a7c4e8d0a986a34d1bec0b85b88c.jpeg\",\"\\/static\\/data\\/dress\\/67\\/863840619527ceecba13b58b9b8a8186.jpeg\"]', '[\"1\"]', '2');
+INSERT INTO `dress` VALUES ('2', '2', '1', '韩式短袖衫', '1', '10.00', '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"]', '[]', '2');
+INSERT INTO `dress` VALUES ('3', '2', '4', 'diy长裤', '1', '20.00', '[\"\\/static\\/data\\/dress\\/71\\/de9ff668f655a936c718ea0a60440da5.jpg\"]', '[]', '2');
 
 -- ----------------------------
 -- Table structure for `dress_catalog`
@@ -113,7 +115,7 @@ CREATE TABLE `dress_size_color_count` (
   `stock` int(11) DEFAULT NULL COMMENT '库存',
   `pic` text COMMENT '图片',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dress_size_color_count
@@ -124,6 +126,10 @@ INSERT INTO `dress_size_color_count` VALUES ('22', '1', '1', 'M', '黑', '4', '/
 INSERT INTO `dress_size_color_count` VALUES ('21', '1', '1', 'M', '白', '3', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
 INSERT INTO `dress_size_color_count` VALUES ('20', '1', '1', 'S', '黑', '2', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
 INSERT INTO `dress_size_color_count` VALUES ('19', '1', '1', 'S', '白', '1', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
+INSERT INTO `dress_size_color_count` VALUES ('28', '2', '2', 'M', '黑', '50', '/static/data/dress/71/9a2eae6036f72c48e21dd1233155ffa4.jpg');
+INSERT INTO `dress_size_color_count` VALUES ('27', '2', '2', 'S', '白', '620', '/static/data/dress/89/c5ae596da9449d6ac20288d5ce56fc05.jpg');
+INSERT INTO `dress_size_color_count` VALUES ('29', '2', '3', 'S', '黑', '22', '/static/data/dress/52/b94f283d2ba3e7acd83484b8d936d624.jpg');
+INSERT INTO `dress_size_color_count` VALUES ('30', '2', '3', 'M', '白', '33', '/static/data/dress/40/d5d0eae5ab5b422ec7d45c43eeb0b8b8.jpg');
 
 -- ----------------------------
 -- Table structure for `dress_tag`
@@ -135,13 +141,15 @@ CREATE TABLE `dress_tag` (
   `dress_id` int(11) DEFAULT NULL COMMENT '服饰ID',
   `name` varchar(50) DEFAULT NULL COMMENT '标签名称',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dress_tag
 -- ----------------------------
 INSERT INTO `dress_tag` VALUES ('8', '1', '1', '秋冬');
 INSERT INTO `dress_tag` VALUES ('7', '1', '1', '夹克');
+INSERT INTO `dress_tag` VALUES ('10', '2', '2', '帅');
+INSERT INTO `dress_tag` VALUES ('11', '2', '3', '帅');
 
 -- ----------------------------
 -- Table structure for `manager`
@@ -301,12 +309,13 @@ CREATE TABLE `vender` (
   `dress_count_limit` int(11) DEFAULT '0' COMMENT '商家服饰数量限制',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of vender
 -- ----------------------------
 INSERT INTO `vender` VALUES ('1', 'jack', '15012121551', '45855@qq.com', '4ff9fc6e4e5d5f590c4f2134a8cc96d1', '以纯厂商', 'asadssasasasasa', '私营企业', '广州海珠区xx路110号', '50', '1461635974');
+INSERT INTO `vender` VALUES ('2', 'lucy', '15014185151', '1502121214@qq.com', 'e10adc3949ba59abbe56e057f20f883e', 'fsz', 'dsafdasf', 'guang zhou hai', 'guang zhou hai6958', '0', '1472454081');
 
 -- ----------------------------
 -- Table structure for `vender_dress_match`
@@ -340,12 +349,13 @@ CREATE TABLE `vender_shop` (
   `pics` text COMMENT '轮播图片',
   `kefu_tel` varchar(50) DEFAULT NULL COMMENT '客服电话',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of vender_shop
 -- ----------------------------
 INSERT INTO `vender_shop` VALUES ('1', 'jack服饰商店', '/static/data/vender_shop_img/1/d845f884f76dc5916a316440caff76f7.jpg', 'jack服饰商店说明jack服饰商店说明jack服饰商店说明', '[\"\\/static\\/data\\/vender_shop_img\\/1\\/a547ce501430d26a861fb5d3b6b3779c.jpeg\",\"\\/static\\/data\\/vender_shop_img\\/1\\/7086ce468e50c8214da6d5ee8daa16a5.jpeg\"]', '020-5656566');
+INSERT INTO `vender_shop` VALUES ('2', 'fsz', '/static/data/vender_shop_img/43/73e927d26448b5e1bb110bb58bcaca35.jpg', 'fszfszfsz', '[\"\\/static\\/data\\/vender_shop_img\\/30\\/d3f7d320ffe9480b925b14b56d7f9921.jpg\"]', '020-65658955');
 
 -- ----------------------------
 -- Table structure for `vote_record`

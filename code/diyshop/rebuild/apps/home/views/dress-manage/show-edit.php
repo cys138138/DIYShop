@@ -311,10 +311,10 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 
 	function getPics(){
 		var aPics = [];
-		if($('.J-pics-list li').length == 0){
+		/*if($('.J-pics-list li').length == 0){
 			UBox.show('请上传服饰图片', -1);
 			return false;
-		}
+		}*/
 		$('.J-pics-list li').each(function(){
 			aPics.push($(this).attr('data-pic'));
 		});
@@ -346,9 +346,9 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			return;
 		}
 		var aPics = getPics();
-		if(!aPics){
+		/*if(!aPics){
 			return;
-		}
+		}*/
 		var aDressMatchIds = [];
 		if($('.J-dress-match-chk').is(':checked')){
 			aDressMatchIds = getDressMatch();

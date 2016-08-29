@@ -84,6 +84,17 @@ trait TestApi{
 			'id' => 2,
 		];
 		
+		//createOrder
+		$aParams = [
+			'api_name' => 'createOrder',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+			'aOrderInfo' => [
+				['dress_id' => 1, 'dress_size_color_count_id' => 22, 'count' => 2],
+				['dress_id' => 2, 'dress_size_color_count_id' => 28, 'count' => 1],
+				['dress_id' => 3, 'dress_size_color_count_id' => 30, 'count' => 1],
+			],
+		];
+		
 		$aData = [
 			'version' => $version,
 			'timestamp' => $timestamp,

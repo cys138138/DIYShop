@@ -27,7 +27,8 @@ class VenderDressMatchListForm extends \yii\base\Model{
 	}
 
 	public function getListCondition(){
-		$aCondition = [];
+		$mVender = Yii::$app->vender->getIdentity();
+		$aCondition = ['vender_id' => $mVender->id];
 		return $aCondition;
 	}
 

@@ -27,9 +27,9 @@ class AuthManager extends \yii\base\Component{
 		}
 		
 		$mUser = null;
-		if($permissionName = \common\filter\ManagerAccessControl::MANAGER){
+		if($permissionName == \common\filter\ManagerAccessControl::MANAGER){
 			$mUser = \common\model\Manager::findOne($userId);
-		}elseif($permissionName = \common\filter\VenderAccessControl::VENDER){
+		}elseif($permissionName == \common\filter\VenderAccessControl::VENDER){
 			$mUser = \common\model\Vender::findOne($userId);
 		}
 

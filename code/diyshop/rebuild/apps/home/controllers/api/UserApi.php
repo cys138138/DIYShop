@@ -12,19 +12,6 @@ use common\model\DeliveryAddress;
 
 trait UserApi{
 	
-	private function _getUserToken($id){
-		return ['user_token' => Xxtea::encrypt($id . ':' . NOW_TIME)];
-	}
-	
-	private function _getUserIdByUserToken($userToken){
-		$str = Xxtea::decrypt($userToken);
-		$aData = explode(':', $str);
-		if(isset($aData[0]) && $aData[0]){
-			return $aData[0];
-		}
-		return 0;
-	}
-	
 	private function sendVerifyCode(){
 		$mobile = Yii::$app->request->post('mobile');
 		
@@ -300,7 +287,7 @@ trait UserApi{
 			return new Response('找不到收货地址信息', 2003);
 		}
 		if($mDeliveryAddress->user_id != $mUser->id){
-			return new Response('异常操作', 1904);
+			return new Response('异常操作', 2004);
 		}
 		$mDeliveryAddress->delete();
 		

@@ -33,7 +33,8 @@ class DressListForm extends \yii\base\Model{
 	}
 
 	public function getListCondition(){
-		$aCondition = [];
+		$mVender = Yii::$app->vender->getIdentity();
+		$aCondition = ['vender_id' => $mVender->id];
 		if($this->dressId){
 			$aCondition['id'] = $this->dressId;
 		}

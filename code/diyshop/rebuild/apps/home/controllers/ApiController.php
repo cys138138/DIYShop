@@ -6,6 +6,7 @@ use umeworld\lib\Response;
 
 class ApiController extends \yii\web\Controller{
 	use \home\controllers\api\UserApi;
+	use \home\controllers\api\OrderApi;
 	use \home\controllers\api\TestApi;
 	
 	private $_version = '1.0.0';
@@ -74,4 +75,17 @@ class ApiController extends \yii\web\Controller{
 		return $this->$apiName();
 	}
 		
+	private function _getUserToken($id){
+		return ['user_token' => Xxtea::encrypt($id . ':' . NOW_TIME)];
+	}
+	
+	private function _getUserIdByUserToken($userToken){
+		$str = Xxtea::decrypt($userToken);
+		$aData = explode(':', $str);
+		if(isset($aData[0]) && $aData[0]){
+			return $aData[0];
+		}
+		return 0;
+	}
+	
 }
