@@ -1,0 +1,48 @@
+LOG_START=================================
+[time=2016-08-29 14:12:53] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:8] 
+message_start
+exception 'yii\base\ErrorException' with message 'Undefined index: name' in /var/www/diyshop/rebuild/apps/home/widgets/views/navi.php:19
+Stack trace:
+#0 /var/www/diyshop/rebuild/apps/home/widgets/views/navi.php(19): yii\base\ErrorHandler->handleError(8, 'Undefined index...', '/var/www/diysho...', 19, Array)
+#1 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#2 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#3 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\widgets\Navi))
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/Widget.php(191): yii\base\View->render('navi', Array, Object(home\widgets\Navi))
+#5 /var/www/diyshop/rebuild/apps/home/widgets/Navi.php(26): yii\base\Widget->render('navi', Array)
+#6 /var/www/diyshop/framework/yiisoft/yii2/base/Widget.php(98): home\widgets\Navi->run()
+#7 /var/www/diyshop/rebuild/apps/home/views/layouts/main.php(36): yii\base\Widget::widget()
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#9 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#10 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(386): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\controllers\ApiController))
+#11 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(372): yii\base\Controller->renderContent('<style type="te...')
+#12 /var/www/diyshop/rebuild/apps/home/controllers/api/TestApi.php(101): yii\base\Controller->render('test', Array)
+#13 [internal function]: home\controllers\ApiController->actionTest()
+#14 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#15 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#16 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('test', Array)
+#17 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('api/test', Array)
+#18 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#19 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#20 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/api/test.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/api/test.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
