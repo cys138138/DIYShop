@@ -3,6 +3,7 @@ namespace home\controllers;
 
 use Yii;
 use umeworld\lib\Response;
+use umeworld\lib\Xxtea;
 
 class ApiController extends \yii\web\Controller{
 	use \home\controllers\api\UserApi;

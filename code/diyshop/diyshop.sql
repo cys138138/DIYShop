@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-08-29 17:46:50
+Date: 2016-08-30 17:24:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -94,13 +94,18 @@ CREATE TABLE `dress_comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '服饰评论ID，自增',
   `dress_id` int(11) DEFAULT NULL COMMENT '服饰ID',
   `user_id` int(11) DEFAULT NULL COMMENT '用户id',
+  `desc_point` int(11) DEFAULT NULL COMMENT '描述评分',
+  `delivery_point` int(11) DEFAULT NULL COMMENT '物流服务评分',
+  `service_point` int(11) DEFAULT NULL COMMENT '服务态度评分',
   `comment` text COMMENT '评论内容',
+  `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dress_comment
 -- ----------------------------
+INSERT INTO `dress_comment` VALUES ('1', '1', '1', '2', '3', '4', '好看', '1472548865');
 
 -- ----------------------------
 -- Table structure for `dress_size_color_count`
@@ -122,14 +127,14 @@ CREATE TABLE `dress_size_color_count` (
 -- ----------------------------
 INSERT INTO `dress_size_color_count` VALUES ('24', '1', '1', 'L', '黑', '6', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
 INSERT INTO `dress_size_color_count` VALUES ('23', '1', '1', 'L', '白', '5', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
-INSERT INTO `dress_size_color_count` VALUES ('22', '1', '1', 'M', '黑', '4', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
+INSERT INTO `dress_size_color_count` VALUES ('22', '1', '1', 'M', '黑', '93', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
 INSERT INTO `dress_size_color_count` VALUES ('21', '1', '1', 'M', '白', '3', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
 INSERT INTO `dress_size_color_count` VALUES ('20', '1', '1', 'S', '黑', '2', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
 INSERT INTO `dress_size_color_count` VALUES ('19', '1', '1', 'S', '白', '1', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
-INSERT INTO `dress_size_color_count` VALUES ('28', '2', '2', 'M', '黑', '50', '/static/data/dress/71/9a2eae6036f72c48e21dd1233155ffa4.jpg');
+INSERT INTO `dress_size_color_count` VALUES ('28', '2', '2', 'M', '黑', '45', '/static/data/dress/71/9a2eae6036f72c48e21dd1233155ffa4.jpg');
 INSERT INTO `dress_size_color_count` VALUES ('27', '2', '2', 'S', '白', '620', '/static/data/dress/89/c5ae596da9449d6ac20288d5ce56fc05.jpg');
 INSERT INTO `dress_size_color_count` VALUES ('29', '2', '3', 'S', '黑', '22', '/static/data/dress/52/b94f283d2ba3e7acd83484b8d936d624.jpg');
-INSERT INTO `dress_size_color_count` VALUES ('30', '2', '3', 'M', '白', '33', '/static/data/dress/40/d5d0eae5ab5b422ec7d45c43eeb0b8b8.jpg');
+INSERT INTO `dress_size_color_count` VALUES ('30', '2', '3', 'M', '白', '28', '/static/data/dress/40/d5d0eae5ab5b422ec7d45c43eeb0b8b8.jpg');
 
 -- ----------------------------
 -- Table structure for `dress_tag`
@@ -218,6 +223,7 @@ CREATE TABLE `order` (
   `user_id` int(11) DEFAULT NULL COMMENT '用户ID',
   `vender_id` int(11) DEFAULT NULL COMMENT '商家ID',
   `order_number` varchar(200) DEFAULT NULL COMMENT '订单号',
+  `trace_num` varchar(200) DEFAULT NULL COMMENT '交易号',
   `order_info` text COMMENT '订单信息',
   `dress_count` int(11) DEFAULT NULL COMMENT '服饰数量',
   `total_price` decimal(10,2) DEFAULT NULL COMMENT '订单总价',
@@ -228,7 +234,7 @@ CREATE TABLE `order` (
   `deliver_time` int(11) DEFAULT NULL COMMENT '发货时间',
   `end_time` int(11) DEFAULT NULL COMMENT '确认收货时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of order

@@ -59,6 +59,9 @@ class Order extends \common\lib\DbOrmModel{
 		if(isset($aCondition['vender_id'])){
 			$aWhere[] = ['vender_id' => $aCondition['vender_id']];
 		}
+		if(isset($aCondition['status'])){
+			$aWhere[] = ['status' => $aCondition['status']];
+		}
 		if(isset($aCondition['order_number'])){
 			$aWhere[] = ['order_number' => $aCondition['order_number']];
 		}
@@ -70,5 +73,9 @@ class Order extends \common\lib\DbOrmModel{
 		$sql = 'select sum(dress_count) as sales_count,sum(total_price) as total_price from `order` where vender_id=' . $venderId . ' and end_time>=' . $startTime . ' and end_time<=' . $endTime;
 		$aResults = Yii::$app->db->createCommand($sql)->queryAll();
 		return $aResults[0];
+	}
+	
+	public static function generateOrderNum(){
+		return md5(NOW_TIME . mt_rand(1000, 9999));
 	}
 }

@@ -5,7 +5,6 @@ use Yii;
 use umeworld\lib\Response;
 use umeworld\lib\Url;
 use umeworld\lib\PhoneValidator;
-use umeworld\lib\Xxtea;
 use common\model\User;
 use common\model\MobileVerify;
 use common\model\DeliveryAddress;

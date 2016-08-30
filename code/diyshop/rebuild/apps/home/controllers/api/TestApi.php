@@ -88,11 +88,53 @@ trait TestApi{
 		$aParams = [
 			'api_name' => 'createOrder',
 			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+			'delivery_address_id' => 1,
 			'aOrderInfo' => [
 				['dress_id' => 1, 'dress_size_color_count_id' => 22, 'count' => 2],
 				['dress_id' => 2, 'dress_size_color_count_id' => 28, 'count' => 1],
 				['dress_id' => 3, 'dress_size_color_count_id' => 30, 'count' => 1],
 			],
+		];
+		
+		//getOrderInfo
+		$aParams = [
+			'api_name' => 'getOrderInfo',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+			'order_number' => '3d044b6aaa5cb1af22b6de54056e4a21',
+		];
+		
+		//getOrderList
+		$aParams = [
+			'api_name' => 'getOrderList',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+			'page' => 1,
+			'page_size' => 5,
+			'status' => 1,
+		];
+		
+		//finishOrder
+		$aParams = [
+			'api_name' => 'finishOrder',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+			'order_number' => 'c145329276f09fc7ade6abeb005c7d1a',
+		];
+		
+		//deleteOrder
+		$aParams = [
+			'api_name' => 'deleteOrder',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+			'order_number' => '3d044b6aaa5cb1af22b6de54056e4a21',
+		];
+		
+		//commentDress
+		$aParams = [
+			'api_name' => 'commentDress',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+			'dress_id' => 1,
+			'desc_point' => 2,
+			'delivery_point' => 3,
+			'service_point' => 4,
+			'comment' => '好看',
 		];
 		
 		$aData = [
