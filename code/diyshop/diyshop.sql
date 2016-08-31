@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-08-31 10:33:45
+Date: 2016-08-31 17:06:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -197,6 +197,24 @@ INSERT INTO `manager_dress_match` VALUES ('1', '外套衣领白色', '7', '1', '
 INSERT INTO `manager_dress_match` VALUES ('3', '外套衣领黑色', '7', '1', '[\"\\/static\\/data\\/dress\\/26\\/196c006af0daa6a3ad90f70fc83bd25d.jpeg\",\"\\/static\\/data\\/dress\\/50\\/e5ac373b7fd3ff4224ffdb8b89e8f2c2.jpeg\"]', '1462866961');
 
 -- ----------------------------
+-- Table structure for `mark`
+-- ----------------------------
+DROP TABLE IF EXISTS `mark`;
+CREATE TABLE `mark` (
+  `id` int(11) NOT NULL COMMENT '用户ID',
+  `mark_total` smallint(5) NOT NULL COMMENT '总的签到次数',
+  `mark_continuous` smallint(5) NOT NULL COMMENT '连续签到次数',
+  `last_mark_date` int(11) NOT NULL COMMENT '上一次签到日期',
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`,`mark_total`,`mark_continuous`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of mark
+-- ----------------------------
+INSERT INTO `mark` VALUES ('1', '6', '2', '20160831');
+
+-- ----------------------------
 -- Table structure for `mobile_verify`
 -- ----------------------------
 DROP TABLE IF EXISTS `mobile_verify`;
@@ -289,6 +307,7 @@ CREATE TABLE `user` (
   `mobile` varchar(12) DEFAULT NULL COMMENT '手机号',
   `email` varchar(200) DEFAULT NULL COMMENT '邮箱',
   `password` varchar(100) DEFAULT NULL COMMENT '密码',
+  `gold` int(11) DEFAULT '0' COMMENT '金币',
   `sex` tinyint(4) DEFAULT NULL COMMENT '性别：1男2女',
   `avatar` varchar(500) DEFAULT NULL COMMENT '头像',
   `desc` varchar(500) DEFAULT NULL COMMENT '个人说明',
@@ -299,7 +318,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'jay', null, '15014191886', null, 'e10adc3949ba59abbe56e057f20f883e', '1', null, null, '1468226675');
+INSERT INTO `user` VALUES ('1', 'jay', null, '15014191886', null, 'e10adc3949ba59abbe56e057f20f883e', '4', '1', null, null, '1468226675');
 
 -- ----------------------------
 -- Table structure for `vender`
