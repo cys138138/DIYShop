@@ -100,7 +100,7 @@ trait TestApi{
 		$aParams = [
 			'api_name' => 'getOrderInfo',
 			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
-			'order_number' => '3d044b6aaa5cb1af22b6de54056e4a21',
+			'order_number' => '32bc4d435785c439bf01ab3a42f9fb6e',
 		];
 		
 		//getOrderList
