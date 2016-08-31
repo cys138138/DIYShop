@@ -137,6 +137,18 @@ trait TestApi{
 			'comment' => '好看',
 		];
 		
+		//getMarkInfo
+		$aParams = [
+			'api_name' => 'getMarkInfo',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+		];
+		
+		//mark
+		$aParams = [
+			'api_name' => 'mark',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+		];
+		
 		$aData = [
 			'version' => $version,
 			'timestamp' => $timestamp,

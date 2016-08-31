@@ -8,6 +8,7 @@ use umeworld\lib\PhoneValidator;
 use common\model\User;
 use common\model\MobileVerify;
 use common\model\DeliveryAddress;
+use common\model\Mark;
 
 trait UserApi{
 	
@@ -291,6 +292,47 @@ trait UserApi{
 		$mDeliveryAddress->delete();
 		
 		return new Response('删除成功', 1);
+	}
+	
+	private function getMarkInfo(){
+		$userToken = Yii::$app->request->post('user_token');
+		
+		if(!$userToken){
+			return new Response('缺少user_token', 2601);
+		}
+		$userId = $this->_getUserIdByUserToken($userToken);
+		
+		$mMark = Mark::findOne($userId);
+		
+		return new Response('签到信息', 1, $mMark->toArray());
+	}
+	
+	private function mark(){
+		$userToken = Yii::$app->request->post('user_token');
+		
+		if(!$userToken){
+			return new Response('缺少user_token', 2601);
+		}
+		$userId = $this->_getUserIdByUserToken($userToken);
+		
+		$mMark = Mark::findOne($userId);
+		if($mMark->last_mark_date == date('Ymd')){
+			return new Response('今天已签到过了', 0);
+		}
+		if($mMark->last_mark_date == date('Ymd', strtotime("-1 day"))){
+			$mMark->set('mark_continuous', ['add', 1]);
+		}else{
+			$mMark->set('mark_continuous', 1);
+		}
+		$mMark->set('mark_total', ['add', 1]);
+		$mMark->set('last_mark_date', date('Ymd', NOW_TIME));
+		$mMark->save();
+		
+		$mUser = User::findOne($userId);
+		$mUser->set('gold', ['add', $mMark->mark_continuous]);
+		$mUser->save();
+		
+		return new Response('签到成功', 1);
 	}
 	
 }
