@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-08-31 17:06:33
+Date: 2016-09-02 10:48:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,7 +31,7 @@ CREATE TABLE `delivery_address` (
   `is_default` tinyint(4) DEFAULT NULL COMMENT '是否默认的收货地址',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of delivery_address
@@ -72,7 +72,7 @@ CREATE TABLE `dress_catalog` (
   `name` varchar(50) DEFAULT NULL COMMENT '服饰分类名称',
   `is_show` tinyint(4) DEFAULT NULL COMMENT '是否显示：1是0否',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dress_catalog
@@ -169,7 +169,7 @@ CREATE TABLE `manager` (
   `name` varchar(50) DEFAULT NULL COMMENT '姓名',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of manager
@@ -188,7 +188,7 @@ CREATE TABLE `manager_dress_match` (
   `pics` text COMMENT '正反面图片',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of manager_dress_match
@@ -224,7 +224,7 @@ CREATE TABLE `mobile_verify` (
   `verify_code` varchar(10) DEFAULT NULL COMMENT '验证码',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of mobile_verify
@@ -252,7 +252,7 @@ CREATE TABLE `order` (
   `deliver_time` int(11) DEFAULT NULL COMMENT '发货时间',
   `end_time` int(11) DEFAULT NULL COMMENT '确认收货时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of order
@@ -271,7 +271,7 @@ CREATE TABLE `qiniu_pic_key_map` (
   `file_name` varchar(500) DEFAULT NULL COMMENT '本地图片文件名，无后缀',
   `file_path` varchar(500) DEFAULT NULL COMMENT '本地图片路径',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of qiniu_pic_key_map
@@ -337,7 +337,7 @@ CREATE TABLE `vender` (
   `dress_count_limit` int(11) DEFAULT '0' COMMENT '商家服饰数量限制',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of vender
@@ -358,7 +358,7 @@ CREATE TABLE `vender_dress_match` (
   `pics` text COMMENT '正反面图片',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of vender_dress_match
@@ -377,7 +377,7 @@ CREATE TABLE `vender_shop` (
   `pics` text COMMENT '轮播图片',
   `kefu_tel` varchar(50) DEFAULT NULL COMMENT '客服电话',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of vender_shop
@@ -395,7 +395,7 @@ CREATE TABLE `vote_record` (
   `identity` varchar(100) DEFAULT NULL COMMENT '投票标识',
   `create_time` int(11) DEFAULT NULL COMMENT '投票时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of vote_record
