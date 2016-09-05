@@ -80,6 +80,9 @@ class Dress extends \common\lib\DbOrmModel{
 		if(isset($aCondition['vender_id']) && $aCondition['vender_id']){
 			$aWhere[] = ['vender_id' => $aCondition['vender_id']];
 		}
+		if(isset($aCondition['name']) && $aCondition['name']){
+			$aWhere[] = ['like', 'name', $aCondition['name']];
+		}
 
 		return $aWhere;
 	}

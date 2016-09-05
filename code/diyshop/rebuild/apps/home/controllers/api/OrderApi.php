@@ -18,6 +18,7 @@ trait OrderApi{
 		$userToken = Yii::$app->request->post('user_token');
 		$aOrderInfo = Yii::$app->request->post('aOrderInfo');
 		$deliveryAddressId = Yii::$app->request->post('delivery_address_id');
+		$buyerMsg = Yii::$app->request->post('buyer_msg');
 		
 		if(!$userToken){
 			return new Response('缺少user_token', 2101);
@@ -103,6 +104,7 @@ trait OrderApi{
 				'dress_count' => $v['total_count'],
 				'total_price' => $v['total_price'],
 				'status' => Order::ORDER_STATUS_CONFIRM,
+				'buyer_msg' => $buyerMsg,
 				'express_info' => [],
 				'create_time' => NOW_TIME,
 				'pay_time' => 0,
@@ -132,6 +134,7 @@ trait OrderApi{
 				'dress_count' => $totalCount,
 				'total_price' => $totalPrices,
 				'status' => Order::ORDER_STATUS_CONFIRM,
+				'buyer_msg' => $buyerMsg,
 				'express_info' => [],
 				'create_time' => NOW_TIME,
 				'pay_time' => 0,

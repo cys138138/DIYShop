@@ -137,7 +137,9 @@ class DressManageController extends VController{
 				'pics' => $aPics,
 				'dress_match_ids' => $aDressMatchIds,
 				'sex' => $sex,
-				'status' => $status
+				'like_count' => 0,
+				'status' => $status,
+				'create_time' => NOW_TIME
 			]);
 			$mDress = Dress::findOne($isSuccess);
 		}

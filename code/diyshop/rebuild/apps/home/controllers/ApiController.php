@@ -8,6 +8,7 @@ use umeworld\lib\Xxtea;
 class ApiController extends \yii\web\Controller{
 	use \home\controllers\api\UserApi;
 	use \home\controllers\api\OrderApi;
+	use \home\controllers\api\DressApi;
 	use \home\controllers\api\TestApi;
 	
 	private $_version = '1.0.0';

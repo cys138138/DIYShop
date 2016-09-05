@@ -89,6 +89,7 @@ trait TestApi{
 			'api_name' => 'createOrder',
 			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
 			'delivery_address_id' => 1,
+			'buyer_msg' => '不要发错货',
 			'aOrderInfo' => [
 				['dress_id' => 1, 'dress_size_color_count_id' => 22, 'count' => 2],
 				['dress_id' => 2, 'dress_size_color_count_id' => 28, 'count' => 1],
@@ -147,6 +148,28 @@ trait TestApi{
 		$aParams = [
 			'api_name' => 'mark',
 			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+		];
+		
+		//getDressList
+		$aParams = [
+			'api_name' => 'getDressList',
+			'page' => 1,
+			'page_size' => 5,
+			'keyword' => '',
+		];
+		
+		//getDressCommentList
+		$aParams = [
+			'api_name' => 'getDressCommentList',
+			'page' => 1,
+			'page_size' => 5,
+			'dress_id' => 1,
+		];
+		
+		//getDressDetail
+		$aParams = [
+			'api_name' => 'getDressDetail',
+			'dress_id' => 1,
 		];
 		
 		$aData = [
