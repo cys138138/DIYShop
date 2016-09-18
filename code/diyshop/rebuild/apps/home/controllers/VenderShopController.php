@@ -24,6 +24,8 @@ class VenderShopController extends VController{
 		$description = (string)Yii::$app->request->post('description');
 		$logo = (string)Yii::$app->request->post('logo');
 		$kefuTel = (string)Yii::$app->request->post('kefuTel');
+		$qq = (string)Yii::$app->request->post('qq');
+		$weixin = (string)Yii::$app->request->post('weixin');
 		$aPics = (array)Yii::$app->request->post('aPics');
 		
 		if(!$name){
@@ -45,6 +47,8 @@ class VenderShopController extends VController{
 				'name' => $name,
 				'logo' => $logo,
 				'kefu_tel' => $kefuTel,
+				'qq' => $qq,
+				'weixin' => $weixin,
 				'description' => $description,
 				'pics' => $aPics,
 			]);
@@ -52,6 +56,8 @@ class VenderShopController extends VController{
 			$mVenderShop->set('name', $name);
 			$mVenderShop->set('logo', $logo);
 			$mVenderShop->set('kefu_tel', $kefuTel);
+			$mVenderShop->set('qq', $qq);
+			$mVenderShop->set('weixin', $weixin);
 			$mVenderShop->set('description', $description);
 			$mVenderShop->set('pics', $aPics);
 			$mVenderShop->save();

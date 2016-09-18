@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 192.168.0.177
-Source Server Version : 50540
-Source Host           : 192.168.0.177:3306
+Source Server         : phpstudyLocalhost
+Source Server Version : 50547
+Source Host           : localhost:3306
 Source Database       : diyshop
 
 Target Server Type    : MYSQL
-Target Server Version : 50540
+Target Server Version : 50547
 File Encoding         : 65001
 
-Date: 2016-09-05 15:23:08
+Date: 2016-09-18 16:49:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -187,6 +187,7 @@ CREATE TABLE `manager_dress_match` (
   `name` varchar(500) DEFAULT NULL COMMENT '搭配别名',
   `catalog_id` int(11) DEFAULT NULL COMMENT '服饰分类ID',
   `sex` int(11) DEFAULT NULL COMMENT '性别：1男2女',
+  `price` decimal(10,2) DEFAULT NULL COMMENT '价格',
   `pics` text COMMENT '正反面图片',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
@@ -195,8 +196,8 @@ CREATE TABLE `manager_dress_match` (
 -- ----------------------------
 -- Records of manager_dress_match
 -- ----------------------------
-INSERT INTO `manager_dress_match` VALUES ('1', '外套衣领白色', '7', '1', '[\"\\/static\\/data\\/dress\\/51\\/89182f0bf496a7c4341a3a14f91dafca.jpeg\",\"\\/static\\/data\\/dress\\/24\\/4c78344cb602bd1b605b8c80f630c3e5.jpeg\"]', '1462852377');
-INSERT INTO `manager_dress_match` VALUES ('3', '外套衣领黑色', '7', '1', '[\"\\/static\\/data\\/dress\\/26\\/196c006af0daa6a3ad90f70fc83bd25d.jpeg\",\"\\/static\\/data\\/dress\\/50\\/e5ac373b7fd3ff4224ffdb8b89e8f2c2.jpeg\"]', '1462866961');
+INSERT INTO `manager_dress_match` VALUES ('1', '外套衣领白色', '7', '1', '34.00', '[\"\\/static\\/data\\/dress\\/51\\/89182f0bf496a7c4341a3a14f91dafca.jpeg\",\"\\/static\\/data\\/dress\\/24\\/4c78344cb602bd1b605b8c80f630c3e5.jpeg\"]', '1462852377');
+INSERT INTO `manager_dress_match` VALUES ('3', '外套衣领黑色', '7', '1', null, '[\"\\/static\\/data\\/dress\\/26\\/196c006af0daa6a3ad90f70fc83bd25d.jpeg\",\"\\/static\\/data\\/dress\\/50\\/e5ac373b7fd3ff4224ffdb8b89e8f2c2.jpeg\"]', '1462866961');
 
 -- ----------------------------
 -- Table structure for `mark`
@@ -356,6 +357,7 @@ CREATE TABLE `vender_dress_match` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '商家服饰搭配记录ID，自增',
   `vender_id` int(11) DEFAULT NULL COMMENT '商家ID',
   `name` varchar(500) DEFAULT NULL COMMENT '搭配别名',
+  `price` decimal(10,2) DEFAULT NULL COMMENT '价格',
   `manager_dress_match_id` int(11) DEFAULT NULL COMMENT '管理员服饰搭配ID',
   `detail_pics` text COMMENT '详细图片',
   `pics` text COMMENT '正反面图片',
@@ -366,7 +368,7 @@ CREATE TABLE `vender_dress_match` (
 -- ----------------------------
 -- Records of vender_dress_match
 -- ----------------------------
-INSERT INTO `vender_dress_match` VALUES ('1', '1', '外套衣领白色0001', '1', '[\"\\/static\\/data\\/dress\\/41\\/35f9416708830811138ac57387719d4f.jpeg\",\"\\/static\\/data\\/dress\\/67\\/316ff858004dd3f2abdc9daab065b90c.jpeg\"]', '[\"\\/static\\/data\\/dress\\/46\\/6501a622cfe0b3bf8fc06c042779a708.jpeg\",\"\\/static\\/data\\/dress\\/47\\/5fe8ec7e6e5df441f1f1fe5d93ae1e54.jpeg\"]', '1462935809');
+INSERT INTO `vender_dress_match` VALUES ('1', '1', '外套衣领白色0001', '23.00', '1', '[\"\\/static\\/data\\/dress\\/41\\/35f9416708830811138ac57387719d4f.jpeg\",\"\\/static\\/data\\/dress\\/67\\/316ff858004dd3f2abdc9daab065b90c.jpeg\"]', '[\"\\/static\\/data\\/dress\\/46\\/6501a622cfe0b3bf8fc06c042779a708.jpeg\",\"\\/static\\/data\\/dress\\/47\\/5fe8ec7e6e5df441f1f1fe5d93ae1e54.jpeg\"]', '1462935809');
 
 -- ----------------------------
 -- Table structure for `vender_shop`
@@ -379,14 +381,16 @@ CREATE TABLE `vender_shop` (
   `description` text COMMENT '商店说明',
   `pics` text COMMENT '轮播图片',
   `kefu_tel` varchar(50) DEFAULT NULL COMMENT '客服电话',
+  `qq` varchar(20) DEFAULT NULL COMMENT 'qq号',
+  `weixin` varchar(50) DEFAULT NULL COMMENT '微信号',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of vender_shop
 -- ----------------------------
-INSERT INTO `vender_shop` VALUES ('1', 'jack服饰商店', '/static/data/vender_shop_img/1/d845f884f76dc5916a316440caff76f7.jpg', 'jack服饰商店说明jack服饰商店说明jack服饰商店说明', '[\"\\/static\\/data\\/vender_shop_img\\/1\\/a547ce501430d26a861fb5d3b6b3779c.jpeg\",\"\\/static\\/data\\/vender_shop_img\\/1\\/7086ce468e50c8214da6d5ee8daa16a5.jpeg\"]', '020-5656566');
-INSERT INTO `vender_shop` VALUES ('2', 'fsz', '/static/data/vender_shop_img/43/73e927d26448b5e1bb110bb58bcaca35.jpg', 'fszfszfsz', '[\"\\/static\\/data\\/vender_shop_img\\/30\\/d3f7d320ffe9480b925b14b56d7f9921.jpg\"]', '020-65658955');
+INSERT INTO `vender_shop` VALUES ('1', 'jack服饰商店', '/static/data/vender_shop_img/1/d845f884f76dc5916a316440caff76f7.jpg', 'jack服饰商店说明jack服饰商店说明jack服饰商店说明', '[\"\\/static\\/data\\/vender_shop_img\\/1\\/a547ce501430d26a861fb5d3b6b3779c.jpeg\",\"\\/static\\/data\\/vender_shop_img\\/1\\/7086ce468e50c8214da6d5ee8daa16a5.jpeg\"]', '020-5656566', '3243242342', 'vx34234');
+INSERT INTO `vender_shop` VALUES ('2', 'fsz', '/static/data/vender_shop_img/43/73e927d26448b5e1bb110bb58bcaca35.jpg', 'fszfszfsz', '[\"\\/static\\/data\\/vender_shop_img\\/30\\/d3f7d320ffe9480b925b14b56d7f9921.jpg\"]', '020-65658955', null, null);
 
 -- ----------------------------
 -- Table structure for `vote_record`

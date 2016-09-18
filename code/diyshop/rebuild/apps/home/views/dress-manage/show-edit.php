@@ -198,6 +198,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	</div>
 </div>
 <script type="text/javascript">
+	var maxPicCount = 2;
 	var aDress = <?php echo json_encode($aDress); ?>;
 	var aSizeColorList = <?php echo json_encode($aSizeColorList); ?>;
 	var aTagList = <?php echo json_encode($aTagList); ?>;
@@ -552,6 +553,13 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		$('.J-add-pics-btn').AjaxUpload({
 			uploadUrl : '<?php echo Url::to(['dress-manage/upload-file']); ?>',
 			fileKey : 'image',
+			isUploadEnable : function(o){
+				if(parseInt($('.J-pics-list li').length) >= maxPicCount){
+					UBox.show('只能上传 ' + maxPicCount + ' 张图片！', -1);
+					return false;
+				}
+				return true;
+			},
 			callback : function(aResult){
 				if(aResult.status == 1){
 					addPic(aResult.data);

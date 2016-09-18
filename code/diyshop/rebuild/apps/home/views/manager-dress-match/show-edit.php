@@ -65,6 +65,11 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			<br />
 		</div>
 		<div class="form-group">
+			<label>价格</label>
+			<input class="J-price form-control" placeholder="价格" value="<?php echo $aDressMatch ? $aDressMatch['price'] : ''; ?>">
+			<br />
+		</div>
+		<div class="form-group">
 			<label>服饰子分类</label>
 			<select class="J-catalog-id form-control">
 			<?php foreach($aDressCatalogChildList as $k => $aChild){ ?>
@@ -122,6 +127,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	function save(o){
 		var id = $('.J-id').val();
 		var name = $('.J-name').val();
+		var price = $('.J-price').val();
 		var sex = $('.J-sex').val();
 		var catalogId = $('.J-catalog-id').val();
 		var aPics = getPics();
@@ -138,6 +144,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			data : {
 				id : id,
 				name : name,
+				price : price,
 				sex : sex,
 				catalogId : catalogId,
 				aPics : aPics

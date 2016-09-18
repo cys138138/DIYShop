@@ -68,6 +68,7 @@ class ManagerDressMatchController extends MController{
 	public function actionSave(){
 		$id = (int)Yii::$app->request->post('id');
 		$name = (string)Yii::$app->request->post('name');
+		$price = (string)Yii::$app->request->post('price');
 		$sex = (int)Yii::$app->request->post('sex');
 		$catalogId = (int)Yii::$app->request->post('catalogId');
 		$aPics = (array)Yii::$app->request->post('aPics');
@@ -87,6 +88,7 @@ class ManagerDressMatchController extends MController{
 			$mManagerDressMatch = ManagerDressMatch::findOne($id);
 			if($mManagerDressMatch){
 				$mManagerDressMatch->set('name', $name);
+				$mManagerDressMatch->set('price', $price);
 				$mManagerDressMatch->set('sex', $sex);
 				$mManagerDressMatch->set('catalog_id', $catalogId);
 				$mManagerDressMatch->set('pics', $aPics);
@@ -96,6 +98,7 @@ class ManagerDressMatchController extends MController{
 		}else{
 			$isSuccess = ManagerDressMatch::insert([
 				'name' => $name,
+				'price' => $price,
 				'sex' => $sex,
 				'catalog_id' => $catalogId,
 				'pics' => $aPics,

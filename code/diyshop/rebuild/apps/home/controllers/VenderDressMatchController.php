@@ -84,6 +84,7 @@ class VenderDressMatchController extends VController{
 	public function actionSave(){
 		$id = (int)Yii::$app->request->post('id');
 		$name = (string)Yii::$app->request->post('name');
+		$price = (string)Yii::$app->request->post('price');
 		$managerDressMatchId = (int)Yii::$app->request->post('managerDressMatchId');
 		$aDetailPics = (array)Yii::$app->request->post('aDetailPics');
 		$aPics = (array)Yii::$app->request->post('aPics');
@@ -103,6 +104,7 @@ class VenderDressMatchController extends VController{
 			if($mVenderDressMatch){
 				$mVenderDressMatch->set('vender_id', Yii::$app->vender->id);
 				$mVenderDressMatch->set('name', $name);
+				$mVenderDressMatch->set('price', $price);
 				$mVenderDressMatch->set('manager_dress_match_id', $managerDressMatchId);
 				$mVenderDressMatch->set('detail_pics', $aDetailPics);
 				$mVenderDressMatch->set('pics', $aPics);
@@ -113,6 +115,7 @@ class VenderDressMatchController extends VController{
 			$isSuccess = VenderDressMatch::insert([
 				'vender_id' => Yii::$app->vender->id,
 				'name' => $name,
+				'price' => $price,
 				'manager_dress_match_id' => $managerDressMatchId,
 				'detail_pics' => $aDetailPics,
 				'pics' => $aPics,
