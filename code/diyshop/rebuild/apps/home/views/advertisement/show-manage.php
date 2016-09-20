@@ -117,6 +117,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	}
 	
 	function save(o){
+		updateAdvertisementCatalogConfig();
 		ajax({
 			url : '<?php echo Url::to(['advertisement/save-advertisement-catalog-config']); ?>',
 			data : {
