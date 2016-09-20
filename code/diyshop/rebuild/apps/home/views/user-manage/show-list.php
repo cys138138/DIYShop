@@ -44,13 +44,14 @@ $this->setTitle('用户管理');
 					'id'	=>	['title' => '用户编号'],
 					'name'	=>	['title' => '姓名'],
 					'user_name'	=>	['title' => '用户名'],
+					'gold'	=>	['title' => '金币数'],
 					'email'	=>	['title' => '邮箱'],
 					'mobile'	=>	['title' => '手机号'],
 					'operate' => [
 						'title' => '操作',
 						'class' => 'col-sm-1',
 						'content' => function($aData){
-							return '<a href="javascript:;" onclick="deleteItem(this, ' . $aData['id'] . ');">删除</a>';
+							return '<a href="javascript:;" onclick="showAddGold(this, ' . $aData['id'] . ');">添加金币</a>&nbsp;&nbsp;<a href="javascript:;" onclick="deleteItem(this, ' . $aData['id'] . ');">删除</a>';
 						}
 					],
 				],
@@ -65,6 +66,76 @@ $this->setTitle('用户管理');
 		var condition = $('form[name=J-search-form]').serialize();
 		location.href = '<?php echo Url::to(['user-manage/show-list']); ?>?' + condition;
 	}
+	
+	function buildAddGoldHtml(o, id){
+		var htmlStr = '';
+		
+		htmlStr += '\
+			<div class="form-group">\
+				<label>用户编号</label>\
+				<input class="J-add-gold-user-id form-control" placeholder="请输入用户编号" value="' + id + '">\
+			</div>\
+			<div class="form-group">\
+				<label>添加金币数量</label>\
+				<input class="J-add-gold-num form-control" placeholder="请输入金币数量" value="">\
+			</div>\
+		';
+		
+		return htmlStr;
+	}
+	
+	function showAddGold(o, id){
+		$.teninedialog({
+			title : '添加金币',
+			content : buildAddGoldHtml(o, id),
+			url : '',
+			showCloseButton : false,
+			otherButtons : ['添加'],
+			otherButtonStyles : ['btn-primary'],
+			bootstrapModalOption : {keyboard: true},
+			dialogShow : function(){
+				//alert('即将显示对话框');
+			},
+			dialogShown : function(){
+				
+			},
+			dialogHide : function(){
+				//alert('即将关闭对话框');
+			},
+			dialogHidden : function(){
+				//alert('关闭对话框');
+			},
+			clickButton : function(sender, modal, index){
+				var userId = $('.J-add-gold-user-id').val();
+				var gold = $('.J-add-gold-num').val();
+				
+				if(userId == ''){
+					UBox.show('请输入用户编号', -1);
+					return;
+				}
+				if(gold == ''){
+					UBox.show('请输入金币数量', -1);
+					return;
+				}
+				
+				ajax({
+					url : '<?php echo Url::to(['user-manage/add-gold']); ?>',
+					data : {
+						userId : userId,
+						gold : gold
+					},
+					success : function(aResult){
+						UBox.show(aResult.msg, aResult.status);
+						if(aResult.status == 1){
+							location.reload();
+						}
+						$(this).closeDialog(modal);
+					}
+				});
+			}
+		});
+	}
+	
 	function deleteItem(o, id){
 		UBox.confirm('确定要删除？', function(){
 			ajax({

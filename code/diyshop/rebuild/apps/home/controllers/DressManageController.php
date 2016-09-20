@@ -11,6 +11,7 @@ use common\model\DressTag;
 use common\model\DressSizeColorCount;
 use common\model\Dress;
 use common\model\VenderDressMatch;
+use common\model\ManagerDressMatch;
 use common\model\form\DressListForm;
 use common\model\form\ImageUploadForm;
 use yii\web\UploadedFile;
@@ -43,10 +44,26 @@ class DressManageController extends VController{
 				$aDress = $mDress->toArray();
 			}
 		}
+		$aList = DressCatalog::findAll();
+		$aDressCatalogChildList = [];
+		$aDressCatalogList = [];
+		$aDressCatalogIdList = [];
+		foreach($aList as $key => $aValue){
+			array_push($aDressCatalogIdList, $aValue['id']);
+			if(!$aValue['pid']){
+				array_push($aDressCatalogList, $aValue);
+			}else{
+				array_push($aDressCatalogChildList, $aValue);
+			}
+		}
+		$aManagerDressMatchList = ManagerDressMatch::findAll(['id' => $aDressCatalogIdList]);
 		return $this->render('show-edit', [
-			'aDressCatalogList' => DressCatalog::findAll(['pid' => 0]),
+			'aDressCatalogList' => $aDressCatalogList,
+			'aManagerDressMatchList' => $aManagerDressMatchList,
+			'aDressCatalogChildList' => $aDressCatalogChildList,
 			'aDress' => $aDress,
 			'aTagList' => Dress::getTagList(Yii::$app->vender->id),
+			'aMaterialList' => Dress::getMaterilaList(Yii::$app->vender->id),
 			'aSizeColorList' => Dress::getSizeColorList(Yii::$app->vender->id),
 			'aDressMatchList' => VenderDressMatch::findAll(['vender_id' => Yii::$app->vender->id]),
 		]);
@@ -61,8 +78,9 @@ class DressManageController extends VController{
 		$sex = (int)Yii::$app->request->post('sex');
 		$aSizeColorCount = (array)Yii::$app->request->post('aSizeColorCount');
 		$aTag = (array)Yii::$app->request->post('aTag');
+		$aMaterial = (array)Yii::$app->request->post('aMaterial');
 		$aPics = (array)Yii::$app->request->post('aPics');
-		$aDressMatchIds = array_unique((array)Yii::$app->request->post('aDressMatchIds'));
+		$aDressMatchIds = (array)Yii::$app->request->post('aDressMatchIds');
 		
 		if(!$name){
 			return new Response('请填写服饰名称', -1);
@@ -112,6 +130,18 @@ class DressManageController extends VController{
 		}else{
 			return new Response('请添加服饰标签', -1);
 		}
+		if($aMaterial){
+			if(count($aMaterial) > 3){
+				return new Response('最多只能添加3个服饰面料', -1);
+			}
+			foreach($aMaterial as $key => $value){
+				if(!$value){
+					return new Response('服饰面料不能为空', -1);
+				}
+			}
+		}else{
+			return new Response('请添加服饰面料', -1);
+		}
 		$isSuccess = false;
 		$mDress = null;
 		$mVender = Yii::$app->vender->getIdentity();
@@ -149,6 +179,7 @@ class DressManageController extends VController{
 		}
 		$mDress->saveSizeColorCount($aSizeColorCount);
 		$mDress->saveTag($aTag);
+		$mDress->saveMaterial($aMaterial);
 		
 		return new Response('保存成功', 1);
 	}

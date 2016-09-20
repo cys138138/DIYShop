@@ -158,6 +158,31 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				</div>
 			</div>
 		</div>
+		<div class="form-group" style="margin-top:45px;">
+			<label>服饰面料</label>
+			<div class="row">
+				<div class="col-lg-12">
+					<ul class="J-select-material-list list-group">
+					<?php foreach($aMaterialList as $key => $aValue){ ?>
+						<li class="list-group-item" onclick="addMaterial(this, 1);"><p><a><?php echo $aValue['name']; ?></a></p></li>
+					<?php } ?>
+					</ul>
+				</div>
+				<br />
+			</div>
+			<br />
+			<div class="form-group">
+				<!--<input class="J-line-input J-tag form-control" placeholder="请输入服饰标签" value="" onfocus="showTagList(this);" onblur="removeList();">-->
+				<input class="J-line-input J-material form-control" placeholder="请输入服饰面料" value="">
+				<button type="button" class="J-line-input btn btn-info" onclick="addMaterial(this);" style="width:55px;">添加</button>
+				<br />
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<ul class="J-material-list list-group"></ul>
+				</div>
+			</div>
+		</div>
 		<div class="form-group">
 			<div class="checkbox">
 				<label>
@@ -165,13 +190,15 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				</label>
 			</div>
 		</div>
-		<div class="J-dress-match-content form-group" style="display:none;">
+		<div class="J-dress-match-content form-group" style="display:none;line-height:35px;">
+			<label style="float:left;">自有搭配库：</label>
 			<select class="J-dress-match form-control" style="float:left;width:400px;margin-right:10px;">
 			<?php foreach($aDressMatchList as $key => $aDressMatch){ ?>
 				<option value="<?php echo $aDressMatch['id']; ?>"><?php echo $aDressMatch['name']; ?></option>
 			<?php } ?>
 			</select>
-			<button type="button" class="J-add-dress-match-btn btn btn-primary" onclick="addDressMatch();" style="float:left;">添加</button>
+			<button type="button" class="J-add-dress-match-btn btn btn-primary" onclick="addDressMatch('vender');" style="float:left; margin-right:10px;">添加</button>
+			<button type="button" class="J-add-dress-manager-match-btn btn btn-primary" onclick="addManagerDressMatch();" style="float:left;">Dms搭配库</button>
 			<br />
 		</div>
 		<div class="J-dress-match-content row" style="display:none;">
@@ -200,8 +227,12 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 <script type="text/javascript">
 	var maxPicCount = 2;
 	var aDress = <?php echo json_encode($aDress); ?>;
+	var aDressCatalogList = <?php echo json_encode($aDressCatalogList); ?>;
+	var aManagerDressMatchList = <?php echo json_encode($aManagerDressMatchList); ?>;
+	var aDressCatalogChildList = <?php echo json_encode($aDressCatalogChildList); ?>;
 	var aSizeColorList = <?php echo json_encode($aSizeColorList); ?>;
 	var aTagList = <?php echo json_encode($aTagList); ?>;
+	var aMaterialList = <?php echo json_encode($aMaterialList); ?>;
 	var oCurrentInputDom = {};
 	
 	function init(){
@@ -234,6 +265,11 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		if(aDress.dress_tag != 0){
 			for(var i in aDress.dress_tag){
 				$('.J-tag-list').append(buildTagHtml(aDress.dress_tag[i].name));
+			}
+		}
+		if(aDress.dress_material != 0){
+			for(var i in aDress.dress_material){
+				$('.J-material-list').append(buildMaterialHtml(aDress.dress_material[i].name));
 			}
 		}
 		if(aDress.pics != 0){
@@ -301,10 +337,23 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		return aTag;
 	}
 	
+	function getMaterial(){
+		var aMaterial = [];
+		if($('.J-material-list li').length == 0){
+			UBox.show('请添加服饰面料', -1);
+			return false;
+		}
+		$('.J-material-list li').each(function(){
+			aMaterial.push($(this).find('a').text());
+		});
+		
+		return aMaterial;
+	}
+	
 	function getDressMatch(){
-		var aList = [];
+		var aList = {'vender' : [], 'manager' : []};
 		$('.J-dress-match-list li').each(function(){
-			aList.push($(this).attr('data-id'));
+			aList[$(this).attr('data-type')].push($(this).attr('data-id'));
 		});
 		
 		return aList;
@@ -346,6 +395,10 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		if(!aTag){
 			return;
 		}
+		var aMaterial = getMaterial();
+		if(!aMaterial){
+			return;
+		}
 		var aPics = getPics();
 		/*if(!aPics){
 			return;
@@ -367,6 +420,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				sex : sex,
 				aSizeColorCount : aSizeColorCount,
 				aTag : aTag,
+				aMaterial : aMaterial,
 				aPics : aPics,
 				aDressMatchIds : aDressMatchIds
 			},
@@ -456,12 +510,33 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		$('.J-tag').val('');
 	}
 	
+	function addMaterial(o, type){
+		if($('.J-material-list li').length >= 3){
+			UBox.show('最多只能添加3个服饰面料', -1);
+			return false;
+		}
+		var material = $('.J-material').val();
+		if(type){
+			material = $(o).find('a').text();
+		}
+		if(material == ''){
+			UBox.show('标签不能为空', -1);
+			return;
+		}
+		$('.J-material-list').append(buildMaterialHtml(material));
+		$('.J-material').val('');
+	}
+	
 	function buildTagHtml(tag){
 		return '<li class="list-group-item"><p><a>' + tag + '</a><i onclick="deleteTag(this);">&nbsp;&nbsp;×</i></p></li>';
 	}
 	
-	function buildDressMatchHtml(id, txt){
-		return '<li class="list-group-item" data-id="' + id + '"><p><a>' + txt + '</a><i onclick="deleteDressMatch(this);">&nbsp;&nbsp;×</i></p></li>';
+	function buildMaterialHtml(tag){
+		return '<li class="list-group-item"><p><a>' + tag + '</a><i onclick="deleteMaterial(this);">&nbsp;&nbsp;×</i></p></li>';
+	}
+	
+	function buildDressMatchHtml(type, id, txt){
+		return '<li class="list-group-item" data-type="' + type + '" data-id="' + id + '"><p><a>' + txt + '</a><i onclick="deleteDressMatch(this);">&nbsp;&nbsp;×</i></p></li>';
 	}
 		
 	function deleteDressMatch(o){
@@ -471,9 +546,24 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	function deleteTag(o){
 		$(o).parent().parent().remove();
 	}
+		
+	function deleteMaterial(o){
+		$(o).parent().parent().remove();
+	}
 	
-	function addDressMatch(){
-		$('.J-dress-match-list').append(buildDressMatchHtml($('.J-dress-match').val(), $('.J-dress-match').text()));
+	function addDressMatch(type, id, txt){
+		if(!id){
+			id = $('.J-dress-match').val();
+		}
+		if(!txt){
+			txt = $('.J-dress-match').text();
+		}
+		var aList = getDressMatch();
+		if(JsTools.inArray(id, aList[type])){
+			UBox.show('已添加过了哦', -1);
+			return;
+		}
+		$('.J-dress-match-list').append(buildDressMatchHtml(type, id, txt));
 	}
 	
 	function deletePic(o){
@@ -528,6 +618,19 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		$('.J-input-select-list').css({top : $(o).offset().top + 35});
 		$('.J-input-select-list').css({left : $(o).offset().left});
 	}
+		
+	function showMaterialList(o){
+		oCurrentInputDom = $(o);
+		$('.J-input-select-list').remove();
+		var htmlStr = '<div class="J-input-select-list list-group">';
+		for(var i in aMaterialList){
+			htmlStr += '<a href="javascript:;" class="list-group-item" onclick="setValue(this);">' + aTagList[i].name + '</a>';
+		}
+		htmlStr += '</div>';
+		$('body').append(htmlStr);
+		$('.J-input-select-list').css({top : $(o).offset().top + 35});
+		$('.J-input-select-list').css({left : $(o).offset().left});
+	}
 	
 	function setValue(o){
 		oCurrentInputDom.val($(o).text());
@@ -542,6 +645,109 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		setTimeout(function(){
 			oDom.remove();
 		}, 200);
+	}
+	
+	function buildDmsBoxHtml(){
+		var htmlStr = '';
+		htmlStr += '\
+			<div class="J-dms-win" style="height:560px;max-width:1000px;">\
+				<div style="height:160px;">\
+					<div class="form-group" style="height:80px; margin-bottom:0px;">\
+						<label>服饰分类</label>\
+						<select class="J-dms-catalog form-control">\
+						<?php foreach($aDressCatalogList as $key => $aValue){ ?>\
+							<option value="<?php echo $aValue['id']; ?>"><?php echo $aValue['name']; ?></option>\
+						<?php } ?>\
+						</select>\
+					</div>\
+					<div class="form-group" style="height:80px;">\
+						<label>服饰子分类</label>\
+						<select class="J-dms-catalog-id form-control">\
+						<?php foreach($aDressCatalogChildList as $k => $aChild){ ?>\
+							<option value="<?php echo $aChild['id']; ?>"><?php echo $aChild['name']; ?></option>\
+						<?php } ?>\
+						</select>\
+					</div>\
+				</div>\
+				<div style="height:400px;max-width:1000px; overflow-y:auto;">\
+					<div class="form-group" style="width:500px;">\
+						<div class="row">\
+							<div class="col-lg-12">\
+								<ul class="J-dms-pics-list list-group"></ul>\
+							</div>\
+						</div>\
+						<br />\
+					</div>\
+				</div>\
+			</div>\
+		';
+		return htmlStr;
+	}
+	
+	function showDmsPicsByCatalogId(id){
+		$('.J-dms-pics-list').html('');
+		for(var i in aManagerDressMatchList){
+			if(aManagerDressMatchList[i].catalog_id == id){
+				if(typeof(aManagerDressMatchList[i].pics[0]) != 'undefined'){
+					addDmsPic(aManagerDressMatchList[i].id, aManagerDressMatchList[i].name, aManagerDressMatchList[i].pics[0]);
+				}
+			}
+		}
+	}
+	
+	function addDmsPic(id, txt, pic){
+		var htmlStr = '\
+			<li class="list-group-item J-pic-item" data-pic="' + pic + '">\
+				<p><img class="img-thumbnail" src="' + App.url.resource + pic + '" alt=""></p>\
+				<p><center><button type="button" class="btn btn-sm btn-danger" onclick="addDressMatch(\'manager\', ' + id + ', \'' + txt + '\');">添加</button></center></p>\
+			</li>\
+		';
+		$('.J-dms-pics-list').append(htmlStr);
+	}
+	
+	function showChildCatalog(id){
+		var htmlStr = '';
+		for(var i in aDressCatalogChildList){
+			if(aDressCatalogChildList[i].pid == id){
+				htmlStr += '<option value="' + aDressCatalogChildList[i].id + '">' + aDressCatalogChildList[i].name + '</option>';
+			}
+		}
+		
+		$('.J-dms-catalog-id').html(htmlStr);
+	}
+	
+	function addManagerDressMatch(){
+		$.teninedialog({
+			title : 'Dms搭配库',
+			content : buildDmsBoxHtml(),
+			url : '',
+			showCloseButton : false,
+			otherButtons : ['确定'],
+			otherButtonStyles : ['btn-primary'],
+			bootstrapModalOption : {keyboard: true},
+			dialogShow : function(){
+				//alert('即将显示对话框');
+			},
+			dialogShown : function(){
+				$('.J-dms-catalog').on('change', function(){
+					showChildCatalog($(this).val());
+					showDmsPicsByCatalogId($('.J-dms-catalog-id').val());
+				});
+				$('.J-dms-catalog-id').on('change', function(){
+					showDmsPicsByCatalogId($(this).val());console.log($(this).val());
+				});
+				showDmsPicsByCatalogId($('.J-dms-catalog-id').val());
+			},
+			dialogHide : function(){
+				//alert('即将关闭对话框');
+			},
+			dialogHidden : function(){
+				//alert('关闭对话框');
+			},
+			clickButton : function(sender, modal, index){
+				$(this).closeDialog(modal);
+			}
+		});
 	}
 	
 	$(function(){
@@ -579,9 +785,20 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		});
 		<?php if($aDress && $aDress['dress_match_ids']){ ?>
 			$('.J-dress-match-chk').click();
-			for(var i in aDress.dress_match_ids){
-				$('.J-dress-match').val(aDress.dress_match_ids[i]);
-				addDressMatch();
+			if(typeof(aDress.dress_match_ids.vender) != 'undefined'){
+				for(var i in aDress.dress_match_ids.vender){
+					$('.J-dress-match').val(aDress.dress_match_ids.vender[i]);
+					addDressMatch('vender');
+				}
+			}
+			if(typeof(aDress.dress_match_ids.manager) != 'undefined'){
+				for(var i in aDress.dress_match_ids.manager){
+					for(var j in aManagerDressMatchList){
+						if(aDress.dress_match_ids.manager[i] == aManagerDressMatchList[j].id){
+							addDressMatch('manager', aManagerDressMatchList[j].id, aManagerDressMatchList[j].name);
+						}
+					}
+				}
 			}
 		<?php } ?>
 	});

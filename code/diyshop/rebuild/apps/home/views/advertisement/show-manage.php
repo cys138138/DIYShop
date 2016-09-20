@@ -15,7 +15,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	}
 	.list-group-item img{
 		width:375px;
-		height:234px;
+		height:200px;
 	}
 </style>
 <div class="row">
@@ -90,16 +90,18 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		for(var i in aAdvertisementCatalogConfig){
 			var aPicData = [];
 			$('.J-pics-list_' + aAdvertisementCatalogConfig[i].id + ' li').each(function(){
-				aPicData.push($(this).attr('data-pic'));
+				var aTemp = {pic : $(this).attr('data-pic'), url : $(this).find('.J-url').val()};
+				aPicData.push(aTemp);
 			});
 			aAdvertisementCatalogConfig[i].pics = aPicData;
 		}
 	}
 	
-	function bulidImgHtml(pic){
+	function bulidImgHtml(pic, url){
 		var htmlStr = '\
 			<li class="list-group-item" data-pic="' + pic + '">\
 				<p><img class="img-thumbnail" src="' + App.url.resource + pic + '" alt=""></p>\
+				<p><input class="J-url form-control" placeholder="请输入链接" value="' + url + '"></p>\
 				<p><center><button type="button" class="btn btn-sm btn-danger" onclick="deletePic(this);">删除</button></center></p>\
 			</li>\
 		';
@@ -109,7 +111,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	function showPics(id, aPics){
 		var htmlStr = '';
 		for(var i in aPics){
-			htmlStr += bulidImgHtml(aPics[i]);
+			htmlStr += bulidImgHtml(aPics[i].pic, aPics[i].url);
 		}
 		$('.J-pics-list_' + id).html(htmlStr);
 	}

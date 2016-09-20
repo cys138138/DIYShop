@@ -112,5 +112,13 @@ return [
 			'icon_class' => 'star',	
 			'child' => [],
 		],
+		[
+			'title' => '面料管理',
+			'en_title' => 'manager_dress_material',
+			'url' => ['manager-dress-material/show-list'],
+			'permission' => ['manager'],
+			'icon_class' => 'star',	
+			'child' => [],
+		],
 	],
 ];

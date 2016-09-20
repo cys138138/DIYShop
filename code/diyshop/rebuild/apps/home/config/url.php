@@ -68,6 +68,7 @@ return [
 		
 		
 		'user-manage/show-list.html'											=> 'user-manage/show-list',
+		'user-manage/add-gold.json'												=> 'user-manage/add-gold',
 		'user-manage/delete.json'												=> 'user-manage/delete',
 		
 		
@@ -107,6 +108,12 @@ return [
 		'vender-dress-match/delete.json'										=> 'vender-dress-match/delete',
 		'vender-dress-match/get-manager-dress-match-list.json'					=> 'vender-dress-match/get-manager-dress-match-list',
 		'vender-dress-match/upload-file.html'									=> 'vender-dress-match/upload-file',
+		
+		
+		'manager-dress-material/show-list.html'									=> 'manager-dress-material/show-list',
+		'manager-dress-material/show-edit.html'									=> 'manager-dress-material/show-edit',
+		'manager-dress-material/save.json'										=> 'manager-dress-material/save',
+		'manager-dress-material/delete.json'									=> 'manager-dress-material/delete',
 		
 		
 		

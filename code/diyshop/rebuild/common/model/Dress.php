@@ -41,6 +41,13 @@ class Dress extends \common\lib\DbOrmModel{
 			}else{
 				$mDress->dress_tag = [];
 			}
+			$aDressMaterial = DressMaterial::findAll(['dress_id' => $mDress->id]);
+			ArrayHelper::multisort($aDressMaterial, 'id', SORT_ASC);
+			if($aDressMaterial){
+				$mDress->dress_material = $aDressMaterial;
+			}else{
+				$mDress->dress_material = [];
+			}
 		}
 		
 		return $mDress;
@@ -112,6 +119,17 @@ class Dress extends \common\lib\DbOrmModel{
 		}
 	}
 	
+	public function saveMaterial($aData){
+		Yii::$app->db->createCommand()->delete(DressMaterial::tableName(), ['dress_id' => $this->id])->execute();
+		foreach($aData as $key => $value){
+			(new Query())->createCommand()->insert(DressMaterial::tableName(), [
+				'vender_id' => $this->vender_id,
+				'dress_id' => $this->id,
+				'name' => $value
+			])->execute();
+		}
+	}
+	
 	public static function getSizeColorList($id){
 		return [
 			'size_list' => (new Query())->select('size_name')->distinct('size_name')->from(DressSizeColorCount::tableName())->where(['vender_id' => $id])->all(),
@@ -121,6 +139,10 @@ class Dress extends \common\lib\DbOrmModel{
 	
 	public static function getTagList($id){
 		return (new Query())->select('name')->distinct('name')->from(DressTag::tableName())->where(['vender_id' => $id])->all();
+	}
+	
+	public static function getMaterilaList($id){
+		return (new Query())->select('name')->distinct('name')->from(DressMaterial::tableName())->where(['vender_id' => [0, $id]])->all();
 	}
 	
 }

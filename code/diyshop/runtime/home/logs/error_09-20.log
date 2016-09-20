@@ -1,0 +1,284 @@
+LOG_START=================================
+[time=2016-09-20 09:46:08] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:1] 
+message_start
+exception 'yii\base\ErrorException' with message 'Class 'home\controllers\ManagerDressMatch' not found' in /var/www/diyshop/rebuild/apps/home/controllers/DressManageController.php:55
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/dress-manage/show-edit.html?id=1
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_GET = [
+    'id' => '1'
+]
+
+$_COOKIE = [
+    '_csrf' => '72ef29b2265cf205aee0fbf73a4838388e3bb0824a57f341782196ca6ed5629ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"x6z_eEr0ufc0KCy9-QO_Jbg4UXmFYCft\";}'
+    'venderId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/dress-manage/show-edit.html?id=1',
+	'HTTP_REFERER' => 'http://www.diyshop.com/dress-manage/show-list.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-09-20 09:53:44] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:8] 
+message_start
+exception 'yii\base\ErrorException' with message 'Undefined variable: aDressCatalogChildList' in /var/www/diyshop/rebuild/apps/home/views/dress-manage/show-edit.php:644
+Stack trace:
+#0 /var/www/diyshop/rebuild/apps/home/views/dress-manage/show-edit.php(644): yii\base\ErrorHandler->handleError(8, 'Undefined varia...', '/var/www/diysho...', 644, Array)
+#1 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#2 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#3 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\controllers\DressManageController))
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(371): yii\base\View->render('show-edit', Array, Object(home\controllers\DressManageController))
+#5 /var/www/diyshop/rebuild/apps/home/controllers/DressManageController.php(65): yii\base\Controller->render('show-edit', Array)
+#6 [internal function]: home\controllers\DressManageController->actionShowEdit()
+#7 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#9 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('show-edit', Array)
+#10 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('dress-manage/sh...', Array)
+#11 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#13 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/dress-manage/show-edit.html?id=1
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_GET = [
+    'id' => '1'
+]
+
+$_COOKIE = [
+    '_csrf' => '72ef29b2265cf205aee0fbf73a4838388e3bb0824a57f341782196ca6ed5629ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"x6z_eEr0ufc0KCy9-QO_Jbg4UXmFYCft\";}'
+    'venderId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/dress-manage/show-edit.html?id=1',
+	'HTTP_REFERER' => 'http://www.diyshop.com/dress-manage/show-list.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-09-20 11:30:30] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:8] 
+message_start
+exception 'yii\base\ErrorException' with message 'Array to string conversion' in /var/www/diyshop/rebuild/apps/home/controllers/DressManageController.php:83
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleError(8, 'Array to string...', '/var/www/diysho...', 83, Array)
+#1 /var/www/diyshop/rebuild/apps/home/controllers/DressManageController.php(83): array_unique(Array)
+#2 [internal function]: home\controllers\DressManageController->actionSave()
+#3 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#5 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('save', Array)
+#6 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('dress-manage/sa...', Array)
+#7 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#8 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#9 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/dress-manage/save.json
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_POST = [
+    'id' => '1'
+    'name' => '测试服饰1'
+    'catalogId' => '1'
+    'price' => '50.00'
+    'status' => '2'
+    'sex' => '2'
+    'aSizeColorCount' => [
+        0 => [
+            'size' => 'S'
+            'color' => '白'
+            'count' => '1'
+            'pic' => '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg'
+        ]
+        1 => [
+            'size' => 'S'
+            'color' => '黑'
+            'count' => '2'
+            'pic' => '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg'
+        ]
+        2 => [
+            'size' => 'M'
+            'color' => '白'
+            'count' => '3'
+            'pic' => '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg'
+        ]
+        3 => [
+            'size' => 'M'
+            'color' => '黑'
+            'count' => '91'
+            'pic' => '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg'
+        ]
+        4 => [
+            'size' => 'L'
+            'color' => '白'
+            'count' => '5'
+            'pic' => '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg'
+        ]
+        5 => [
+            'size' => 'L'
+            'color' => '黑'
+            'count' => '6'
+            'pic' => '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg'
+        ]
+    ]
+    'aTag' => [
+        0 => '夹克'
+        1 => '秋冬'
+    ]
+    'aMaterial' => [
+        0 => '纯棉'
+        1 => '麻布'
+    ]
+    'aPics' => [
+        0 => '/static/data/dress/48/7ea7a7c4e8d0a986a34d1bec0b85b88c.jpeg'
+        1 => '/static/data/dress/67/863840619527ceecba13b58b9b8a8186.jpeg'
+    ]
+    'aDressMatchIds' => [
+        'vender' => [
+            0 => '1'
+        ]
+        'manager' => [
+            0 => '1'
+        ]
+    ]
+    '_csrf' => 'QUtNVXJUc045fTcKFxEBfjQtLmU5Fwp3bBoCCjg2FHoUEyATKxcVOg=='
+]
+
+$_COOKIE = [
+    '_csrf' => '72ef29b2265cf205aee0fbf73a4838388e3bb0824a57f341782196ca6ed5629ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"x6z_eEr0ufc0KCy9-QO_Jbg4UXmFYCft\";}'
+    'venderId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/dress-manage/save.json',
+	'HTTP_REFERER' => 'http://www.diyshop.com/dress-manage/show-edit.html?id=1',
+	'REQUEST_METHOD' => 'POST',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-09-20 14:54:03] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:8] 
+message_start
+exception 'yii\base\ErrorException' with message 'Undefined variable: aList' in /var/www/diyshop/rebuild/apps/home/views/manager-dress-material/show-list.php:37
+Stack trace:
+#0 /var/www/diyshop/rebuild/apps/home/views/manager-dress-material/show-list.php(37): yii\base\ErrorHandler->handleError(8, 'Undefined varia...', '/var/www/diysho...', 37, Array)
+#1 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#2 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#3 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\controllers\ManagerDressMaterialController))
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(371): yii\base\View->render('show-list', Array, Object(home\controllers\ManagerDressMaterialController))
+#5 /var/www/diyshop/rebuild/apps/home/controllers/ManagerDressMaterialController.php(16): yii\base\Controller->render('show-list')
+#6 [internal function]: home\controllers\ManagerDressMaterialController->actionShowList()
+#7 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#9 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('show-list', Array)
+#10 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('manager-dress-m...', Array)
+#11 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#13 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/manager-dress-material/show-list.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '72ef29b2265cf205aee0fbf73a4838388e3bb0824a57f341782196ca6ed5629ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"x6z_eEr0ufc0KCy9-QO_Jbg4UXmFYCft\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/manager-dress-material/show-list.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/manager-dress-match/show-list.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-09-20 15:50:39] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:1] 
+message_start
+exception 'yii\base\ErrorException' with message 'Class 'home\controllers\UserAddGoldRecord' not found' in /var/www/diyshop/rebuild/apps/home/controllers/UserManageController.php:49
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/user-manage/add-gold.json
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_POST = [
+    'userId' => '1'
+    'gold' => '1'
+    '_csrf' => 'RTBTMngzV0Q9BiltHXYldDBWMAIzcC59aGEcbTJRMHAQaD50IXAxMA=='
+]
+
+$_COOKIE = [
+    '_csrf' => '72ef29b2265cf205aee0fbf73a4838388e3bb0824a57f341782196ca6ed5629ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"x6z_eEr0ufc0KCy9-QO_Jbg4UXmFYCft\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/user-manage/add-gold.json',
+	'HTTP_REFERER' => 'http://www.diyshop.com/user-manage/show-list.html',
+	'REQUEST_METHOD' => 'POST',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END

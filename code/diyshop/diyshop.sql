@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : phpstudyLocalhost
-Source Server Version : 50547
-Source Host           : localhost:3306
+Source Server         : 192.168.0.177
+Source Server Version : 50540
+Source Host           : 192.168.0.177:3306
 Source Database       : diyshop
 
 Target Server Type    : MYSQL
-Target Server Version : 50547
+Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-09-18 16:49:26
+Date: 2016-09-20 15:54:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -60,7 +60,7 @@ CREATE TABLE `dress` (
 -- ----------------------------
 -- Records of dress
 -- ----------------------------
-INSERT INTO `dress` VALUES ('1', '1', '1', '测试服饰1', '2', '50.00', '[\"\\/static\\/data\\/dress\\/48\\/7ea7a7c4e8d0a986a34d1bec0b85b88c.jpeg\",\"\\/static\\/data\\/dress\\/67\\/863840619527ceecba13b58b9b8a8186.jpeg\"]', '[\"1\"]', null, '2', null);
+INSERT INTO `dress` VALUES ('1', '1', '1', '测试服饰1', '2', '50.00', '[\"\\/static\\/data\\/dress\\/48\\/7ea7a7c4e8d0a986a34d1bec0b85b88c.jpeg\",\"\\/static\\/data\\/dress\\/67\\/863840619527ceecba13b58b9b8a8186.jpeg\"]', '{\"vender\":[\"1\"],\"manager\":[\"1\",\"3\"]}', null, '2', null);
 INSERT INTO `dress` VALUES ('2', '2', '1', '韩式短袖衫', '1', '10.00', '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"]', '[]', null, '2', null);
 INSERT INTO `dress` VALUES ('3', '2', '4', 'diy长裤', '1', '20.00', '[\"\\/static\\/data\\/dress\\/71\\/de9ff668f655a936c718ea0a60440da5.jpg\"]', '[]', null, '2', null);
 
@@ -110,6 +110,28 @@ CREATE TABLE `dress_comment` (
 INSERT INTO `dress_comment` VALUES ('1', '1', '1', '2', '3', '4', '好看', '1472548865');
 
 -- ----------------------------
+-- Table structure for `dress_material`
+-- ----------------------------
+DROP TABLE IF EXISTS `dress_material`;
+CREATE TABLE `dress_material` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '服饰面料ID',
+  `vender_id` int(11) DEFAULT NULL COMMENT '商家ID',
+  `dress_id` int(11) DEFAULT NULL COMMENT '服饰ID',
+  `name` varchar(50) DEFAULT NULL COMMENT '面料名称',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of dress_material
+-- ----------------------------
+INSERT INTO `dress_material` VALUES ('13', '0', '0', '纯棉');
+INSERT INTO `dress_material` VALUES ('18', '1', '1', '麻布');
+INSERT INTO `dress_material` VALUES ('17', '1', '1', '纯棉');
+INSERT INTO `dress_material` VALUES ('15', '0', '0', '麻布');
+INSERT INTO `dress_material` VALUES ('16', '0', '0', '尼龙');
+INSERT INTO `dress_material` VALUES ('19', '1', '1', '尼龙');
+
+-- ----------------------------
 -- Table structure for `dress_size_color_count`
 -- ----------------------------
 DROP TABLE IF EXISTS `dress_size_color_count`;
@@ -122,17 +144,17 @@ CREATE TABLE `dress_size_color_count` (
   `stock` int(11) DEFAULT NULL COMMENT '库存',
   `pic` text COMMENT '图片',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dress_size_color_count
 -- ----------------------------
-INSERT INTO `dress_size_color_count` VALUES ('24', '1', '1', 'L', '黑', '6', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
-INSERT INTO `dress_size_color_count` VALUES ('23', '1', '1', 'L', '白', '5', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
-INSERT INTO `dress_size_color_count` VALUES ('22', '1', '1', 'M', '黑', '91', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
-INSERT INTO `dress_size_color_count` VALUES ('21', '1', '1', 'M', '白', '3', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
-INSERT INTO `dress_size_color_count` VALUES ('20', '1', '1', 'S', '黑', '2', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
-INSERT INTO `dress_size_color_count` VALUES ('19', '1', '1', 'S', '白', '1', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
+INSERT INTO `dress_size_color_count` VALUES ('72', '1', '1', 'L', '黑', '6', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
+INSERT INTO `dress_size_color_count` VALUES ('71', '1', '1', 'L', '白', '5', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
+INSERT INTO `dress_size_color_count` VALUES ('70', '1', '1', 'M', '黑', '91', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
+INSERT INTO `dress_size_color_count` VALUES ('69', '1', '1', 'M', '白', '3', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
+INSERT INTO `dress_size_color_count` VALUES ('68', '1', '1', 'S', '黑', '2', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
+INSERT INTO `dress_size_color_count` VALUES ('67', '1', '1', 'S', '白', '1', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg');
 INSERT INTO `dress_size_color_count` VALUES ('28', '2', '2', 'M', '黑', '44', '/static/data/dress/71/9a2eae6036f72c48e21dd1233155ffa4.jpg');
 INSERT INTO `dress_size_color_count` VALUES ('27', '2', '2', 'S', '白', '620', '/static/data/dress/89/c5ae596da9449d6ac20288d5ce56fc05.jpg');
 INSERT INTO `dress_size_color_count` VALUES ('29', '2', '3', 'S', '黑', '22', '/static/data/dress/52/b94f283d2ba3e7acd83484b8d936d624.jpg');
@@ -148,13 +170,13 @@ CREATE TABLE `dress_tag` (
   `dress_id` int(11) DEFAULT NULL COMMENT '服饰ID',
   `name` varchar(50) DEFAULT NULL COMMENT '标签名称',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dress_tag
 -- ----------------------------
-INSERT INTO `dress_tag` VALUES ('8', '1', '1', '秋冬');
-INSERT INTO `dress_tag` VALUES ('7', '1', '1', '夹克');
+INSERT INTO `dress_tag` VALUES ('25', '1', '1', '秋冬');
+INSERT INTO `dress_tag` VALUES ('24', '1', '1', '夹克');
 INSERT INTO `dress_tag` VALUES ('10', '2', '2', '帅');
 INSERT INTO `dress_tag` VALUES ('11', '2', '3', '帅');
 
@@ -295,7 +317,7 @@ CREATE TABLE `setting` (
 -- ----------------------------
 -- Records of setting
 -- ----------------------------
-INSERT INTO `setting` VALUES ('1', 'advertisement_catalog_config', '[{\"id\":\"1\",\"name\":\"\\u4e3b\\u754c\\u9762\",\"pics\":[\"\\/static\\/data\\/advertisement_position_img\\/6ef030fa9ae071bc7e2218a715efc5ef.jpeg\"]},{\"id\":\"2\",\"name\":\"\\u54c1\\u724c\",\"pics\":[\"\\/static\\/data\\/advertisement_position_img\\/cce8218c8ad80180ca133b149c4dad1d.jpeg\"]},{\"id\":\"3\",\"name\":\"\\u81ea\\u8425\",\"pics\":[\"\\/static\\/data\\/advertisement_position_img\\/f591926c72767baf3563cf5a02595013.jpeg\"]}]');
+INSERT INTO `setting` VALUES ('1', 'advertisement_catalog_config', '[{\"id\":\"1\",\"name\":\"\\u4e3b\\u754c\\u9762\",\"pics\":[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/6ef030fa9ae071bc7e2218a715efc5ef.jpeg\",\"url\":\"https:\\/\\/www.baidu.com\\/\"}]},{\"id\":\"2\",\"name\":\"\\u54c1\\u724c\",\"pics\":[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/cce8218c8ad80180ca133b149c4dad1d.jpeg\",\"url\":\"https:\\/\\/www.baidu.com\\/\"}]},{\"id\":\"3\",\"name\":\"\\u81ea\\u8425\",\"pics\":[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/f591926c72767baf3563cf5a02595013.jpeg\",\"url\":\"https:\\/\\/www.baidu.com\\/\"}]}]');
 INSERT INTO `setting` VALUES ('2', 'guess_like_config', '[{\"vender_id\":\"1\",\"dress_id\":1,\"pic_index\":1}]');
 INSERT INTO `setting` VALUES ('3', 'discount_activity_config', '[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/bb6db92becfaeba6c1032050134ebe06.jpeg\",\"link_url\":\"www.baidu.com\"}]');
 INSERT INTO `setting` VALUES ('4', 'vote_config', '[{\"identity\":\"0c7e3645eda540d7ae0aa5cec145803d\",\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/26df5e0f2812e68cd3e31abe0d541e3f.jpeg\",\"description\":\"\\u6295\\u7968\\u8bf4\\u660e\\u6295\\u7968\\u8bf4\\u660e\\u6295\\u7968\\u8bf4\\u660e\\u6295\\u7968\\u8bf4\\u660e\"}]');
@@ -322,7 +344,27 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'jay', null, '15014191886', null, 'e10adc3949ba59abbe56e057f20f883e', '4', '1', null, null, '1468226675');
+INSERT INTO `user` VALUES ('1', 'jay', null, '15014191886', null, 'e10adc3949ba59abbe56e057f20f883e', '8', '1', null, null, '1468226675');
+
+-- ----------------------------
+-- Table structure for `user_add_gold_record`
+-- ----------------------------
+DROP TABLE IF EXISTS `user_add_gold_record`;
+CREATE TABLE `user_add_gold_record` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '添加金币记录ID，自增',
+  `user_type` tinyint(1) DEFAULT NULL COMMENT '操作用户类型，0：管理员，1：商家',
+  `operate_id` int(11) DEFAULT NULL COMMENT '操作用户ID',
+  `user_id` int(11) DEFAULT NULL COMMENT '用户ID',
+  `gold` int(11) DEFAULT NULL COMMENT '添加金币数',
+  `create_time` int(11) DEFAULT NULL COMMENT '添加时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user_add_gold_record
+-- ----------------------------
+INSERT INTO `user_add_gold_record` VALUES ('1', '0', '1', '1', '1', '1474357870');
+INSERT INTO `user_add_gold_record` VALUES ('2', '0', '1', '1', '2', '1474357928');
 
 -- ----------------------------
 -- Table structure for `vender`
