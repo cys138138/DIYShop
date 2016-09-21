@@ -56,7 +56,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		height:200px;
 		width:200px;
 	}
-	#wrapper .J-scc-pic{
+	#wrapper .J-scc-pic, #wrapper .J-up-pic, #wrapper .J-down-pic{
 		width:34px;
 		height:34px;
 		cursor:pointer;
@@ -122,6 +122,42 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			</select>
 			<br />
 		</div>
+		<div class="form-group">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" value="" class="J-dress-match-chk"><b>适用搭配</b>
+				</label>
+			</div>
+		</div>
+		<div class="J-dress-match-content form-group" style="display:none;line-height:35px;">
+			<label style="float:left;">自有搭配库：</label>
+			<select class="J-dress-match form-control" style="float:left;width:400px;margin-right:10px;">
+			<?php foreach($aDressMatchList as $key => $aDressMatch){ ?>
+				<option value="<?php echo $aDressMatch['id']; ?>"><?php echo $aDressMatch['name']; ?></option>
+			<?php } ?>
+			</select>
+			<button type="button" class="J-add-dress-match-btn btn btn-primary" onclick="addDressMatch('vender');" style="float:left; margin-right:10px;">添加</button>
+			<button type="button" class="J-add-dress-manager-match-btn btn btn-primary" onclick="addManagerDressMatch();" style="float:left;">Dms搭配库</button>
+			<br />
+		</div>
+		<div class="J-dress-match-content row" style="display:none;">
+			<div class="col-lg-12">
+				<ul class="J-dress-match-list list-group"></ul>
+			</div>
+		</div>
+		<br />
+		<div class="J-pics-content form-group" style="display:none;">
+			<label>服饰正反面图片</label>
+			<div class="form-group">
+				<button type="button" class="J-add-pics-btn btn btn-info">添加图片</button>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<ul class="J-pics-list list-group"></ul>
+				</div>
+			</div>
+			<br />
+		</div>
 		<div class="form-group" style="margin-bottom: 0px;">
 			<label>尺码颜色库存图片</label>
 		</div>
@@ -130,6 +166,8 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			<input class="J-line-input J-color form-control" placeholder="请输入服饰颜色" value="" onfocus="showColorList(this);" onblur="removeList();">
 			<input class="J-line-input J-count form-control" placeholder="请输入服饰数量" value="">
 			<img class="J-line-input J-scc-pic" data-pic="" src="" title="上传图片" onmouseover="showBigPic(this);" onmouseout="removeBigPic();" />
+			<img class="J-line-input J-up-pic" data-pic="" src="" title="正面图片" onmouseover="showBigPic(this);" onmouseout="removeBigPic();" style="display:none;" />
+			<img class="J-line-input J-down-pic" data-pic="" src="" title="反面图片" onmouseover="showBigPic(this);" onmouseout="removeBigPic();" style="display:none;" />
 			<button type="button" class="J-line-input btn btn-info" onclick="addSizeAndColorCount(this);" style="width:55px;">添加</button>
 			<br />
 		</div>
@@ -183,42 +221,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				</div>
 			</div>
 		</div>
-		<div class="form-group">
-			<div class="checkbox">
-				<label>
-					<input type="checkbox" value="" class="J-dress-match-chk"><b>适用搭配</b>
-				</label>
-			</div>
-		</div>
-		<div class="J-dress-match-content form-group" style="display:none;line-height:35px;">
-			<label style="float:left;">自有搭配库：</label>
-			<select class="J-dress-match form-control" style="float:left;width:400px;margin-right:10px;">
-			<?php foreach($aDressMatchList as $key => $aDressMatch){ ?>
-				<option value="<?php echo $aDressMatch['id']; ?>"><?php echo $aDressMatch['name']; ?></option>
-			<?php } ?>
-			</select>
-			<button type="button" class="J-add-dress-match-btn btn btn-primary" onclick="addDressMatch('vender');" style="float:left; margin-right:10px;">添加</button>
-			<button type="button" class="J-add-dress-manager-match-btn btn btn-primary" onclick="addManagerDressMatch();" style="float:left;">Dms搭配库</button>
-			<br />
-		</div>
-		<div class="J-dress-match-content row" style="display:none;">
-			<div class="col-lg-12">
-				<ul class="J-dress-match-list list-group"></ul>
-			</div>
-		</div>
-		<br />
-		<div class="J-pics-content form-group" style="display:none;">
-			<label>服饰正反面图片</label>
-			<div class="form-group">
-				<button type="button" class="J-add-pics-btn btn btn-info">添加图片</button>
-			</div>
-			<div class="row">
-				<div class="col-lg-12">
-					<ul class="J-pics-list list-group"></ul>
-				</div>
-			</div>
-			<br />
-		</div>
+		
 		<div class="form-group">
 			<button type="button" class="J-save-btn btn btn-primary" onclick="save(this);">保存服饰</button>
 		</div>
@@ -240,7 +243,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			var oDom = $('.J-size-color-count');
 			for(var i in aDress.dress_size_color_count){
 				var aTemp = aDress.dress_size_color_count[i];
-				var htmlStr = buildSCCHtml(aTemp.size_name, aTemp.color_name, aTemp.stock, aTemp.pic);
+				var htmlStr = buildSCCHtml(aTemp.size_name, aTemp.color_name, aTemp.stock, aTemp.pic, aTemp.pics);
 				var oTempDom = $(htmlStr);
 				oDom.after(oTempDom);
 				oDom.find('button').text('删除');
@@ -256,6 +259,30 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 					if(aResult.status == 1){
 						$('.J-scc-pic').attr('src', App.url.resource + aResult.data);
 						$('.J-scc-pic').attr('data-pic', aResult.data);
+					}else{
+						UBox.show(aResult.msg, aResult.status);
+					}
+				}
+			});
+			$('.J-up-pic').AjaxUpload({
+				uploadUrl : '<?php echo Url::to(['dress-manage/upload-file']); ?>',
+				fileKey : 'image',
+				callback : function(aResult){
+					if(aResult.status == 1){
+						$('.J-up-pic').attr('src', App.url.resource + aResult.data);
+						$('.J-up-pic').attr('data-pic', aResult.data);
+					}else{
+						UBox.show(aResult.msg, aResult.status);
+					}
+				}
+			});
+			$('.J-down-pic').AjaxUpload({
+				uploadUrl : '<?php echo Url::to(['dress-manage/upload-file']); ?>',
+				fileKey : 'image',
+				callback : function(aResult){
+					if(aResult.status == 1){console.log('.J-down-pic');
+						$('.J-down-pic').attr('src', App.url.resource + aResult.data);
+						$('.J-down-pic').attr('data-pic', aResult.data);
 					}else{
 						UBox.show(aResult.msg, aResult.status);
 					}
@@ -307,7 +334,8 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				size : $('.J-size').val(), 
 				color : $('.J-color').val(), 
 				count : $('.J-count').val(),
-				pic : $('.J-scc-pic').attr('data-pic')
+				pic : $('.J-scc-pic').attr('data-pic'),
+				pics : [$('.J-up-pic').attr('data-pic'), $('.J-down-pic').attr('data-pic')]
 			};
 			aSizeColorCount.push(aTemp);
 		}else{
@@ -316,7 +344,8 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 					size : $(this).find('.J-size').val(), 
 					color : $(this).find('.J-color').val(), 
 					count : $(this).find('.J-count').val(),
-					pic : $(this).find('.J-scc-pic').attr('data-pic')
+					pic : $(this).find('.J-scc-pic').attr('data-pic'),
+					pics : [$(this).find('.J-up-pic').attr('data-pic'), $(this).find('.J-down-pic').attr('data-pic')]
 				};
 				aSizeColorCount.push(aTemp);
 			});
@@ -442,28 +471,66 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		});
 	}
 	
-	function buildSCCHtml(size, color, count, img){
+	function buildSCCHtml(size, color, count, img, pics){
+		var upImgSrc = '';
+		var downImgSrc = '';
+		var upImg = '';
+		var downImg = '';
 		var imgSrc = '';
 		if(img != ''){
 			imgSrc = App.url.resource + img;
+		}
+		if(typeof(pics[0]) != 'undefined' && pics[0] != ''){
+			upImg = pics[0];
+			upImgSrc = App.url.resource + upImg;
+		}
+		if(typeof(pics[1]) != 'undefined' && pics[1] != ''){
+			downImg = pics[1];
+			downImgSrc = App.url.resource + downImg;
 		}
 		var oDom = $('<div class="J-size-color-count form-group">\
 				<input class="J-line-input J-size form-control" placeholder="请输入服饰尺码" value="' + size + '" onfocus="showSizeList(this);" onblur="removeList();">\
 				<input class="J-line-input J-color form-control" placeholder="请输入服饰颜色" value="' + color + '" onfocus="showColorList(this);" onblur="removeList();">\
 				<input class="J-line-input J-count form-control" placeholder="请输入服饰数量" value="' + count + '">\
 				<img class="J-line-input J-scc-pic" data-pic="' + img + '" src="' + imgSrc + '" title="上传图片" onmouseover="showBigPic(this);" onmouseout="removeBigPic();" />\
+				<img class="J-line-input J-up-pic" data-pic="' + upImg + '" src="' + upImgSrc + '" title="正面图片" onmouseover="showBigPic(this);" onmouseout="removeBigPic();" style="display:none;" />\
+				<img class="J-line-input J-down-pic" data-pic="' + downImg + '" src="' + downImgSrc + '" title="反面图片" onmouseover="showBigPic(this);" onmouseout="removeBigPic();" style="display:none;" />\
 				<button type="button" class="J-line-input btn btn-info" onclick="addSizeAndColorCount(this);" style="width:55px;">添加</button>\
 				<br />\
 			</div>\
 		');
 		
-		oDom.find('img').AjaxUpload({
+		oDom.find('.J-scc-pic').AjaxUpload({
 			uploadUrl : '<?php echo Url::to(['dress-manage/upload-file']); ?>',
 			fileKey : 'image',
 			callback : function(aResult){
 				if(aResult.status == 1){
-					oDom.find('img').attr('src', App.url.resource + aResult.data);
-					oDom.find('img').attr('data-pic', aResult.data);
+					oDom.find('.J-scc-pic').attr('src', App.url.resource + aResult.data);
+					oDom.find('.J-scc-pic').attr('data-pic', aResult.data);
+				}else{
+					UBox.show(aResult.msg, aResult.status);
+				}
+			}
+		});
+		oDom.find('.J-up-pic').AjaxUpload({
+			uploadUrl : '<?php echo Url::to(['dress-manage/upload-file']); ?>',
+			fileKey : 'image',
+			callback : function(aResult){
+				if(aResult.status == 1){
+					oDom.find('.J-up-pic').attr('src', App.url.resource + aResult.data);
+					oDom.find('.J-up-pic').attr('data-pic', aResult.data);
+				}else{
+					UBox.show(aResult.msg, aResult.status);
+				}
+			}
+		});
+		oDom.find('.J-down-pic').AjaxUpload({
+			uploadUrl : '<?php echo Url::to(['dress-manage/upload-file']); ?>',
+			fileKey : 'image',
+			callback : function(aResult){
+				if(aResult.status == 1){
+					oDom.find('.J-down-pic').attr('src', App.url.resource + aResult.data);
+					oDom.find('.J-down-pic').attr('data-pic', aResult.data);
 				}else{
 					UBox.show(aResult.msg, aResult.status);
 				}
@@ -484,7 +551,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	}
 	
 	function addSizeAndColorCount(o){
-		$(o).parent().after(buildSCCHtml('', '', '', ''));
+		$(o).parent().after(buildSCCHtml('', '', '', '', ['', '']));
 		$(o).text('删除');
 		$(o).attr('onclick', 'delSizeAndColorCount(this);');
 	}
@@ -777,10 +844,15 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		$('.J-dress-match-chk').on('click', function(){
 			if($(this).is(':checked')){
 				$('.J-dress-match-content').show();
-				$('.J-pics-content').show();
+				//$('.J-pics-content').show();
+				$('.J-pics-content').hide();
+				$('.J-up-pic').show();
+				$('.J-down-pic').show();
 			}else{
 				$('.J-dress-match-content').hide();
 				$('.J-pics-content').hide();
+				$('.J-up-pic').hide();
+				$('.J-down-pic').hide();
 			}
 		});
 		<?php if($aDress && $aDress['dress_match_ids']){ ?>

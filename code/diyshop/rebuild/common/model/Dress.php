@@ -103,7 +103,8 @@ class Dress extends \common\lib\DbOrmModel{
 				'size_name' => $aValue['size'],
 				'color_name' => $aValue['color'],
 				'stock' => $aValue['count'],
-				'pic' => $aValue['pic']
+				'pic' => $aValue['pic'],
+				'pics' => json_encode($aValue['pics'])
 			])->execute();
 		}
 	}
