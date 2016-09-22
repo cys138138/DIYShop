@@ -30,7 +30,7 @@ trait DressApi{
 		$aControl = [
 			'page' => $page,
 			'page_size' => $pageSize,
-			//'order_by' => ['create_time' => SORT_DESC],
+			'order_by' => ['sale_count' => SORT_DESC, 'update_time' => SORT_DESC],
 		];
 		$aList = Dress::getList($aCondition, $aControl);
 		

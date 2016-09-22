@@ -155,6 +155,7 @@ class DressManageController extends VController{
 				$mDress->set('dress_match_ids', $aDressMatchIds);
 				$mDress->set('status', $status);
 				$mDress->set('sex', $sex);
+				$mDress->set('update_time', NOW_TIME);
 				$mDress->save();
 				$isSuccess = true;
 			}
@@ -167,7 +168,9 @@ class DressManageController extends VController{
 				'pics' => $aPics,
 				'dress_match_ids' => $aDressMatchIds,
 				'sex' => $sex,
+				'sale_count' => 0,
 				'like_count' => 0,
+				'update_time' => NOW_TIME,
 				'status' => $status,
 				'create_time' => NOW_TIME
 			]);

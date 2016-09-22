@@ -69,6 +69,13 @@ class Dress extends \common\lib\DbOrmModel{
 		foreach($aList as $k => $v){
 			$aList[$k]['pics'] = json_decode($v['pics'], 1);
 			$aList[$k]['dress_match_ids'] = json_decode($v['dress_match_ids'], 1);
+			$aList[$k]['dress_match_info'] = [];
+			if(isset($aList[$k]['dress_match_ids']['vender']) && $aList[$k]['dress_match_ids']['vender']){
+				$aList[$k]['dress_match_info'] = array_merge($aList[$k]['dress_match_info'], VenderDressMatch::getList(['id' => $aList[$k]['dress_match_ids']['vender']]));
+			}
+			if(isset($aList[$k]['dress_match_ids']['manager']) && $aList[$k]['dress_match_ids']['manager']){
+				$aList[$k]['dress_match_info'] = array_merge($aList[$k]['dress_match_info'], ManagerDressMatch::getList(['id' => $aList[$k]['dress_match_ids']['manager']]));
+			}
 		}
 		
 		return $aList;
