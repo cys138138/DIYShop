@@ -42,7 +42,7 @@ $this->setTitle('服饰管理');
 </div>
 <div class="row">
 	<div class="table-responsive">
-		<?php
+		<?php 
 			echo Table::widget([
 				'aColumns'	=>	[
 					'id'	=>	['title' => '服饰编号'],
@@ -50,7 +50,7 @@ $this->setTitle('服饰管理');
 					'pic'	=>	[
 						'title' => '服饰图片',
 						'content' => function($aData){
-							return '<img width="150" height="100" src="' . Yii::getAlias('@r.url') . (isset($aData['pics'][0]) ? $aData['pics'][0] : '') . '" alt="" />';
+							return '<img width="150" height="100" src="' . Yii::getAlias('@r.url') . (isset($aData['dress_size_color_count_info'][0]['pic'][0]) ? $aData['dress_size_color_count_info'][0]['pic'][0] : '') . '" alt="" />';
 						}
 					],
 					'price'	=>	['title' => '服饰价格'],

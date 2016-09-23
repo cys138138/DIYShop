@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-09-22 09:52:08
+Date: 2016-09-23 11:07:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -62,7 +62,7 @@ CREATE TABLE `dress` (
 -- ----------------------------
 -- Records of dress
 -- ----------------------------
-INSERT INTO `dress` VALUES ('1', '1', '1', '测试服饰1', '2', '50.00', '[\"\\/static\\/data\\/dress\\/48\\/7ea7a7c4e8d0a986a34d1bec0b85b88c.jpeg\",\"\\/static\\/data\\/dress\\/67\\/863840619527ceecba13b58b9b8a8186.jpeg\"]', '{\"vender\":[\"1\"],\"manager\":[\"1\",\"3\"]}', '0', '0', '2', '1474507738', '1474507738');
+INSERT INTO `dress` VALUES ('1', '1', '1', '测试服饰1', '2', '50.00', '[\"\\/static\\/data\\/dress\\/48\\/7ea7a7c4e8d0a986a34d1bec0b85b88c.jpeg\",\"\\/static\\/data\\/dress\\/67\\/863840619527ceecba13b58b9b8a8186.jpeg\"]', '{\"vender\":[\"1\"],\"manager\":[\"1\",\"3\"]}', '0', '0', '2', '1474599995', '1474507738');
 INSERT INTO `dress` VALUES ('2', '2', '1', '韩式短袖衫', '1', '10.00', '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"]', '[]', '0', '0', '2', '1474507705', '1474507705');
 INSERT INTO `dress` VALUES ('3', '2', '4', 'diy长裤', '1', '20.00', '[\"\\/static\\/data\\/dress\\/71\\/de9ff668f655a936c718ea0a60440da5.jpg\"]', '[]', '0', '0', '2', '1474507705', '1474507705');
 
@@ -121,17 +121,17 @@ CREATE TABLE `dress_material` (
   `dress_id` int(11) DEFAULT NULL COMMENT '服饰ID',
   `name` varchar(50) DEFAULT NULL COMMENT '面料名称',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dress_material
 -- ----------------------------
 INSERT INTO `dress_material` VALUES ('13', '0', '0', '纯棉');
-INSERT INTO `dress_material` VALUES ('28', '1', '1', '尼龙');
-INSERT INTO `dress_material` VALUES ('27', '1', '1', '麻布');
+INSERT INTO `dress_material` VALUES ('31', '1', '1', '尼龙');
+INSERT INTO `dress_material` VALUES ('30', '1', '1', '麻布');
 INSERT INTO `dress_material` VALUES ('15', '0', '0', '麻布');
 INSERT INTO `dress_material` VALUES ('16', '0', '0', '尼龙');
-INSERT INTO `dress_material` VALUES ('26', '1', '1', '纯棉');
+INSERT INTO `dress_material` VALUES ('29', '1', '1', '纯棉');
 
 -- ----------------------------
 -- Table structure for `dress_size_color_count`
@@ -144,24 +144,24 @@ CREATE TABLE `dress_size_color_count` (
   `size_name` varchar(100) DEFAULT NULL COMMENT '尺码名称',
   `color_name` varchar(100) DEFAULT NULL COMMENT '颜色名称',
   `stock` int(11) DEFAULT NULL COMMENT '库存',
-  `pic` text COMMENT '图片',
+  `pic` text COMMENT '详细图片',
   `pics` text COMMENT '正反面图片',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=91 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=97 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dress_size_color_count
 -- ----------------------------
-INSERT INTO `dress_size_color_count` VALUES ('90', '1', '1', 'L', '黑', '6', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg', '[\"\",\"\"]');
-INSERT INTO `dress_size_color_count` VALUES ('87', '1', '1', 'M', '白', '3', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg', '[\"\",\"\"]');
-INSERT INTO `dress_size_color_count` VALUES ('88', '1', '1', 'M', '黑', '91', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg', '[\"\",\"\"]');
-INSERT INTO `dress_size_color_count` VALUES ('89', '1', '1', 'L', '白', '5', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg', '[\"\",\"\"]');
-INSERT INTO `dress_size_color_count` VALUES ('28', '2', '2', 'M', '黑', '44', '/static/data/dress/71/9a2eae6036f72c48e21dd1233155ffa4.jpg', null);
-INSERT INTO `dress_size_color_count` VALUES ('27', '2', '2', 'S', '白', '620', '/static/data/dress/89/c5ae596da9449d6ac20288d5ce56fc05.jpg', null);
-INSERT INTO `dress_size_color_count` VALUES ('29', '2', '3', 'S', '黑', '22', '/static/data/dress/52/b94f283d2ba3e7acd83484b8d936d624.jpg', null);
-INSERT INTO `dress_size_color_count` VALUES ('30', '2', '3', 'M', '白', '27', '/static/data/dress/40/d5d0eae5ab5b422ec7d45c43eeb0b8b8.jpg', null);
-INSERT INTO `dress_size_color_count` VALUES ('85', '1', '1', 'S', '白', '1', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg', '[\"\\/static\\/data\\/dress\\/43\\/cfdc487e322a5ae1bb7cd18bb6895a79.jpeg\",\"\\/static\\/data\\/dress\\/40\\/371ca615cabbcca7bd57b726918d4519.jpeg\"]');
-INSERT INTO `dress_size_color_count` VALUES ('86', '1', '1', 'S', '黑', '2', '/static/data/dress/97/3da9bf6cc93306924b471b7835309e1d.jpeg', '[\"\",\"\"]');
+INSERT INTO `dress_size_color_count` VALUES ('95', '1', '1', 'L', '白', '5', '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"]', '[\"\",\"\"]');
+INSERT INTO `dress_size_color_count` VALUES ('28', '2', '2', 'M', '黑', '44', '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"]', null);
+INSERT INTO `dress_size_color_count` VALUES ('27', '2', '2', 'S', '白', '620', '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"]', null);
+INSERT INTO `dress_size_color_count` VALUES ('29', '2', '3', 'S', '黑', '22', '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"]', null);
+INSERT INTO `dress_size_color_count` VALUES ('30', '2', '3', 'M', '白', '27', '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"]', null);
+INSERT INTO `dress_size_color_count` VALUES ('92', '1', '1', 'S', '黑', '2', '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"]', '[\"\",\"\"]');
+INSERT INTO `dress_size_color_count` VALUES ('94', '1', '1', 'M', '黑', '91', '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"]', '[\"\",\"\"]');
+INSERT INTO `dress_size_color_count` VALUES ('93', '1', '1', 'M', '白', '3', '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"]', '[\"\",\"\"]');
+INSERT INTO `dress_size_color_count` VALUES ('91', '1', '1', 'S', '白', '1', '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\",\"\\/static\\/data\\/dress\\/79\\/5b5cd70b82bf6bfc9eaad686fd8476b6.jpeg\"]', '[\"\\/static\\/data\\/dress\\/43\\/cfdc487e322a5ae1bb7cd18bb6895a79.jpeg\",\"\\/static\\/data\\/dress\\/40\\/371ca615cabbcca7bd57b726918d4519.jpeg\"]');
+INSERT INTO `dress_size_color_count` VALUES ('96', '1', '1', 'L', '黑', '6', '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"]', '[\"\",\"\"]');
 
 -- ----------------------------
 -- Table structure for `dress_tag`
@@ -173,13 +173,13 @@ CREATE TABLE `dress_tag` (
   `dress_id` int(11) DEFAULT NULL COMMENT '服饰ID',
   `name` varchar(50) DEFAULT NULL COMMENT '标签名称',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dress_tag
 -- ----------------------------
-INSERT INTO `dress_tag` VALUES ('31', '1', '1', '秋冬');
-INSERT INTO `dress_tag` VALUES ('30', '1', '1', '夹克');
+INSERT INTO `dress_tag` VALUES ('33', '1', '1', '秋冬');
+INSERT INTO `dress_tag` VALUES ('32', '1', '1', '夹克');
 INSERT INTO `dress_tag` VALUES ('10', '2', '2', '帅');
 INSERT INTO `dress_tag` VALUES ('11', '2', '3', '帅');
 

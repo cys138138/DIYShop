@@ -66,6 +66,11 @@ class Dress extends \common\lib\DbOrmModel{
 		}
 		$aList = $oQuery->all();
 		
+		if(!$aList){
+			return [];
+		}
+		$aDressIds = ArrayHelper::getColumn($aList, 'id');
+		$aDressSizeColorCount = DressSizeColorCount::findAll(['dress_id' => $aDressIds]);
 		foreach($aList as $k => $v){
 			$aList[$k]['pics'] = json_decode($v['pics'], 1);
 			$aList[$k]['dress_match_ids'] = json_decode($v['dress_match_ids'], 1);
@@ -75,6 +80,12 @@ class Dress extends \common\lib\DbOrmModel{
 			}
 			if(isset($aList[$k]['dress_match_ids']['manager']) && $aList[$k]['dress_match_ids']['manager']){
 				$aList[$k]['dress_match_info'] = array_merge($aList[$k]['dress_match_info'], ManagerDressMatch::getList(['id' => $aList[$k]['dress_match_ids']['manager']]));
+			}
+			$aList[$k]['dress_size_color_count_info'] = [];
+			foreach($aDressSizeColorCount as $aValue){
+				if($aValue['dress_id'] == $v['id']){
+					array_push($aList[$k]['dress_size_color_count_info'], $aValue);
+				}
 			}
 		}
 		
@@ -110,7 +121,7 @@ class Dress extends \common\lib\DbOrmModel{
 				'size_name' => $aValue['size'],
 				'color_name' => $aValue['color'],
 				'stock' => $aValue['count'],
-				'pic' => $aValue['pic'],
+				'pic' => json_encode($aValue['pic']),
 				'pics' => json_encode($aValue['pics'])
 			])->execute();
 		}

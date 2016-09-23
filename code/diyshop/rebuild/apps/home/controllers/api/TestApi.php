@@ -171,7 +171,15 @@ trait TestApi{
 			'api_name' => 'getDressDetail',
 			'dress_id' => 1,
 		];
-		
+		///
+		//getDressList
+		$aParams = [
+			'api_name' => 'getDressList',
+			'page' => 1,
+			'page_size' => 5,
+			'keyword' => '',
+		];
+		//
 		$aData = [
 			'version' => $version,
 			'timestamp' => $timestamp,
