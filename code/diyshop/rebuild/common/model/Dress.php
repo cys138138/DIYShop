@@ -87,6 +87,7 @@ class Dress extends \common\lib\DbOrmModel{
 					array_push($aList[$k]['dress_size_color_count_info'], $aValue);
 				}
 			}
+			$aList[$k]['dress_comment_count'] = DressComment::getCount(['dress_id' => $v['id']]);
 		}
 		
 		return $aList;

@@ -172,12 +172,12 @@ trait TestApi{
 			'dress_id' => 1,
 		];
 		///
-		//getDressList
+		//getDressCommentList
 		$aParams = [
-			'api_name' => 'getDressList',
+			'api_name' => 'getDressCommentList',
 			'page' => 1,
 			'page_size' => 5,
-			'keyword' => '',
+			'dress_id' => 1,
 		];
 		//
 		$aData = [

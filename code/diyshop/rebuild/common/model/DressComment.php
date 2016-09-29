@@ -3,6 +3,7 @@ namespace common\model;
 
 use Yii;
 use umeworld\lib\Query;
+use yii\helpers\ArrayHelper;
 
 class DressComment extends \common\lib\DbOrmModel{
 
@@ -22,6 +23,39 @@ class DressComment extends \common\lib\DbOrmModel{
 			$oQuery->offset($offset)->limit($aControl['page_size']);
 		}
 		$aList = $oQuery->all();
+		
+		$aUserList = [];
+		if($aList){
+			$aUserIds = ArrayHelper::getColumn($aList, 'user_id');
+			$aUserList = User::getList($aUserIds);
+		}
+		foreach($aList as $key => $aValue){
+			foreach($aUserList as $k => $v){
+				if($aValue['user_id'] == $v['id']){
+					$mUser = User::toModel($v);
+					$aList[$key]['user_info'] = $mUser->toArray(['id', 'user_name', 'sex', 'avatar']);
+					break;
+				}
+			}
+			$aOrderList = Order::getList([
+				'order_type' => Order::ORDER_TYPE_NORMAL,
+				'user_id' => $aValue['user_id'],
+			], ['order_by' => ['create_time' => SORT_DESC]]);
+			$aList[$key]['user_last_order_info'] = [];
+			$flag = false;
+			foreach($aOrderList as $m => $n){
+				foreach($n['order_info'] as $aOrderInfo){
+					if(isset($aOrderInfo['item_size_color_count_info']) && isset($aOrderInfo['item_size_color_count_info']['dress_id']) && $aOrderInfo['item_size_color_count_info']['dress_id'] == $aValue['dress_id']){
+						$aList[$key]['user_last_order_info'] = $aOrderInfo['item_size_color_count_info'];
+						$flag = true;
+						break;
+					}
+				}
+				if($flag){
+					break;
+				}
+			}
+		}
 		
 		return $aList;
 	}

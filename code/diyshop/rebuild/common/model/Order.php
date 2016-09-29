@@ -56,6 +56,9 @@ class Order extends \common\lib\DbOrmModel{
 		if(isset($aCondition['order_type'])){
 			$aWhere[] = ['order_type' => $aCondition['order_type']];
 		}
+		if(isset($aCondition['user_id'])){
+			$aWhere[] = ['user_id' => $aCondition['user_id']];
+		}
 		if(isset($aCondition['vender_id'])){
 			$aWhere[] = ['vender_id' => $aCondition['vender_id']];
 		}

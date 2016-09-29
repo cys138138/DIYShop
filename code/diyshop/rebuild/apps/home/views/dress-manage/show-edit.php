@@ -111,6 +111,12 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			<br />
 		</div>
 		<div class="form-group">
+			<input class="J-id form-control" type="hidden" value="<?php echo $aDress ? $aDress['id'] : ''; ?>">
+			<label>服饰二级名称描述</label>
+			<input class="J-desc form-control" placeholder="请输服饰二级名称描述" value="<?php echo $aDress ? $aDress['desc'] : ''; ?>">
+			<br />
+		</div>
+		<div class="form-group">
 			<label>服饰分类</label>
 			<select class="J-catalog form-control">
 			<?php foreach($aDressCatalogList as $key => $aDressCatalog){ ?>
@@ -130,6 +136,11 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		<div class="form-group">
 			<label>服饰价格</label>
 			<input class="J-price form-control" placeholder="请输入服饰价格" value="<?php echo $aDress ? $aDress['price'] : ''; ?>">
+			<br />
+		</div>
+		<div class="form-group">
+			<label>优惠价格</label>
+			<input class="J-discount-price form-control" placeholder="请输入优惠价格" value="<?php echo $aDress ? $aDress['discount_price'] : ''; ?>">
 			<br />
 		</div>
 		<div class="form-group">
@@ -184,7 +195,6 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			<input class="J-line-input J-color form-control" placeholder="请输入服饰颜色" value="" onfocus="showColorList(this);" onblur="removeList();">
 			<input class="J-line-input J-count form-control" placeholder="请输入服饰数量" value="">
 			<div>
-				<div class="J-scc-pic-div"><img class="J-line-input J-scc-pic" data-pic="" src="" title="详细图片" onmouseover="showBigPic(this);" onmouseout="removeBigPic();" /><i onclick="deleteSccPic(this);">×</i></div>
 				<button type="button" class="J-scc-upload-btn J-line-input btn btn-info">添加详细图片</button>
 			</div>
 			<img class="J-line-input J-up-pic" data-pic="" src="" title="正面图片" onmouseover="showBigPic(this);" onmouseout="removeBigPic();" style="display:none;" />
@@ -273,6 +283,17 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			}
 			$('.J-size-color-count')[0].remove();
 		}else{
+			$('.J-scc-upload-btn').AjaxUpload({
+				uploadUrl : '<?php echo Url::to(['dress-manage/upload-file']); ?>',
+				fileKey : 'image',
+				callback : function(aResult){
+					if(aResult.status == 1){
+						$('.J-scc-upload-btn').before('<div class="J-scc-pic-div"><img class="J-line-input J-scc-pic" data-pic="' + aResult.data + '" src="' + App.url.resource + aResult.data + '" title="详细图片" onmouseover="showBigPic(this);" onmouseout="removeBigPic();" /><i onclick="deleteSccPic(this);">×</i></div>');
+					}else{
+						UBox.show(aResult.msg, aResult.status);
+					}
+				}
+			});
 			$('.J-scc-pic').AjaxUpload({
 				uploadUrl : '<?php echo Url::to(['dress-manage/upload-file']); ?>',
 				fileKey : 'image',
@@ -429,8 +450,10 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	function save(o){
 		var id = $('.J-id').val();
 		var name = $('.J-name').val();
+		var desc = $('.J-desc').val();
 		var catalogId = $('.J-catalog').val();
 		var price = $('.J-price').val();
+		var discountPrice = $('.J-discount-price').val();
 		var status = $('.J-status').val();
 		var sex = $('.J-sex').val();
 		if(name == ''){
@@ -468,8 +491,10 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			data : {
 				id : id,
 				name : name,
+				desc : desc,
 				catalogId : catalogId,
 				price : price,
+				discountPrice : discountPrice,
 				status : status,
 				sex : sex,
 				aSizeColorCount : aSizeColorCount,

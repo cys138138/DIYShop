@@ -1,0 +1,62 @@
+LOG_START=================================
+[time=2016-09-29 16:20:29] [192.168.0.175][-][-][level=error][category=yii\base\InvalidParamException] 
+message_start
+exception 'yii\base\InvalidParamException' with message 'Operator '1' requires two operands.' in /var/www/diyshop/framework/yiisoft/yii2/db/QueryBuilder.php:1279
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/db/QueryBuilder.php(924): yii\db\QueryBuilder->buildSimpleCondition('1', Array, Array)
+#1 /var/www/diyshop/framework/yiisoft/yii2/db/QueryBuilder.php(743): yii\db\QueryBuilder->buildCondition(Array, Array)
+#2 /var/www/diyshop/framework/yiisoft/yii2/db/QueryBuilder.php(96): yii\db\QueryBuilder->buildWhere(Array, Array)
+#3 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(122): yii\db\QueryBuilder->build(Object(umeworld\lib\Query))
+#4 /var/www/diyshop/framework/yiisoft/yii2/db/Query.php(206): yii\db\Query->createCommand(NULL)
+#5 /var/www/diyshop/rebuild/umeworld/lib/Query.php(73): yii\db\Query->all(NULL)
+#6 /var/www/diyshop/rebuild/common/lib/DbOrmModel.php(61): umeworld\lib\Query->all()
+#7 /var/www/diyshop/rebuild/common/model/DressComment.php(30): common\lib\DbOrmModel::findAll(Array)
+#8 /var/www/diyshop/rebuild/apps/home/controllers/api/DressApi.php(76): common\model\DressComment::getList(Array, Array)
+#9 /var/www/diyshop/rebuild/apps/home/controllers/ApiController.php(77): home\controllers\ApiController->getDressCommentList()
+#10 [internal function]: home\controllers\ApiController->actionIndex()
+#11 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#12 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#13 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#14 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('api/index', Array)
+#15 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#16 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#17 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/api.json
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_POST = [
+    'version' => '1.0.0'
+    'timestamp' => '2016-09-29 16:19:08'
+    'app_code' => 'ios_diyshop'
+    'token' => 'e2f2f52974494c948f28e5f13437fbaa'
+    'api_name' => 'getDressCommentList'
+    'page' => '1'
+    'page_size' => '5'
+    'dress_id' => '1'
+    '_csrf' => 'VG5JLkNjYU0sODpCD1QuFWcHOE11Mi0qOiAYfxotCBgOCDtxKiouCg=='
+]
+
+$_COOKIE = [
+    '_csrf' => 'f13291b0e74c8fcb7f33b1cc8de4a775befb90fb90a0da1f873a4724eaa0af60a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"xVslL7OX3iqc6QLgnNQQYNiUZfr_iIOG\";}'
+    'venderId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/api.json',
+	'HTTP_REFERER' => 'http://www.diyshop.com/api/test.html',
+	'REQUEST_METHOD' => 'POST',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
