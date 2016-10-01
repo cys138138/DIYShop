@@ -77,6 +77,7 @@ class DressManageController extends VController{
 		$price = (string)Yii::$app->request->post('price');
 		$discountPrice = (string)Yii::$app->request->post('discountPrice');
 		$status = (int)Yii::$app->request->post('status');
+		$isHot = (int)Yii::$app->request->post('isHot');
 		$sex = (int)Yii::$app->request->post('sex');
 		$aSizeColorCount = (array)Yii::$app->request->post('aSizeColorCount');
 		$aTag = (array)Yii::$app->request->post('aTag');
@@ -161,6 +162,7 @@ class DressManageController extends VController{
 				$mDress->set('pics', $aPics);
 				$mDress->set('dress_match_ids', $aDressMatchIds);
 				$mDress->set('status', $status);
+				$mDress->set('is_hot', $isHot);
 				$mDress->set('sex', $sex);
 				$mDress->set('update_time', NOW_TIME);
 				$mDress->save();
@@ -181,6 +183,7 @@ class DressManageController extends VController{
 				'like_count' => 0,
 				'update_time' => NOW_TIME,
 				'status' => $status,
+				'is_hot' => $isHot,
 				'create_time' => NOW_TIME
 			]);
 			$mDress = Dress::findOne($isSuccess);

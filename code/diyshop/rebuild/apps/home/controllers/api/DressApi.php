@@ -13,7 +13,9 @@ trait DressApi{
 	private function getDressList(){
 		$page = Yii::$app->request->post('page');
 		$pageSize = Yii::$app->request->post('page_size');
+		$sex = Yii::$app->request->post('sex');
 		$keyword = Yii::$app->request->post('keyword');
+		$isHot = Yii::$app->request->post('is_hot');
 		
 		if($page < 1){
 			$page = 1;
@@ -26,11 +28,19 @@ trait DressApi{
 		if($keyword){
 			$aCondition['name'] = $keyword;
 		}
+		if($sex){
+			$aCondition['sex'] = $sex;
+		}
+		if($isHot){
+			$aCondition['is_hot'] = 1;
+		}
+		
+		$aOrderBy = ['sale_count' => SORT_DESC, 'update_time' => SORT_DESC];
 		
 		$aControl = [
 			'page' => $page,
 			'page_size' => $pageSize,
-			'order_by' => ['sale_count' => SORT_DESC, 'update_time' => SORT_DESC],
+			'order_by' => $aOrderBy,
 		];
 		$aList = Dress::getList($aCondition, $aControl);
 		

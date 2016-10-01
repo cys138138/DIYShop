@@ -144,6 +144,14 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			<br />
 		</div>
 		<div class="form-group">
+			<label>是否热门</label>
+			<select class="J-is-hot form-control">
+				<option value="0">否</option>
+				<option value="1">是</option>
+			</select>
+			<br />
+		</div>
+		<div class="form-group">
 			<label>状态</label>
 			<select class="J-status form-control">
 				<option value="2">上架</option>
@@ -455,6 +463,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		var price = $('.J-price').val();
 		var discountPrice = $('.J-discount-price').val();
 		var status = $('.J-status').val();
+		var isHot = $('.J-is-hot').val();
 		var sex = $('.J-sex').val();
 		if(name == ''){
 			UBox.show('请填写服饰名称', -1);
@@ -496,6 +505,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				price : price,
 				discountPrice : discountPrice,
 				status : status,
+				isHot : isHot,
 				sex : sex,
 				aSizeColorCount : aSizeColorCount,
 				aTag : aTag,
@@ -892,6 +902,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	$(function(){
 		<?php if($aDress){ ?>
 		$('.J-status').val(<?php echo $aDress['status']; ?>);
+		$('.J-is-hot').val(<?php echo $aDress['is_hot']; ?>);
 		$('.J-sex').val(<?php echo $aDress['sex']; ?>);
 		<?php } ?>
 		init();
