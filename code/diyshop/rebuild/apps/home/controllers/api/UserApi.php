@@ -11,7 +11,7 @@ use common\model\DeliveryAddress;
 use common\model\Mark;
 
 trait UserApi{
-	
+		
 	private function sendVerifyCode(){
 		$mobile = Yii::$app->request->post('mobile');
 		
@@ -81,6 +81,7 @@ trait UserApi{
 		$mUser = User::registerUser([
 			'mobile' => $mobile,
 			'password' => $password,
+			'gold' => static::REGISTER_USER_GIVE_GOLD,
 			'create_time' => NOW_TIME,
 		]);
 		

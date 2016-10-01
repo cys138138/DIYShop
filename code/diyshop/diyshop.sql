@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 192.168.0.177
-Source Server Version : 50540
-Source Host           : 192.168.0.177:3306
+Source Server         : phpstudyLocalhost
+Source Server Version : 50547
+Source Host           : localhost:3306
 Source Database       : diyshop
 
 Target Server Type    : MYSQL
-Target Server Version : 50540
+Target Server Version : 50547
 File Encoding         : 65001
 
-Date: 2016-09-29 16:39:46
+Date: 2016-10-01 11:28:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -112,6 +112,23 @@ CREATE TABLE `dress_comment` (
 -- Records of dress_comment
 -- ----------------------------
 INSERT INTO `dress_comment` VALUES ('1', '1', '1', '2', '3', '4', '好看', '1472548865');
+
+-- ----------------------------
+-- Table structure for `dress_decoration`
+-- ----------------------------
+DROP TABLE IF EXISTS `dress_decoration`;
+CREATE TABLE `dress_decoration` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '饰件id',
+  `name` varchar(100) DEFAULT NULL COMMENT '饰件名称',
+  `detail_pics` text COMMENT '详细图片',
+  `effect_pic` varchar(500) DEFAULT NULL COMMENT '效果图片',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of dress_decoration
+-- ----------------------------
+INSERT INTO `dress_decoration` VALUES ('1', '围巾-女', '[\"\\/static\\/data\\/dress\\/45\\/5b3c103a054fceace90fcbed218ac687.jpeg\",\"\\/static\\/data\\/dress\\/47\\/caeaa2bc0c3370bd2de48a1102a001db.jpeg\"]', '/static/data/dress/83/103717c5cf55e37b62cf8d3be9934789.jpeg');
 
 -- ----------------------------
 -- Table structure for `dress_material`

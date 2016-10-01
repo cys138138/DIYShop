@@ -120,5 +120,13 @@ return [
 			'icon_class' => 'star',	
 			'child' => [],
 		],
+		[
+			'title' => '饰件管理',
+			'en_title' => 'manager_dress_decoration',
+			'url' => ['manager-dress-decoration/show-list'],
+			'permission' => ['manager'],
+			'icon_class' => 'star',	
+			'child' => [],
+		],
 	],
 ];

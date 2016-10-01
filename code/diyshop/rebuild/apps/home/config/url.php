@@ -116,6 +116,13 @@ return [
 		'manager-dress-material/delete.json'									=> 'manager-dress-material/delete',
 		
 		
+		'manager-dress-decoration/show-list.html'								=> 'manager-dress-decoration/show-list',
+		'manager-dress-decoration/show-edit.html'								=> 'manager-dress-decoration/show-edit',
+		'manager-dress-decoration/save.json'									=> 'manager-dress-decoration/save',
+		'manager-dress-decoration/delete.json'									=> 'manager-dress-decoration/delete',
+		'manager-dress-decoration/upload-file.html'								=> 'manager-dress-decoration/upload-file',
+		
+		
 		
 		'api/test.html'															=> 'api/test',
 		'api.json'																=> 'api/index',
