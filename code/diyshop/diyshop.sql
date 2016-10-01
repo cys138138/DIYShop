@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50547
 File Encoding         : 65001
 
-Date: 2016-10-01 12:00:35
+Date: 2016-10-02 01:35:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -344,6 +344,26 @@ INSERT INTO `setting` VALUES ('1', 'advertisement_catalog_config', '[{\"id\":\"1
 INSERT INTO `setting` VALUES ('2', 'guess_like_config', '[{\"vender_id\":\"1\",\"dress_id\":1,\"pic_index\":1}]');
 INSERT INTO `setting` VALUES ('3', 'discount_activity_config', '[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/bb6db92becfaeba6c1032050134ebe06.jpeg\",\"link_url\":\"www.baidu.com\"}]');
 INSERT INTO `setting` VALUES ('4', 'vote_config', '[{\"identity\":\"0c7e3645eda540d7ae0aa5cec145803d\",\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/26df5e0f2812e68cd3e31abe0d541e3f.jpeg\",\"description\":\"\\u6295\\u7968\\u8bf4\\u660e\\u6295\\u7968\\u8bf4\\u660e\\u6295\\u7968\\u8bf4\\u660e\\u6295\\u7968\\u8bf4\\u660e\"}]');
+
+-- ----------------------------
+-- Table structure for `shopping_cart`
+-- ----------------------------
+DROP TABLE IF EXISTS `shopping_cart`;
+CREATE TABLE `shopping_cart` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID自增，购物车id',
+  `user_id` int(11) DEFAULT NULL COMMENT '用户ID',
+  `dress_id` int(11) DEFAULT NULL COMMENT '服饰ID',
+  `count` int(11) DEFAULT NULL COMMENT '数量',
+  `dress_info` text COMMENT '服饰信息',
+  `size_color_info` text COMMENT '尺寸颜色信息',
+  `create_time` int(11) DEFAULT NULL COMMENT '添加时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of shopping_cart
+-- ----------------------------
+INSERT INTO `shopping_cart` VALUES ('1', '1', '1', '2', '{\"id\":\"1\",\"vender_id\":\"1\",\"catalog_id\":\"1\",\"name\":\"\\u6d4b\\u8bd5\\u670d\\u99701\",\"desc\":\"\\u6d4b\\u8bd5\\u670d\\u99701\\u6d4b\\u8bd5\\u670d\\u99701\",\"sex\":\"2\",\"price\":\"50.00\",\"discount_price\":\"40.00\",\"pics\":[\"\\/static\\/data\\/dress\\/48\\/7ea7a7c4e8d0a986a34d1bec0b85b88c.jpeg\",\"\\/static\\/data\\/dress\\/67\\/863840619527ceecba13b58b9b8a8186.jpeg\"],\"dress_match_ids\":{\"vender\":[\"1\"],\"manager\":[\"1\",\"3\"]},\"sale_count\":\"0\",\"like_count\":\"0\",\"is_hot\":\"1\",\"status\":\"2\",\"update_time\":\"1475294365\",\"create_time\":\"1474507738\",\"catalog_name\":\"\\u5916\\u5957\",\"dress_size_color_count\":[{\"id\":\"109\",\"vender_id\":\"1\",\"dress_id\":\"1\",\"size_name\":\"S\",\"color_name\":\"\\u767d\",\"stock\":\"1\",\"pic\":[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\",\"\\/static\\/data\\/dress\\/79\\/5b5cd70b82bf6bfc9eaad686fd8476b6.jpeg\"],\"pics\":[\"\\/static\\/data\\/dress\\/43\\/cfdc487e322a5ae1bb7cd18bb6895a79.jpeg\",\"\\/static\\/data\\/dress\\/40\\/371ca615cabbcca7bd57b726918d4519.jpeg\"]},{\"id\":\"110\",\"vender_id\":\"1\",\"dress_id\":\"1\",\"size_name\":\"S\",\"color_name\":\"\\u9ed1\",\"stock\":\"2\",\"pic\":[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"],\"pics\":[\"\",\"\"]},{\"id\":\"111\",\"vender_id\":\"1\",\"dress_id\":\"1\",\"size_name\":\"M\",\"color_name\":\"\\u767d\",\"stock\":\"3\",\"pic\":[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"],\"pics\":[\"\",\"\"]},{\"id\":\"112\",\"vender_id\":\"1\",\"dress_id\":\"1\",\"size_name\":\"M\",\"color_name\":\"\\u9ed1\",\"stock\":\"91\",\"pic\":[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"],\"pics\":[\"\",\"\"]},{\"id\":\"113\",\"vender_id\":\"1\",\"dress_id\":\"1\",\"size_name\":\"L\",\"color_name\":\"\\u767d\",\"stock\":\"5\",\"pic\":[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"],\"pics\":[\"\",\"\"]},{\"id\":\"114\",\"vender_id\":\"1\",\"dress_id\":\"1\",\"size_name\":\"L\",\"color_name\":\"\\u9ed1\",\"stock\":\"6\",\"pic\":[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"],\"pics\":[\"\",\"\"]}],\"dress_tag\":[{\"id\":\"38\",\"vender_id\":\"1\",\"dress_id\":\"1\",\"name\":\"\\u5939\\u514b\"},{\"id\":\"39\",\"vender_id\":\"1\",\"dress_id\":\"1\",\"name\":\"\\u79cb\\u51ac\"}],\"dress_material\":[{\"id\":\"38\",\"vender_id\":\"1\",\"dress_id\":\"1\",\"name\":\"\\u7eaf\\u68c9\"},{\"id\":\"39\",\"vender_id\":\"1\",\"dress_id\":\"1\",\"name\":\"\\u9ebb\\u5e03\"},{\"id\":\"40\",\"vender_id\":\"1\",\"dress_id\":\"1\",\"name\":\"\\u5c3c\\u9f99\"}]}', '{\"id\":\"112\",\"vender_id\":\"1\",\"dress_id\":\"1\",\"size_name\":\"M\",\"color_name\":\"\\u9ed1\",\"stock\":\"91\",\"pic\":[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"],\"pics\":[\"\",\"\"]}', '1475343144');
 
 -- ----------------------------
 -- Table structure for `user`

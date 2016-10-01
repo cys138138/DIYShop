@@ -24,7 +24,7 @@ trait DressApi{
 			$pageSize = 5;
 		}
 		
-		$aCondition = [];
+		$aCondition = ['status' => Dress::ON_SALES_STATUS];
 		if($keyword){
 			$aCondition['name'] = $keyword;
 		}

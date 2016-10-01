@@ -9,6 +9,7 @@ class ApiController extends \yii\web\Controller{
 	use \home\controllers\api\UserApi;
 	use \home\controllers\api\OrderApi;
 	use \home\controllers\api\DressApi;
+	use \home\controllers\api\ShoppingCartApi;
 	use \home\controllers\api\TestApi;
 	
 	const REGISTER_USER_GIVE_GOLD = 100; //注册新用户送100金币

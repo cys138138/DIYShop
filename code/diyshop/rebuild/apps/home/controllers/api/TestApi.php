@@ -171,15 +171,31 @@ trait TestApi{
 			'api_name' => 'getDressDetail',
 			'dress_id' => 1,
 		];
-		///
-		//getDressCommentList
+		
+		//addToShoppingCart
 		$aParams = [
-			'api_name' => 'getDressCommentList',
+			'api_name' => 'addToShoppingCart',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+			'dress_id' => 1,
+			'count' => 2,
+			'dress_size_color_count_id' => 112,
+		];
+		
+		//getShoppingCartList
+		$aParams = [
+			'api_name' => 'getShoppingCartList',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
 			'page' => 1,
 			'page_size' => 5,
-			'dress_id' => 1,
 		];
-		//
+		
+		//deleteShoppingCart
+		$aParams = [
+			'api_name' => 'deleteShoppingCart',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+			'id' => 1,
+		];
+		
 		$aData = [
 			'version' => $version,
 			'timestamp' => $timestamp,
