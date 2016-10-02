@@ -133,7 +133,7 @@ trait OrderApi{
 				'order_info' => ArrayHelper::getColumn($aOrderInfo, 'order_number'),
 				'dress_count' => $totalCount,
 				'total_price' => $totalPrices,
-				'status' => Order::ORDER_STATUS_CONFIRM,
+				'status' => Order::ORDER_STATUS_WAIT_PAY,
 				'buyer_msg' => $buyerMsg,
 				'express_info' => [],
 				'create_time' => NOW_TIME,

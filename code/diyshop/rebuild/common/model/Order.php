@@ -10,13 +10,13 @@ class Order extends \common\lib\DbOrmModel{
 	const ORDER_TYPE_NORMAL = 0;
 	const ORDER_TYPE_SPECIAL = 1;
 	
-	const ORDER_STATUS_CONFIRM = 1;			//确认订单
-	const ORDER_STATUS_WAIT_PAY = 2; 		//待付款
-	const ORDER_STATUS_WAIT_SEND = 3; 		//待发货
-	const ORDER_STATUS_WAIT_RECEIVE = 4;	//待收货
-	const ORDER_STATUS_APPLY_RETURN = 5; 	//申请退货
-	const ORDER_STATUS_EXCHANGE = 6;		//退换货
-	const ORDER_STATUS_FINISH = 7;			//确认收货
+	//const ORDER_STATUS_CONFIRM = 1;			//确认订单
+	const ORDER_STATUS_WAIT_PAY = 1; 		//待付款
+	const ORDER_STATUS_WAIT_SEND = 2; 		//待发货
+	const ORDER_STATUS_WAIT_RECEIVE = 3;	//待收货
+	const ORDER_STATUS_APPLY_RETURN = 4; 	//申请退货
+	const ORDER_STATUS_EXCHANGE = 5;		//退换货
+	const ORDER_STATUS_FINISH = 6;			//确认收货
 
 	public static function tableName(){
 		return Yii::$app->db->parseTable('_@order');
