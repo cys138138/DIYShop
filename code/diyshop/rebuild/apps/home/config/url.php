@@ -40,6 +40,10 @@ return [
 		'advertisement/save-advertisement-catalog-config.json'					=> 'advertisement/save-advertisement-catalog-config',
 		'advertisement/upload-file.html'										=> 'advertisement/upload-file',
 		
+		'bg-advertisement/show-manage-bg-adv.html'								=> 'bg-advertisement/show-manage-bg-adv',
+		'bg-advertisement/save-advertisement-config.json'						=> 'bg-advertisement/save-advertisement-config',
+		'bg-advertisement/upload-file.html'										=> 'bg-advertisement/upload-file',
+		
 	
 		'guess-like/show-list.html'												=> 'guess-like/show-list',
 		'guess-like/show-setting.html'											=> 'guess-like/show-setting',

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50547
 File Encoding         : 65001
 
-Date: 2016-10-02 21:36:23
+Date: 2016-10-03 17:18:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -335,7 +335,7 @@ CREATE TABLE `setting` (
   `keystr` varchar(50) DEFAULT NULL COMMENT '键',
   `valuestr` text COMMENT '值',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of setting
@@ -344,6 +344,7 @@ INSERT INTO `setting` VALUES ('1', 'advertisement_catalog_config', '[{\"id\":\"1
 INSERT INTO `setting` VALUES ('2', 'guess_like_config', '[{\"vender_id\":\"1\",\"dress_id\":1,\"pic_index\":1}]');
 INSERT INTO `setting` VALUES ('3', 'discount_activity_config', '[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/bb6db92becfaeba6c1032050134ebe06.jpeg\",\"link_url\":\"www.baidu.com\"}]');
 INSERT INTO `setting` VALUES ('4', 'vote_config', '[{\"identity\":\"0c7e3645eda540d7ae0aa5cec145803d\",\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/26df5e0f2812e68cd3e31abe0d541e3f.jpeg\",\"description\":\"\\u6295\\u7968\\u8bf4\\u660e\\u6295\\u7968\\u8bf4\\u660e\\u6295\\u7968\\u8bf4\\u660e\\u6295\\u7968\\u8bf4\\u660e\"}]');
+INSERT INTO `setting` VALUES ('5', 'bg_advertisement_config', '[\"\\/static\\/data\\/advertisement_position_img\\/442a18217613de1e2a1bbf31489ff840.jpeg\",\"\\/static\\/data\\/advertisement_position_img\\/5b193b1b179daa04d70dd73fb686557d.jpeg\"]');
 
 -- ----------------------------
 -- Table structure for `shopping_cart`

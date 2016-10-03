@@ -49,6 +49,14 @@ return [
 			'child' => [],
 		],
 		[
+			'title' => '首页男女装图片',
+			'en_title' => 'bg_adv_position',
+			'url' => ['bg-advertisement/show-manage-bg-adv'],
+			'permission' => ['manager'],
+			'icon_class' => 'star',	
+			'child' => [],
+		],
+		[
 			'title' => '猜你喜欢',
 			'en_title' => 'guess_like',
 			'url' => ['guess-like/show-list'],
