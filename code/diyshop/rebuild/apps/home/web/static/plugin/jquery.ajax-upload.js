@@ -15,6 +15,7 @@
 			}, aOptions);
 
 			$(this).click(function(){
+				var oThis = $(this);
 				if(!aOptions.isUploadEnable(this)){
 					return;
 				}
@@ -40,7 +41,7 @@
 						}
 
 						var aResult = $.parseJSON(oPre.innerHTML);
-						aOptions.callback(aResult, file, url);
+						aOptions.callback(aResult, oThis, file, url);
 
 						$oForm.remove();
 						$(this).remove();

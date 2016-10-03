@@ -294,9 +294,9 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			$('.J-scc-upload-btn').AjaxUpload({
 				uploadUrl : '<?php echo Url::to(['dress-manage/upload-file']); ?>',
 				fileKey : 'image',
-				callback : function(aResult){
+				callback : function(aResult, oThis){
 					if(aResult.status == 1){
-						$('.J-scc-upload-btn').before('<div class="J-scc-pic-div"><img class="J-line-input J-scc-pic" data-pic="' + aResult.data + '" src="' + App.url.resource + aResult.data + '" title="详细图片" onmouseover="showBigPic(this);" onmouseout="removeBigPic();" /><i onclick="deleteSccPic(this);">×</i></div>');
+						oThis.before('<div class="J-scc-pic-div"><img class="J-line-input J-scc-pic" data-pic="' + aResult.data + '" src="' + App.url.resource + aResult.data + '" title="详细图片" onmouseover="showBigPic(this);" onmouseout="removeBigPic();" /><i onclick="deleteSccPic(this);">×</i></div>');
 					}else{
 						UBox.show(aResult.msg, aResult.status);
 					}
@@ -305,10 +305,10 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			$('.J-scc-pic').AjaxUpload({
 				uploadUrl : '<?php echo Url::to(['dress-manage/upload-file']); ?>',
 				fileKey : 'image',
-				callback : function(aResult){
+				callback : function(aResult, oThis){
 					if(aResult.status == 1){
-						$('.J-scc-pic').attr('src', App.url.resource + aResult.data);
-						$('.J-scc-pic').attr('data-pic', aResult.data);
+						oThis.attr('src', App.url.resource + aResult.data);
+						oThis.attr('data-pic', aResult.data);
 					}else{
 						UBox.show(aResult.msg, aResult.status);
 					}
@@ -317,10 +317,10 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			$('.J-up-pic').AjaxUpload({
 				uploadUrl : '<?php echo Url::to(['dress-manage/upload-file']); ?>',
 				fileKey : 'image',
-				callback : function(aResult){
+				callback : function(aResult, oThis){
 					if(aResult.status == 1){
-						$('.J-up-pic').attr('src', App.url.resource + aResult.data);
-						$('.J-up-pic').attr('data-pic', aResult.data);
+						oThis.attr('src', App.url.resource + aResult.data);
+						oThis.attr('data-pic', aResult.data);
 					}else{
 						UBox.show(aResult.msg, aResult.status);
 					}
@@ -329,10 +329,10 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			$('.J-down-pic').AjaxUpload({
 				uploadUrl : '<?php echo Url::to(['dress-manage/upload-file']); ?>',
 				fileKey : 'image',
-				callback : function(aResult){
-					if(aResult.status == 1){console.log('.J-down-pic');
-						$('.J-down-pic').attr('src', App.url.resource + aResult.data);
-						$('.J-down-pic').attr('data-pic', aResult.data);
+				callback : function(aResult, oThis){
+					if(aResult.status == 1){
+						oThis.attr('src', App.url.resource + aResult.data);
+						oThis.attr('data-pic', aResult.data);
 					}else{
 						UBox.show(aResult.msg, aResult.status);
 					}
@@ -578,7 +578,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				}
 			}
 		});
-		oDom.find('.J-scc-pic').AjaxUpload({
+		/*oDom.find('.J-scc-pic').AjaxUpload({
 			uploadUrl : '<?php echo Url::to(['dress-manage/upload-file']); ?>',
 			fileKey : 'image',
 			callback : function(aResult){
@@ -589,7 +589,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 					UBox.show(aResult.msg, aResult.status);
 				}
 			}
-		});
+		});*/
 		oDom.find('.J-up-pic').AjaxUpload({
 			uploadUrl : '<?php echo Url::to(['dress-manage/upload-file']); ?>',
 			fileKey : 'image',
