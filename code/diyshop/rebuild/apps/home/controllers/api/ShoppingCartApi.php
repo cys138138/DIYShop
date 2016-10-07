@@ -88,7 +88,7 @@ trait ShoppingCartApi{
 	
 	private function deleteShoppingCart(){
 		$userToken = Yii::$app->request->post('user_token');
-		$id = Yii::$app->request->post('id');
+		$aId = (array)Yii::$app->request->post('id',[]);
 		
 		$userId = $this->_getUserIdByUserToken($userToken);
 		$mUser = User::findOne($userId);
@@ -96,17 +96,23 @@ trait ShoppingCartApi{
 			return new Response('找不到用户信息', 3101);
 		}
 		
-		$mShoppingCart = ShoppingCart::findOne($id);
-		if(!$mShoppingCart){
+		if(!$aId){
 			return new Response('找不到购物车商品信息', 3102);
 		}
 		
-		if($mShoppingCart->user_id != $userId){
-			return new Response('操作异常', 3103);
-		}
-		
-		if(!$mShoppingCart->delete()){
-			return new Response('删除失败', 3104);
+		foreach($aId as $id){			
+			$mShoppingCart = ShoppingCart::findOne((int)$id);
+			if(!$mShoppingCart){
+				return new Response('找不到购物车商品信息', 3102);
+			}
+			
+			if($mShoppingCart->user_id != $userId){
+				return new Response('操作异常', 3103);
+			}
+			
+			if(!$mShoppingCart->delete()){				
+				return new Response('删除失败', 3104);
+			}			
 		}
 		
 		return new Response('删除成功', 1);
