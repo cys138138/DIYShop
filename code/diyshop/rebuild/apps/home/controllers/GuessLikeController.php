@@ -9,7 +9,7 @@ use common\model\Setting;
 use common\model\Dress;
 
 class GuessLikeController extends MController{
-	const DATA_SETTING_KEY = 'guess_like_config';
+	const DATA_SETTING_KEY = Setting::GUESS_LIKE;
 	
 	private function _getGuessLikeConfig(){
 		return json_decode(Setting::getSetting(self::DATA_SETTING_KEY), true);
