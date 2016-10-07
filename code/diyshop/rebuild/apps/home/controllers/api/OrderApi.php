@@ -103,7 +103,7 @@ trait OrderApi{
 				'order_info' => $v['order_info'],
 				'dress_count' => $v['total_count'],
 				'total_price' => $v['total_price'],
-				'status' => Order::ORDER_STATUS_CONFIRM,
+				'status' => Order::ORDER_STATUS_WAIT_PAY,
 				'buyer_msg' => $buyerMsg,
 				'express_info' => [],
 				'create_time' => NOW_TIME,
