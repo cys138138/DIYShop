@@ -73,4 +73,5 @@ return [
 	'jquery.bootstrap.teninedialog.v3' => '@r.url/static/plugin/jquery.bootstrap.teninedialog.v3.js',
 	
 	'js.ajax-upload' => '@r.url/static/plugin/jquery.ajax-upload.js',
+	'js.wdate-picker' => '@r.url/static/plugin/wdatepicker/WdatePicker.js',
 ];

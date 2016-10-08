@@ -1,0 +1,200 @@
+LOG_START=================================
+[time=2016-10-08 14:28:47] [192.168.0.175][-][-][level=error][category=yii\base\UnknownMethodException] 
+message_start
+exception 'yii\base\UnknownMethodException' with message 'Calling unknown method: umeworld\lib\View::registerScriptFile()' in /var/www/diyshop/framework/yiisoft/yii2/base/Component.php:285
+Stack trace:
+#0 /var/www/diyshop/rebuild/apps/home/views/vote/setting.php(7): yii\base\Component->__call('registerScriptF...', Array)
+#1 /var/www/diyshop/rebuild/apps/home/views/vote/setting.php(7): umeworld\lib\View->registerScriptFile('@r.js.wdate-pic...')
+#2 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#3 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\controllers\VoteController))
+#5 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(371): yii\base\View->render('setting', Array, Object(home\controllers\VoteController))
+#6 /var/www/diyshop/rebuild/apps/home/controllers/VoteController.php(34): yii\base\Controller->render('setting')
+#7 [internal function]: home\controllers\VoteController->actionShowSetting()
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#9 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#10 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('show-setting', Array)
+#11 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('vote/show-setti...', Array)
+#12 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#14 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/vote/show-setting.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '624e00c9c8ed3522fec61e7e946ce7abcc354861758fb4059e99d22e00e292c3a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"LlWodNoylHcTIyqNPwJtgXhR8QMd9Ew3\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/vote/show-setting.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/vote/show-list.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-10-08 14:29:27] [192.168.0.175][-][-][level=error][category=yii\base\UnknownMethodException] 
+message_start
+exception 'yii\base\UnknownMethodException' with message 'Calling unknown method: umeworld\lib\View::registerScriptFile()' in /var/www/diyshop/framework/yiisoft/yii2/base/Component.php:285
+Stack trace:
+#0 /var/www/diyshop/rebuild/apps/home/views/vote/setting.php(7): yii\base\Component->__call('registerScriptF...', Array)
+#1 /var/www/diyshop/rebuild/apps/home/views/vote/setting.php(7): umeworld\lib\View->registerScriptFile('@js.wdate-picke...')
+#2 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#3 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\controllers\VoteController))
+#5 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(371): yii\base\View->render('setting', Array, Object(home\controllers\VoteController))
+#6 /var/www/diyshop/rebuild/apps/home/controllers/VoteController.php(34): yii\base\Controller->render('setting')
+#7 [internal function]: home\controllers\VoteController->actionShowSetting()
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#9 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#10 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('show-setting', Array)
+#11 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('vote/show-setti...', Array)
+#12 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#14 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/vote/show-setting.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '624e00c9c8ed3522fec61e7e946ce7abcc354861758fb4059e99d22e00e292c3a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"LlWodNoylHcTIyqNPwJtgXhR8QMd9Ew3\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/vote/show-setting.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/vote/show-list.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-10-08 14:37:41] [192.168.0.175][-][-][level=error][category=ReflectionException:-1] 
+message_start
+exception 'ReflectionException' with message 'Class common\assets\WdatePicker does not exist' in /var/www/diyshop/framework/yiisoft/yii2/di/Container.php:415
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/di/Container.php(415): ReflectionClass->__construct('common\assets\W...')
+#1 /var/www/diyshop/framework/yiisoft/yii2/di/Container.php(358): yii\di\Container->getDependencies('common\assets\W...')
+#2 /var/www/diyshop/framework/yiisoft/yii2/di/Container.php(151): yii\di\Container->build('common\assets\W...', Array, Array)
+#3 /var/www/diyshop/framework/yiisoft/yii2/BaseYii.php(344): yii\di\Container->get('common\assets\W...', Array, Array)
+#4 /var/www/diyshop/framework/yiisoft/yii2/web/AssetManager.php(264): yii\BaseYii::createObject(Array)
+#5 /var/www/diyshop/framework/yiisoft/yii2/web/AssetManager.php(237): yii\web\AssetManager->loadBundle('common\assets\W...', Array, true)
+#6 /var/www/diyshop/framework/yiisoft/yii2/web/View.php(284): yii\web\AssetManager->getBundle('common\assets\W...')
+#7 /var/www/diyshop/rebuild/apps/home/views/vote/setting.php(7): yii\web\View->registerAssetBundle('common\assets\W...')
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#9 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#10 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\controllers\VoteController))
+#11 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(371): yii\base\View->render('setting', Array, Object(home\controllers\VoteController))
+#12 /var/www/diyshop/rebuild/apps/home/controllers/VoteController.php(34): yii\base\Controller->render('setting')
+#13 [internal function]: home\controllers\VoteController->actionShowSetting()
+#14 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#15 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#16 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('show-setting', Array)
+#17 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('vote/show-setti...', Array)
+#18 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#19 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#20 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/vote/show-setting.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '624e00c9c8ed3522fec61e7e946ce7abcc354861758fb4059e99d22e00e292c3a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"LlWodNoylHcTIyqNPwJtgXhR8QMd9Ew3\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/vote/show-setting.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/vote/show-list.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-10-08 14:37:50] [192.168.0.175][-][-][level=error][category=ReflectionException:-1] 
+message_start
+exception 'ReflectionException' with message 'Class common\assets\WdatePicker does not exist' in /var/www/diyshop/framework/yiisoft/yii2/di/Container.php:415
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/di/Container.php(415): ReflectionClass->__construct('common\assets\W...')
+#1 /var/www/diyshop/framework/yiisoft/yii2/di/Container.php(358): yii\di\Container->getDependencies('common\assets\W...')
+#2 /var/www/diyshop/framework/yiisoft/yii2/di/Container.php(151): yii\di\Container->build('common\assets\W...', Array, Array)
+#3 /var/www/diyshop/framework/yiisoft/yii2/BaseYii.php(344): yii\di\Container->get('common\assets\W...', Array, Array)
+#4 /var/www/diyshop/framework/yiisoft/yii2/web/AssetManager.php(264): yii\BaseYii::createObject(Array)
+#5 /var/www/diyshop/framework/yiisoft/yii2/web/AssetManager.php(237): yii\web\AssetManager->loadBundle('common\assets\W...', Array, true)
+#6 /var/www/diyshop/framework/yiisoft/yii2/web/View.php(284): yii\web\AssetManager->getBundle('common\assets\W...')
+#7 /var/www/diyshop/rebuild/apps/home/views/vote/setting.php(7): yii\web\View->registerAssetBundle('common\assets\W...')
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(325): require('/var/www/diysho...')
+#9 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/www/diysho...', Array)
+#10 /var/www/diyshop/framework/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/www/diysho...', Array, Object(home\controllers\VoteController))
+#11 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(371): yii\base\View->render('setting', Array, Object(home\controllers\VoteController))
+#12 /var/www/diyshop/rebuild/apps/home/controllers/VoteController.php(34): yii\base\Controller->render('setting')
+#13 [internal function]: home\controllers\VoteController->actionShowSetting()
+#14 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#15 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#16 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('show-setting', Array)
+#17 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('vote/show-setti...', Array)
+#18 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#19 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#20 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/vote/show-setting.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '624e00c9c8ed3522fec61e7e946ce7abcc354861758fb4059e99d22e00e292c3a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"LlWodNoylHcTIyqNPwJtgXhR8QMd9Ew3\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/vote/show-setting.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/vote/show-list.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END

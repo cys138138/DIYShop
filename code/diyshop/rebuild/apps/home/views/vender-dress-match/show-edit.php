@@ -114,6 +114,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	</div>
 </div>
 <script type="text/javascript">
+	var maxPicCount = 2;
 	var aManagerDressMatchCache = {};
 	var aDressCatalogChildList = <?php echo json_encode($aDressCatalogChildList); ?>;
 	function getPics(){
@@ -335,6 +336,13 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		$('.J-add-pics-btn').AjaxUpload({
 			uploadUrl : '<?php echo Url::to(['vender-dress-match/upload-file']); ?>',
 			fileKey : 'image',
+			isUploadEnable : function(o){
+				if(parseInt($('.J-pics-list li').length) >= maxPicCount){
+					UBox.show('只能上传 ' + maxPicCount + ' 张图片！', -1);
+					return false;
+				}
+				return true;
+			},
 			callback : function(aResult){
 				if(aResult.status == 1){
 					addPic(aResult.data);

@@ -4,6 +4,7 @@ use home\widgets\Table;
 use home\widgets\ModuleNavi;
 $this->setTitle('投票');
 $this->registerAssetBundle('common\assets\AjaxUploadAsset');
+$this->registerAssetBundle('common\assets\WdatePickerAsset');
 ?>
 <style type="text/css">
 	.J-pic-wraper{
@@ -14,6 +15,30 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	.J-pic-wraper img{
 		width:375px;
 		height:234px;
+	}
+	#wrapper .J-line-input{
+		width: 130px;
+		float:left;
+		margin-right: 10px;
+	} 
+	#wrapper .list-group-item{
+		height:34px;
+		float:left;
+		line-height: 16px;
+		margin:2px;
+	}
+	#wrapper .list-group-item a{
+		display:block;
+		float:left;
+		text-decoration:none;
+	}
+	#wrapper .list-group-item i{
+		float:left;
+		display:block;
+		cursor:pointer;
+	}
+	.J-select-size-list li{
+		cursor:pointer;
 	}
 </style>
 <div class="row">
@@ -38,8 +63,52 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 <div class="row">
 	<div class="col-lg-12">
 		<div class="form-group">
+			<label>投票名称</label>
+			<input class="J-name form-control" placeholder="请输入投票名称" value="">
+			<br />
+		</div>
+		<div class="form-group">
 			<label>投票说明</label>
 			<textarea class="J-description form-control" rows="3" placeholder="请输入投票说明"></textarea>
+			<br />
+		</div>
+		<div class="form-group">
+			<label>上架货号</label>
+			<input class="J-on-sales-number form-control" placeholder="请输入上架货号" value="">
+			<br />
+		</div>
+		<div class="form-group">
+			<label>主要材质</label>
+			<input class="J-material form-control" placeholder="请输入主要材质" value="">
+			<br />
+		</div>
+		<div class="form-group" style="margin-top:15px;">
+			<label>尺码</label>
+			<div class="row">
+				<div class="col-lg-12">
+					<ul class="J-select-size-list list-group">
+					<?php foreach($aSizeList as $key => $value){ ?>
+						<li class="list-group-item" onclick="addSize(this, 1);"><p><a><?php echo $value; ?></a></p></li>
+					<?php } ?>
+					</ul>
+				</div>
+				<br />
+			</div>
+			<br />
+			<div class="form-group">
+				<input class="J-line-input J-size form-control" placeholder="请输入尺码" value="">
+				<button type="button" class="J-line-input btn btn-info" onclick="addSize(this);" style="width:55px;">添加</button>
+				<br />
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<ul class="J-size-list list-group"></ul>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label>上架日期</label>
+			<input class="J-on-sales-day form-control" placeholder="请输入上架日期" value="" onclick="WdatePicker({dateFmt:'yyyy-M-d'});">
 			<br />
 		</div>
 		<div class="form-group">
@@ -59,16 +128,80 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 <script type="text/javascript">
 	var currentPic = '';
 	
+	function addSize(o, type){
+		var size = $('.J-size').val();
+		if(type){
+			size = $(o).find('a').text();
+		}
+		if(size == ''){
+			UBox.show('尺码不能为空', -1);
+			return;
+		}
+		$('.J-size-list').append(buildSizeHtml(size));
+		$('.J-size').val('');
+	}
+	
+	function deleteSize(o){
+		$(o).parent().parent().remove();
+	}
+	
+	function getSize(){
+		var aSize = [];
+		if($('.J-size-list li').length == 0){
+			UBox.show('请添加尺码', -1);
+			return false;
+		}
+		$('.J-size-list li').each(function(){
+			aSize.push($(this).find('a').text());
+		});
+		
+		return aSize;
+	}
+	
+	function buildSizeHtml(tag){
+		return '<li class="list-group-item"><p><a>' + tag + '</a><i onclick="deleteSize(this);">&nbsp;&nbsp;×</i></p></li>';
+	}
+	
 	function save(o){
+		var name = $('.J-name').val();
+		if(name == ''){
+			UBox.show('请输入投票名称', -1);
+			return;
+		}
 		var description = $('.J-description').val();
 		if(description == ''){
 			UBox.show('请输入投票说明', -1);
 			return;
 		}
+		var onSalesNumber = $('.J-on-sales-number').val();
+		if(onSalesNumber == ''){
+			UBox.show('请输入上架货号', -1);
+			return;
+		}
+		var material = $('.J-material').val();
+		if(material == ''){
+			UBox.show('请输入主要材质', -1);
+			return;
+		}
+		var aSize = getSize();
+		if(!aSize){
+			UBox.show('请输入尺码', -1);
+			return;
+		}
+		var onSalesDay = $('.J-on-sales-day').val();
+		if(onSalesDay == ''){
+			UBox.show('请输入上架日期', -1);
+			return;
+		}
 		ajax({
 			url : '<?php echo Url::to(['vote/save-setting']); ?>',
 			data : {
+				name : name,
+				onSalesNumber : onSalesNumber,
+				material : material,
+				onSalesDay : onSalesDay,
 				description : description,
+				aSize : aSize,
 				pic : currentPic
 			},
 			beforeSend : function(){

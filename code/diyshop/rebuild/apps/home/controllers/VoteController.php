@@ -4,6 +4,7 @@ namespace home\controllers;
 use Yii;
 use home\lib\ManagerController as MController;
 use umeworld\lib\Response;
+use yii\helpers\ArrayHelper;
 use umeworld\lib\Url;
 use common\model\Setting;
 use common\model\Dress;
@@ -12,7 +13,7 @@ use common\model\form\ImageUploadForm;
 use yii\web\UploadedFile;
 
 class VoteController extends MController{
-	const DATA_SETTING_KEY = 'vote_config';
+	const DATA_SETTING_KEY = Setting::VOTE;
 	
 	private function _getConfig(){
 		return json_decode(Setting::getSetting(self::DATA_SETTING_KEY), true);
@@ -31,15 +32,42 @@ class VoteController extends MController{
     }
 
 	public function actionShowSetting(){
-		return $this->render('setting');
+		$aList = $this->_getConfig();
+		$aSizeList = [];
+		foreach($aList as $key => $aValue){
+			$aSizeList = array_merge($aSizeList, $aValue['aSize']);
+		}
+		$aSizeList = array_unique($aSizeList);
+		
+		return $this->render('setting', ['aSizeList' => $aSizeList ? $aSizeList : []]);
 	}
 	
 	public function actionSaveSetting(){
-		$pic = (string)Yii::$app->request->post('pic');
+		$name = (string)Yii::$app->request->post('name');
 		$description = (string)Yii::$app->request->post('description');
+		$onSalesNumber = (string)Yii::$app->request->post('onSalesNumber');
+		$material = (string)Yii::$app->request->post('material');
+		$aSize = array_unique((array)Yii::$app->request->post('aSize'));
+		$onSalesDay = (string)Yii::$app->request->post('onSalesDay');
+		$pic = (string)Yii::$app->request->post('pic');
 		
+		if(!$name){
+			return new Response('请填写投票名称', -1);
+		}
 		if(!$description){
 			return new Response('请填写投票说明', -1);
+		}
+		if(!$onSalesNumber){
+			return new Response('请上传上架货号', -1);
+		}
+		if(!$material){
+			return new Response('请填写主要材质', -1);
+		}
+		if(!$aSize){
+			return new Response('请填写尺码', -1);
+		}
+		if(!$onSalesDay){
+			return new Response('请填写上架日期', -1);
 		}
 		if(!$pic){
 			return new Response('请上传投票图片', -1);
@@ -51,8 +79,13 @@ class VoteController extends MController{
 		}
 		array_push($aList, [
 			'identity' => md5(NOW_TIME),
+			'name' => $name,
+			'description' => $description,
+			'onSalesNumber' => $onSalesNumber,
+			'material' => $material,
+			'aSize' => $aSize,
+			'onSalesDay' => $onSalesDay,
 			'pic' => $pic,
-			'description' => $description
 		]);
 		
 		$this->_setConfig($aList);

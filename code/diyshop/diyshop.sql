@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : phpstudyLocalhost
-Source Server Version : 50547
-Source Host           : localhost:3306
+Source Server         : 192.168.0.177
+Source Server Version : 50540
+Source Host           : 192.168.0.177:3306
 Source Database       : diyshop
 
 Target Server Type    : MYSQL
-Target Server Version : 50547
+Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-10-03 17:18:00
+Date: 2016-10-08 16:55:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -343,7 +343,7 @@ CREATE TABLE `setting` (
 INSERT INTO `setting` VALUES ('1', 'advertisement_catalog_config', '[{\"id\":\"1\",\"name\":\"\\u4e3b\\u754c\\u9762\",\"pics\":[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/6ef030fa9ae071bc7e2218a715efc5ef.jpeg\",\"url\":\"https:\\/\\/www.baidu.com\\/\"}]},{\"id\":\"2\",\"name\":\"\\u54c1\\u724c\",\"pics\":[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/cce8218c8ad80180ca133b149c4dad1d.jpeg\",\"url\":\"https:\\/\\/www.baidu.com\\/\"}]},{\"id\":\"3\",\"name\":\"\\u81ea\\u8425\",\"pics\":[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/f591926c72767baf3563cf5a02595013.jpeg\",\"url\":\"https:\\/\\/www.baidu.com\\/\"}]}]');
 INSERT INTO `setting` VALUES ('2', 'guess_like_config', '[{\"vender_id\":\"1\",\"dress_id\":1,\"pic_index\":1}]');
 INSERT INTO `setting` VALUES ('3', 'discount_activity_config', '[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/bb6db92becfaeba6c1032050134ebe06.jpeg\",\"link_url\":\"www.baidu.com\"}]');
-INSERT INTO `setting` VALUES ('4', 'vote_config', '[{\"identity\":\"0c7e3645eda540d7ae0aa5cec145803d\",\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/26df5e0f2812e68cd3e31abe0d541e3f.jpeg\",\"description\":\"\\u6295\\u7968\\u8bf4\\u660e\\u6295\\u7968\\u8bf4\\u660e\\u6295\\u7968\\u8bf4\\u660e\\u6295\\u7968\\u8bf4\\u660e\"}]');
+INSERT INTO `setting` VALUES ('4', 'vote_config', '[{\"identity\":\"a0b13f2332683cadcbc85dc426a4e92d\",\"name\":\"\\u6545\\u6001\\u590d\\u840c\\u957f\\u88e4\",\"description\":\"\\u6545\\u6001\\u590d\\u840c\\u957f\\u88e4\\u8bf4\\u660e\",\"onSalesNumber\":\"SDF4544\",\"material\":\"90%\\u68c9\",\"aSize\":[\"S\",\"M\",\"L\"],\"onSalesDay\":\"2016-10-8\",\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/37dbccecf76228be453bc6ff4fce5a1d.jpeg\"},{\"identity\":\"b0d92fcc11adf6417a452d5c303f319e\",\"name\":\"\\u590d\\u53e4\\u4fee\\u8eab\\u5973\\u8863\\u670d\",\"description\":\"\\u590d\\u53e4\\u4fee\\u8eab\\u5973\\u8863\\u670d\\u8bf4\\u8bf4\\u8bf4\\u660e\\u660e\\u660e\\u663e\",\"onSalesNumber\":\"FGGS5464\",\"material\":\"\\u7eaf\\u68c9\",\"aSize\":[\"S\",\"M\"],\"onSalesDay\":\"2016-10-8\",\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/95e1b2d6dd021cee6d9efe11ed25f90a.jpeg\"}]');
 INSERT INTO `setting` VALUES ('5', 'bg_advertisement_config', '[\"\\/static\\/data\\/advertisement_position_img\\/442a18217613de1e2a1bbf31489ff840.jpeg\",\"\\/static\\/data\\/advertisement_position_img\\/5b193b1b179daa04d70dd73fb686557d.jpeg\"]');
 
 -- ----------------------------
@@ -454,7 +454,7 @@ CREATE TABLE `vender_dress_match` (
 -- ----------------------------
 -- Records of vender_dress_match
 -- ----------------------------
-INSERT INTO `vender_dress_match` VALUES ('1', '1', '外套衣领白色0001', '23.00', '1', '[\"\\/static\\/data\\/dress\\/41\\/35f9416708830811138ac57387719d4f.jpeg\",\"\\/static\\/data\\/dress\\/67\\/316ff858004dd3f2abdc9daab065b90c.jpeg\"]', '[\"\\/static\\/data\\/dress\\/46\\/6501a622cfe0b3bf8fc06c042779a708.jpeg\",\"\\/static\\/data\\/dress\\/47\\/5fe8ec7e6e5df441f1f1fe5d93ae1e54.jpeg\"]', '1462935809');
+INSERT INTO `vender_dress_match` VALUES ('1', '1', '外套衣领白色0001', '23.00', '1', '[\"\\/static\\/data\\/dress\\/41\\/35f9416708830811138ac57387719d4f.jpeg\",\"\\/static\\/data\\/dress\\/67\\/316ff858004dd3f2abdc9daab065b90c.jpeg\"]', '[]', '1462935809');
 
 -- ----------------------------
 -- Table structure for `vender_shop`

@@ -201,6 +201,11 @@ trait TestApi{
 			'api_name' => 'getGuessLikeList',
 		];
 		
+		//getVoteList
+		$aParams = [
+			'api_name' => 'getVoteList',
+		];
+		
 		$aData = [
 			'version' => $version,
 			'timestamp' => $timestamp,
