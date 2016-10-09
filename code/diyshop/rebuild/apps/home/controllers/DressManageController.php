@@ -73,6 +73,7 @@ class DressManageController extends VController{
 		$id = (int)Yii::$app->request->post('id');
 		$name = (string)Yii::$app->request->post('name');
 		$desc = (string)Yii::$app->request->post('desc');
+		$shuoMing = (string)Yii::$app->request->post('shuoMing');
 		$catalogId = (int)Yii::$app->request->post('catalogId');
 		$price = (string)Yii::$app->request->post('price');
 		$discountPrice = (string)Yii::$app->request->post('discountPrice');
@@ -97,7 +98,7 @@ class DressManageController extends VController{
 		if(!is_numeric($discountPrice)){
 			return new Response('优惠价格必须是数字', -1);
 		}
-		if(!in_array($status, [Dress::OFF_SALES_STATUS, Dress::ON_SALES_STATUS])){
+		if(!in_array($status, [Dress::VOTE_STATUS, Dress::OFF_SALES_STATUS, Dress::ON_SALES_STATUS])){
 			return new Response('服饰状态不正确', -1);
 		}
 		if(!in_array($sex, [Dress::DRESS_SEX_BOY, Dress::DRESS_SEX_GIRL])){
@@ -156,6 +157,7 @@ class DressManageController extends VController{
 			if($mDress){
 				$mDress->set('name', $name);
 				$mDress->set('desc', $desc);
+				$mDress->set('shuo_ming', $shuoMing);
 				$mDress->set('catalog_id', $catalogId);
 				$mDress->set('price', $price);
 				$mDress->set('discount_price', $discountPrice);
@@ -172,6 +174,7 @@ class DressManageController extends VController{
 			$isSuccess = Dress::insert([
 				'name' => $name,
 				'desc' => $desc,
+				'shuo_ming' => $shuoMing,
 				'vender_id' => $mVender->id,
 				'catalog_id' => $catalogId,
 				'price' => $price,

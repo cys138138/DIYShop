@@ -12,6 +12,7 @@ class Dress extends \common\lib\DbOrmModel{
 	const DRESS_SEX_GIRL = 2;	//女
 	
 	
+	const VOTE_STATUS = 0;		//投票
 	const OFF_SALES_STATUS = 1;	//未上架
 	const ON_SALES_STATUS = 2;	//已上架
 	const DELETE_STATUS = 3;	//已删除
@@ -109,7 +110,7 @@ class Dress extends \common\lib\DbOrmModel{
 		if(isset($aCondition['sex']) && $aCondition['sex']){
 			$aWhere[] = ['sex' => $aCondition['sex']];
 		}
-		if(isset($aCondition['status']) && $aCondition['status']){
+		if(isset($aCondition['status'])){
 			$aWhere[] = ['status' => $aCondition['status']];
 		}
 		if(isset($aCondition['name']) && $aCondition['name']){

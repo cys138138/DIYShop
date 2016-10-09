@@ -14,6 +14,7 @@ trait DressApi{
 		$page = Yii::$app->request->post('page');
 		$pageSize = Yii::$app->request->post('page_size');
 		$sex = Yii::$app->request->post('sex');
+		$status = Yii::$app->request->post('status');
 		$keyword = Yii::$app->request->post('keyword');
 		$isHot = Yii::$app->request->post('is_hot');
 		
@@ -24,7 +25,7 @@ trait DressApi{
 			$pageSize = 5;
 		}
 		
-		$aCondition = ['status' => Dress::ON_SALES_STATUS];
+		$aCondition = ['status' => $status];
 		if($keyword){
 			$aCondition['name'] = $keyword;
 		}

@@ -117,6 +117,11 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			<br />
 		</div>
 		<div class="form-group">
+			<label>服饰说明</label>
+			<textarea class="J-shuo-ming form-control" rows="3" placeholder="请输入服饰说明"><?php echo $aDress ? $aDress['shuo_ming'] : ''; ?></textarea>
+			<br />
+		</div>
+		<div class="form-group">
 			<label>服饰分类</label>
 			<select class="J-catalog form-control">
 			<?php foreach($aDressCatalogList as $key => $aDressCatalog){ ?>
@@ -156,6 +161,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			<select class="J-status form-control">
 				<option value="2">上架</option>
 				<option value="1">未上架</option>
+				<option value="0">投票</option>
 			</select>
 			<br />
 		</div>
@@ -459,6 +465,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		var id = $('.J-id').val();
 		var name = $('.J-name').val();
 		var desc = $('.J-desc').val();
+		var shuoMing = $('.J-shuo-ming').val();
 		var catalogId = $('.J-catalog').val();
 		var price = $('.J-price').val();
 		var discountPrice = $('.J-discount-price').val();
@@ -501,6 +508,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				id : id,
 				name : name,
 				desc : desc,
+				shuoMing : shuoMing,
 				catalogId : catalogId,
 				price : price,
 				discountPrice : discountPrice,
