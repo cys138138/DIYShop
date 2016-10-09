@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-10-09 10:50:44
+Date: 2016-10-09 14:55:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -373,6 +373,8 @@ INSERT INTO `shopping_cart` VALUES ('1', '1', '1', '2', '{\"id\":\"1\",\"vender_
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+  `type` varchar(50) DEFAULT NULL COMMENT '第三方用户类型',
+  `uuid` varchar(100) DEFAULT NULL COMMENT '第三方用户唯一标识',
   `user_name` varchar(30) DEFAULT NULL COMMENT '用户名',
   `name` varchar(50) DEFAULT NULL COMMENT '姓名',
   `mobile` varchar(12) DEFAULT NULL COMMENT '手机号',
@@ -389,7 +391,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'jay', null, '15014191886', null, 'e10adc3949ba59abbe56e057f20f883e', '8', '1', null, null, '1468226675');
+INSERT INTO `user` VALUES ('1', null, null, 'jay', null, '15014191886', null, 'e10adc3949ba59abbe56e057f20f883e', '8', '1', null, null, '1468226675');
 
 -- ----------------------------
 -- Table structure for `user_add_gold_record`

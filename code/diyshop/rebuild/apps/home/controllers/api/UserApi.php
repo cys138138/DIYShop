@@ -94,17 +94,50 @@ trait UserApi{
 	
 	private function loginUser(){
 		$mobile = Yii::$app->request->post('mobile');
-		$password = Yii::$app->request->post('password');
 		
-		if(!(new PhoneValidator())->validate($mobile)){
-			return new Response('手机格式不正确', 1301);
-		}
-		if(!$password){
-			return new Response('缺少密码', 1302);
-		}
-		$mUser = User::getOneByAccountAndPassword($mobile, $password);
-		if(!$mUser){
-			return new Response('账号或密码错误', 1303);	
+		$mUser = [];
+		if($mobile){
+			$password = Yii::$app->request->post('password');
+			if(!(new PhoneValidator())->validate($mobile)){
+				return new Response('手机格式不正确', 1301);
+			}
+			if(!$password){
+				return new Response('缺少密码', 1302);
+			}
+			$mUser = User::getOneByAccountAndPassword($mobile, $password);
+			if(!$mUser){
+				return new Response('账号或密码错误', 1303);	
+			}
+		}else{
+			$type = Yii::$app->request->post('type');
+			$uuid = Yii::$app->request->post('uuid');
+			$name = Yii::$app->request->post('name');
+			$avatar = Yii::$app->request->post('avatar');
+			
+			if(!$type){
+				return new Response('缺少第三方登录类型', 1304);
+			}
+			if(!$uuid){
+				return new Response('缺少第三方唯一标识', 1305);
+			}
+		
+			$mUser = User::findOne([
+				'type' => $type,
+				'uuid' => $uuid
+			]);
+			if(!$mUser){
+				$mUser = User::registerUser([
+					'type' => $type,
+					'uuid' => $uuid,
+					'name' => $name,
+					'avatar' => $avatar,
+					'gold' => static::REGISTER_USER_GIVE_GOLD,
+					'create_time' => NOW_TIME,
+				]);
+				if(!$mUser){
+					return new Response('第三方注册失败', 1306);	
+				}
+			}
 		}
 		return new Response('登录成功', 1, $this->_getUserToken($mUser->id));
 	}
