@@ -1,0 +1,46 @@
+LOG_START=================================
+[time=2016-10-09 15:51:46] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:1] 
+message_start
+exception 'yii\base\ErrorException' with message 'Class 'common\model\ArrayHelper' not found' in /var/www/diyshop/rebuild/common/model/UserDressCollection.php:28
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/api.json
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_POST = [
+    'version' => '1.0.0'
+    'timestamp' => '2016-10-09 15:51:44'
+    'app_code' => 'ios_diyshop'
+    'token' => '29b35e7d253958202fb6df27194228d6'
+    'api_name' => 'getUserDressCollectionList'
+    'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_'
+    'page' => '1'
+    'page_size' => '5'
+    '_csrf' => 'UGtuZ3RRcTQcACYCAnwBUjUJPQUZAUlbHT0FUxAUB0QHEzQhERg0cA=='
+]
+
+$_COOKIE = [
+    '_csrf' => '12668e0c2cd7b77ef305ab5afc55722f8bb5feb21cfcfc20b1052a0443f0c606a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"LkHev-pfebSbmP8oMVk4dEvpWxZFeIED\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/api.json',
+	'HTTP_REFERER' => 'http://www.diyshop.com/api/test.html',
+	'REQUEST_METHOD' => 'POST',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END

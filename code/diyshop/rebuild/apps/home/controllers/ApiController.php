@@ -12,6 +12,7 @@ class ApiController extends \yii\web\Controller{
 	use \home\controllers\api\ShoppingCartApi;
 	use \home\controllers\api\GuessLikeApi;
 	use \home\controllers\api\VoteApi;
+	use \home\controllers\api\UserDressCollectionApi;
 	use \home\controllers\api\TestApi;
 	
 	const REGISTER_USER_GIVE_GOLD = 100; //注册新用户送100金币

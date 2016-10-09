@@ -206,6 +206,28 @@ trait TestApi{
 			'api_name' => 'getVoteList',
 		];
 		
+		//addUserDressCollection
+		$aParams = [
+			'api_name' => 'addUserDressCollection',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+			'dress_id' => 1,
+		];
+		
+		//cancelUserDressCollection
+		$aParams = [
+			'api_name' => 'cancelUserDressCollection',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+			'dress_id' => 1,
+		];
+		
+		//getUserDressCollectionList
+		$aParams = [
+			'api_name' => 'getUserDressCollectionList',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+			'page' => 1,
+			'page_size' => 5,
+		];
+		
 		$aData = [
 			'version' => $version,
 			'timestamp' => $timestamp,

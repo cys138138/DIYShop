@@ -11,6 +11,7 @@ use common\model\DressSizeColorCount;
 use common\model\DeliveryAddress;
 use common\model\VenderShop;
 use common\model\DressComment;
+use common\model\User;
 
 trait OrderApi{
 	
@@ -24,6 +25,10 @@ trait OrderApi{
 			return new Response('缺少user_token', 2101);
 		}
 		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 2101);
+		}
 		
 		$aDressList = Dress::getList(['dress_id' => ArrayHelper::getColumn($aOrderInfo, 'dress_id')]);
 		$aDressSizeColorCountList = DressSizeColorCount::findAll(['id' => ArrayHelper::getColumn($aOrderInfo, 'dress_size_color_count_id')]);
@@ -158,6 +163,10 @@ trait OrderApi{
 			return new Response('缺少user_token', 2201);
 		}
 		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 2201);
+		}
 		if(!$orderNumber){
 			return new Response('缺少order_number', 2202);
 		}
@@ -194,6 +203,10 @@ trait OrderApi{
 			return new Response('缺少user_token', 2201);
 		}
 		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 2201);
+		}
 		$aCondition = ['order_type' => Order::ORDER_TYPE_NORMAL];
 		if($status){
 			$aCondition['status'] = $status;
@@ -216,6 +229,10 @@ trait OrderApi{
 			return new Response('缺少user_token', 2301);
 		}
 		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 2301);
+		}
 		
 		if(!$orderNumber){
 			return new Response('缺少order_number', 2302);
@@ -262,6 +279,10 @@ trait OrderApi{
 			return new Response('缺少user_token', 2401);
 		}
 		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 2401);
+		}
 		
 		if(!$orderNumber){
 			return new Response('缺少order_number', 2402);
@@ -303,6 +324,10 @@ trait OrderApi{
 			return new Response('缺少user_token', 2501);
 		}
 		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 2501);
+		}
 		
 		$mDress = Dress::findOne($dressId);
 		if(!$mDress){

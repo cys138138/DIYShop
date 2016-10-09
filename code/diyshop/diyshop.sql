@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-10-09 14:55:34
+Date: 2016-10-09 16:11:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -412,6 +412,24 @@ CREATE TABLE `user_add_gold_record` (
 -- ----------------------------
 INSERT INTO `user_add_gold_record` VALUES ('1', '0', '1', '1', '1', '1474357870');
 INSERT INTO `user_add_gold_record` VALUES ('2', '0', '1', '1', '2', '1474357928');
+
+-- ----------------------------
+-- Table structure for `user_dress_collection`
+-- ----------------------------
+DROP TABLE IF EXISTS `user_dress_collection`;
+CREATE TABLE `user_dress_collection` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID自增，收藏记录id',
+  `user_id` int(11) DEFAULT NULL COMMENT '用户ID',
+  `dress_id` int(11) DEFAULT NULL COMMENT '服饰ID',
+  `create_time` int(11) DEFAULT NULL COMMENT '收藏时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user_dress_collection
+-- ----------------------------
+INSERT INTO `user_dress_collection` VALUES ('2', '1', '2', '1475999459');
+INSERT INTO `user_dress_collection` VALUES ('3', '1', '1', '1475999735');
 
 -- ----------------------------
 -- Table structure for `vender`
