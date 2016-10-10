@@ -70,15 +70,26 @@ trait ShoppingCartApi{
 			return new Response('服饰库存不足', 3004);
 		}
 		
-		$isSuccess = ShoppingCart::insert([
+		$mShoppingCart = ShoppingCart::findOne([
 			'user_id' => $userId,
 			'dress_id' => $dressId,
-			'count' => $count,
-			'dress_info' => $mDress->toArray(),
-			'size_color_info' => $mDressSizeColorCount->toArray(),
-			'create_time' => NOW_TIME,
+			'dress_size_color_count_id' => $dressSizeColorCountId,
 		]);
-		
+		$isSuccess = false;
+		if($mShoppingCart){
+			$mShoppingCart->set('count', ['add', $count]);
+			$isSuccess = $mShoppingCart->save();
+		}else{
+			$isSuccess = ShoppingCart::insert([
+				'user_id' => $userId,
+				'dress_id' => $dressId,
+				'dress_size_color_count_id' => $dressSizeColorCountId,
+				'count' => $count,
+				'dress_info' => $mDress->toArray(),
+				'size_color_info' => $mDressSizeColorCount->toArray(),
+				'create_time' => NOW_TIME,
+			]);
+		}
 		if(!$isSuccess){
 			return new Response('添加失败', 3005);
 		}
