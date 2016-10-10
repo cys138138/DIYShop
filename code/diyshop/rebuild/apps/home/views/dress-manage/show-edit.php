@@ -205,6 +205,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			<label>尺码颜色库存图片</label>
 		</div>
 		<div class="J-size-color-count form-group">
+			<input type="hidden" class="J-line-input J-size-color-count-id form-control" value="0">
 			<input class="J-line-input J-size form-control" placeholder="请输入服饰尺码" value="" onfocus="showSizeList(this);" onblur="removeList();">
 			<input class="J-line-input J-color form-control" placeholder="请输入服饰颜色" value="" onfocus="showColorList(this);" onblur="removeList();">
 			<input class="J-line-input J-count form-control" placeholder="请输入服饰数量" value="">
@@ -288,7 +289,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			var oDom = $('.J-size-color-count');
 			for(var i in aDress.dress_size_color_count){
 				var aTemp = aDress.dress_size_color_count[i];
-				var htmlStr = buildSCCHtml(aTemp.size_name, aTemp.color_name, aTemp.stock, aTemp.pic, aTemp.pics);
+				var htmlStr = buildSCCHtml(aTemp.id, aTemp.size_name, aTemp.color_name, aTemp.stock, aTemp.pic, aTemp.pics);
 				var oTempDom = $(htmlStr);
 				oDom.after(oTempDom);
 				oDom.find('button.J-item-btn ').text('删除');
@@ -387,6 +388,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		var aSizeColorCount = [];
 		if($('.J-size-color-count').length == 1){
 			var aTemp = {
+				id : $('.J-size-color-count-id').val(), 
 				size : $('.J-size').val(), 
 				color : $('.J-color').val(), 
 				count : $('.J-count').val(),
@@ -401,6 +403,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 					aPic.push($(this).attr('data-pic'));
 				});
 				var aTemp = {
+					id : $(this).find('.J-size-color-count-id').val(), 
 					size : $(this).find('.J-size').val(), 
 					color : $(this).find('.J-color').val(), 
 					count : $(this).find('.J-count').val(),
@@ -539,7 +542,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		});
 	}
 	
-	function buildSCCHtml(size, color, count, img, pics){
+	function buildSCCHtml(id, size, color, count, img, pics){
 		var upImgSrc = '';
 		var downImgSrc = '';
 		var upImg = '';
@@ -561,6 +564,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			downImgSrc = App.url.resource + downImg;
 		}
 		var oDom = $('<div class="J-size-color-count form-group">\
+				<input type="hidden" class="J-line-input J-size-color-count-id form-control" value="' + id + '">\
 				<input class="J-line-input J-size form-control" placeholder="请输入服饰尺码" value="' + size + '" onfocus="showSizeList(this);" onblur="removeList();">\
 				<input class="J-line-input J-color form-control" placeholder="请输入服饰颜色" value="' + color + '" onfocus="showColorList(this);" onblur="removeList();">\
 				<input class="J-line-input J-count form-control" placeholder="请输入服饰数量" value="' + count + '">\
@@ -637,7 +641,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	}
 	
 	function addSizeAndColorCount(o){
-		$(o).parent().after(buildSCCHtml('', '', '', '', ['', '']));
+		$(o).parent().after(buildSCCHtml(0, '', '', '', '', ['', '']));
 		$(o).text('删除');
 		$(o).attr('onclick', 'delSizeAndColorCount(this);');
 	}
