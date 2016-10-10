@@ -121,17 +121,46 @@ class Dress extends \common\lib\DbOrmModel{
 	}
 	
 	public function saveSizeColorCount($aData){
-		Yii::$app->db->createCommand()->delete(DressSizeColorCount::tableName(), ['dress_id' => $this->id])->execute();
+		$aIds = ArrayHelper::getColumn($aData, 'id');
+		$aDressSizeColorCountList = DressSizeColorCount::findAll(['dress_id' => $this->id]);
+		if($aDressSizeColorCountList){
+			foreach($aDressSizeColorCountList as $aDressSizeColorCount){
+				$mDressSizeColorCount = DressSizeColorCount::toModel($aDressSizeColorCount);
+				if(!in_array($mDressSizeColorCount->id, $aIds)){
+					$mDressSizeColorCount->delete();
+				}
+			}
+		}
 		foreach($aData as $key => $aValue){
-			(new Query())->createCommand()->insert(DressSizeColorCount::tableName(), [
-				'vender_id' => $this->vender_id,
-				'dress_id' => $this->id,
-				'size_name' => $aValue['size'],
-				'color_name' => $aValue['color'],
-				'stock' => $aValue['count'],
-				'pic' => json_encode($aValue['pic']),
-				'pics' => json_encode($aValue['pics'])
-			])->execute();
+			if(!isset($aValue['pic'])){
+				$aValue['pic'] = [];
+			}
+			if(!isset($aValue['pics'])){
+				$aValue['pics'] = [];
+			}
+			if(!$aValue['id']){
+				(new Query())->createCommand()->insert(DressSizeColorCount::tableName(), [
+					'vender_id' => $this->vender_id,
+					'dress_id' => $this->id,
+					'size_name' => $aValue['size'],
+					'color_name' => $aValue['color'],
+					'stock' => $aValue['count'],
+					'pic' => json_encode($aValue['pic']),
+					'pics' => json_encode($aValue['pics'])
+				])->execute();
+			}else{
+				$mDressSizeColorCount = DressSizeColorCount::findOne($aValue['id']);
+				if($mDressSizeColorCount){
+					$mDressSizeColorCount->set('vender_id', $this->vender_id);
+					$mDressSizeColorCount->set('dress_id', $this->id);
+					$mDressSizeColorCount->set('size_name', $aValue['size']);
+					$mDressSizeColorCount->set('color_name',$aValue['color']);
+					$mDressSizeColorCount->set('stock',$aValue['count']);
+					$mDressSizeColorCount->set('pic',$aValue['pic']);
+					$mDressSizeColorCount->set('pics',$aValue['pics']);
+					$mDressSizeColorCount->save();
+				}
+			}
 		}
 	}
 	
