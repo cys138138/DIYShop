@@ -7,6 +7,8 @@ use umeworld\lib\Query;
 class Setting extends \common\lib\DbOrmModel{
 	const GUESS_LIKE = 'guess_like_config';
 	const VOTE = 'vote_config';
+	const BG_ADVERTISEMENT = 'bg_advertisement_config';
+	const TOP_ADVERTISEMENT = 'top_advertisement_config';
 
 	public static function tableName(){
 		return Yii::$app->db->parseTable('_@setting');

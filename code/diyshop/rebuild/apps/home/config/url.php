@@ -44,6 +44,10 @@ return [
 		'bg-advertisement/save-advertisement-config.json'						=> 'bg-advertisement/save-advertisement-config',
 		'bg-advertisement/upload-file.html'										=> 'bg-advertisement/upload-file',
 		
+		'top-advertisement/show-manage-top-adv.html'							=> 'top-advertisement/show-manage-top-adv',
+		'top-advertisement/save-advertisement-config.json'						=> 'top-advertisement/save-advertisement-config',
+		'top-advertisement/upload-file.html'									=> 'top-advertisement/upload-file',
+		
 	
 		'guess-like/show-list.html'												=> 'guess-like/show-list',
 		'guess-like/show-setting.html'											=> 'guess-like/show-setting',

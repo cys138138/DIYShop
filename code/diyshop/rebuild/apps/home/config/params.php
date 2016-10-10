@@ -49,6 +49,14 @@ return [
 			'child' => [],
 		],
 		[
+			'title' => '首页轮播图片',
+			'en_title' => 'top_adv_position',
+			'url' => ['top-advertisement/show-manage-top-adv'],
+			'permission' => ['manager'],
+			'icon_class' => 'star',	
+			'child' => [],
+		],
+		[
 			'title' => '首页男女装图片',
 			'en_title' => 'bg_adv_position',
 			'url' => ['bg-advertisement/show-manage-bg-adv'],

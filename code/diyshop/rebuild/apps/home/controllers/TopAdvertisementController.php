@@ -9,27 +9,27 @@ use common\model\form\ImageUploadForm;
 use yii\web\UploadedFile;
 use common\model\Setting;
 
-class BgAdvertisementController extends MController{
-	const DATA_SETTING_KEY = Setting::BG_ADVERTISEMENT;
+class TopAdvertisementController extends MController{
+	const DATA_SETTING_KEY = Setting::TOP_ADVERTISEMENT;
 
-	private function _getBgAdvertisementConfig(){
+	private function _getTopAdvertisementConfig(){
 		$aData = json_decode(Setting::getSetting(self::DATA_SETTING_KEY), true);
 		return $aData ? $aData : [];
 	}
 
-	private function _setBgAdvertisementConfig($aData){
+	private function _setTopAdvertisementConfig($aData){
 		return Setting::setSetting(self::DATA_SETTING_KEY, json_encode($aData));
 	}
 
-    public function actionShowManageBgAdv(){
+    public function actionShowManageTopAdv(){
 		return $this->render('show-manage', [
-			'aBgAdvertisementConfig' => $this->_getBgAdvertisementConfig()
+			'aTopAdvertisementConfig' => $this->_getTopAdvertisementConfig()
 		]);
     }
 	
 	public function actionSaveAdvertisementConfig(){
-		$aBgAdvertisementConfig = (array)Yii::$app->request->post('aData');
-		$isSuccess = $this->_setBgAdvertisementConfig($aBgAdvertisementConfig);
+		$aTopAdvertisementConfig = (array)Yii::$app->request->post('aData');
+		$isSuccess = $this->_setTopAdvertisementConfig($aTopAdvertisementConfig);
 		if(!$isSuccess){
 			return new Response('保存失败', 0);
 		}

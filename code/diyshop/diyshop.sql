@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-10-09 16:11:23
+Date: 2016-10-10 09:36:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -336,7 +336,7 @@ CREATE TABLE `setting` (
   `keystr` varchar(50) DEFAULT NULL COMMENT '键',
   `valuestr` text COMMENT '值',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of setting
@@ -346,6 +346,7 @@ INSERT INTO `setting` VALUES ('2', 'guess_like_config', '[{\"vender_id\":\"1\",\
 INSERT INTO `setting` VALUES ('3', 'discount_activity_config', '[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/bb6db92becfaeba6c1032050134ebe06.jpeg\",\"link_url\":\"www.baidu.com\"}]');
 INSERT INTO `setting` VALUES ('4', 'vote_config', '[{\"identity\":\"a0b13f2332683cadcbc85dc426a4e92d\",\"name\":\"\\u6545\\u6001\\u590d\\u840c\\u957f\\u88e4\",\"description\":\"\\u6545\\u6001\\u590d\\u840c\\u957f\\u88e4\\u8bf4\\u660e\",\"onSalesNumber\":\"SDF4544\",\"material\":\"90%\\u68c9\",\"aSize\":[\"S\",\"M\",\"L\"],\"onSalesDay\":\"2016-10-8\",\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/37dbccecf76228be453bc6ff4fce5a1d.jpeg\"},{\"identity\":\"b0d92fcc11adf6417a452d5c303f319e\",\"name\":\"\\u590d\\u53e4\\u4fee\\u8eab\\u5973\\u8863\\u670d\",\"description\":\"\\u590d\\u53e4\\u4fee\\u8eab\\u5973\\u8863\\u670d\\u8bf4\\u8bf4\\u8bf4\\u660e\\u660e\\u660e\\u663e\",\"onSalesNumber\":\"FGGS5464\",\"material\":\"\\u7eaf\\u68c9\",\"aSize\":[\"S\",\"M\"],\"onSalesDay\":\"2016-10-8\",\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/95e1b2d6dd021cee6d9efe11ed25f90a.jpeg\"}]');
 INSERT INTO `setting` VALUES ('5', 'bg_advertisement_config', '[\"\\/static\\/data\\/advertisement_position_img\\/442a18217613de1e2a1bbf31489ff840.jpeg\",\"\\/static\\/data\\/advertisement_position_img\\/5b193b1b179daa04d70dd73fb686557d.jpeg\"]');
+INSERT INTO `setting` VALUES ('6', 'top_advertisement_config', '[\"\\/static\\/data\\/advertisement_position_img\\/6a94661a48f974e8bdf9c38d35b61400.jpeg\",\"\\/static\\/data\\/advertisement_position_img\\/6ae070f49090c1c4c569d97c19e0df8d.jpeg\"]');
 
 -- ----------------------------
 -- Table structure for `shopping_cart`

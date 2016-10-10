@@ -228,6 +228,11 @@ trait TestApi{
 			'page_size' => 5,
 		];
 		
+		//getHomePageAdvertisement
+		$aParams = [
+			'api_name' => 'getHomePageAdvertisement',
+		];
+		
 		$aData = [
 			'version' => $version,
 			'timestamp' => $timestamp,
