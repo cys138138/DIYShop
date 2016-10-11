@@ -7,6 +7,7 @@ use umeworld\lib\Url;
 use yii\helpers\ArrayHelper;
 use common\model\Dress;
 use common\model\DressComment;
+use common\model\DressDecoration;
 
 trait DressApi{
 	
@@ -87,6 +88,29 @@ trait DressApi{
 		$aList = DressComment::getList($aCondition, $aControl);
 		
 		return new Response('服饰评论列表', 1, $aList);	
+	}
+	
+	private function getDressDecorationList(){
+		$page = Yii::$app->request->post('page');
+		$pageSize = Yii::$app->request->post('page_size');
+		
+		if($page < 1){
+			$page = 1;
+		}
+		if($pageSize < 1){
+			$pageSize = 5;
+		}
+		
+		$aCondition = [];
+		
+		$aControl = [
+			'page' => $page,
+			'page_size' => $pageSize,
+			'order_by' => ['create_time' => SORT_DESC],
+		];
+		$aList = DressDecoration::getList($aCondition, $aControl);
+		
+		return new Response('饰件列表', 1, $aList);	
 	}
 	
 }

@@ -233,6 +233,13 @@ trait TestApi{
 			'api_name' => 'getHomePageAdvertisement',
 		];
 		
+		//getDressDecorationList
+		$aParams = [
+			'api_name' => 'getDressDecorationList',
+			'page' => 1,
+			'page_size' => 5,
+		];
+		
 		$aData = [
 			'version' => $version,
 			'timestamp' => $timestamp,

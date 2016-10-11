@@ -100,3 +100,48 @@ $_SERVER = [
 ]
 env_vars_end
 =================================LOG_END
+LOG_START=================================
+[time=2016-10-11 16:55:15] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:1] 
+message_start
+exception 'yii\base\ErrorException' with message 'Call to undefined method common\model\DressDecoration::getList()' in /var/www/diyshop/rebuild/apps/home/controllers/api/DressApi.php:111
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/api.json
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_POST = [
+    'version' => '1.0.0'
+    'timestamp' => '2016-10-11 16:55:13'
+    'app_code' => 'ios_diyshop'
+    'token' => '8afab6079dad0252883ff5dc99a9b4df'
+    'api_name' => 'getDressDecorationList'
+    'page' => '1'
+    'page_size' => '5'
+    '_csrf' => 'c1ZNMTlVNm8hH3hicwFmPjYxJ1ZvJXkEBCYqQEo3WSs7OTxXcCIDHw=='
+]
+
+$_COOKIE = [
+    '_csrf' => '9c1ff2017309f3824db9548ba11edeafa0eb5aefa634a9d409a65a17c21abaa8a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"RI5SJTPQEgjgVpOkwpgqsboDHoqfIw5p\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/api.json',
+	'HTTP_REFERER' => 'http://www.diyshop.com/api/test.html',
+	'REQUEST_METHOD' => 'POST',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
