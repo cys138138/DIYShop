@@ -3,6 +3,7 @@ namespace common\model;
 
 use Yii;
 use umeworld\lib\Query;
+use yii\helpers\ArrayHelper;
 
 class ManagerDressMatch extends \common\lib\DbOrmModel{
 	protected $_aEncodeFields = ['pics'];
@@ -24,8 +25,16 @@ class ManagerDressMatch extends \common\lib\DbOrmModel{
 		}
 		$aList = $oQuery->all();
 		
+		$aDressCatalogIds = ArrayHelper::getColumn($aList, 'catalog_id');
+		$aDressCatalogList = DressCatalog::findAll(['id' => $aDressCatalogIds]);
 		foreach($aList as $key => $aValue){
 			$aList[$key]['pics'] = json_decode($aValue['pics'], 1);
+			foreach($aDressCatalogList as $aDressCatalog){
+				if($aDressCatalog['id'] == $aValue['catalog_id']){
+					$aList[$key]['catalog_info'] = $aDressCatalog;
+					break;
+				}
+			}
 		}
 		
 		return $aList;
