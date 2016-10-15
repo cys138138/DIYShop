@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 192.168.0.177
-Source Server Version : 50540
-Source Host           : 192.168.0.177:3306
+Source Server         : phpstudyLocalhost
+Source Server Version : 50547
+Source Host           : localhost:3306
 Source Database       : diyshop
 
 Target Server Type    : MYSQL
-Target Server Version : 50540
+Target Server Version : 50547
 File Encoding         : 65001
 
-Date: 2016-10-11 17:08:32
+Date: 2016-10-15 12:29:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -327,6 +327,28 @@ CREATE TABLE `qiniu_pic_key_map` (
 -- ----------------------------
 -- Records of qiniu_pic_key_map
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for `return_exchange`
+-- ----------------------------
+DROP TABLE IF EXISTS `return_exchange`;
+CREATE TABLE `return_exchange` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID自增，退换货记录ID',
+  `user_id` int(11) DEFAULT NULL COMMENT '用户ID',
+  `vender_id` int(11) DEFAULT NULL COMMENT '商家ID',
+  `order_number` varchar(200) DEFAULT NULL COMMENT '订单号',
+  `type` int(11) DEFAULT NULL COMMENT '退换货类型，1：退货退款，2：仅退款，3：仅换货',
+  `reason` varchar(500) DEFAULT NULL COMMENT '原因',
+  `desc` varchar(500) DEFAULT NULL COMMENT '描述',
+  `pics` text COMMENT '图片',
+  `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of return_exchange
+-- ----------------------------
+INSERT INTO `return_exchange` VALUES ('1', '1', '1', 'fb7f451b8af93a52936cd7c9dd6aa536', '1', '不想要了', '不想要了!!!', '[\"\\/static\\/data\\/advertisement_position_img\\/6a94661a48f974e8bdf9c38d35b61400.jpeg\",\"\\/static\\/data\\/advertisement_position_img\\/6a94661a48f974e8bdf9c38d35b61400.jpeg\"]', '1476505487');
 
 -- ----------------------------
 -- Table structure for `setting`

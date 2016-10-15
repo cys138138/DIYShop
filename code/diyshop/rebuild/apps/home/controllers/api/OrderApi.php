@@ -12,6 +12,8 @@ use common\model\DeliveryAddress;
 use common\model\VenderShop;
 use common\model\DressComment;
 use common\model\User;
+use common\model\ReturnExchange;
+use common\model\Vender;
 
 trait OrderApi{
 	
@@ -348,4 +350,51 @@ trait OrderApi{
 		return new Response('评论成功', 1);
 	}
 	
+	
+	private function addReturnExchangeRecord(){
+		$userToken = (string)Yii::$app->request->post('user_token');
+		$venderId = (int)Yii::$app->request->post('vender_id');
+		$orderNumber = (string)Yii::$app->request->post('order_number');
+		$type = (int)Yii::$app->request->post('type');
+		$reason = (string)Yii::$app->request->post('reason');
+		$desc = (string)Yii::$app->request->post('desc');
+		$aPics = (array)Yii::$app->request->post('pics');
+		
+		if(!$userToken){
+			return new Response('缺少user_token', 3301);
+		}
+		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 3301);
+		}
+		
+		$mVender = Vender::findOne($venderId);
+		if(!$mVender){
+			return new Response('找不到商家信息', 3302);
+		}
+		$mOrder = Order::findOne(['order_number' => $orderNumber]);
+		if(!$mOrder){
+			return new Response('找不到订单信息', 3303);
+		}
+		if(!$reason){
+			return new Response('请填写退换货原因', 3304);
+		}
+		
+		$isSuccess = ReturnExchange::insert([
+			'user_id' => $userId,
+			'vender_id' => $venderId,
+			'order_number' => $orderNumber,
+			'type' => $type,
+			'reason' => $reason,
+			'desc' => $desc,
+			'pics' => $aPics,
+			'create_time' => NOW_TIME,
+		]);
+		if(!$isSuccess){
+			return new Response('提交失败', 3305);
+		}
+		
+		return new Response('提交成功', 1);
+	}
 }

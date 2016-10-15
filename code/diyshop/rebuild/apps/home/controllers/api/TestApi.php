@@ -240,6 +240,18 @@ trait TestApi{
 			'page_size' => 5,
 		];
 		
+		//addReturnExchangeRecord
+		$aParams = [
+			'api_name' => 'addReturnExchangeRecord',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+			'vender_id' => 1,
+			'order_number' => 'fb7f451b8af93a52936cd7c9dd6aa536',
+			'type' => 1,
+			'reason' => '不想要了',
+			'desc' => '不想要了!!!',
+			'pics' => ['/static/data/advertisement_position_img/6a94661a48f974e8bdf9c38d35b61400.jpeg', '/static/data/advertisement_position_img/6a94661a48f974e8bdf9c38d35b61400.jpeg'],
+		];
+		
 		$aData = [
 			'version' => $version,
 			'timestamp' => $timestamp,
