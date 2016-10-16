@@ -252,6 +252,11 @@ trait TestApi{
 			'pics' => ['/static/data/advertisement_position_img/6a94661a48f974e8bdf9c38d35b61400.jpeg', '/static/data/advertisement_position_img/6a94661a48f974e8bdf9c38d35b61400.jpeg'],
 		];
 		
+		//getDressCatalogTree
+		$aParams = [
+			'api_name' => 'getDressCatalogTree',
+		];
+		
 		$aData = [
 			'version' => $version,
 			'timestamp' => $timestamp,

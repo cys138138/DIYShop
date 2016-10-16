@@ -91,6 +91,9 @@ trait OrderApi{
 				'item_count' => $v['count'],
 				'item_price' => $mDress->price * $v['count'],
 				'delivery_address_info' => $mDeliveryAddress->toArray(),
+				'decoration_ids' => isset($v['aDecorationId']) && $v['aDecorationId'] ? $v['aDecorationId'] : [],
+				'diy_pics' => isset($v['aDiyPics']) && $v['aDiyPics'] ? $v['aDiyPics'] : [],
+				'dress_match' => isset($v['aDressMatch']) && $v['aDressMatch'] ? $v['aDressMatch'] : [],
 			]);
 			$aOrderList[$mDress->vender_id]['total_count'] += $v['count'];
 			$aOrderList[$mDress->vender_id]['total_price'] += $mDress->price * $v['count'];

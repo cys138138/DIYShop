@@ -10,24 +10,7 @@ use common\model\DressCatalog;
 class DressCatalogController extends MController{
 	
     public function actionShowList(){
-		$aDressCatalogList = DressCatalog::findAll();
-		$aList = [];
-		foreach($aDressCatalogList as $key => $aValue){
-			if(!$aValue['pid']){
-				array_push($aList, $aValue);
-			}
-		}
-		
-		foreach($aList as $k => $aData){
-			if(!isset($aData['child'])){
-				$aList[$k]['child'] = [];
-			}
-			foreach($aDressCatalogList as $key => $aValue){
-				if($aData['id'] == $aValue['pid']){
-					array_push($aList[$k]['child'], $aValue);
-				}
-			}
-		}
+		$aList = DressCatalog::getDressCatalogTree();
 		
 		return $this->render('show-list', [
 			'aDressCatalogList' => $aList

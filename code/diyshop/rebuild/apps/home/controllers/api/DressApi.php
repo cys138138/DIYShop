@@ -8,12 +8,14 @@ use yii\helpers\ArrayHelper;
 use common\model\Dress;
 use common\model\DressComment;
 use common\model\DressDecoration;
+use common\model\DressCatalog;
 
 trait DressApi{
 	
 	private function getDressList(){
 		$page = Yii::$app->request->post('page');
 		$pageSize = Yii::$app->request->post('page_size');
+		$catalogId = Yii::$app->request->post('catalog_id');
 		$sex = Yii::$app->request->post('sex');
 		$status = Yii::$app->request->post('status');
 		$keyword = Yii::$app->request->post('keyword');
@@ -27,6 +29,9 @@ trait DressApi{
 		}
 		
 		$aCondition = ['status' => $status];
+		if($catalogId){
+			$aCondition['catalog_id'] = $catalogId;
+		}
 		if($keyword){
 			$aCondition['name'] = $keyword;
 		}
@@ -111,6 +116,12 @@ trait DressApi{
 		$aList = DressDecoration::getList($aCondition, $aControl);
 		
 		return new Response('饰件列表', 1, $aList);	
+	}
+	
+	private function getDressCatalogTree(){
+		$aList = DressCatalog::getDressCatalogTree();
+		
+		return new Response('服饰分类树', 1, $aList);	
 	}
 	
 }

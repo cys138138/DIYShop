@@ -27,4 +27,26 @@ class DressCatalog extends \common\lib\DbOrmModel{
 		}
 		return '';
 	}
+	
+	public static function getDressCatalogTree(){
+		$aDressCatalogList = static::findAll();
+		$aList = [];
+		foreach($aDressCatalogList as $key => $aValue){
+			if(!$aValue['pid']){
+				array_push($aList, $aValue);
+			}
+		}
+		
+		foreach($aList as $k => $aData){
+			if(!isset($aData['child'])){
+				$aList[$k]['child'] = [];
+			}
+			foreach($aDressCatalogList as $key => $aValue){
+				if($aData['id'] == $aValue['pid']){
+					array_push($aList[$k]['child'], $aValue);
+				}
+			}
+		}
+		return $aList;
+	}
 }
