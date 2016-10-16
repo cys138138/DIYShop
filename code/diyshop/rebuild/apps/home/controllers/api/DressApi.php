@@ -9,10 +9,13 @@ use common\model\Dress;
 use common\model\DressComment;
 use common\model\DressDecoration;
 use common\model\DressCatalog;
+use common\model\UserDressCollection;
+use common\model\User;
 
 trait DressApi{
 	
 	private function getDressList(){
+		$userToken = Yii::$app->request->post('user_token');
 		$page = Yii::$app->request->post('page');
 		$pageSize = Yii::$app->request->post('page_size');
 		$catalogId = Yii::$app->request->post('catalog_id');
@@ -26,6 +29,15 @@ trait DressApi{
 		}
 		if($pageSize < 1){
 			$pageSize = 5;
+		}
+		
+		if(!$userToken){
+			return new Response('缺少user_token', 2801);
+		}
+		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 2802);
 		}
 		
 		$aCondition = ['status' => $status];
@@ -50,12 +62,23 @@ trait DressApi{
 			'order_by' => $aOrderBy,
 		];
 		$aList = Dress::getList($aCondition, $aControl);
+		$aList = $this->_appendUserDressCollectionInfo($userId, $aList);
 		
 		return new Response('服饰列表', 1, $aList);
 	}
 	
 	private function getDressDetail(){
+		$userToken = Yii::$app->request->post('user_token');
 		$dressId = Yii::$app->request->post('dress_id');
+		
+		if(!$userToken){
+			return new Response('缺少user_token', 2801);
+		}
+		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 2802);
+		}
 		
 		$aCondition = ['id' => $dressId];
 		
@@ -64,8 +87,32 @@ trait DressApi{
 		if(!$aList){
 			return new Response('找不到服饰', 2801);
 		}
+		$aList = $this->_appendUserDressCollectionInfo($userId, $aList);
 		
 		return new Response('服饰详细', 1, $aList[0]);
+	}
+	
+	private function _appendUserDressCollectionInfo($userId, $aList){
+		if(!$aList){
+			return [];
+		}
+		$aDressIds = ArrayHelper::getColumn($aList, 'id');
+		$aUserDressCollectionList = UserDressCollection::findAll([
+			'user_id' => $userId,
+			'dress_id' => $aDressIds,
+		]);
+		
+		foreach($aList as $key => $aValue){
+			$aList[$key]['is_collection'] = 0;
+			foreach($aUserDressCollectionList as $k => $v){
+				if($v['dress_id'] == $aValue['id']){
+					$aList[$key]['is_collection'] = 1;
+					break;
+				}
+			}
+		}
+		
+		return $aList;
 	}
 	
 	private function getDressCommentList(){

@@ -153,6 +153,7 @@ trait TestApi{
 		//getDressList
 		$aParams = [
 			'api_name' => 'getDressList',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
 			'page' => 1,
 			'page_size' => 5,
 			'keyword' => '',
@@ -169,6 +170,7 @@ trait TestApi{
 		//getDressDetail
 		$aParams = [
 			'api_name' => 'getDressDetail',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
 			'dress_id' => 1,
 		];
 		
@@ -255,6 +257,20 @@ trait TestApi{
 		//getDressCatalogTree
 		$aParams = [
 			'api_name' => 'getDressCatalogTree',
+		];
+		
+		//voteDress
+		$aParams = [
+			'api_name' => 'voteDress',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+			'identity' => 'a0b13f2332683cadcbc85dc426a4e92d',
+		];
+			
+		//cancelVoteDress
+		$aParams = [
+			'api_name' => 'cancelVoteDress',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+			'identity' => 'a0b13f2332683cadcbc85dc426a4e92d',
 		];
 		
 		$aData = [

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50547
 File Encoding         : 65001
 
-Date: 2016-10-15 12:29:34
+Date: 2016-10-16 21:01:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -122,6 +122,7 @@ DROP TABLE IF EXISTS `dress_decoration`;
 CREATE TABLE `dress_decoration` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '饰件id',
   `name` varchar(100) DEFAULT NULL COMMENT '饰件名称',
+  `price` decimal(10,2) DEFAULT NULL COMMENT '价格',
   `detail_pics` text COMMENT '详细图片',
   `effect_pic` varchar(500) DEFAULT NULL COMMENT '效果图片',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
@@ -131,7 +132,7 @@ CREATE TABLE `dress_decoration` (
 -- ----------------------------
 -- Records of dress_decoration
 -- ----------------------------
-INSERT INTO `dress_decoration` VALUES ('1', '围巾-女', '[\"\\/static\\/data\\/dress\\/45\\/5b3c103a054fceace90fcbed218ac687.jpeg\",\"\\/static\\/data\\/dress\\/47\\/caeaa2bc0c3370bd2de48a1102a001db.jpeg\"]', '/static/data/dress/83/103717c5cf55e37b62cf8d3be9934789.jpeg', null);
+INSERT INTO `dress_decoration` VALUES ('1', '围巾-女', '12.30', '[\"\\/static\\/data\\/dress\\/45\\/5b3c103a054fceace90fcbed218ac687.jpeg\",\"\\/static\\/data\\/dress\\/47\\/caeaa2bc0c3370bd2de48a1102a001db.jpeg\"]', '/static/data/dress/83/103717c5cf55e37b62cf8d3be9934789.jpeg', null);
 
 -- ----------------------------
 -- Table structure for `dress_material`
@@ -535,7 +536,7 @@ CREATE TABLE `vote_record` (
   `identity` varchar(100) DEFAULT NULL COMMENT '投票标识',
   `create_time` int(11) DEFAULT NULL COMMENT '投票时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of vote_record

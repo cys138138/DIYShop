@@ -46,6 +46,11 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			<br />
 		</div>
 		<div class="form-group">
+			<label>饰件价格</label>
+			<input class="J-price form-control" placeholder="饰件价格" value="<?php echo $aDressDecoration ? $aDressDecoration['price'] : ''; ?>">
+			<br />
+		</div>
+		<div class="form-group">
 			<label>饰件详细图片</label>
 			<div class="form-group">
 				<button type="button" class="J-add-detail-pics-btn btn btn-info">上传饰件详细图片</button>
@@ -100,6 +105,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	function save(o){
 		var id = $('.J-id').val();
 		var name = $('.J-name').val();
+		var price = $('.J-price').val();
 		var aDetailPics = getDetailPics();
 		var effectPic = $('.J-effect-pic').attr('data-pic');
 		if(name == ''){
@@ -111,6 +117,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			data : {
 				id : id,
 				name : name,
+				price : price,
 				aDetailPics : aDetailPics,
 				effectPic : effectPic
 			},

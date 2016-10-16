@@ -32,16 +32,21 @@ class ManagerDressDecorationController extends MController{
 	public function actionSave(){
 		$id = (int)Yii::$app->request->post('id');
 		$name = (string)Yii::$app->request->post('name');
+		$price = Yii::$app->request->post('price');
 		$effectPic = (string)Yii::$app->request->post('effectPic');
 		$aDetailPics = (array)Yii::$app->request->post('aDetailPics');
 		
 		if(!$name){
 			return new Response('请输入饰件名称', 0);
 		}
+		if(!is_numeric($price)){
+			return new Response('请输入饰件价格', 0);
+		}
 		if($id){
 			$mDressDecoration = DressDecoration::findOne($id);
 			if($mDressDecoration){
 				$mDressDecoration->set('name', $name);
+				$mDressDecoration->set('price', $price);
 				$mDressDecoration->set('detail_pics', $aDetailPics);
 				$mDressDecoration->set('effect_pic', $effectPic);
 				$mDressDecoration->save();
@@ -51,6 +56,7 @@ class ManagerDressDecorationController extends MController{
 		}else{
 			$isSuccess = DressDecoration::insert([
 				'name' => $name,
+				'price' => $price,
 				'detail_pics' => $aDetailPics,
 				'effect_pic' => $effectPic,
 			]);

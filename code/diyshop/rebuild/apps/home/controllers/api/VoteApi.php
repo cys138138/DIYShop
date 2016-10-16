@@ -6,6 +6,8 @@ use umeworld\lib\Response;
 use umeworld\lib\Url;
 use yii\helpers\ArrayHelper;
 use common\model\Setting;
+use common\model\User;
+use common\model\VoteRecord;
 
 trait VoteApi{
 	
@@ -20,6 +22,75 @@ trait VoteApi{
 		}
 		
 		return new Response('投票列表', 1, $aList);
+	}
+	
+	private function voteDress(){
+		$userToken = Yii::$app->request->post('user_token');
+		$identity = Yii::$app->request->post('identity');
+		
+		if(!$userToken){
+			return new Response('缺少user_token', 3601);
+		}
+		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 3602);
+		}
+		
+		$aList = json_decode(Setting::getSetting(Setting::VOTE), true);
+		$isFind = false;
+		foreach($aList as $key => $aValue){
+			if($aValue['identity'] == $identity){
+				$isFind = true;
+				break;
+			}
+		}
+		if(!$isFind){
+			return new Response('找不到投票信息', 3603);
+		}
+		
+		$mVoteRecord = VoteRecord::findOne([
+			'user_id' => $userId,
+			'identity' => $identity,
+		]);
+		if($mVoteRecord){
+			return new Response('已投票', 3604);
+		}
+		$mVoteRecord = VoteRecord::insert([
+			'user_id' => $userId,
+			'identity' => $identity,
+			'create_time' => NOW_TIME,
+		]);
+		if(!$mVoteRecord){
+			return new Response('投票失败', 3605);
+		}
+		return new Response('投票成功', 1);
+	}
+	
+	private function cancelVoteDress(){
+		$userToken = Yii::$app->request->post('user_token');
+		$identity = Yii::$app->request->post('identity');
+		
+		if(!$userToken){
+			return new Response('缺少user_token', 3701);
+		}
+		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 3702);
+		}
+		$mVoteRecord = VoteRecord::findOne([
+			'user_id' => $userId,
+			'identity' => $identity,
+		]);
+		if(!$mVoteRecord){
+			return new Response('找不到投票信息', 3703);
+		}
+		if(!$mVoteRecord->delete()){
+			return new Response('取消投票失败', 3704);
+		}
+		
+		return new Response('取消投票成功', 1);
 	}
 
 }
