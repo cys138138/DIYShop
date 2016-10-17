@@ -261,6 +261,8 @@ trait UserApi{
 		$contact = Yii::$app->request->post('contact');
 		$areaId = (int)Yii::$app->request->post('area_id');
 		$address = Yii::$app->request->post('address');
+		$area = Yii::$app->request->post('area');
+		$street = Yii::$app->request->post('street');
 		$isDefault = (int)Yii::$app->request->post('is_default');
 		
 		if(!$userToken){
@@ -288,6 +290,8 @@ trait UserApi{
 			$mDeliveryAddress->set('contact', $contact);
 			$mDeliveryAddress->set('area_id', $areaId);
 			$mDeliveryAddress->set('address', $address);
+			$mDeliveryAddress->set('area', $area);
+			$mDeliveryAddress->set('street', $street);
 			$mDeliveryAddress->set('is_default', $isDefault);
 			$mDeliveryAddress->save();
 		}else{
@@ -297,6 +301,8 @@ trait UserApi{
 				'contact' => $contact,
 				'area_id' => $areaId,
 				'address' => $address,
+				'area' => $area,
+				'street' => $street,
 				'is_default' => $isDefault,
 				'create_time' => NOW_TIME,
 			]);

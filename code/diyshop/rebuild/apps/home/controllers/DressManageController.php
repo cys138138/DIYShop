@@ -73,6 +73,7 @@ class DressManageController extends VController{
 		$id = (int)Yii::$app->request->post('id');
 		$name = (string)Yii::$app->request->post('name');
 		$desc = (string)Yii::$app->request->post('desc');
+		$detail = (string)Yii::$app->request->post('detail');
 		$shuoMing = (string)Yii::$app->request->post('shuoMing');
 		$catalogId = (int)Yii::$app->request->post('catalogId');
 		$price = (string)Yii::$app->request->post('price');
@@ -157,6 +158,7 @@ class DressManageController extends VController{
 			if($mDress){
 				$mDress->set('name', $name);
 				$mDress->set('desc', $desc);
+				$mDress->set('detail', $detail);
 				$mDress->set('shuo_ming', $shuoMing);
 				$mDress->set('catalog_id', $catalogId);
 				$mDress->set('price', $price);
@@ -174,6 +176,7 @@ class DressManageController extends VController{
 			$isSuccess = Dress::insert([
 				'name' => $name,
 				'desc' => $desc,
+				'detail' => $detail,
 				'shuo_ming' => $shuoMing,
 				'vender_id' => $mVender->id,
 				'catalog_id' => $catalogId,
@@ -238,6 +241,10 @@ class DressManageController extends VController{
 			$message = current($oForm->getErrors())[0];
 			return new Response($message, 0);
 		}else{
+			$editorId = Yii::$app->request->get('editorid');
+			if($editorId){
+				return "<script>parent.UM.getEditor('". $editorId ."').getWidgetCallback('image')('" . $oForm->savedFile . "','" . 'SUCCESS' . "')</script>";
+			}
 			return new Response('', 1, $oForm->savedFile);
 		}
 	}

@@ -4,6 +4,7 @@ use home\widgets\Table;
 use home\widgets\ModuleNavi;
 use yii\widgets\LinkPager;
 $this->setTitle('服饰管理');
+$this->registerAssetBundle('home\assets\UmeditorAsset');
 $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 ?>
 <style type="text/css">
@@ -119,6 +120,11 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		<div class="form-group">
 			<label>服饰说明</label>
 			<textarea class="J-shuo-ming form-control" rows="3" placeholder="请输入服饰说明"><?php echo $aDress ? $aDress['shuo_ming'] : ''; ?></textarea>
+			<br />
+		</div>
+		<div class="form-group">
+			<label>服饰详细</label>
+			<script id="detail" class="J-detail" type="text/plain" style="height:300px;width:100%;"></script>
 			<br />
 		</div>
 		<div class="form-group">
@@ -273,6 +279,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		</div>
 	</div>
 </div>
+<div class="J-x-content-rule" style="display:none"><?php echo $aDress ? $aDress['detail'] : ''; ?></div>
 <script type="text/javascript">
 	var maxPicCount = 2;
 	var aDress = <?php echo json_encode($aDress); ?>;
@@ -505,12 +512,17 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		}else{
 			aPics = [];
 		}
+		var detail = $('.J-detail').text();
+		if(detail){
+			detail = $('.J-detail').html();
+		}
 		ajax({
 			url : '<?php echo Url::to(['dress-manage/save']); ?>',
 			data : {
 				id : id,
 				name : name,
 				desc : desc,
+				detail : detail,
 				shuoMing : shuoMing,
 				catalogId : catalogId,
 				price : price,
@@ -968,5 +980,18 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				}
 			}
 		<?php } ?>
+		
+		UM.getEditor('detail', {
+			/*toolbar:[
+				'emotion image insertvideo | bold forecolor | justifyleft justifycenter justifyright  | removeformat |',
+				'link'
+			],*/
+			imageUrl : '<?php echo Url::to(['dress-manage/upload-file']); ?>',
+			imagePath : '<?php echo Yii::getAlias('@r.url'); ?>',
+			imageFieldName : 'image'
+		}).ready(function() {
+		   this.setContent($('.J-x-content-rule').html());
+		   $('.J-x-content-rule').remove();
+		});
 	});
 </script>

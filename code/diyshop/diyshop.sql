@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : phpstudyLocalhost
-Source Server Version : 50547
-Source Host           : localhost:3306
+Source Server         : 192.168.0.177
+Source Server Version : 50540
+Source Host           : 192.168.0.177:3306
 Source Database       : diyshop
 
 Target Server Type    : MYSQL
-Target Server Version : 50547
+Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-10-16 21:39:45
+Date: 2016-10-17 09:27:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,6 +28,8 @@ CREATE TABLE `delivery_address` (
   `name` varchar(50) DEFAULT NULL COMMENT '收货人',
   `contact` varchar(200) DEFAULT NULL COMMENT '联系电话',
   `address` text COMMENT '详细地址',
+  `area` varchar(200) DEFAULT NULL COMMENT '地区',
+  `street` varchar(500) DEFAULT NULL COMMENT '街道',
   `is_default` tinyint(4) DEFAULT NULL COMMENT '是否默认的收货地址',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
@@ -36,7 +38,7 @@ CREATE TABLE `delivery_address` (
 -- ----------------------------
 -- Records of delivery_address
 -- ----------------------------
-INSERT INTO `delivery_address` VALUES ('1', '1', null, null, '14000', 'jay', '020-8889898', '广州', '1', '1468295387');
+INSERT INTO `delivery_address` VALUES ('1', '1', null, null, '14000', 'jay', '020-8889898', '广州', '海珠区', '人人街', '1', '1468295387');
 
 -- ----------------------------
 -- Table structure for `dress`
@@ -67,7 +69,7 @@ CREATE TABLE `dress` (
 -- ----------------------------
 -- Records of dress
 -- ----------------------------
-INSERT INTO `dress` VALUES ('1', '1', '1', '测试服饰1', '测试服饰1测试服饰1', '<a>服饰详情</a>', '服饰服饰服饰说说明明', '2', '50.00', '40.00', '[\"\\/static\\/data\\/dress\\/48\\/7ea7a7c4e8d0a986a34d1bec0b85b88c.jpeg\",\"\\/static\\/data\\/dress\\/67\\/863840619527ceecba13b58b9b8a8186.jpeg\"]', '{\"vender\":[\"1\"],\"manager\":[\"1\",\"3\"]}', '0', '0', '1', '2', '1476115853', '1474507738');
+INSERT INTO `dress` VALUES ('1', '1', '1', '测试服饰1', '测试服饰1测试服饰1', '<p><a>服饰详情</a></p><p><img src=\"http://www.diyshop.com/static/data/dress/61/c6b962e5fe49b600c9c03c3e4cebfb88.jpeg\" style=\"max-width: 100%;\" _src=\"http://www.diyshop.com/static/data/dress/61/c6b962e5fe49b600c9c03c3e4cebfb88.jpeg\"></p><p><img src=\"http://www.diyshop.com/static/data/dress/87/8901e0f406c08dfffd0b0a2410149f8c.jpeg\" style=\"max-width: 100%;\" _src=\"http://www.diyshop.com/static/data/dress/87/8901e0f406c08dfffd0b0a2410149f8c.jpeg\"></p><p><a></a><br></p>', '服饰服饰服饰说说明明', '2', '50.00', '40.00', '[\"\\/static\\/data\\/dress\\/48\\/7ea7a7c4e8d0a986a34d1bec0b85b88c.jpeg\",\"\\/static\\/data\\/dress\\/67\\/863840619527ceecba13b58b9b8a8186.jpeg\"]', '{\"vender\":[\"1\"],\"manager\":[\"1\",\"3\"]}', '0', '0', '1', '2', '1476667578', '1474507738');
 INSERT INTO `dress` VALUES ('2', '2', '1', '韩式短袖衫', null, null, null, '1', '10.00', null, '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"]', '[]', '0', '0', null, '2', '1474507705', '1474507705');
 INSERT INTO `dress` VALUES ('3', '2', '4', 'diy长裤', null, null, null, '1', '20.00', null, '[\"\\/static\\/data\\/dress\\/71\\/de9ff668f655a936c718ea0a60440da5.jpg\"]', '[]', '0', '0', null, '2', '1474507705', '1474507705');
 
@@ -145,17 +147,17 @@ CREATE TABLE `dress_material` (
   `dress_id` int(11) DEFAULT NULL COMMENT '服饰ID',
   `name` varchar(50) DEFAULT NULL COMMENT '面料名称',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dress_material
 -- ----------------------------
 INSERT INTO `dress_material` VALUES ('13', '0', '0', '纯棉');
-INSERT INTO `dress_material` VALUES ('61', '1', '1', '尼龙');
-INSERT INTO `dress_material` VALUES ('60', '1', '1', '麻布');
+INSERT INTO `dress_material` VALUES ('64', '1', '1', '尼龙');
+INSERT INTO `dress_material` VALUES ('63', '1', '1', '麻布');
 INSERT INTO `dress_material` VALUES ('15', '0', '0', '麻布');
 INSERT INTO `dress_material` VALUES ('16', '0', '0', '尼龙');
-INSERT INTO `dress_material` VALUES ('59', '1', '1', '纯棉');
+INSERT INTO `dress_material` VALUES ('62', '1', '1', '纯棉');
 
 -- ----------------------------
 -- Table structure for `dress_size_color_count`
@@ -197,13 +199,13 @@ CREATE TABLE `dress_tag` (
   `dress_id` int(11) DEFAULT NULL COMMENT '服饰ID',
   `name` varchar(50) DEFAULT NULL COMMENT '标签名称',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dress_tag
 -- ----------------------------
-INSERT INTO `dress_tag` VALUES ('53', '1', '1', '秋冬');
-INSERT INTO `dress_tag` VALUES ('52', '1', '1', '夹克');
+INSERT INTO `dress_tag` VALUES ('55', '1', '1', '秋冬');
+INSERT INTO `dress_tag` VALUES ('54', '1', '1', '夹克');
 INSERT INTO `dress_tag` VALUES ('10', '2', '2', '帅');
 INSERT INTO `dress_tag` VALUES ('11', '2', '3', '帅');
 

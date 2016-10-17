@@ -75,6 +75,8 @@ trait TestApi{
 			'area_id' => '14000',
 			'is_default' => 1,
 			'address' => '广州',
+			'area' => '海珠区',
+			'street' => '人人街',
 		];
 		
 		//deleteUserDeliveryAddress
