@@ -107,6 +107,9 @@ class User extends \common\lib\DbOrmModel implements IdentityInterface{
 		if(isset($aCondition['id'])){
 			$aWhere[] = ['id' => $aCondition['id']];
 		}
+		if(isset($aCondition['mobile_like']) && $aCondition['mobile_like']){
+			$aWhere[] = ['like', 'mobile', $aCondition['mobile_like']];
+		}
 
 		return $aWhere;
 	}

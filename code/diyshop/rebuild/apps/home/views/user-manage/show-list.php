@@ -23,9 +23,9 @@ $this->setTitle('用户管理');
 	<div class="col-lg-12">
 		<form role="form" class="J-search-form form-horizontal" name="J-search-form">
 			<div class="J-condition-line">
-				<label class="control-label" style="float:left;">用户编号</label>
+				<label class="control-label" style="float:left;">手机号</label>
 				<div class="col-sm-2" style="width:130px;">
-					<input type="text" class="J-user-id form-control" name="userId" value="<?php echo $userId ? $userId : ''; ?>" />
+					<input type="text" class="J-user-id form-control" name="mobile" value="<?php echo $mobile ? $mobile : ''; ?>" />
 				</div>
 				<div class="form-group">
 					<div class="col-sm-2" style="width:90px;">

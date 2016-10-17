@@ -23,7 +23,7 @@ class UserManageController extends MController{
 		$oPage = $oUserListForm->getPageObject();
 		
 		return $this->render('show-list', [
-			'userId' => $oUserListForm->userId,
+			'mobile' => $oUserListForm->mobile,
 			'aUserList' => $aList,
 			'oPage' => $oPage,
 		]);

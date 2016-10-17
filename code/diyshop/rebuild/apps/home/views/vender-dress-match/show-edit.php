@@ -100,6 +100,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			<label>搭配正反面图片</label>
 			<div class="form-group">
 				<button type="button" class="J-add-pics-btn btn btn-info">上传搭配正反面图片</button>
+				<b>(说明：默认图片为dms库图，如要更改图片点击删除后上传即可)</b>
 			</div>
 			<div class="row">
 				<div class="col-lg-12">

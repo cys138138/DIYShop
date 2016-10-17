@@ -9,15 +9,21 @@ class UserListForm extends \yii\base\Model{
 	public $page = 1;
 	public $pageSize = 15;
 	public $userId = 0;
+	public $mobile = 0;
 
 	public function rules(){
 		return [
 			['page', 'compare', 'compareValue' => 0, 'operator' => '>'],
 			['userId', 'checkUserId'],
+			['mobile', 'checkMobile'],
 		];
 	}
 	
 	public function checkUserId(){
+		return true;
+	}
+
+	public function checkMobile(){
 		return true;
 	}
 
@@ -36,6 +42,9 @@ class UserListForm extends \yii\base\Model{
 		$aCondition = [];
 		if($this->userId){
 			$aCondition['id'] = $this->userId;
+		}
+		if($this->mobile){
+			$aCondition['mobile_like'] = $this->mobile;
 		}
 		return $aCondition;
 	}
