@@ -638,7 +638,13 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				}
 			}
 		});
-		
+		if($('.J-dress-match-chk').is(':checked')){
+			oDom.find('.J-up-pic').show();
+			oDom.find('.J-down-pic').show();
+		}else{
+			oDom.find('.J-up-pic').hide();
+			oDom.find('.J-down-pic').hide();
+		}
 		return oDom;
 	}
 	
