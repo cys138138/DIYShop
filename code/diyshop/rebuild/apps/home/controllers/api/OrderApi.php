@@ -416,10 +416,10 @@ trait OrderApi{
 		
 		$mOrder = Order::findOne(['order_number' => $orderNumber]);
 		if(!$mOrder){
-			return new Response('找不到订单信息', 3303);
+			return new Response('找不到订单信息', 3703);
 		}
 		if($mOrder->status != Order::ORDER_STATUS_WAIT_PAY){
-			return new Response('订单状态不正确', 3304);
+			return new Response('订单状态不正确', 3704);
 		}
 		
 		$mOrder->set('status', Order::ORDER_STATUS_WAIT_SEND);
@@ -429,7 +429,7 @@ trait OrderApi{
 			foreach($mOrder->order_info as $ordernum){
 				$mOrder = Order::findOne(['order_number' => $ordernum]);
 				if(!$mOrder){
-					return new Response('找不到订单信息', 3305);
+					return new Response('找不到订单信息', 3705);
 				}
 				$mOrder->set('status', Order::ORDER_STATUS_WAIT_SEND);
 				$mOrder->set('pay_time', NOW_TIME);
