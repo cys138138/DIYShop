@@ -274,6 +274,13 @@ trait TestApi{
 			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
 			'identity' => 'a0b13f2332683cadcbc85dc426a4e92d',
 		];
+			
+		//orderPayCallback
+		$aParams = [
+			'api_name' => 'orderPayCallback',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+			'order_number' => '32bc4d435785c439bf01ab3a42f9fb6e',
+		];
 		
 		$aData = [
 			'version' => $version,

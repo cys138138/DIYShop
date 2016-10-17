@@ -400,4 +400,43 @@ trait OrderApi{
 		
 		return new Response('提交成功', 1);
 	}
+	
+	private function orderPayCallback(){
+		$userToken = (string)Yii::$app->request->post('user_token');
+		$orderNumber = (string)Yii::$app->request->post('order_number');
+		
+		if(!$userToken){
+			return new Response('缺少user_token', 3701);
+		}
+		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 3701);
+		}
+		
+		$mOrder = Order::findOne(['order_number' => $orderNumber]);
+		if(!$mOrder){
+			return new Response('找不到订单信息', 3303);
+		}
+		if($mOrder->status != Order::ORDER_STATUS_WAIT_PAY){
+			return new Response('订单状态不正确', 3304);
+		}
+		
+		$mOrder->set('status', Order::ORDER_STATUS_WAIT_SEND);
+		$mOrder->set('pay_time', NOW_TIME);
+		$mOrder->save();
+		if($mOrder->order_type == Order::ORDER_TYPE_SPECIAL){
+			foreach($mOrder->order_info as $ordernum){
+				$mOrder = Order::findOne(['order_number' => $ordernum]);
+				if(!$mOrder){
+					return new Response('找不到订单信息', 3305);
+				}
+				$mOrder->set('status', Order::ORDER_STATUS_WAIT_SEND);
+				$mOrder->set('pay_time', NOW_TIME);
+				$mOrder->save();
+			}
+		}
+		
+		return new Response('操作成功', 1);
+	}
 }
