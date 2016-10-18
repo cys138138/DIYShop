@@ -14,6 +14,9 @@ use common\model\DressComment;
 use common\model\User;
 use common\model\ReturnExchange;
 use common\model\Vender;
+use common\model\ManagerDressMatch;
+use common\model\VenderDressMatch;
+use common\model\DressDecoration;
 
 trait OrderApi{
 	
@@ -83,6 +86,30 @@ trait OrderApi{
 					'total_price' => 0,
 				];
 			}
+			$diyPrice = 0;
+			if(isset($v['aDecorationId']) && $v['aDecorationId']){
+				foreach($v['aDecorationId'] as $decorationId){
+					$mDressDecoration = DressDecoration::findOne($decorationId);
+					if(!$mDressDecoration){
+						return new Response('饰件不存在', 2109);
+					}
+					$diyPrice += $mDressDecoration->price;
+				}
+			}
+			if(isset($v['aDressMatch']) && $v['aDressMatch']){
+				if(isset($v['aDressMatch']['manager']) && $v['aDressMatch']['manager']){
+					$aManagerDressMatchList = ManagerDressMatch::findAll(['id' => $v['aDressMatch']['manager']]);
+					foreach($aManagerDressMatchList as $q => $p){
+						$diyPrice += $p['price'];
+					}
+				}
+				if(isset($v['aDressMatch']['vender']) && $v['aDressMatch']['vender']){
+					$aVenderDressMatchList = VenderDressMatch::findAll(['id' => $v['aDressMatch']['vender']]);
+					foreach($aVenderDressMatchList as $q => $p){
+						$diyPrice += $p['price'];
+					}
+				}
+			}
 			$mVenderShop = VenderShop::findOne($mDress->vender_id);
 			array_push($aOrderList[$mDress->vender_id]['order_info'], [
 				'item_info' => $mDress->toArray(),
@@ -96,7 +123,7 @@ trait OrderApi{
 				'dress_match' => isset($v['aDressMatch']) && $v['aDressMatch'] ? $v['aDressMatch'] : [],
 			]);
 			$aOrderList[$mDress->vender_id]['total_count'] += $v['count'];
-			$aOrderList[$mDress->vender_id]['total_price'] += $mDress->price * $v['count'];
+			$aOrderList[$mDress->vender_id]['total_price'] += $mDress->price * $v['count'] + $diyPrice;
 		}
 		$aOrderInfo = [];
 		$totalCount = 0;
