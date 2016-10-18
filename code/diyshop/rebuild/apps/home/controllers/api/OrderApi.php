@@ -87,6 +87,7 @@ trait OrderApi{
 				];
 			}
 			$diyPrice = 0;
+			$aDecorationList = [];
 			if(isset($v['aDecorationId']) && $v['aDecorationId']){
 				foreach($v['aDecorationId'] as $decorationId){
 					$mDressDecoration = DressDecoration::findOne($decorationId);
@@ -94,20 +95,24 @@ trait OrderApi{
 						return new Response('饰件不存在', 2109);
 					}
 					$diyPrice += $mDressDecoration->price;
+					array_push($aDecorationList, $mDressDecoration->toArray());
 				}
 			}
+			$aDressMatchList = [];
 			if(isset($v['aDressMatch']) && $v['aDressMatch']){
 				if(isset($v['aDressMatch']['manager']) && $v['aDressMatch']['manager']){
 					$aManagerDressMatchList = ManagerDressMatch::findAll(['id' => $v['aDressMatch']['manager']]);
 					foreach($aManagerDressMatchList as $q => $p){
 						$diyPrice += $p['price'];
 					}
+					$aDressMatchList['manager'] = $aManagerDressMatchList;
 				}
 				if(isset($v['aDressMatch']['vender']) && $v['aDressMatch']['vender']){
 					$aVenderDressMatchList = VenderDressMatch::findAll(['id' => $v['aDressMatch']['vender']]);
 					foreach($aVenderDressMatchList as $q => $p){
 						$diyPrice += $p['price'];
 					}
+					$aDressMatchList['vender'] = $aVenderDressMatchList;
 				}
 			}
 			$mVenderShop = VenderShop::findOne($mDress->vender_id);
@@ -121,6 +126,8 @@ trait OrderApi{
 				'decoration_ids' => isset($v['aDecorationId']) && $v['aDecorationId'] ? $v['aDecorationId'] : [],
 				'diy_pics' => isset($v['aDiyPics']) && $v['aDiyPics'] ? $v['aDiyPics'] : [],
 				'dress_match' => isset($v['aDressMatch']) && $v['aDressMatch'] ? $v['aDressMatch'] : [],
+				'dress_decoration_info' => $aDecorationList,
+				'dress_match_info' => $aDressMatchList,
 			]);
 			$aOrderList[$mDress->vender_id]['total_count'] += $v['count'];
 			$aOrderList[$mDress->vender_id]['total_price'] += $mDress->price * $v['count'] + $diyPrice;
