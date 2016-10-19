@@ -128,6 +128,7 @@ trait OrderApi{
 				'dress_match' => isset($v['aDressMatch']) && $v['aDressMatch'] ? $v['aDressMatch'] : [],
 				'dress_decoration_info' => $aDecorationList,
 				'dress_match_info' => $aDressMatchList,
+				'buyer_msg' => isset($v['buyer_msg']) && $v['buyer_msg'] ? $v['buyer_msg'] : '',
 			]);
 			$aOrderList[$mDress->vender_id]['total_count'] += $v['count'];
 			$aOrderList[$mDress->vender_id]['total_price'] += $mDress->price * $v['count'] + $diyPrice;
