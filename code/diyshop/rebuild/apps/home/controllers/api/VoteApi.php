@@ -12,12 +12,32 @@ use common\model\VoteRecord;
 trait VoteApi{
 	
 	private function getVoteList(){
+		$userToken = Yii::$app->request->post('user_token');
+		
+		if(!$userToken){
+			return new Response('缺少user_token', 3601);
+		}
+		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 3602);
+		}
+		
 		$aList = json_decode(Setting::getSetting(Setting::VOTE), true);
 		foreach($aList as $key => $aValue){
 			if(strtotime($aValue['onSalesDay']) < NOW_TIME){
 				$aList[$key]['isOnSale'] = 0;
 			}else{
 				$aList[$key]['isOnSale'] = 1;
+			}
+			$mVoteRecord = VoteRecord::findOne([
+				'user_id' => $userId,
+				'identity' => $aValue['identity'],
+			]);
+			if($mVoteRecord){
+				$aList[$key]['isVote'] = 1;
+			}else{
+				$aList[$key]['isVote'] = 0;
 			}
 		}
 		

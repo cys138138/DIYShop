@@ -288,6 +288,12 @@ trait TestApi{
 			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
 		];
 		
+		//getVoteList
+		$aParams = [
+			'api_name' => 'getVoteList',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+		];
+		
 		$aData = [
 			'version' => $version,
 			'timestamp' => $timestamp,
