@@ -40,8 +40,12 @@ trait ShoppingCartApi{
 			'order_by' => $aOrderBy,
 		];
 		$aList = ShoppingCart::getList($aCondition, $aControl);
+		$count = ShoppingCart::getCount($aCondition, $aControl);
 		
-		return new Response('购物车列表', 1, $aList);
+		return new Response('购物车列表', 1, [
+			'list' => $aList,
+			'count' => $count,
+		]);
 	}
 	
 	private function addToShoppingCart(){

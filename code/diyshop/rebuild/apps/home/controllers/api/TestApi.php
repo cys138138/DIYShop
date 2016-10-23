@@ -288,10 +288,12 @@ trait TestApi{
 			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
 		];
 		
-		//getVoteList
+		//getShoppingCartList
 		$aParams = [
-			'api_name' => 'getVoteList',
+			'api_name' => 'getShoppingCartList',
 			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+			'page' => 1,
+			'page_size' => 5,
 		];
 		
 		$aData = [
