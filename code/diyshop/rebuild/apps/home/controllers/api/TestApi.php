@@ -287,13 +287,12 @@ trait TestApi{
 			'api_name' => 'getQiniuToken',
 			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
 		];
-		
-		//getShoppingCartList
+			
+		//bindUserMobile
 		$aParams = [
-			'api_name' => 'getShoppingCartList',
+			'api_name' => 'bindUserMobile',
 			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
-			'page' => 1,
-			'page_size' => 5,
+			'mobile' => '15014142555',
 		];
 		
 		$aData = [

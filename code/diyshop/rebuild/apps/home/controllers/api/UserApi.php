@@ -220,6 +220,33 @@ trait UserApi{
 		return new Response('保存成功', 1);
 	}
 	
+	private function bindUserMobile(){
+		$userToken = Yii::$app->request->post('user_token');
+		$mobile = Yii::$app->request->post('mobile');
+		
+		if(!$userToken){
+			return new Response('缺少user_token', 3801);
+		}
+		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 3802);
+		}
+		
+		if(!(new PhoneValidator())->validate($mobile)){
+			return new Response('手机格式不正确', 3803);
+		}
+		
+		$mTempUser = User::findOne(['mobile' => $mobile]);
+		if($mTempUser){
+			return new Response('手机已被绑定了', 3804);
+		}
+		$mUser->set('mobile', $mobile);
+		$mUser->save();
+		
+		return new Response('绑定成功', 1);
+	}
+	
 	private function getUserInfo(){
 		$userToken = Yii::$app->request->post('user_token');
 		
