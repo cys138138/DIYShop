@@ -281,6 +281,12 @@ trait TestApi{
 			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
 			'order_number' => '32bc4d435785c439bf01ab3a42f9fb6e',
 		];
+			
+		//getQiniuToken
+		$aParams = [
+			'api_name' => 'getQiniuToken',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
+		];
 		
 		$aData = [
 			'version' => $version,

@@ -21,7 +21,7 @@ class Qiniu extends \yii\base\Component {
 	 * @param $filePath 上传文件的本地路径
 	 * @doc http://developer.qiniu.com/code/v7/sdk/php.html#upload-callback
 	 */
-	public function uploadFile($filePath) {
+	public function uploadFile($filePath){
 		$auth = new Auth($this->accessKey, $this->secretKey);
 		$uptoken = $auth->uploadToken($this->bucket);
 		$uploadMgr = new UploadManager();
@@ -42,5 +42,10 @@ class Qiniu extends \yii\base\Component {
 		$baseUrl = 'http://' . $this->privateDomain . '/' . $fileKey;
 		$authUrl = $auth->privateDownloadUrl($baseUrl);
 		file_put_contents($savePath, file_get_contents($authUrl));
+	}
+	
+	public function getUploadToken(){
+		$auth = new Auth($this->accessKey, $this->secretKey);
+		return $auth->uploadToken($this->bucket);
 	}
 }

@@ -54,10 +54,10 @@ return [
 		'qiniu'=>[
 			'class' => 'umeworld\lib\Qiniu',
 			'enable' => false,
-			'accessKey' => 'EeXMPOC5rp20yZhzI5Nu4gGyx05H2yKr9RsqrABj',
-			'secretKey' => 'bUJ6SAZBteLCaVx7hX67LropeOFCMrJffo83UkuR',
-			'bucket' => 'picture',
-			'privateDomain' => 'o6qtdzzxr.bkt.clouddn.com',
+			'accessKey' => 'ah3l5zpkx-o5aRN-LM_8ECO12NR9QUlok8jG0wF0',
+			'secretKey' => '57_oYNdalSMqLuD_WcLrMS3tCWokkOpvHeC7tjYc',
+			'bucket' => 'design-app-images',
+			'privateDomain' => 'static.xdh-syy.com',
 		],
 
 		'assetManager' => [
