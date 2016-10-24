@@ -60,6 +60,12 @@ return [
 			'privateDomain' => 'static.xdh-syy.com',
 		],
 
+		'kuaidi'=>[
+			'class' => 'umeworld\lib\Kuaidi',
+			'url' => 'http://www.kuaidi100.com/query',
+			'authKey' => '1',
+		],
+
 		'assetManager' => [
 			'bundles' => [
 				'yii\web\JqueryAsset' => [
