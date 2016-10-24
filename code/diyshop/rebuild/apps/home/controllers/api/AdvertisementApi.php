@@ -15,7 +15,7 @@ trait AdvertisementApi{
 		
 		return new Response('首页广告图片', 1, [
 			'top' => $aTopAdertisement,
-			'bg' => $aTopAdertisement,
+			'bg' => $aBgAdertisement,
 		]);
 	}
 
