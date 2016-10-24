@@ -164,6 +164,7 @@ trait TestApi{
 		//getDressCommentList
 		$aParams = [
 			'api_name' => 'getDressCommentList',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
 			'page' => 1,
 			'page_size' => 5,
 			'dress_id' => 1,
@@ -203,11 +204,13 @@ trait TestApi{
 		//getGuessLikeList
 		$aParams = [
 			'api_name' => 'getGuessLikeList',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
 		];
 		
 		//getVoteList
 		$aParams = [
 			'api_name' => 'getVoteList',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
 		];
 		
 		//addUserDressCollection
@@ -235,11 +238,13 @@ trait TestApi{
 		//getHomePageAdvertisement
 		$aParams = [
 			'api_name' => 'getHomePageAdvertisement',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
 		];
 		
 		//getDressDecorationList
 		$aParams = [
 			'api_name' => 'getDressDecorationList',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
 			'page' => 1,
 			'page_size' => 5,
 		];
@@ -259,6 +264,7 @@ trait TestApi{
 		//getDressCatalogTree
 		$aParams = [
 			'api_name' => 'getDressCatalogTree',
+			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
 		];
 		
 		//voteDress
