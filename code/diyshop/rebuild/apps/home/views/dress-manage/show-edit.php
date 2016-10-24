@@ -167,7 +167,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			<select class="J-status form-control">
 				<option value="2">上架</option>
 				<option value="1">未上架</option>
-				<option value="0">投票</option>
+				<!--<option value="0">投票</option>-->
 			</select>
 			<br />
 		</div>
