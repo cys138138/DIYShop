@@ -40,7 +40,7 @@ $this->setTitle('投票');
 						'title' => '操作',
 						'class' => 'col-sm-1',
 						'content' => function($aData){
-							return '<a href="javascript:;" onclick="deleteItem(this, \'' . $aData['pic'] . '\');">删除</a>';
+							return '<a href="javascript:;" onclick="deleteItem(this, \'' . $aData['id'] . '\');">删除</a>';
 						}
 					],
 				],

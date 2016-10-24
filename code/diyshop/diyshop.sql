@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-10-19 16:03:14
+Date: 2016-10-24 17:44:56
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -371,7 +371,6 @@ CREATE TABLE `setting` (
 INSERT INTO `setting` VALUES ('1', 'advertisement_catalog_config', '[{\"id\":\"1\",\"name\":\"\\u4e3b\\u754c\\u9762\",\"pics\":[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/6ef030fa9ae071bc7e2218a715efc5ef.jpeg\",\"url\":\"https:\\/\\/www.baidu.com\\/\"}]},{\"id\":\"2\",\"name\":\"\\u54c1\\u724c\",\"pics\":[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/cce8218c8ad80180ca133b149c4dad1d.jpeg\",\"url\":\"https:\\/\\/www.baidu.com\\/\"}]},{\"id\":\"3\",\"name\":\"\\u81ea\\u8425\",\"pics\":[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/f591926c72767baf3563cf5a02595013.jpeg\",\"url\":\"https:\\/\\/www.baidu.com\\/\"}]}]');
 INSERT INTO `setting` VALUES ('2', 'guess_like_config', '[{\"vender_id\":\"1\",\"dress_id\":1,\"pic_index\":1}]');
 INSERT INTO `setting` VALUES ('3', 'discount_activity_config', '[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/bb6db92becfaeba6c1032050134ebe06.jpeg\",\"link_url\":\"www.baidu.com\"}]');
-INSERT INTO `setting` VALUES ('4', 'vote_config', '[{\"identity\":\"a0b13f2332683cadcbc85dc426a4e92d\",\"name\":\"\\u6545\\u6001\\u590d\\u840c\\u957f\\u88e4\",\"description\":\"\\u6545\\u6001\\u590d\\u840c\\u957f\\u88e4\\u8bf4\\u660e\",\"onSalesNumber\":\"SDF4544\",\"material\":\"90%\\u68c9\",\"aSize\":[\"S\",\"M\",\"L\"],\"onSalesDay\":\"2016-10-8\",\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/37dbccecf76228be453bc6ff4fce5a1d.jpeg\"},{\"identity\":\"b0d92fcc11adf6417a452d5c303f319e\",\"name\":\"\\u590d\\u53e4\\u4fee\\u8eab\\u5973\\u8863\\u670d\",\"description\":\"\\u590d\\u53e4\\u4fee\\u8eab\\u5973\\u8863\\u670d\\u8bf4\\u8bf4\\u8bf4\\u660e\\u660e\\u660e\\u663e\",\"onSalesNumber\":\"FGGS5464\",\"material\":\"\\u7eaf\\u68c9\",\"aSize\":[\"S\",\"M\"],\"onSalesDay\":\"2016-10-8\",\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/95e1b2d6dd021cee6d9efe11ed25f90a.jpeg\"}]');
 INSERT INTO `setting` VALUES ('5', 'bg_advertisement_config', '[\"\\/static\\/data\\/advertisement_position_img\\/442a18217613de1e2a1bbf31489ff840.jpeg\",\"\\/static\\/data\\/advertisement_position_img\\/5b193b1b179daa04d70dd73fb686557d.jpeg\"]');
 INSERT INTO `setting` VALUES ('6', 'top_advertisement_config', '[\"\\/static\\/data\\/advertisement_position_img\\/6a94661a48f974e8bdf9c38d35b61400.jpeg\",\"\\/static\\/data\\/advertisement_position_img\\/6ae070f49090c1c4c569d97c19e0df8d.jpeg\"]');
 
@@ -421,7 +420,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', null, null, 'jay', null, '15014191886', null, 'e10adc3949ba59abbe56e057f20f883e', '8', '1', null, null, '1468226675');
+INSERT INTO `user` VALUES ('1', null, null, 'jay', null, '', null, 'e10adc3949ba59abbe56e057f20f883e', '8', '1', null, null, '1468226675');
 
 -- ----------------------------
 -- Table structure for `user_add_gold_record`
@@ -528,6 +527,31 @@ CREATE TABLE `vender_shop` (
 -- ----------------------------
 INSERT INTO `vender_shop` VALUES ('1', 'jack服饰商店', '/static/data/vender_shop_img/1/d845f884f76dc5916a316440caff76f7.jpg', 'jack服饰商店说明jack服饰商店说明jack服饰商店说明', '[\"\\/static\\/data\\/vender_shop_img\\/1\\/a547ce501430d26a861fb5d3b6b3779c.jpeg\",\"\\/static\\/data\\/vender_shop_img\\/1\\/7086ce468e50c8214da6d5ee8daa16a5.jpeg\"]', '020-5656566', '3243242342', 'vx34234');
 INSERT INTO `vender_shop` VALUES ('2', 'fsz', '/static/data/vender_shop_img/43/73e927d26448b5e1bb110bb58bcaca35.jpg', 'fszfszfsz', '[\"\\/static\\/data\\/vender_shop_img\\/30\\/d3f7d320ffe9480b925b14b56d7f9921.jpg\"]', '020-65658955', null, null);
+
+-- ----------------------------
+-- Table structure for `vote`
+-- ----------------------------
+DROP TABLE IF EXISTS `vote`;
+CREATE TABLE `vote` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '投票记录ID，自增',
+  `dress_id` int(11) DEFAULT NULL COMMENT '服饰id',
+  `identity` varchar(100) DEFAULT NULL COMMENT '投票标识',
+  `name` varchar(200) DEFAULT NULL COMMENT '投票名称',
+  `description` varchar(500) DEFAULT NULL COMMENT '投票描述',
+  `onSalesNumber` varchar(100) DEFAULT NULL COMMENT '上架货号',
+  `material` varchar(200) DEFAULT NULL COMMENT '材质',
+  `aSize` text COMMENT '尺码',
+  `onSalesDay` varchar(50) DEFAULT NULL COMMENT '上架日期',
+  `pic` varchar(500) DEFAULT NULL COMMENT '投票图片',
+  `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of vote
+-- ----------------------------
+INSERT INTO `vote` VALUES ('1', '1', 'c4ca4238a0b923820dcc509a6f75849b', 'ff投票名称', 'fffffffff投票说明', 'sdfsdfdsf', '布', '[\"M\"]', '2016-10-24', '/static/data/advertisement_position_img/a4b86f26269bb7f5da5e2e1d203b9d47.jpeg', '1477301672');
+INSERT INTO `vote` VALUES ('2', '2', 'c81e728d9d4c2f636f067f89cc14862c', 'ggg投票名称', 'ggg投票说明', 'sdfsfs', '棉', '[\"M\",\"L\"]', '2016-10-24', '/static/data/advertisement_position_img/cf91226757bfed9e5aeb319637a50e65.jpeg', '1477301733');
 
 -- ----------------------------
 -- Table structure for `vote_record`

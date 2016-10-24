@@ -6,25 +6,16 @@ use home\lib\ManagerController as MController;
 use umeworld\lib\Response;
 use yii\helpers\ArrayHelper;
 use umeworld\lib\Url;
-use common\model\Setting;
 use common\model\Dress;
 use common\model\VoteRecord;
+use common\model\Vote;
 use common\model\form\ImageUploadForm;
 use yii\web\UploadedFile;
 
 class VoteController extends MController{
-	const DATA_SETTING_KEY = Setting::VOTE;
-	
-	private function _getConfig(){
-		return json_decode(Setting::getSetting(self::DATA_SETTING_KEY), true);
-	}
-	
-	private function _setConfig($aData){
-		return Setting::setSetting(self::DATA_SETTING_KEY, json_encode($aData));
-	}
 
     public function actionShowList(){
-		$aList = $this->_getConfig();
+		$aList = Vote::findAll();
 		foreach($aList as $key => $aValue){
 			$aList[$key]['vote_count'] = VoteRecord::getVoteCountByIdentity($aValue['identity']);
 		}
@@ -32,7 +23,7 @@ class VoteController extends MController{
     }
 
 	public function actionShowSetting(){
-		$aList = $this->_getConfig();
+		$aList = Vote::findAll();
 		$aSizeList = [];
 		foreach($aList as $key => $aValue){
 			$aSizeList = array_merge($aSizeList, $aValue['aSize']);
@@ -43,6 +34,7 @@ class VoteController extends MController{
 	}
 	
 	public function actionSaveSetting(){
+		$dressId = (int)Yii::$app->request->post('dressId');
 		$name = (string)Yii::$app->request->post('name');
 		$description = (string)Yii::$app->request->post('description');
 		$onSalesNumber = (string)Yii::$app->request->post('onSalesNumber');
@@ -51,6 +43,15 @@ class VoteController extends MController{
 		$onSalesDay = (string)Yii::$app->request->post('onSalesDay');
 		$pic = (string)Yii::$app->request->post('pic');
 		
+		$mVote = Vote::findOne(['dress_id' => $dressId]);
+		if(!$mVote){
+			return new Response('不能重复添加投票', -1);
+		}
+		
+		$mDress = Dress::findOne($dressId);
+		if(!$mDress){
+			return new Response('找不到投票服饰', -1);
+		}
 		if(!$name){
 			return new Response('请填写投票名称', -1);
 		}
@@ -73,12 +74,9 @@ class VoteController extends MController{
 			return new Response('请上传投票图片', -1);
 		}
 		
-		$aList = $this->_getConfig();
-		if(!$aList){
-			$aList = [];
-		}
-		array_push($aList, [
-			'identity' => md5(NOW_TIME),
+		$isSuccess = Vote::insert([
+			'dress_id' => $dressId,
+			'identity' => md5($dressId),
 			'name' => $name,
 			'description' => $description,
 			'onSalesNumber' => $onSalesNumber,
@@ -86,25 +84,25 @@ class VoteController extends MController{
 			'aSize' => $aSize,
 			'onSalesDay' => $onSalesDay,
 			'pic' => $pic,
+			'create_time' => NOW_TIME,
 		]);
-		
-		$this->_setConfig($aList);
+		if(!$isSuccess){
+			return new Response('保存失败', 0);
+		}
 		
 		return new Response('保存成功', 1);
 	}
 	
 	public function actionDelete(){
-		$pic = (int)Yii::$app->request->post('pic');
-		$aList = $this->_getConfig();
-		$aData = [];
-		if($aList){
-			foreach($aList as $key => $aValue){
-				if($aValue['pic'] != $pic){
-					array_push($aData, $aValue);
-				}
-			}
+		$id = (int)Yii::$app->request->post('id');
+		
+		$mVote = Vote::findOne($id);
+		if(!$mVote){
+			return new Response('找不到投票信息', -1);
 		}
-		$this->_setConfig($aData);
+		if(!$mVote->delete()){
+			return new Response('删除失败', 0);
+		}
 		
 		return new Response('删除成功', 1);
 	}

@@ -5,8 +5,8 @@ use Yii;
 use umeworld\lib\Response;
 use umeworld\lib\Url;
 use yii\helpers\ArrayHelper;
-use common\model\Setting;
 use common\model\User;
+use common\model\Vote;
 use common\model\VoteRecord;
 
 trait VoteApi{
@@ -23,7 +23,7 @@ trait VoteApi{
 			return new Response('找不到用户信息', 3602);
 		}
 		
-		$aList = json_decode(Setting::getSetting(Setting::VOTE), true);
+		$aList = Vote::findAll();
 		foreach($aList as $key => $aValue){
 			if(strtotime($aValue['onSalesDay']) < NOW_TIME){
 				$aList[$key]['isOnSale'] = 0;
@@ -57,15 +57,8 @@ trait VoteApi{
 			return new Response('找不到用户信息', 3602);
 		}
 		
-		$aList = json_decode(Setting::getSetting(Setting::VOTE), true);
-		$isFind = false;
-		foreach($aList as $key => $aValue){
-			if($aValue['identity'] == $identity){
-				$isFind = true;
-				break;
-			}
-		}
-		if(!$isFind){
+		$mVote = Vote::findOne(['identity' => $identity]);
+		if(!$mVote){
 			return new Response('找不到投票信息', 3603);
 		}
 		

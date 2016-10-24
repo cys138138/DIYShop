@@ -63,6 +63,11 @@ $this->registerAssetBundle('common\assets\WdatePickerAsset');
 <div class="row">
 	<div class="col-lg-12">
 		<div class="form-group">
+			<label>投票服饰ID</label>
+			<input class="J-dress-id form-control" placeholder="请输入投票服饰ID" value="">
+			<br />
+		</div>
+		<div class="form-group">
 			<label>投票名称</label>
 			<input class="J-name form-control" placeholder="请输入投票名称" value="">
 			<br />
@@ -163,6 +168,11 @@ $this->registerAssetBundle('common\assets\WdatePickerAsset');
 	}
 	
 	function save(o){
+		var dressId = $('.J-dress-id').val();
+		if(dressId == ''){
+			UBox.show('请输入投票服饰ID', -1);
+			return;
+		}
 		var name = $('.J-name').val();
 		if(name == ''){
 			UBox.show('请输入投票名称', -1);
@@ -196,6 +206,7 @@ $this->registerAssetBundle('common\assets\WdatePickerAsset');
 		ajax({
 			url : '<?php echo Url::to(['vote/save-setting']); ?>',
 			data : {
+				dressId : dressId,
 				name : name,
 				onSalesNumber : onSalesNumber,
 				material : material,
