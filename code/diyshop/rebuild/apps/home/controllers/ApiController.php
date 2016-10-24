@@ -84,7 +84,7 @@ class ApiController extends \yii\web\Controller{
 		
 		$oResponse = $this->$apiName();
 		if(isset(Yii::$app->qiniu) && Yii::$app->qiniu->enable){
-			$oResponse->data = $this->_replaceLocalPicToQiniuFileKey($oResponse->data);
+			$oResponse->data = \common\model\QiNiuPicKeyMap::replaceLocalPicToQiniuFileKey($oResponse->data);
 		}
 		return $oResponse;
 	}
@@ -101,37 +101,5 @@ class ApiController extends \yii\web\Controller{
 		}
 		return 0;
 	}
-	
-	private function _replaceLocalPicToQiniuFileKey($aData = []){
-		if(!is_array($aData)){
-			return $aData;
-		}
-		$jsonStr = json_encode($aData);
-		
-		$aFileMap = [];
-		preg_match_all('/\"\\\\\/static\\\\\/data\\\\\/[0-9a-z\.\\\\\/\-]+\\\\\/[0-9a-z\.\\\\\/\-]+\"/', $jsonStr, $aMatchList);	
-		foreach($aMatchList[0] as $key => $value){
-			$aPathInfo = pathinfo($value);
-			$aFileMap[$aPathInfo['filename']] = $value;
-		}
-		$aQiniuPicKey = array_keys($aFileMap);
-		$aQiniuPicKeyMapList = [];
-		if($aQiniuPicKey){
-			$aQiniuPicKeyMapList = \common\model\QiNiuPicKeyMap::findAll(['file_name' => $aQiniuPicKey]);
-		}
-		foreach($aFileMap as $fileName => $path){
-			$flag = false;
-			foreach($aQiniuPicKeyMapList as $k => $aValue){
-				if($aValue['file_name'] == $fileName){
-					$jsonStr = str_replace(trim($path, '"'), $aValue['file_key'], $jsonStr);
-					$flag = true;
-					break;
-				}
-			}
-			if(!$flag){
-				$jsonStr = str_replace(trim($path, '"'), '', $jsonStr);
-			}
-		}
-		return json_decode($jsonStr, true);
-	}
+
 }
