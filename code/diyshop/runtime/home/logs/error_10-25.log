@@ -1,0 +1,495 @@
+LOG_START=================================
+[time=2016-10-25 10:38:36] [192.168.0.175][-][-][level=error][category=yii\base\UnknownPropertyException] 
+message_start
+exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: umeworld\lib\Application::qiniu' in /var/www/diyshop/framework/yiisoft/yii2/base/Component.php:143
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/di/ServiceLocator.php(73): yii\base\Component->__get('qiniu')
+#1 /var/www/diyshop/rebuild/common/model/form/ImageUploadForm.php(87): yii\di\ServiceLocator->__get('qiniu')
+#2 /var/www/diyshop/rebuild/apps/home/controllers/TopAdvertisementController.php(54): common\model\form\ImageUploadForm->upload('/static/data/ad...')
+#3 [internal function]: home\controllers\TopAdvertisementController->actionUploadFile()
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#5 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#6 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('upload-file', Array)
+#7 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('top-advertiseme...', Array)
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#10 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/top-advertisement/upload-file.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_POST = [
+    '_csrf' => 'MFo0UW4zYXEIPFUCF0cZRFkoVSkXSzA7YQJEMj5.WSBVIgI5PEBMHQ=='
+    '_is_ajax' => '1'
+]
+
+$_FILES = [
+    'image' => [
+        'name' => 'raw_1457683028.jpeg'
+        'type' => 'image/jpeg'
+        'tmp_name' => '/tmp/phpXP5lx9'
+        'error' => 0
+        'size' => 87293
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '48707ffa0d0916d1f9aa98b8f76db1898aefae48889f0ce8480d91dd179a9f22a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"8faSytx5iraxyxQJQXpcPM8Qex6hRs-l\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/top-advertisement/upload-file.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/top-advertisement/show-manage-top-adv.html',
+	'REQUEST_METHOD' => 'POST',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-10-25 10:39:21] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:1] 
+message_start
+exception 'yii\base\ErrorException' with message 'Cannot use object of type umeworld\lib\Application as array' in /var/www/diyshop/rebuild/common/model/form/ImageUploadForm.php:87
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/top-advertisement/upload-file.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_POST = [
+    '_csrf' => 'MFo0UW4zYXEIPFUCF0cZRFkoVSkXSzA7YQJEMj5.WSBVIgI5PEBMHQ=='
+    '_is_ajax' => '1'
+]
+
+$_FILES = [
+    'image' => [
+        'name' => 'raw_1457683028.jpeg'
+        'type' => 'image/jpeg'
+        'tmp_name' => '/tmp/phpwGpast'
+        'error' => 0
+        'size' => 87293
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '48707ffa0d0916d1f9aa98b8f76db1898aefae48889f0ce8480d91dd179a9f22a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"8faSytx5iraxyxQJQXpcPM8Qex6hRs-l\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/top-advertisement/upload-file.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/top-advertisement/show-manage-top-adv.html',
+	'REQUEST_METHOD' => 'POST',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-10-25 10:40:13] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:1] 
+message_start
+exception 'yii\base\ErrorException' with message 'Cannot use object of type umeworld\lib\Application as array' in /var/www/diyshop/rebuild/common/model/form/ImageUploadForm.php:87
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/top-advertisement/upload-file.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_POST = [
+    '_csrf' => 'MFo0UW4zYXEIPFUCF0cZRFkoVSkXSzA7YQJEMj5.WSBVIgI5PEBMHQ=='
+    '_is_ajax' => '1'
+]
+
+$_FILES = [
+    'image' => [
+        'name' => 'raw_1457683028.jpeg'
+        'type' => 'image/jpeg'
+        'tmp_name' => '/tmp/phprZG70e'
+        'error' => 0
+        'size' => 87293
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '48707ffa0d0916d1f9aa98b8f76db1898aefae48889f0ce8480d91dd179a9f22a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"8faSytx5iraxyxQJQXpcPM8Qex6hRs-l\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/top-advertisement/upload-file.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/top-advertisement/show-manage-top-adv.html',
+	'REQUEST_METHOD' => 'POST',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-10-25 10:40:40] [192.168.0.175][-][-][level=error][category=yii\base\UnknownPropertyException] 
+message_start
+exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: umeworld\lib\Application::qiniu' in /var/www/diyshop/framework/yiisoft/yii2/base/Component.php:143
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/di/ServiceLocator.php(73): yii\base\Component->__get('qiniu')
+#1 /var/www/diyshop/rebuild/common/model/form/ImageUploadForm.php(87): yii\di\ServiceLocator->__get('qiniu')
+#2 /var/www/diyshop/rebuild/apps/home/controllers/TopAdvertisementController.php(54): common\model\form\ImageUploadForm->upload('/static/data/ad...')
+#3 [internal function]: home\controllers\TopAdvertisementController->actionUploadFile()
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#5 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#6 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('upload-file', Array)
+#7 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('top-advertiseme...', Array)
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#10 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/top-advertisement/upload-file.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_POST = [
+    '_csrf' => 'MFo0UW4zYXEIPFUCF0cZRFkoVSkXSzA7YQJEMj5.WSBVIgI5PEBMHQ=='
+    '_is_ajax' => '1'
+]
+
+$_FILES = [
+    'image' => [
+        'name' => 'raw_1457683028.jpeg'
+        'type' => 'image/jpeg'
+        'tmp_name' => '/tmp/phpwPc4XA'
+        'error' => 0
+        'size' => 87293
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '48707ffa0d0916d1f9aa98b8f76db1898aefae48889f0ce8480d91dd179a9f22a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"8faSytx5iraxyxQJQXpcPM8Qex6hRs-l\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/top-advertisement/upload-file.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/top-advertisement/show-manage-top-adv.html',
+	'REQUEST_METHOD' => 'POST',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-10-25 10:40:46] [192.168.0.175][-][-][level=error][category=yii\base\UnknownPropertyException] 
+message_start
+exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: umeworld\lib\Application::qiniu' in /var/www/diyshop/framework/yiisoft/yii2/base/Component.php:143
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/di/ServiceLocator.php(73): yii\base\Component->__get('qiniu')
+#1 /var/www/diyshop/rebuild/common/model/form/ImageUploadForm.php(87): yii\di\ServiceLocator->__get('qiniu')
+#2 /var/www/diyshop/rebuild/apps/home/controllers/TopAdvertisementController.php(54): common\model\form\ImageUploadForm->upload('/static/data/ad...')
+#3 [internal function]: home\controllers\TopAdvertisementController->actionUploadFile()
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#5 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#6 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('upload-file', Array)
+#7 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('top-advertiseme...', Array)
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#10 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/top-advertisement/upload-file.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_POST = [
+    '_csrf' => 'MFo0UW4zYXEIPFUCF0cZRFkoVSkXSzA7YQJEMj5.WSBVIgI5PEBMHQ=='
+    '_is_ajax' => '1'
+]
+
+$_FILES = [
+    'image' => [
+        'name' => 'raw_1457683028.jpeg'
+        'type' => 'image/jpeg'
+        'tmp_name' => '/tmp/phpdvjDty'
+        'error' => 0
+        'size' => 87293
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '48707ffa0d0916d1f9aa98b8f76db1898aefae48889f0ce8480d91dd179a9f22a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"8faSytx5iraxyxQJQXpcPM8Qex6hRs-l\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/top-advertisement/upload-file.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/top-advertisement/show-manage-top-adv.html',
+	'REQUEST_METHOD' => 'POST',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-10-25 10:41:22] [192.168.0.175][-][-][level=error][category=yii\base\UnknownPropertyException] 
+message_start
+exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: umeworld\lib\Application::qiniu' in /var/www/diyshop/framework/yiisoft/yii2/base/Component.php:143
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/di/ServiceLocator.php(73): yii\base\Component->__get('qiniu')
+#1 /var/www/diyshop/rebuild/common/model/form/ImageUploadForm.php(87): yii\di\ServiceLocator->__get('qiniu')
+#2 /var/www/diyshop/rebuild/apps/home/controllers/TopAdvertisementController.php(54): common\model\form\ImageUploadForm->upload('/static/data/ad...')
+#3 [internal function]: home\controllers\TopAdvertisementController->actionUploadFile()
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#5 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#6 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('upload-file', Array)
+#7 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('top-advertiseme...', Array)
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#10 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/top-advertisement/upload-file.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_POST = [
+    '_csrf' => 'MFo0UW4zYXEIPFUCF0cZRFkoVSkXSzA7YQJEMj5.WSBVIgI5PEBMHQ=='
+    '_is_ajax' => '1'
+]
+
+$_FILES = [
+    'image' => [
+        'name' => 'raw_1457683028.jpeg'
+        'type' => 'image/jpeg'
+        'tmp_name' => '/tmp/php9HeZeh'
+        'error' => 0
+        'size' => 87293
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '48707ffa0d0916d1f9aa98b8f76db1898aefae48889f0ce8480d91dd179a9f22a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"8faSytx5iraxyxQJQXpcPM8Qex6hRs-l\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/top-advertisement/upload-file.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/top-advertisement/show-manage-top-adv.html',
+	'REQUEST_METHOD' => 'POST',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-10-25 10:43:34] [192.168.0.175][-][-][level=error][category=yii\base\UnknownPropertyException] 
+message_start
+exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: umeworld\lib\Application::qiniu' in /var/www/diyshop/framework/yiisoft/yii2/base/Component.php:143
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/di/ServiceLocator.php(73): yii\base\Component->__get('qiniu')
+#1 /var/www/diyshop/rebuild/common/model/form/ImageUploadForm.php(87): yii\di\ServiceLocator->__get('qiniu')
+#2 /var/www/diyshop/rebuild/apps/home/controllers/TopAdvertisementController.php(54): common\model\form\ImageUploadForm->upload('/static/data/ad...')
+#3 [internal function]: home\controllers\TopAdvertisementController->actionUploadFile()
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#5 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#6 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('upload-file', Array)
+#7 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('top-advertiseme...', Array)
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#10 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/top-advertisement/upload-file.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_POST = [
+    '_csrf' => 'MFo0UW4zYXEIPFUCF0cZRFkoVSkXSzA7YQJEMj5.WSBVIgI5PEBMHQ=='
+    '_is_ajax' => '1'
+]
+
+$_FILES = [
+    'image' => [
+        'name' => 'raw_1457683028.jpeg'
+        'type' => 'image/jpeg'
+        'tmp_name' => '/tmp/phptdaNkL'
+        'error' => 0
+        'size' => 87293
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '48707ffa0d0916d1f9aa98b8f76db1898aefae48889f0ce8480d91dd179a9f22a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"8faSytx5iraxyxQJQXpcPM8Qex6hRs-l\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/top-advertisement/upload-file.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/top-advertisement/show-manage-top-adv.html',
+	'REQUEST_METHOD' => 'POST',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-10-25 10:48:55] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:1] 
+message_start
+exception 'yii\base\ErrorException' with message 'Undefined constant 'yii\base\Object'' in /var/www/diyshop/rebuild/common/model/form/ImageUploadForm.php:87
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/top-advertisement/upload-file.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_POST = [
+    '_csrf' => 'MFo0UW4zYXEIPFUCF0cZRFkoVSkXSzA7YQJEMj5.WSBVIgI5PEBMHQ=='
+    '_is_ajax' => '1'
+]
+
+$_FILES = [
+    'image' => [
+        'name' => 'raw_1457683028.jpeg'
+        'type' => 'image/jpeg'
+        'tmp_name' => '/tmp/phpFEuYqd'
+        'error' => 0
+        'size' => 87293
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '48707ffa0d0916d1f9aa98b8f76db1898aefae48889f0ce8480d91dd179a9f22a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"8faSytx5iraxyxQJQXpcPM8Qex6hRs-l\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/top-advertisement/upload-file.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/top-advertisement/show-manage-top-adv.html',
+	'REQUEST_METHOD' => 'POST',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-10-25 10:49:16] [192.168.0.175][-][-][level=error][category=yii\base\UnknownPropertyException] 
+message_start
+exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: umeworld\lib\Application::qiniu' in /var/www/diyshop/framework/yiisoft/yii2/base/Component.php:143
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/di/ServiceLocator.php(73): yii\base\Component->__get('qiniu')
+#1 /var/www/diyshop/rebuild/common/model/form/ImageUploadForm.php(87): yii\di\ServiceLocator->__get('qiniu')
+#2 /var/www/diyshop/rebuild/apps/home/controllers/TopAdvertisementController.php(54): common\model\form\ImageUploadForm->upload('/static/data/ad...')
+#3 [internal function]: home\controllers\TopAdvertisementController->actionUploadFile()
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#5 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#6 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('upload-file', Array)
+#7 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('top-advertiseme...', Array)
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#10 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/top-advertisement/upload-file.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_POST = [
+    '_csrf' => 'MFo0UW4zYXEIPFUCF0cZRFkoVSkXSzA7YQJEMj5.WSBVIgI5PEBMHQ=='
+    '_is_ajax' => '1'
+]
+
+$_FILES = [
+    'image' => [
+        'name' => 'raw_1457683028.jpeg'
+        'type' => 'image/jpeg'
+        'tmp_name' => '/tmp/phpCVv8Ho'
+        'error' => 0
+        'size' => 87293
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => '48707ffa0d0916d1f9aa98b8f76db1898aefae48889f0ce8480d91dd179a9f22a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"8faSytx5iraxyxQJQXpcPM8Qex6hRs-l\";}'
+    'managerId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/top-advertisement/upload-file.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/top-advertisement/show-manage-top-adv.html',
+	'REQUEST_METHOD' => 'POST',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END

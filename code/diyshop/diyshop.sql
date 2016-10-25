@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-10-24 17:44:56
+Date: 2016-10-25 11:07:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -69,7 +69,7 @@ CREATE TABLE `dress` (
 -- ----------------------------
 -- Records of dress
 -- ----------------------------
-INSERT INTO `dress` VALUES ('1', '1', '1', '测试服饰1', '测试服饰1测试服饰1', '<p><a>服饰详情</a></p><p><img src=\"http://www.diyshop.com/static/data/dress/61/c6b962e5fe49b600c9c03c3e4cebfb88.jpeg\" style=\"max-width: 100%;\" _src=\"http://www.diyshop.com/static/data/dress/61/c6b962e5fe49b600c9c03c3e4cebfb88.jpeg\"></p><p><img src=\"http://www.diyshop.com/static/data/dress/87/8901e0f406c08dfffd0b0a2410149f8c.jpeg\" style=\"max-width: 100%;\" _src=\"http://www.diyshop.com/static/data/dress/87/8901e0f406c08dfffd0b0a2410149f8c.jpeg\"></p><p><a></a><br></p>', '服饰服饰服饰说说明明', '2', '50.00', '40.00', '[\"\\/static\\/data\\/dress\\/48\\/7ea7a7c4e8d0a986a34d1bec0b85b88c.jpeg\",\"\\/static\\/data\\/dress\\/67\\/863840619527ceecba13b58b9b8a8186.jpeg\"]', '{\"vender\":[\"1\"],\"manager\":[\"1\",\"3\"]}', '0', '0', '1', '2', '1476667578', '1474507738');
+INSERT INTO `dress` VALUES ('1', '1', '1', '测试服饰1', '测试服饰1测试服饰1', '<p><a>服饰详情</a></p><p><img src=\"http://www.diyshop.com/static/data/dress/61/c6b962e5fe49b600c9c03c3e4cebfb88.jpeg\" style=\"max-width: 100%;\" _src=\"http://www.diyshop.com/static/data/dress/61/c6b962e5fe49b600c9c03c3e4cebfb88.jpeg\"></p><p><img src=\"http://www.diyshop.com/static/data/dress/87/8901e0f406c08dfffd0b0a2410149f8c.jpeg\" style=\"max-width: 100%;\" _src=\"http://www.diyshop.com/static/data/dress/87/8901e0f406c08dfffd0b0a2410149f8c.jpeg\"></p><p><a></a><br></p>', '服饰服饰服饰说说明明', '2', '50.00', '40.00', '[\"\\/static\\/data\\/dress\\/48\\/7ea7a7c4e8d0a986a34d1bec0b85b88c.jpeg\",\"\\/static\\/data\\/dress\\/67\\/863840619527ceecba13b58b9b8a8186.jpeg\"]', '{\"vender\":[\"1\"],\"manager\":[\"1\",\"3\"]}', '0', '0', '1', '2', '1477364722', '1474507738');
 INSERT INTO `dress` VALUES ('2', '2', '1', '韩式短袖衫', null, null, null, '1', '10.00', null, '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"]', '[]', '0', '0', null, '2', '1474507705', '1474507705');
 INSERT INTO `dress` VALUES ('3', '2', '4', 'diy长裤', null, null, null, '1', '20.00', null, '[\"\\/static\\/data\\/dress\\/71\\/de9ff668f655a936c718ea0a60440da5.jpg\"]', '[]', '0', '0', null, '2', '1474507705', '1474507705');
 
@@ -135,7 +135,7 @@ CREATE TABLE `dress_decoration` (
 -- ----------------------------
 -- Records of dress_decoration
 -- ----------------------------
-INSERT INTO `dress_decoration` VALUES ('1', '围巾-女', '12.30', '[\"\\/static\\/data\\/dress\\/45\\/5b3c103a054fceace90fcbed218ac687.jpeg\",\"\\/static\\/data\\/dress\\/47\\/caeaa2bc0c3370bd2de48a1102a001db.jpeg\"]', '/static/data/dress/83/103717c5cf55e37b62cf8d3be9934789.jpeg', null);
+INSERT INTO `dress_decoration` VALUES ('1', '围巾-女', '12.30', '[\"\\/static\\/data\\/dress\\/11\\/aa2a5dff46d4de2b537d04afe6c181cc.jpeg\",\"\\/static\\/data\\/dress\\/21\\/c2d1b06231aa7a01f7477d202cce7c5b.jpeg\"]', '/static/data/dress/66/b93ec4331ccb8faf0f7acda035084f91.jpeg', null);
 
 -- ----------------------------
 -- Table structure for `dress_material`
@@ -147,17 +147,17 @@ CREATE TABLE `dress_material` (
   `dress_id` int(11) DEFAULT NULL COMMENT '服饰ID',
   `name` varchar(50) DEFAULT NULL COMMENT '面料名称',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=68 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dress_material
 -- ----------------------------
 INSERT INTO `dress_material` VALUES ('13', '0', '0', '纯棉');
-INSERT INTO `dress_material` VALUES ('64', '1', '1', '尼龙');
-INSERT INTO `dress_material` VALUES ('63', '1', '1', '麻布');
+INSERT INTO `dress_material` VALUES ('67', '1', '1', '尼龙');
+INSERT INTO `dress_material` VALUES ('66', '1', '1', '麻布');
 INSERT INTO `dress_material` VALUES ('15', '0', '0', '麻布');
 INSERT INTO `dress_material` VALUES ('16', '0', '0', '尼龙');
-INSERT INTO `dress_material` VALUES ('62', '1', '1', '纯棉');
+INSERT INTO `dress_material` VALUES ('65', '1', '1', '纯棉');
 
 -- ----------------------------
 -- Table structure for `dress_size_color_count`
@@ -178,16 +178,16 @@ CREATE TABLE `dress_size_color_count` (
 -- ----------------------------
 -- Records of dress_size_color_count
 -- ----------------------------
-INSERT INTO `dress_size_color_count` VALUES ('119', '1', '1', 'L', '白', '5', '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"]', '[\"\",\"\"]');
+INSERT INTO `dress_size_color_count` VALUES ('119', '1', '1', 'L', '白', '5', '[\"\\/static\\/data\\/dress\\/68\\/65bf9fe0a8be893a950610da0a06964a.jpeg\"]', '[\"\",\"\"]');
 INSERT INTO `dress_size_color_count` VALUES ('28', '2', '2', 'M', '黑', '44', '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"]', null);
 INSERT INTO `dress_size_color_count` VALUES ('27', '2', '2', 'S', '白', '620', '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"]', null);
 INSERT INTO `dress_size_color_count` VALUES ('29', '2', '3', 'S', '黑', '22', '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"]', null);
 INSERT INTO `dress_size_color_count` VALUES ('30', '2', '3', 'M', '白', '27', '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"]', null);
-INSERT INTO `dress_size_color_count` VALUES ('118', '1', '1', 'M', '黑', '91', '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"]', '[\"\",\"\"]');
-INSERT INTO `dress_size_color_count` VALUES ('117', '1', '1', 'M', '白', '3', '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"]', '[\"\",\"\"]');
-INSERT INTO `dress_size_color_count` VALUES ('116', '1', '1', 'S', '黑', '2', '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"]', '[\"\",\"\"]');
-INSERT INTO `dress_size_color_count` VALUES ('115', '1', '1', 'S', '白', '1', '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\",\"\\/static\\/data\\/dress\\/79\\/5b5cd70b82bf6bfc9eaad686fd8476b6.jpeg\"]', '[\"\\/static\\/data\\/dress\\/43\\/cfdc487e322a5ae1bb7cd18bb6895a79.jpeg\",\"\\/static\\/data\\/dress\\/40\\/371ca615cabbcca7bd57b726918d4519.jpeg\"]');
-INSERT INTO `dress_size_color_count` VALUES ('120', '1', '1', 'L', '黑', '6', '[\"\\/static\\/data\\/dress\\/64\\/f6c621c1b97aef976a5eaeb7498c84c2.jpg\"]', '[\"\",\"\"]');
+INSERT INTO `dress_size_color_count` VALUES ('118', '1', '1', 'M', '黑', '91', '[\"\\/static\\/data\\/dress\\/46\\/528c7711fa59aa21b5c2aa5fd41d77aa.jpeg\"]', '[\"\",\"\"]');
+INSERT INTO `dress_size_color_count` VALUES ('117', '1', '1', 'M', '白', '3', '[\"\\/static\\/data\\/dress\\/56\\/d968a747fb51ac389b98625d35134fd5.jpeg\"]', '[\"\",\"\"]');
+INSERT INTO `dress_size_color_count` VALUES ('116', '1', '1', 'S', '黑', '2', '[\"\\/static\\/data\\/dress\\/44\\/3457b2c606824d7f2bbfa1cba0ec1c5e.jpeg\"]', '[\"\",\"\"]');
+INSERT INTO `dress_size_color_count` VALUES ('115', '1', '1', 'S', '白', '1', '[\"\\/static\\/data\\/dress\\/50\\/47d87108a8ca8d399644ce81558c1c4f.jpeg\"]', '[\"\\/static\\/data\\/dress\\/49\\/6219e6bcfe1ad9340f3e8db510fe6753.jpeg\",\"\\/static\\/data\\/dress\\/51\\/3f5e612a20afbb10466ad847722e7bca.jpeg\"]');
+INSERT INTO `dress_size_color_count` VALUES ('120', '1', '1', 'L', '黑', '6', '[\"\\/static\\/data\\/dress\\/19\\/70efe04af8aab3e7df75eec16c4495b7.jpeg\"]', '[\"\",\"\"]');
 
 -- ----------------------------
 -- Table structure for `dress_tag`
@@ -199,13 +199,13 @@ CREATE TABLE `dress_tag` (
   `dress_id` int(11) DEFAULT NULL COMMENT '服饰ID',
   `name` varchar(50) DEFAULT NULL COMMENT '标签名称',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dress_tag
 -- ----------------------------
-INSERT INTO `dress_tag` VALUES ('55', '1', '1', '秋冬');
-INSERT INTO `dress_tag` VALUES ('54', '1', '1', '夹克');
+INSERT INTO `dress_tag` VALUES ('57', '1', '1', '秋冬');
+INSERT INTO `dress_tag` VALUES ('56', '1', '1', '夹克');
 INSERT INTO `dress_tag` VALUES ('10', '2', '2', '帅');
 INSERT INTO `dress_tag` VALUES ('11', '2', '3', '帅');
 
@@ -247,8 +247,8 @@ CREATE TABLE `manager_dress_match` (
 -- ----------------------------
 -- Records of manager_dress_match
 -- ----------------------------
-INSERT INTO `manager_dress_match` VALUES ('1', '外套衣领白色', '7', '1', '34.00', '[\"\\/static\\/data\\/dress\\/51\\/89182f0bf496a7c4341a3a14f91dafca.jpeg\",\"\\/static\\/data\\/dress\\/24\\/4c78344cb602bd1b605b8c80f630c3e5.jpeg\"]', '1462852377');
-INSERT INTO `manager_dress_match` VALUES ('3', '外套衣领黑色', '7', '1', null, '[\"\\/static\\/data\\/dress\\/26\\/196c006af0daa6a3ad90f70fc83bd25d.jpeg\",\"\\/static\\/data\\/dress\\/50\\/e5ac373b7fd3ff4224ffdb8b89e8f2c2.jpeg\"]', '1462866961');
+INSERT INTO `manager_dress_match` VALUES ('1', '外套衣领白色', '7', '1', '34.00', '[\"\\/static\\/data\\/dress\\/60\\/a08b9288b91cf5b83b66659f210fbc17.jpeg\",\"\\/static\\/data\\/dress\\/58\\/f3b8141b87ee647b8f32d0300f8e2204.jpeg\"]', '1462852377');
+INSERT INTO `manager_dress_match` VALUES ('3', '外套衣领黑色', '7', '1', null, '[\"\\/static\\/data\\/dress\\/46\\/3e06a296005af950c1461a8e5b7ddb64.jpeg\",\"\\/static\\/data\\/dress\\/73\\/4ba706b9b5159e64cf877064645dc411.jpeg\"]', '1462866961');
 
 -- ----------------------------
 -- Table structure for `mark`
@@ -326,11 +326,45 @@ CREATE TABLE `qiniu_pic_key_map` (
   `file_name` varchar(500) DEFAULT NULL COMMENT '本地图片文件名，无后缀',
   `file_path` varchar(500) DEFAULT NULL COMMENT '本地图片路径',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of qiniu_pic_key_map
 -- ----------------------------
+INSERT INTO `qiniu_pic_key_map` VALUES ('1', 'Fp35z5TtN_m0ysTrdB06NZzJ-QeL', '2af74152575593044b72804d8e302ce0', '/static/data/advertisement_position_img/2af74152575593044b72804d8e302ce0.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('2', 'FtVSJrgSxFgDKvG3T-oYTpkiGlOh', 'b75ca01e92a5a033bd7203306fcba525', '/static/data/advertisement_position_img/b75ca01e92a5a033bd7203306fcba525.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('3', 'FtVSJrgSxFgDKvG3T-oYTpkiGlOh', 'e0f7e96f4ad080119284188c55b6b32c', '/static/data/advertisement_position_img/e0f7e96f4ad080119284188c55b6b32c.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('4', 'Fp35z5TtN_m0ysTrdB06NZzJ-QeL', '33703c4ce330e1fe050c6643abba31ef', '/static/data/advertisement_position_img/33703c4ce330e1fe050c6643abba31ef.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('5', 'Fp35z5TtN_m0ysTrdB06NZzJ-QeL', 'b0c42e00279d6f477fab2380a4c1eb1e', '/static/data/advertisement_position_img/b0c42e00279d6f477fab2380a4c1eb1e.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('6', 'FlkG8J-ECCPnFMJ0Cb9QcIOHXgSl', '8b2bab9e7ed324881a994c72e4ef19c1', '/static/data/advertisement_position_img/8b2bab9e7ed324881a994c72e4ef19c1.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('7', 'Fp35z5TtN_m0ysTrdB06NZzJ-QeL', '08bb42d488452317dad108490cf76b8d', '/static/data/advertisement_position_img/08bb42d488452317dad108490cf76b8d.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('8', 'Fp35z5TtN_m0ysTrdB06NZzJ-QeL', 'ae55a2d071be7b9b1b30d5e18661c915', '/static/data/advertisement_position_img/ae55a2d071be7b9b1b30d5e18661c915.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('9', 'FtVSJrgSxFgDKvG3T-oYTpkiGlOh', '335e2503c778735537f199ebf4e99c10', '/static/data/advertisement_position_img/335e2503c778735537f199ebf4e99c10.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('10', 'FtVSJrgSxFgDKvG3T-oYTpkiGlOh', '9b957316fd335d0b5cea21e06117c249', '/static/data/advertisement_position_img/9b957316fd335d0b5cea21e06117c249.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('11', 'FtVSJrgSxFgDKvG3T-oYTpkiGlOh', 'b163f1423b89a0e3d0c573fd7a6702e0', '/static/data/advertisement_position_img/b163f1423b89a0e3d0c573fd7a6702e0.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('12', 'Fp35z5TtN_m0ysTrdB06NZzJ-QeL', 'ad5d42f5d3f4bc969c82b6e9430dbf9c', '/static/data/advertisement_position_img/ad5d42f5d3f4bc969c82b6e9430dbf9c.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('13', 'FtVSJrgSxFgDKvG3T-oYTpkiGlOh', 'a08b9288b91cf5b83b66659f210fbc17', '/static/data/dress/60/a08b9288b91cf5b83b66659f210fbc17.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('14', 'Fp35z5TtN_m0ysTrdB06NZzJ-QeL', 'f3b8141b87ee647b8f32d0300f8e2204', '/static/data/dress/58/f3b8141b87ee647b8f32d0300f8e2204.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('15', 'FtVSJrgSxFgDKvG3T-oYTpkiGlOh', '3e06a296005af950c1461a8e5b7ddb64', '/static/data/dress/46/3e06a296005af950c1461a8e5b7ddb64.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('16', 'Fp35z5TtN_m0ysTrdB06NZzJ-QeL', '4ba706b9b5159e64cf877064645dc411', '/static/data/dress/73/4ba706b9b5159e64cf877064645dc411.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('17', 'FtVSJrgSxFgDKvG3T-oYTpkiGlOh', 'aa2a5dff46d4de2b537d04afe6c181cc', '/static/data/dress/11/aa2a5dff46d4de2b537d04afe6c181cc.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('18', 'Fp35z5TtN_m0ysTrdB06NZzJ-QeL', 'c2d1b06231aa7a01f7477d202cce7c5b', '/static/data/dress/21/c2d1b06231aa7a01f7477d202cce7c5b.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('19', 'FlkG8J-ECCPnFMJ0Cb9QcIOHXgSl', 'b93ec4331ccb8faf0f7acda035084f91', '/static/data/dress/66/b93ec4331ccb8faf0f7acda035084f91.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('20', 'FjQGcMS0xfseWaaGIQGMMiHEDKj7', '248b6afccb4b167de5e975390d664ce6', '/static/data/vender_shop_img/81/248b6afccb4b167de5e975390d664ce6.jpg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('21', 'FtVSJrgSxFgDKvG3T-oYTpkiGlOh', 'b0a607eea3104b09e93c1cf779c2852c', '/static/data/vender_shop_img/48/b0a607eea3104b09e93c1cf779c2852c.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('22', 'Fp35z5TtN_m0ysTrdB06NZzJ-QeL', '7facb3b22e7544c5ab2586b4479360a0', '/static/data/vender_shop_img/90/7facb3b22e7544c5ab2586b4479360a0.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('23', 'FtVSJrgSxFgDKvG3T-oYTpkiGlOh', '47d87108a8ca8d399644ce81558c1c4f', '/static/data/dress/50/47d87108a8ca8d399644ce81558c1c4f.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('24', 'Fp35z5TtN_m0ysTrdB06NZzJ-QeL', '6219e6bcfe1ad9340f3e8db510fe6753', '/static/data/dress/49/6219e6bcfe1ad9340f3e8db510fe6753.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('25', 'FtVSJrgSxFgDKvG3T-oYTpkiGlOh', '3f5e612a20afbb10466ad847722e7bca', '/static/data/dress/51/3f5e612a20afbb10466ad847722e7bca.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('26', 'Fp35z5TtN_m0ysTrdB06NZzJ-QeL', '3457b2c606824d7f2bbfa1cba0ec1c5e', '/static/data/dress/44/3457b2c606824d7f2bbfa1cba0ec1c5e.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('27', 'FtVSJrgSxFgDKvG3T-oYTpkiGlOh', 'd968a747fb51ac389b98625d35134fd5', '/static/data/dress/56/d968a747fb51ac389b98625d35134fd5.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('28', 'Fp35z5TtN_m0ysTrdB06NZzJ-QeL', '528c7711fa59aa21b5c2aa5fd41d77aa', '/static/data/dress/46/528c7711fa59aa21b5c2aa5fd41d77aa.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('29', 'FtVSJrgSxFgDKvG3T-oYTpkiGlOh', '65bf9fe0a8be893a950610da0a06964a', '/static/data/dress/68/65bf9fe0a8be893a950610da0a06964a.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('30', 'Fp35z5TtN_m0ysTrdB06NZzJ-QeL', '70efe04af8aab3e7df75eec16c4495b7', '/static/data/dress/19/70efe04af8aab3e7df75eec16c4495b7.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('31', 'FtVSJrgSxFgDKvG3T-oYTpkiGlOh', 'c5d097fc714d9a03412274ab0c4f5493', '/static/data/dress/93/c5d097fc714d9a03412274ab0c4f5493.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('32', 'Fp35z5TtN_m0ysTrdB06NZzJ-QeL', 'f1c50138543a0de32b265b36011d4e1c', '/static/data/dress/46/f1c50138543a0de32b265b36011d4e1c.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('33', 'FtVSJrgSxFgDKvG3T-oYTpkiGlOh', 'e1c149ed25011c3f5825465011b0d226', '/static/data/dress/67/e1c149ed25011c3f5825465011b0d226.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('34', 'Fp35z5TtN_m0ysTrdB06NZzJ-QeL', '66762f93e146a12e5ce72741da48f55d', '/static/data/dress/34/66762f93e146a12e5ce72741da48f55d.jpeg');
 
 -- ----------------------------
 -- Table structure for `return_exchange`
@@ -368,11 +402,11 @@ CREATE TABLE `setting` (
 -- ----------------------------
 -- Records of setting
 -- ----------------------------
-INSERT INTO `setting` VALUES ('1', 'advertisement_catalog_config', '[{\"id\":\"1\",\"name\":\"\\u4e3b\\u754c\\u9762\",\"pics\":[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/6ef030fa9ae071bc7e2218a715efc5ef.jpeg\",\"url\":\"https:\\/\\/www.baidu.com\\/\"}]},{\"id\":\"2\",\"name\":\"\\u54c1\\u724c\",\"pics\":[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/cce8218c8ad80180ca133b149c4dad1d.jpeg\",\"url\":\"https:\\/\\/www.baidu.com\\/\"}]},{\"id\":\"3\",\"name\":\"\\u81ea\\u8425\",\"pics\":[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/f591926c72767baf3563cf5a02595013.jpeg\",\"url\":\"https:\\/\\/www.baidu.com\\/\"}]}]');
+INSERT INTO `setting` VALUES ('1', 'advertisement_catalog_config', '[{\"id\":\"1\",\"name\":\"\\u4e3b\\u754c\\u9762\",\"pics\":[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/6ef030fa9ae071bc7e2218a715efc5ef.jpeg\",\"url\":\"https:\\/\\/www.baidu.com\\/\"}]},{\"id\":\"2\",\"name\":\"\\u54c1\\u724c\",\"pics\":[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/08bb42d488452317dad108490cf76b8d.jpeg\",\"url\":\"https:\\/\\/www.baidu.com\\/\"}]},{\"id\":\"3\",\"name\":\"\\u81ea\\u8425\",\"pics\":[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/8b2bab9e7ed324881a994c72e4ef19c1.jpeg\",\"url\":\"https:\\/\\/www.baidu.com\\/\"}]}]');
 INSERT INTO `setting` VALUES ('2', 'guess_like_config', '[{\"vender_id\":\"1\",\"dress_id\":1,\"pic_index\":1}]');
-INSERT INTO `setting` VALUES ('3', 'discount_activity_config', '[{\"pic\":\"\\/static\\/data\\/advertisement_position_img\\/bb6db92becfaeba6c1032050134ebe06.jpeg\",\"link_url\":\"www.baidu.com\"}]');
-INSERT INTO `setting` VALUES ('5', 'bg_advertisement_config', '[\"\\/static\\/data\\/advertisement_position_img\\/442a18217613de1e2a1bbf31489ff840.jpeg\",\"\\/static\\/data\\/advertisement_position_img\\/5b193b1b179daa04d70dd73fb686557d.jpeg\"]');
-INSERT INTO `setting` VALUES ('6', 'top_advertisement_config', '[\"\\/static\\/data\\/advertisement_position_img\\/6a94661a48f974e8bdf9c38d35b61400.jpeg\",\"\\/static\\/data\\/advertisement_position_img\\/6ae070f49090c1c4c569d97c19e0df8d.jpeg\"]');
+INSERT INTO `setting` VALUES ('3', 'discount_activity_config', '[]');
+INSERT INTO `setting` VALUES ('5', 'bg_advertisement_config', '[\"\\/static\\/data\\/advertisement_position_img\\/e0f7e96f4ad080119284188c55b6b32c.jpeg\",\"\\/static\\/data\\/advertisement_position_img\\/33703c4ce330e1fe050c6643abba31ef.jpeg\"]');
+INSERT INTO `setting` VALUES ('6', 'top_advertisement_config', '[\"\\/static\\/data\\/advertisement_position_img\\/2af74152575593044b72804d8e302ce0.jpeg\",\"\\/static\\/data\\/advertisement_position_img\\/b75ca01e92a5a033bd7203306fcba525.jpeg\"]');
 
 -- ----------------------------
 -- Table structure for `shopping_cart`
@@ -504,7 +538,7 @@ CREATE TABLE `vender_dress_match` (
 -- ----------------------------
 -- Records of vender_dress_match
 -- ----------------------------
-INSERT INTO `vender_dress_match` VALUES ('1', '1', '外套衣领白色0001', '23.00', '1', '[\"\\/static\\/data\\/dress\\/41\\/35f9416708830811138ac57387719d4f.jpeg\",\"\\/static\\/data\\/dress\\/67\\/316ff858004dd3f2abdc9daab065b90c.jpeg\"]', '[]', '1462935809');
+INSERT INTO `vender_dress_match` VALUES ('1', '1', '外套衣领白色0001', '23.00', '1', '[\"\\/static\\/data\\/dress\\/93\\/c5d097fc714d9a03412274ab0c4f5493.jpeg\",\"\\/static\\/data\\/dress\\/46\\/f1c50138543a0de32b265b36011d4e1c.jpeg\"]', '[\"\\/static\\/data\\/dress\\/67\\/e1c149ed25011c3f5825465011b0d226.jpeg\",\"\\/static\\/data\\/dress\\/34\\/66762f93e146a12e5ce72741da48f55d.jpeg\"]', '1462935809');
 
 -- ----------------------------
 -- Table structure for `vender_shop`
@@ -525,7 +559,7 @@ CREATE TABLE `vender_shop` (
 -- ----------------------------
 -- Records of vender_shop
 -- ----------------------------
-INSERT INTO `vender_shop` VALUES ('1', 'jack服饰商店', '/static/data/vender_shop_img/1/d845f884f76dc5916a316440caff76f7.jpg', 'jack服饰商店说明jack服饰商店说明jack服饰商店说明', '[\"\\/static\\/data\\/vender_shop_img\\/1\\/a547ce501430d26a861fb5d3b6b3779c.jpeg\",\"\\/static\\/data\\/vender_shop_img\\/1\\/7086ce468e50c8214da6d5ee8daa16a5.jpeg\"]', '020-5656566', '3243242342', 'vx34234');
+INSERT INTO `vender_shop` VALUES ('1', 'jack服饰商店', '/static/data/vender_shop_img/81/248b6afccb4b167de5e975390d664ce6.jpg', 'jack服饰商店说明jack服饰商店说明jack服饰商店说明', '[\"\\/static\\/data\\/vender_shop_img\\/48\\/b0a607eea3104b09e93c1cf779c2852c.jpeg\",\"\\/static\\/data\\/vender_shop_img\\/90\\/7facb3b22e7544c5ab2586b4479360a0.jpeg\"]', '020-5656566', '3243242342', 'vx34234');
 INSERT INTO `vender_shop` VALUES ('2', 'fsz', '/static/data/vender_shop_img/43/73e927d26448b5e1bb110bb58bcaca35.jpg', 'fszfszfsz', '[\"\\/static\\/data\\/vender_shop_img\\/30\\/d3f7d320ffe9480b925b14b56d7f9921.jpg\"]', '020-65658955', null, null);
 
 -- ----------------------------
@@ -545,13 +579,13 @@ CREATE TABLE `vote` (
   `pic` varchar(500) DEFAULT NULL COMMENT '投票图片',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of vote
 -- ----------------------------
-INSERT INTO `vote` VALUES ('1', '1', 'c4ca4238a0b923820dcc509a6f75849b', 'ff投票名称', 'fffffffff投票说明', 'sdfsdfdsf', '布', '[\"M\"]', '2016-10-24', '/static/data/advertisement_position_img/a4b86f26269bb7f5da5e2e1d203b9d47.jpeg', '1477301672');
-INSERT INTO `vote` VALUES ('2', '2', 'c81e728d9d4c2f636f067f89cc14862c', 'ggg投票名称', 'ggg投票说明', 'sdfsfs', '棉', '[\"M\",\"L\"]', '2016-10-24', '/static/data/advertisement_position_img/cf91226757bfed9e5aeb319637a50e65.jpeg', '1477301733');
+INSERT INTO `vote` VALUES ('3', '1', 'c4ca4238a0b923820dcc509a6f75849b', '1投票名称', '1投票说明', 'sdfsdfs', '棉', '[\"M\",\"L\"]', '2016-10-25', '/static/data/advertisement_position_img/b163f1423b89a0e3d0c573fd7a6702e0.jpeg', '1477364393');
+INSERT INTO `vote` VALUES ('4', '2', 'c81e728d9d4c2f636f067f89cc14862c', '2投票名称', '2投票说明', 'gergerg', '布', '[\"M\",\"L\"]', '2016-10-25', '/static/data/advertisement_position_img/ad5d42f5d3f4bc969c82b6e9430dbf9c.jpeg', '1477364432');
 
 -- ----------------------------
 -- Table structure for `vote_record`

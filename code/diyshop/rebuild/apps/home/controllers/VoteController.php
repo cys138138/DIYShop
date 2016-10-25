@@ -44,7 +44,7 @@ class VoteController extends MController{
 		$pic = (string)Yii::$app->request->post('pic');
 		
 		$mVote = Vote::findOne(['dress_id' => $dressId]);
-		if(!$mVote){
+		if($mVote){
 			return new Response('不能重复添加投票', -1);
 		}
 		

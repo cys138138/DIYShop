@@ -83,7 +83,7 @@ class ApiController extends \yii\web\Controller{
 		}
 		
 		$oResponse = $this->$apiName();
-		if(isset(Yii::$app->qiniu) && Yii::$app->qiniu->enable){
+		if(Yii::$app->qiniu->enable){
 			$oResponse->data = \common\model\QiNiuPicKeyMap::replaceLocalPicToQiniuFileKey($oResponse->data);
 		}
 		return $oResponse;

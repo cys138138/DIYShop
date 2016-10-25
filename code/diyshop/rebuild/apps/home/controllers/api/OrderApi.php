@@ -474,4 +474,106 @@ trait OrderApi{
 		
 		return new Response('操作成功', 1);
 	}
+	
+	private function checkOrderExpressInfo(){
+		$userToken = (string)Yii::$app->request->post('user_token');
+		$orderNumber = (string)Yii::$app->request->post('order_number');
+		
+		if(!$userToken){
+			return new Response('缺少user_token', 3901);
+		}
+		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 3901);
+		}
+		
+		$mOrder = Order::findOne(['order_number' => $orderNumber]);
+		if(!$mOrder){
+			return new Response('找不到订单信息', 3903);
+		}
+		if($mOrder->user_id != $userId){
+			return new Response('找不到用户订单信息', 3904);
+		}
+		if(!$mOrder->express_info || !isset($mOrder->express_info['express_type']) || !$mOrder->express_info['express_type'] || !isset($mOrder->express_info['express_number']) || !$mOrder->express_info['express_number']){
+			return new Response('无物流信息', 3905);
+		}
+		
+		$aResult = Yii::$app->kuaidi->query($mOrder->express_info['express_type'], $mOrder->express_info['express_number']);
+		if(!isset($aResult['status']) || $aResult['status'] != 200){
+			return new Response('查询物流信息失败', 3906, $aResult);
+		}else{
+			return new Response('物流信息', 1, $aResult['data']);
+		}
+	}
+	
+	/*private function checkOrderExpressInfo(){
+		$userToken = (string)Yii::$app->request->post('user_token');
+		$orderNumber = (string)Yii::$app->request->post('order_number');
+		
+		if(!$userToken){
+			return new Response('缺少user_token', 3901);
+		}
+		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 3901);
+		}
+		
+		$mOrder = Order::findOne(['order_number' => $orderNumber]);
+		if(!$mOrder){
+			return new Response('找不到订单信息', 3903);
+		}
+		if($mOrder->user_id != $userId){
+			return new Response('找不到用户订单信息', 3904);
+		}
+		
+		$aExpressInfo = [];
+		if($mOrder->order_type == Order::ORDER_TYPE_SPECIAL){
+			foreach($mOrder->order_info as $ordernum){
+				$mTempOrder = Order::findOne(['order_number' => $ordernum]);
+				if(!$mTempOrder){
+					return new Response('找不到订单信息', 3906);
+				}
+				$aTemp = [
+					'order_number' => $mTempOrder->order_number,
+					'express_info' => $mTempOrder->express_info,
+				];
+				array_push($aExpressInfo, $aTemp);
+			}
+		}else{
+			$aTemp = [
+				'order_number' => $mOrder->order_number,
+				'express_info' => $mOrder->express_info,
+			];
+			array_push($aExpressInfo, $aTemp);
+		}
+		
+		$aData = [];
+		foreach($aExpressInfo as $aExpress){
+			if(!$aExpress || !isset($aExpress['express_info']) || !$aExpress['express_info'] || !isset($aExpress['express_info']['express_type']) || !$aExpress['express_info']['express_type'] || !isset($aExpress['express_info']['express_number']) || !$aExpress['express_info']['express_number']){
+				array_push($aData, [
+					'order_number' => $aExpress['order_number'],
+					'express_info' => [
+						'status' => 0,
+						'message' => '无物流信息！',
+					],
+				]);
+				continue;
+			}
+			$aResult = Yii::$app->kuaidi->query($aExpress['express_info']['express_type'], $aExpress['express_info']['express_number']);
+			if(!isset($aResult['status']) || $aResult['status'] != 200){
+				array_push($aData, [
+					'order_number' => $aExpress['order_number'],
+					'express_info' => $aResult,
+				]);
+			}else{
+				array_push($aData, [
+					'order_number' => $aExpress['order_number'],
+					'express_info' => $aResult['data'],
+				]);
+			}
+		}
+		return new Response('物流信息', 1, $aData);
+	}*/
 }

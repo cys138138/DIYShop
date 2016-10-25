@@ -53,7 +53,7 @@ return [
 
 		'qiniu'=>[
 			'class' => 'umeworld\lib\Qiniu',
-			'enable' => false,
+			'enable' => true,
 			'accessKey' => 'ah3l5zpkx-o5aRN-LM_8ECO12NR9QUlok8jG0wF0',
 			'secretKey' => '57_oYNdalSMqLuD_WcLrMS3tCWokkOpvHeC7tjYc',
 			'bucket' => 'design-app-images',

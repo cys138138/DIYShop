@@ -156,7 +156,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				},
 				callback : function(aResult){
 					if(aResult.status == 1){
-						$('.J-pics-list_' + currentUploadId).append(bulidImgHtml(aResult.data));
+						$('.J-pics-list_' + currentUploadId).append(bulidImgHtml(aResult.data, ''));
 						updateAdvertisementCatalogConfig();
 					}else{
 						UBox.show(aResult.msg, aResult.status);

@@ -100,7 +100,7 @@ class ImageUploadForm extends \yii\base\Model{
 			return false;
 		}else{
 			$this->savedFile = $filePath;
-			if(isset(Yii::$app->qiniu) && Yii::$app->qiniu->enable){
+			if(Yii::$app->qiniu->enable){
 				$fileKey = Yii::$app->qiniu->uploadFile($resourcePath . '/' . $filePath);
 				if($fileKey){
 					$isSuccess = \common\model\QiNiuPicKeyMap::insert([
