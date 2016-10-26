@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>应用</title>
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" href="css/swiper.min.css"> 
+
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="js/swiper.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+  			$(".J-h3_nav a").click( function () {
+  				$(this).addClass("current").siblings().removeClass("current");
+  				$(".div_content .application").hide();
+  				$(".div_content .application").eq($(this).index()).show();
+  			});
+		});
+	</script>
+</head>
+<body>
+	<div class="div_header">
+		<div class="inner div_top">
+			<div class="logo">
+				<h1 class="h1_logo"><a href="javascript:;" title="云赢游" alt="云赢游"><img src="images/logo.png" alt="云赢游"></a></h1>
+			</div>
+			<ul class="ul_nav">
+				<li><a href="index.html" class="font18">首页<s></s></a></li>
+				<li><a href="application.html" class="font18 current">应用下载<s></s></a></li>
+				<li><a href="contact.html" class="font18">联系我们<s></s></a></li>
+				<li><a href="about.html" class="font18">关于我们<s></s></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="div_banner">
+		<div class="pic_lunbo swiper-container">
+	        <div class="swiper-wrapper">
+	        	<div class="swiper-slide"><a href="javascript:;"><img src="images/application_banner.jpg" class="img-responsive" alt="Responsive image"></a></div>
+	        </div>
+	        <div class="swiper-pagination div_circle" style="display:none"></div>
+	    </div>
+	    <script type="text/javascript">
+				/*var swiper = new Swiper('.swiper-container', {
+			        pagination: '.swiper-pagination',
+			        paginationClickable: true,
+			        loop: true,
+			        autoplay:4000,
+			        speed:300
+			    });*/
+		</script>
+	</div>
+	<div class="div_content">
+		<h3 class="inner J-h3_nav"><a href="javascript:;" class="font18 color1 current">特性介绍<s></s></a><a href="javascript:;" class="font18 color1">版本更新<s></s></a></h3>
+		<div class="application_in application">
+			<img src="images/application_in1.jpg" alt="">
+			<img src="images/application_in2.jpg" alt="">
+			<img src="images/application_in3.jpg" alt="">
+			<img src="images/application_in4.jpg" alt="">
+			<img src="images/application_in5.jpg" alt="">
+		</div>
+		<div class="inner application_update application">
+			<p class="font18 color9">2016年10月26日</p>
+			<h2 class="font22 color1">Unique Design 1.20版本</h2>
+			<ul>
+				<li class="font18 color6">1.新增金币交易系统；</li>
+				<li class="font18 color6">2.UI界面修改；</li>
+				<li class="font18 color6">3.修复部分系统BUG。</li>
+			</ul>
+		</div>
+	</div>
+	<div class="div_footer">
+		<div class="inner">
+			<s></s>
+			<h3>
+				<a href="javascript:;" class="font14 color9">联系客服</a>
+				<a href="javascript:;" class="font14 color9">关于我们</a>
+			</h3>
+			<p class="font14 color9">Copyright © 2016 SYY. All Rights Reserved.</p>
+		</div>
+	</div>
+</body>
+</html>
