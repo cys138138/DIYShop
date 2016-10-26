@@ -265,6 +265,7 @@ html body{
 }
 .application_in img{
 	display: block;
+	width:100%;
 }
 
 .application_update{
