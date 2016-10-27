@@ -6,6 +6,8 @@ use home\lib\ManagerController as MController;
 use umeworld\lib\Response;
 use umeworld\lib\Url;
 use common\model\DressCatalog;
+use common\model\Dress;
+use common\model\ManagerDressMatch;
 
 class DressCatalogController extends MController{
 	
@@ -73,6 +75,14 @@ class DressCatalogController extends MController{
 		$mDressCatalog = DressCatalog::findOne($id);
 		if(!$mDressCatalog){
 			return new Response('找不到分类信息', 0);
+		}
+		$mDress = Dress::findOne(['catalog_id' => $id]);
+		if($mDress){
+			return new Response('此分类不能删除，还有服饰正在使用该分类', 0);
+		}
+		$mManagerDressMatch = ManagerDressMatch::findOne(['catalog_id' => $id]);
+		if($mManagerDressMatch){
+			return new Response('此分类不能删除，还有服饰搭配正在使用该分类', 0);
 		}
 		$isSuccess = $mDressCatalog->delete();
 		if(!$isSuccess){

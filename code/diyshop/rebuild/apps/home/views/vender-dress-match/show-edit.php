@@ -236,13 +236,13 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				for(var j in aData[i].pics){
 					addPic(aData[i].pics[j]);
 				}
-				<?php if($aDressMatch){ ?>
+				/*<?php if($aDressMatch){ ?>
 					if(id == <?php echo $aDressMatch['manager_dress_match_id']; ?>){
 					<?php foreach($aDressMatch['pics'] as $value){ ?>
 						addPic('<?php echo $value; ?>');
 					<?php } ?>
 					}
-				<?php } ?>
+				<?php } ?>*/
 				break;
 			}
 		}
@@ -356,6 +356,12 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			$('.J-catalog').val(<?php echo $aDressMatch['dress_catalog']['pid']; ?>);
 			$('.J-catalog-id').val(<?php echo $aDressMatch['dress_catalog']['id']; ?>);
 			$('.J-sex').val(<?php echo $aDressMatch['sex']; ?>);
+			setTimeout(function(){
+				$('.J-pics-list').html('');
+				<?php foreach($aDressMatch['pics'] as $value){ ?>
+					addPic('<?php echo $value; ?>');console.log('<?php echo $value; ?>');
+				<?php } ?>
+			}, 1000);
 		<?php } ?>
 	});
 </script>

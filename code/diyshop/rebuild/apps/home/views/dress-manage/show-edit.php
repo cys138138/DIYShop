@@ -735,7 +735,8 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			id = $('.J-dress-match').val();
 		}
 		if(!txt){
-			txt = $('.J-dress-match').text();
+			//txt = $('.J-dress-match').text();
+			txt = $('.J-dress-match').find("option:selected").text();
 		}
 		var aList = getDressMatch();
 		if(JsTools.inArray(id, aList[type])){

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-10-25 11:07:55
+Date: 2016-10-27 15:56:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -326,7 +326,7 @@ CREATE TABLE `qiniu_pic_key_map` (
   `file_name` varchar(500) DEFAULT NULL COMMENT '本地图片文件名，无后缀',
   `file_path` varchar(500) DEFAULT NULL COMMENT '本地图片路径',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of qiniu_pic_key_map
@@ -365,6 +365,7 @@ INSERT INTO `qiniu_pic_key_map` VALUES ('31', 'FtVSJrgSxFgDKvG3T-oYTpkiGlOh', 'c
 INSERT INTO `qiniu_pic_key_map` VALUES ('32', 'Fp35z5TtN_m0ysTrdB06NZzJ-QeL', 'f1c50138543a0de32b265b36011d4e1c', '/static/data/dress/46/f1c50138543a0de32b265b36011d4e1c.jpeg');
 INSERT INTO `qiniu_pic_key_map` VALUES ('33', 'FtVSJrgSxFgDKvG3T-oYTpkiGlOh', 'e1c149ed25011c3f5825465011b0d226', '/static/data/dress/67/e1c149ed25011c3f5825465011b0d226.jpeg');
 INSERT INTO `qiniu_pic_key_map` VALUES ('34', 'Fp35z5TtN_m0ysTrdB06NZzJ-QeL', '66762f93e146a12e5ce72741da48f55d', '/static/data/dress/34/66762f93e146a12e5ce72741da48f55d.jpeg');
+INSERT INTO `qiniu_pic_key_map` VALUES ('35', 'FtVSJrgSxFgDKvG3T-oYTpkiGlOh', '301fa0f5808f1d66fbafd18ff7ea9bd6', '/static/data/dress/62/301fa0f5808f1d66fbafd18ff7ea9bd6.jpeg');
 
 -- ----------------------------
 -- Table structure for `return_exchange`
@@ -533,12 +534,13 @@ CREATE TABLE `vender_dress_match` (
   `pics` text COMMENT '正反面图片',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of vender_dress_match
 -- ----------------------------
 INSERT INTO `vender_dress_match` VALUES ('1', '1', '外套衣领白色0001', '23.00', '1', '[\"\\/static\\/data\\/dress\\/93\\/c5d097fc714d9a03412274ab0c4f5493.jpeg\",\"\\/static\\/data\\/dress\\/46\\/f1c50138543a0de32b265b36011d4e1c.jpeg\"]', '[\"\\/static\\/data\\/dress\\/67\\/e1c149ed25011c3f5825465011b0d226.jpeg\",\"\\/static\\/data\\/dress\\/34\\/66762f93e146a12e5ce72741da48f55d.jpeg\"]', '1462935809');
+INSERT INTO `vender_dress_match` VALUES ('2', '1', '图片1', '3.00', '3', '[\"\\/static\\/data\\/dress\\/62\\/301fa0f5808f1d66fbafd18ff7ea9bd6.jpeg\"]', '[]', '1477553878');
 
 -- ----------------------------
 -- Table structure for `vender_shop`

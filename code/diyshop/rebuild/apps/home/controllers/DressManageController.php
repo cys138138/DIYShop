@@ -10,6 +10,7 @@ use common\model\DressComment;
 use common\model\DressTag;
 use common\model\DressSizeColorCount;
 use common\model\Dress;
+use common\model\Vote;
 use common\model\VenderDressMatch;
 use common\model\ManagerDressMatch;
 use common\model\form\DressListForm;
@@ -212,6 +213,14 @@ class DressManageController extends VController{
 		if(!$mDress){
 			return new Response('找不到服饰信息', 0);
 		}
+		
+		$aList = Vote::findAll();
+		foreach($aList as $key => $aValue){
+			if($aValue['dress_id'] == $id){
+				return new Response('此服饰不能删除，还有投票正在使用该服饰', 0);
+			}
+		}
+		
 		$isSuccess = $mDress->delete();
 		if(!$isSuccess){
 			return new Response('删除失败', 0);
