@@ -44,7 +44,7 @@ class ImageUploadForm extends \yii\base\Model{
 		return ArrayHelper::merge([
 			['oImage', 'required'],
 			'image' => ['oImage', 'image'],
-			'base' => ['oImage', 'file', 'maxSize' => 300000],
+			'base' => ['oImage', 'file', 'maxSize' => 2048000],
 			'custom' => ['oImage', 'customValidate'],
 		], $this->aRules);
 	}

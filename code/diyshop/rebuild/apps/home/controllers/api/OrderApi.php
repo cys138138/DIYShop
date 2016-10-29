@@ -88,9 +88,12 @@ trait OrderApi{
 			}
 			$diyPrice = 0;
 			$aDecorationList = [];
-			if(isset($v['aDecorationId']) && $v['aDecorationId']){
-				foreach($v['aDecorationId'] as $decorationId){
-					$mDressDecoration = DressDecoration::findOne($decorationId);
+			if(isset($v['aDecoration']) && $v['aDecoration']){
+				foreach($v['aDecoration'] as $decorationInfo){
+					if(!isset($decorationInfo['id']) || !isset($decorationInfo['count']) || !$decorationInfo['id'] || !$decorationInfo['count']){
+						return new Response('饰件格式错误', 2109);
+					}
+					$mDressDecoration = DressDecoration::findOne($decorationInfo['id']);
 					if(!$mDressDecoration){
 						return new Response('饰件不存在', 2109);
 					}
@@ -123,7 +126,7 @@ trait OrderApi{
 				'item_count' => $v['count'],
 				'item_price' => $mDress->price * $v['count'],
 				'delivery_address_info' => $mDeliveryAddress->toArray(),
-				'decoration_ids' => isset($v['aDecorationId']) && $v['aDecorationId'] ? $v['aDecorationId'] : [],
+				'decoration_ids' => isset($v['aDecoration']) && $v['aDecoration'] ? $v['aDecoration'] : [],
 				'diy_pics' => isset($v['aDiyPics']) && $v['aDiyPics'] ? $v['aDiyPics'] : [],
 				'dress_match' => isset($v['aDressMatch']) && $v['aDressMatch'] ? $v['aDressMatch'] : [],
 				'dress_decoration_info' => $aDecorationList,
