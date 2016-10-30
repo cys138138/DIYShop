@@ -410,6 +410,10 @@ trait OrderApi{
 			return new Response('找不到用户信息', 3301);
 		}
 		
+		if(!$reason){
+			return new Response('请填写退换货原因', 3304);
+		}
+		
 		$mVender = Vender::findOne($venderId);
 		if(!$mVender){
 			return new Response('找不到商家信息', 3302);
@@ -417,9 +421,6 @@ trait OrderApi{
 		$mOrder = Order::findOne(['order_number' => $orderNumber]);
 		if(!$mOrder){
 			return new Response('找不到订单信息', 3303);
-		}
-		if(!$reason){
-			return new Response('请填写退换货原因', 3304);
 		}
 		
 		$isSuccess = ReturnExchange::insert([
@@ -435,6 +436,9 @@ trait OrderApi{
 		if(!$isSuccess){
 			return new Response('提交失败', 3305);
 		}
+		
+		$mOrder->set('status', Order::ORDER_STATUS_APPLY_RETURN);
+		$mOrder->save();
 		
 		return new Response('提交成功', 1);
 	}
