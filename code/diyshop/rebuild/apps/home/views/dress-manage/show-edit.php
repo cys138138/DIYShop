@@ -394,12 +394,16 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	function getSizeColorCount(){
 		var aSizeColorCount = [];
 		if($('.J-size-color-count').length == 1){
+			var aPic = [];
+			$('.J-size-color-count').find('.J-scc-pic').each(function(){
+				aPic.push($(this).attr('data-pic'));
+			});
 			var aTemp = {
 				id : $('.J-size-color-count-id').val(), 
 				size : $('.J-size').val(), 
 				color : $('.J-color').val(), 
 				count : $('.J-count').val(),
-				pic : $('.J-scc-pic').attr('data-pic'),
+				pic : aPic,
 				pics : [$('.J-up-pic').attr('data-pic'), $('.J-down-pic').attr('data-pic')]
 			};
 			aSizeColorCount.push(aTemp);
