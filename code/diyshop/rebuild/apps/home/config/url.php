@@ -72,6 +72,8 @@ return [
 		
 		
 		'order-manage/show-list.html'											=> 'order-manage/show-list',
+		'order-manage/save-express-info.json'									=> 'order-manage/save-express-info',
+		'order-manage/sure-send-goods.json'										=> 'order-manage/sure-send-goods',
 		
 		
 		

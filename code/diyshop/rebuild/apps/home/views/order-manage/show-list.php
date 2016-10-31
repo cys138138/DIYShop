@@ -27,6 +27,14 @@ $this->setTitle('订单管理');
 		width:200px;
 		height:200px;
 	}
+	.J-express-company{
+		float:left;
+		width:200px;
+	}
+	.J-express-number{
+		float:left;
+		width:200px;
+	}
 </style>
 <div class="row">
 	<?php echo ModuleNavi::widget([
@@ -81,6 +89,7 @@ $this->setTitle('订单管理');
 </div>
 <script type="text/javascript">
 	var aOrderList = <?php echo json_encode($aOrderList); ?>;
+	var aKuaiDiCompanyList = <?php echo json_encode($aKuaiDiCompanyList); ?>;
 	
 	function search(){
 		var condition = $('form[name=J-search-form]').serialize();
@@ -115,22 +124,31 @@ $this->setTitle('订单管理');
 				diyHtml += '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;服饰设计后正反面图片</b></p>';
 				diyHtml += '<p style="height:200px;">';
 				for(var k in aTemp.diy_pics){
-					diyHtml += '<img class="J-dress-diy-pic img-thumbnail" src="' + App.url.resource + aTemp.diy_pics[k] + '" alt="">';
+					diyHtml += '<img class="J-dress-diy-pic img-thumbnail" src="' + aTemp.diy_pics[k] + '" alt="">';
 				}
 				diyHtml += '</p>';
 			}
-			if(typeof(aTemp.dress_decoration_info) != 'undefined' && aTemp.dress_decoration_info.length != 0){
+			if(typeof(aTemp.dress_decoration_info) != 'undefined' && aTemp.dress_decoration_info.length != 0){console.log(aTemp.dress_decoration_info);
 				for(var t in aTemp.dress_decoration_info){
-					diyPrice += aTemp.dress_decoration_info[t].price;
-					diyHtml += '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;服饰饰件' + (t + 1) + '名称：</b>' + aTemp.dress_decoration_info[t].name + '</p>';
+					diyPrice += parseInt(aTemp.dress_decoration_info[t].price);
+					diyHtml += '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;服饰饰件' + (parseInt(t) + 1) + '名称：</b>' + aTemp.dress_decoration_info[t].name + '</p>';
 				}
 			}
 			if(typeof(aTemp.dress_match_info) != 'undefined' && aTemp.dress_match_info.length != 0){
-				for(var p in aTemp.dress_match_info){
-					diyPrice += aTemp.dress_match_info[p].price;
-					diyHtml += '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;服饰搭配' + (p + 1) + '名称：</b>' + aTemp.dress_decoration_info[p].name + '</p>';
+				if(typeof(aTemp.dress_match_info.vender) != 'undefined' && aTemp.dress_match_info.vender.length != 0){
+					for(var p in aTemp.dress_match_info.vender){
+						diyPrice += parseInt(aTemp.dress_match_info.vender[p].price);
+						diyHtml += '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;服饰搭配' + (parseInt(p) + 1) + '名称：</b>' + aTemp.dress_match_info.vender[p].name + '</p>';
+					}
+				}
+				if(typeof(aTemp.dress_match_info.manager) != 'undefined' && aTemp.dress_match_info.manager.length != 0){
+					for(var q in aTemp.dress_match_info.manager){
+						diyPrice += parseInt(aTemp.dress_match_info.manager[q].price);
+						diyHtml += '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;服饰搭配' + (parseInt(q) + 1) + '名称：</b>' + aTemp.dress_match_info.manager[q].name + '</p>';
+					}
 				}
 			}
+			
 			htmlStr += '\
 				<div class="block-wraper">\
 					<h3><b>服饰信息：</b></h3>\
@@ -148,9 +166,68 @@ $this->setTitle('订单管理');
 
 			htmlStr += '<hr />';
 		}
+		
+		htmlStr += '<div class="block-wraper">';
+		htmlStr += '<h3><b>物流信息：</b></h3>';
+		htmlStr += '<select class="J-express-company form-control">';
+		htmlStr += '<option value="">--请选择快递公司--</option>';
+		for(var key in aKuaiDiCompanyList){
+			htmlStr += '<option value="' + key + '">' + aKuaiDiCompanyList[key].name + '</option>';
+		}
+		htmlStr += '</select>';
+		htmlStr += '<input class="J-express-number form-control" placeholder="请输入物流单号" value="">';
+		htmlStr += '&nbsp;&nbsp;<button type="button" class="J-save-express-btn btn btn-primary" onclick="saveExpressInfo(this, ' + aData.id + ');">保存</button>';
+		htmlStr += '&nbsp;&nbsp;<button type="button" class="J-sure-send-good-btn btn btn-primary" onclick="sureSendGoods(this, ' + aData.id + ');">确认发货</button>';
+		htmlStr += '</div>';
+		htmlStr += '</br>';
 		htmlStr += '</div>';
 		
 		return htmlStr;
+	}
+	
+	function sureSendGoods(o, id){
+		ajax({
+			url : '<?php echo Url::to(['order-manage/sure-send-goods']); ?>',
+			data : {
+				id : id
+			},
+			beforeSend : function(){
+				$(o).attr('disabled', 'disabled');
+			},
+			complete : function(){
+				$(o).attr('disabled', false);
+			},
+			success : function(aResult){
+				UBox.show(aResult.msg, aResult.status);
+			}
+		});
+	}
+	
+	function saveExpressInfo(o, id){
+		var expressType = $('.J-express-company').val();
+		var expressNumber = $('.J-express-number').val();
+		
+		if(expressType == ''){
+			UBox.show('请选择快递公司', aResult.status);
+			return;
+		}
+		ajax({
+			url : '<?php echo Url::to(['order-manage/save-express-info']); ?>',
+			data : {
+				id : id,
+				expressType : expressType,
+				expressNumber : expressNumber
+			},
+			beforeSend : function(){
+				$(o).attr('disabled', 'disabled');
+			},
+			complete : function(){
+				$(o).attr('disabled', false);
+			},
+			success : function(aResult){
+				UBox.show(aResult.msg, aResult.status);
+			}
+		});
 	}
 	
 	function getOrderInfoById(id){
@@ -165,9 +242,10 @@ $this->setTitle('订单管理');
 	}
 	
 	function showOrder(id){
+		var aOrder = getOrderInfoById(id);
 		$.teninedialog({
 			title : '订单信息',
-			content : buildOrderBoxHtml(getOrderInfoById(id)),
+			content : buildOrderBoxHtml(aOrder),
 			url : '',
 			showCloseButton : false,
 			otherButtons : ['确定'],
@@ -177,7 +255,12 @@ $this->setTitle('订单管理');
 				//alert('即将显示对话框');
 			},
 			dialogShown : function(){
-				
+				if(typeof(aOrder.express_info.express_type) != 'undefined'){
+					$('.J-express-company').val(aOrder.express_info.express_type);
+				}
+				if(typeof(aOrder.express_info.express_number) != 'undefined'){
+					$('.J-express-number').val(aOrder.express_info.express_number);
+				}
 			},
 			dialogHide : function(){
 				//alert('即将关闭对话框');

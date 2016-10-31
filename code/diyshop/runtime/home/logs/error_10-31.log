@@ -32,3 +32,47 @@ $_SERVER = [
 ]
 env_vars_end
 =================================LOG_END
+LOG_START=================================
+[time=2016-10-31 10:51:53] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:8] 
+message_start
+exception 'yii\base\ErrorException' with message 'Undefined index: status_return_exchange' in /var/www/diyshop/rebuild/common/model/Order.php:68
+Stack trace:
+#0 /var/www/diyshop/rebuild/common/model/Order.php(68): yii\base\ErrorHandler->handleError(8, 'Undefined index...', '/var/www/diysho...', 68, Array)
+#1 /var/www/diyshop/rebuild/common/model/Order.php(26): common\model\Order::_parseWhereCondition(Array)
+#2 /var/www/diyshop/rebuild/common/model/form/OrderListForm.php(30): common\model\Order::getList(Array, Array)
+#3 /var/www/diyshop/rebuild/apps/home/controllers/OrderManageController.php(19): common\model\form\OrderListForm->getList()
+#4 [internal function]: home\controllers\OrderManageController->actionShowList()
+#5 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#6 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#7 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('show-list', Array)
+#8 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('order-manage/sh...', Array)
+#9 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#11 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/order-manage/show-list.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'fe1452c1093090e97cb8bb8e5adc58a4d02f4ebf532610ccccb896a70fff9dd5a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"oUS28T49y1ny5NPZ-rbR0xWIfBIeqAl2\";}'
+    'venderId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/order-manage/show-list.html',
+	'HTTP_REFERER' => 'http://www.diyshop.com/vender/index.html',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
