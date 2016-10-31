@@ -9,19 +9,19 @@ class Kuaidi extends \yii\base\Component {
 	
 	public function getTypeList(){
 		return [
-			'yuantong' => '圆通速递',
-			'ems' => 'EMS',
-			'shentong' => '申通',
-			'shunfeng' => '顺丰',
-			'zhongtong' => '中通速递',
-			'zhaijisong' => '宅急送',
-			'youzhengguonei' => '邮政包裹（国内）',
-			'youzhengguoji' => '邮政小包（国际）',
-			'yunda' => '韵达快运',
-			'huitongkuaidi' => '百世汇通',
-			'tiantian' => '天天快递',
-			'quanfengkuaidi' => '全峰快递',
-			'rufengda' => '凡客如风达',
+			'yuantong' => ['name' => '圆通速递'],
+			'ems' => ['name' => 'EMS'],
+			'shentong' => ['name' => '申通'],
+			'shunfeng' => ['name' => '顺丰'],
+			'zhongtong' => ['name' => '中通速递'],
+			'zhaijisong' => ['name' => '宅急送'],
+			'youzhengguonei' => ['name' => '邮政包裹（国内）'],
+			'youzhengguoji' => ['name' => '邮政小包（国际）'],
+			'yunda' => ['name' => '韵达快运'],
+			'huitongkuaidi' => ['name' => '百世汇通'],
+			'tiantian' => ['name' => '天天快递'],
+			'quanfengkuaidi' => ['name' => '全峰快递'],
+			'rufengda' => ['name' => '凡客如风达'],
 		];
 	}
 

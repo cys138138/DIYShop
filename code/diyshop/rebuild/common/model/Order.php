@@ -65,10 +65,17 @@ class Order extends \common\lib\DbOrmModel{
 		if(isset($aCondition['status'])){
 			$aWhere[] = ['status' => $aCondition['status']];
 		}
+		if(isset($aCondition['status_return_exchange']) || $aCondition['status_return_exchange']){
+			$aWhere[] = [
+				'or',
+				['status' => static::ORDER_STATUS_APPLY_RETURN],
+				['status' => static::ORDER_STATUS_EXCHANGE],
+			];
+		}
 		if(isset($aCondition['order_number'])){
 			$aWhere[] = ['order_number' => $aCondition['order_number']];
 		}
-
+		
 		return $aWhere;
 	}
 	

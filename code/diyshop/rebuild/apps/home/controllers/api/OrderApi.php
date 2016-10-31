@@ -254,6 +254,10 @@ trait OrderApi{
 		if($status){
 			$aCondition['status'] = $status;
 		}
+		if($status == Order::ORDER_STATUS_APPLY_RETURN || $status == Order::ORDER_STATUS_EXCHANGE){
+			unset($aCondition['status']);
+			$aCondition['status_return_exchange'] = 1;
+		}
 		$aControl = [
 			'page' => $page,
 			'page_size' => $pageSize,
