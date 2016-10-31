@@ -357,6 +357,8 @@ trait OrderApi{
 	
 	private function commentDress(){
 		$userToken = Yii::$app->request->post('user_token');
+		$aCommentInfo = Yii::$app->request->post('aCommentInfo');
+		
 		$dressId = Yii::$app->request->post('dress_id');
 		$descPoint = Yii::$app->request->post('desc_point');
 		$deliveryPoint = Yii::$app->request->post('delivery_point');
@@ -372,21 +374,42 @@ trait OrderApi{
 			return new Response('找不到用户信息', 2501);
 		}
 		
-		$mDress = Dress::findOne($dressId);
-		if(!$mDress){
-			return new Response('找不到服饰', 2502);
+		if(!$aCommentInfo){
+			return new Response('aCommentInfo参数不能为空', 2501);
 		}
-		$isSuccess = DressComment::insert([
-			'dress_id' => $mDress->id,
-			'user_id' => $userId,
-			'desc_point' => $descPoint,
-			'delivery_point' => $deliveryPoint,
-			'service_point' => $servicePoint,
-			'comment' => $comment,
-			'create_time' => NOW_TIME,
-		]);
-		if(!$isSuccess){
-			return new Response('评论失败', 2503);
+		
+		foreach($aCommentInfo as $key => $aComment){
+			if(!isset($aComment['dress_id']) || !$aComment['dress_id']){
+				return new Response('缺少dress_id', 2502);
+			}
+			if(!isset($aComment['desc_point'])){
+				return new Response('缺少desc_point', 2503);
+			}
+			if(!isset($aComment['delivery_point'])){
+				return new Response('缺少delivery_point', 2504);
+			}
+			if(!isset($aComment['service_point'])){
+				return new Response('缺少service_point', 2505);
+			}
+			if(!isset($aComment['comment'])){
+				return new Response('缺少comment', 2506);
+			}
+			$mDress = Dress::findOne($aComment['dress_id']);
+			if(!$mDress){
+				return new Response('找不到服饰', 2507);
+			}
+			$isSuccess = DressComment::insert([
+				'dress_id' => $mDress->id,
+				'user_id' => $userId,
+				'desc_point' => $aComment['desc_point'],
+				'delivery_point' => $aComment['delivery_point'],
+				'service_point' => $aComment['service_point'],
+				'comment' => $aComment['comment'],
+				'create_time' => NOW_TIME,
+			]);
+			if(!$isSuccess){
+				return new Response('评论失败', 2508);
+			}
 		}
 		return new Response('评论成功', 1);
 	}

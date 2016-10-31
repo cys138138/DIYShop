@@ -133,11 +133,22 @@ trait TestApi{
 		$aParams = [
 			'api_name' => 'commentDress',
 			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
-			'dress_id' => 1,
-			'desc_point' => 2,
-			'delivery_point' => 3,
-			'service_point' => 4,
-			'comment' => '好看',
+			'aCommentInfo' => [
+				[
+					'dress_id' => 1,
+					'desc_point' => 2,
+					'delivery_point' => 3,
+					'service_point' => 4,
+					'comment' => '好看',
+				],
+				[
+					'dress_id' => 2,
+					'desc_point' => 2,
+					'delivery_point' => 3,
+					'service_point' => 4,
+					'comment' => '好看',
+				],
+			]
 		];
 		
 		//getMarkInfo
