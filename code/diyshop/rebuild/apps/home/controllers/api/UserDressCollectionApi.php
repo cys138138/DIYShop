@@ -39,6 +39,7 @@ trait UserDressCollectionApi{
 		
 		$isSuccess = UserDressCollection::insert([
 			'user_id' => $userId,
+			'sex' => $mDress->sex,
 			'dress_id' => $dressId,
 			'create_time' => NOW_TIME
 		]);
@@ -84,6 +85,7 @@ trait UserDressCollectionApi{
 		$page = Yii::$app->request->post('page');
 		$pageSize = Yii::$app->request->post('page_size');
 		$userToken = Yii::$app->request->post('user_token');
+		$sex = Yii::$app->request->post('sex');
 		
 		if($page < 1){
 			$page = 1;
@@ -100,12 +102,16 @@ trait UserDressCollectionApi{
 		if(!$mUser){
 			return new Response('找不到用户信息', 3101);
 		}
+		$aCondition = ['user_id' => $userId];
+		if($sex){
+			$aCondition['sex'] = $sex;
+		}
 		$aControl = [
 			'page' => $page,
 			'page_size' => $pageSize,
 			'order_by' => ['create_time' => SORT_DESC]
 		];
-		$aList = UserDressCollection::getList(['user_id' => $userId], $aControl);
+		$aList = UserDressCollection::getList($aCondition, $aControl);
 		
 		
 		return new Response('收藏列表', 1, $aList);

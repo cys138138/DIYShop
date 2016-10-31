@@ -55,6 +55,9 @@ class UserDressCollection extends \common\lib\DbOrmModel{
 		if(isset($aCondition['user_id']) && $aCondition['user_id']){
 			$aWhere[] = ['user_id' => $aCondition['user_id']];
 		}
+		if(isset($aCondition['sex']) && $aCondition['sex']){
+			$aWhere[] = ['sex' => $aCondition['sex']];
+		}
 		if(isset($aCondition['dress_id']) && $aCondition['dress_id']){
 			$aWhere[] = ['dress_id' => $aCondition['dress_id']];
 		}
