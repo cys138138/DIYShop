@@ -130,20 +130,27 @@ $this->setTitle('订单管理');
 			}
 			if(typeof(aTemp.dress_decoration_info) != 'undefined' && aTemp.dress_decoration_info.length != 0){console.log(aTemp.dress_decoration_info);
 				for(var t in aTemp.dress_decoration_info){
-					diyPrice += parseInt(aTemp.dress_decoration_info[t].price);
-					diyHtml += '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;服饰饰件' + (parseInt(t) + 1) + '名称：</b>' + aTemp.dress_decoration_info[t].name + '</p>';
+					var cc = 0;
+					for(var kk in aTemp.decoration_ids){
+						if(aTemp.decoration_ids[kk].id == aTemp.dress_decoration_info[t].id){
+							cc = aTemp.decoration_ids[kk].count;
+							break;
+						}
+					}
+					diyPrice += parseFloat(aTemp.dress_decoration_info[t].price) * cc;
+					diyHtml += '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;服饰饰件' + (parseInt(t) + 1) + '名称：</b>' + aTemp.dress_decoration_info[t].name + '&nbsp;&nbsp;×&nbsp;' + cc + '件</p>';
 				}
 			}
 			if(typeof(aTemp.dress_match_info) != 'undefined' && aTemp.dress_match_info.length != 0){
 				if(typeof(aTemp.dress_match_info.vender) != 'undefined' && aTemp.dress_match_info.vender.length != 0){
 					for(var p in aTemp.dress_match_info.vender){
-						diyPrice += parseInt(aTemp.dress_match_info.vender[p].price);
+						diyPrice += parseFloat(aTemp.dress_match_info.vender[p].price);
 						diyHtml += '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;服饰搭配' + (parseInt(p) + 1) + '名称：</b>' + aTemp.dress_match_info.vender[p].name + '</p>';
 					}
 				}
 				if(typeof(aTemp.dress_match_info.manager) != 'undefined' && aTemp.dress_match_info.manager.length != 0){
 					for(var q in aTemp.dress_match_info.manager){
-						diyPrice += parseInt(aTemp.dress_match_info.manager[q].price);
+						diyPrice += parseFloat(aTemp.dress_match_info.manager[q].price);
 						diyHtml += '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;服饰搭配' + (parseInt(q) + 1) + '名称：</b>' + aTemp.dress_match_info.manager[q].name + '</p>';
 					}
 				}
