@@ -17,6 +17,7 @@ use common\model\Vender;
 use common\model\ManagerDressMatch;
 use common\model\VenderDressMatch;
 use common\model\DressDecoration;
+use common\model\ShoppingCart;
 
 trait OrderApi{
 	
@@ -25,6 +26,7 @@ trait OrderApi{
 		$aOrderInfo = Yii::$app->request->post('aOrderInfo');
 		$deliveryAddressId = Yii::$app->request->post('delivery_address_id');
 		$buyerMsg = Yii::$app->request->post('buyer_msg');
+		$aShoppingCartId = (array)Yii::$app->request->post('aShoppingCartId');
 		
 		if(!$userToken){
 			return new Response('缺少user_token', 2101);
@@ -192,6 +194,14 @@ trait OrderApi{
 			$orderId = Order::insert($aData);
 			if(!$orderId){
 				return new Response('创建订单失败', 2112);
+			}
+		}
+		if($aShoppingCartId){
+			foreach($aShoppingCartId as $shoppingCartId){
+				$mShoppingCart = ShoppingCart::findOne($shoppingCartId);
+				if($mShoppingCart && $mShoppingCart->user_id == $userId){
+					$mShoppingCart->delete();
+				}
 			}
 		}
 		
