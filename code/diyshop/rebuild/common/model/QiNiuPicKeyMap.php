@@ -17,7 +17,7 @@ class QiNiuPicKeyMap extends \common\lib\DbOrmModel{
 		$jsonStr = json_encode($aData);
 		
 		$aFileMap = [];
-		preg_match_all('/\"\\\\\/static\\\\\/data\\\\\/[0-9a-z\.\\\\\/\-]+\\\\\/[0-9a-z\.\\\\\/\-]+\"/', $jsonStr, $aMatchList);	
+		preg_match_all('/\"\\\\\/static\\\\\/data\\\\\/[0-9a-z\.\\\\\/\-\_]+\\\\\/[0-9a-z\.\\\\\/\-\_]+\"/', $jsonStr, $aMatchList);	
 		foreach($aMatchList[0] as $key => $value){
 			$aPathInfo = pathinfo($value);
 			$aFileMap[$aPathInfo['filename']] = $value;
