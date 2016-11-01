@@ -45,5 +45,12 @@ class SiteController extends \yii\web\Controller{
 		*/
         echo Url::to(['site/show-home']);
     }
+	
+	/**
+	 * 移动端支付宝异步通知
+	 */
+	public function actionAlipayNotifyMobile(){
+		Yii::info(var_export($_POST, true));
+	}
 
 }

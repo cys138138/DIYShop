@@ -16,6 +16,7 @@ return [
 	'rules' => [
 		''																		=> 'site/index',
 		'home.html'																=> 'site/show-home',
+		'alipay/notify.html'													=> 'site/alipay-notify-mobile',
 		
 		
 		'index.html'															=> 'login/index',
