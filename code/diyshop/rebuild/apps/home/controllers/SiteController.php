@@ -55,7 +55,7 @@ class SiteController extends \yii\web\Controller{
 		
 		$successFlag = 'success';
 		$failFlag = 'fail';
-		Yii::$app->mobileAlipay->alipay_config = $this->_getAlipayConfig();
+		//Yii::$app->mobileAlipay->alipay_config = $this->_getAlipayConfig();
 		$verifyResult = Yii::$app->mobileAlipay->verifyNotify();
 		//Yii::error('yes, is Notify ' . (int)$verifyResult);
 		if($verifyResult){
@@ -105,6 +105,7 @@ class SiteController extends \yii\web\Controller{
 			}
 			exit($successFlag);
 		}else{
+			Yii::info('验证失败:' . var_export($_POST, true));
 			exit($failFlag);
 		}
 	}
