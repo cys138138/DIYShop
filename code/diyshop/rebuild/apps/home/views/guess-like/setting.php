@@ -76,7 +76,11 @@ $this->setTitle('猜你喜欢');
 	var aDress = [];
 	function showResult(aData){
 		var picHtml = '';
+		var hasPic = false;
 		for(var i in aData.pics){
+			if(aData.pics[i] != ''){
+				hasPic = true;
+			}
 			picHtml += '<li class="list-group-item" data-index="' + i + '">\
 				<p><img class="img-thumbnail" src="' + App.url.resource + aData.pics[i] + '" alt=""></p>\
 				<p><center><button type="button" class="btn btn-sm btn-danger" onclick="selectPic(this);">选择</button></center></p>\
@@ -89,7 +93,11 @@ $this->setTitle('猜你喜欢');
 			<br />\
 		';
 		$('.J-result').html(htmlStr);
-		$('.J-save-setting').show();
+		if(hasPic){
+			$('.J-save-setting').show();
+		}else{
+			$('.J-save-setting').hide();
+		}
 	}
 	
 	function selectPic(o){
