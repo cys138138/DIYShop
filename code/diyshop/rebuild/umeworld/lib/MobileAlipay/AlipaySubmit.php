@@ -43,6 +43,28 @@ class AlipaySubmit extends \yii\base\Object{
      */
 	public $http_verify_url = '';
 	
+	public function init(){
+		parent::init();
+		$this->alipay_config = $this->_getAlipayConfig();
+	}
+	
+	/**
+	 * 支付宝配置
+	 */
+	private function _getAlipayConfig(){
+		return [
+			'partner'				=> $this->partner_id,
+			'seller_id'				=> $this->partner_id,
+			'key'					=> $this->key,
+			'private_key_path'		=> $this->private_key_path,
+			'ali_public_key_path'	=> $this->ali_public_key_path,
+			'sign_type'				=> strtoupper('RSA'),
+			'input_charset'			=> strtolower('utf-8'),
+			'transport'				=> 'http',
+			'cacert'				=> $this->cacert_pem,
+		];
+	}
+	
 	/**
 	 * 生成签名结果
 	 * @param $para_sort 已排序要签名的数组
