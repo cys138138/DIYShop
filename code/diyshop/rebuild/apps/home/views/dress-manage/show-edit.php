@@ -747,6 +747,9 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			UBox.show('已添加过了哦', -1);
 			return;
 		}
+		if(!txt || txt == ''){
+			return;
+		}
 		$('.J-dress-match-list').append(buildDressMatchHtml(type, id, txt));
 	}
 	
