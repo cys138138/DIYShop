@@ -62,8 +62,8 @@ return [
 
 		'kuaidi'=>[
 			'class' => 'umeworld\lib\Kuaidi',
-			'url' => 'http://www.kuaidi100.com/query',
-			'authKey' => '1',	//c635d73c707557a5
+			'url' => 'http://www.kuaidi100.com/query',	//http://api.kuaidi100.com/api
+			'authKey' => '1',							//c635d73c707557a5
 		],
 
 		'assetManager' => [
