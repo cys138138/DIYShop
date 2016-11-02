@@ -111,20 +111,12 @@ class SiteController extends \yii\web\Controller{
 	}
 	
 	/**
-	 * 支付宝配置
+	 *	处理失效订单，将3日前的订单失效，并调整库存
 	 */
-	private function _getAlipayConfig(){
-		return [
-			'partner'				=> Yii::$app->mobileAlipay->partner_id,
-			'seller_id'				=> Yii::$app->mobileAlipay->partner_id,
-			'key'					=> Yii::$app->mobileAlipay->key,
-			'private_key_path'		=> Yii::$app->mobileAlipay->private_key_path,
-			'ali_public_key_path'	=> Yii::$app->mobileAlipay->ali_public_key_path,
-			'sign_type'				=> strtoupper('RSA'),
-			'input_charset'			=> strtolower('utf-8'),
-			'transport'				=> 'http',
-			'cacert'				=> Yii::$app->mobileAlipay->cacert_pem,
-		];
+	public function actionOrderFailure(){
+		$venderId = (int)Yii::$app->request->get('vender_id');
+		
+		Order::setOrderFailure($venderId);
 	}
 
 }

@@ -78,7 +78,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			</select>
 			<br />
 		</div>
-		<div class="form-group">
+		<!--<div class="form-group">
 			<label>搭配正反面图片</label>
 			<div class="form-group">
 				<button type="button" class="J-add-pics-btn btn btn-info">上传搭配正反面图片</button>
@@ -86,6 +86,30 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			<div class="row">
 				<div class="col-lg-12">
 					<ul class="J-pics-list list-group"></ul>
+				</div>
+			</div>
+			<br />
+		</div>-->
+		<div class="form-group">
+			<label>搭配正面图片</label>
+			<div class="form-group">
+				<button type="button" class="J-add-zhen-pics-btn btn btn-info">上传搭配正面图片</button>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<ul class="J-zhen-pics-list list-group"></ul>
+				</div>
+			</div>
+			<br />
+		</div>
+		<div class="form-group">
+			<label>搭配反面图片</label>
+			<div class="form-group">
+				<button type="button" class="J-add-fan-pics-btn btn btn-info">上传搭配反面图片</button>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<ul class="J-fan-pics-list list-group"></ul>
 				</div>
 			</div>
 			<br />
@@ -115,7 +139,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		$(o).parent().parent().remove();
 	}
 	
-	function addPic(pic){
+	/*function addPic(pic){
 		var htmlStr = '\
 			<li class="list-group-item J-pic-item" data-pic="' + pic + '">\
 				<p><img class="img-thumbnail" src="' + App.url.resource + pic + '" alt=""></p>\
@@ -123,6 +147,27 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			</li>\
 		';
 		$('.J-pics-list').append(htmlStr);
+	}*/
+	
+	function setZhenFanPic(zhenPic, fanPic){
+		if(zhenPic){
+			var htmlStr = '\
+				<li class="list-group-item J-pic-item" data-pic="' + zhenPic + '">\
+					<p><img class="img-thumbnail" src="' + App.url.resource + zhenPic + '" alt=""></p>\
+					<p><center><button type="button" class="btn btn-sm btn-danger" onclick="deletePic(this);">删除</button></center></p>\
+				</li>\
+			';
+			$('.J-zhen-pics-list').html(htmlStr);
+		}
+		if(fanPic){
+			var htmlStr = '\
+				<li class="list-group-item J-pic-item" data-pic="' + fanPic + '">\
+					<p><img class="img-thumbnail" src="' + App.url.resource + fanPic + '" alt=""></p>\
+					<p><center><button type="button" class="btn btn-sm btn-danger" onclick="deletePic(this);">删除</button></center></p>\
+				</li>\
+			';
+			$('.J-fan-pics-list').html(htmlStr);
+		}
 	}
 	
 	function save(o){
@@ -131,15 +176,18 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		var price = $('.J-price').val();
 		var sex = $('.J-sex').val();
 		var catalogId = $('.J-catalog-id').val();
-		var aPics = getPics();
+		//var aPics = getPics();
+		var aPics = [];
 		if(name == ''){
 			UBox.show('请填写搭配别名', -1);
 			return;
 		}
-		if(!aPics){
+		/*if(!aPics){
 			UBox.show('请上传图片', -1);
 			return;
-		}
+		}*/
+		var zhenPic = $('.J-zhen-pics-list li').attr('data-pic');
+		var fanPic = $('.J-fan-pics-list li').attr('data-pic');
 		ajax({
 			url : '<?php echo Url::to(['manager-dress-match/save']); ?>',
 			data : {
@@ -148,7 +196,9 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 				price : price,
 				sex : sex,
 				catalogId : catalogId,
-				aPics : aPics
+				aPics : aPics,
+				zhenPic : zhenPic,
+				fanPic : fanPic
 			},
 			beforeSend : function(){
 				$(o).attr('disabled', 'disabled');
@@ -185,7 +235,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			showChildCatalog($(this).val());
 		});
 		
-		$('.J-add-pics-btn').AjaxUpload({
+		/*$('.J-add-pics-btn').AjaxUpload({
 			uploadUrl : '<?php echo Url::to(['manager-dress-match/upload-file']); ?>',
 			fileKey : 'image',
 			isUploadEnable : function(o){
@@ -202,14 +252,37 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 					UBox.show(aResult.msg, aResult.status);
 				}
 			}
+		});*/
+		$('.J-add-zhen-pics-btn').AjaxUpload({
+			uploadUrl : '<?php echo Url::to(['manager-dress-match/upload-file']); ?>',
+			fileKey : 'image',
+			callback : function(aResult){
+				if(aResult.status == 1){
+					setZhenFanPic(aResult.data, '');
+				}else{
+					UBox.show(aResult.msg, aResult.status);
+				}
+			}
+		});
+		$('.J-add-fan-pics-btn').AjaxUpload({
+			uploadUrl : '<?php echo Url::to(['manager-dress-match/upload-file']); ?>',
+			fileKey : 'image',
+			callback : function(aResult){
+				if(aResult.status == 1){
+					setZhenFanPic('', aResult.data);
+				}else{
+					UBox.show(aResult.msg, aResult.status);
+				}
+			}
 		});
 		<?php if($aDressMatch){ ?>
 			$('.J-catalog').val(<?php echo $aDressMatch['dress_catalog']['pid']; ?>);
 			$('.J-catalog-id').val(<?php echo $aDressMatch['dress_catalog']['id']; ?>);
 			$('.J-sex').val(<?php echo $aDressMatch['sex']; ?>);
-			<?php foreach($aDressMatch['pics'] as $value){ ?>
+			setZhenFanPic('<?php echo $aDressMatch['zhen_pic']; ?>', '<?php echo $aDressMatch['fan_pic']; ?>');
+			/*<?php foreach($aDressMatch['pics'] as $value){ ?>
 				addPic('<?php echo $value; ?>');
-			<?php } ?>
+			<?php } ?>*/
 		<?php } ?>
 	});
 </script>

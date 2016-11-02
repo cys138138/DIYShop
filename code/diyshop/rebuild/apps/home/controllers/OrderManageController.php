@@ -64,6 +64,7 @@ class OrderManageController extends VController{
 			return new Response('订单不是在待发货状态', 0);
 		}
 		$mOrder->set('status', Order::ORDER_STATUS_WAIT_RECEIVE);
+		$mOrder->set('deliver_time', NOW_TIME);
 		$mOrder->save();
 		
 		return new Response('操作成功', 1);

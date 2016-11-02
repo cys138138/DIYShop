@@ -1,0 +1,120 @@
+LOG_START=================================
+[time=2016-11-01 17:59:33] [192.168.0.175][-][-][level=info][category=application] 
+message_start
+array (
+)
+message_end
+
+file: /var/www/diyshop/rebuild/apps/home/controllers/SiteController.php
+line: 54
+request_url: http://www.diyshop.com/alipay/notify.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/apps/home/controllers/SiteController.php:54
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'd8937405721a6b85510e38d06bb18ed6a2df6d64af605f02d315e052b2609363a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"k_Fc4jmR9kfd8lHeT8nEAXH1kfgdtwpv\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/alipay/notify.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-11-01 17:59:36] [192.168.0.175][-][-][level=info][category=application] 
+message_start
+array (
+)
+message_end
+
+file: /var/www/diyshop/rebuild/apps/home/controllers/SiteController.php
+line: 54
+request_url: http://www.diyshop.com/alipay/notify.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/apps/home/controllers/SiteController.php:54
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'd8937405721a6b85510e38d06bb18ed6a2df6d64af605f02d315e052b2609363a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"k_Fc4jmR9kfd8lHeT8nEAXH1kfgdtwpv\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/alipay/notify.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-11-01 17:59:37] [192.168.0.175][-][-][level=info][category=application] 
+message_start
+array (
+)
+message_end
+
+file: /var/www/diyshop/rebuild/apps/home/controllers/SiteController.php
+line: 54
+request_url: http://www.diyshop.com/alipay/notify.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/apps/home/controllers/SiteController.php:54
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'd8937405721a6b85510e38d06bb18ed6a2df6d64af605f02d315e052b2609363a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"k_Fc4jmR9kfd8lHeT8nEAXH1kfgdtwpv\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/alipay/notify.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-11-01 17:59:58] [192.168.0.175][-][-][level=info][category=application] 
+message_start
+array (
+)
+message_end
+
+file: /var/www/diyshop/rebuild/apps/home/controllers/SiteController.php
+line: 54
+request_url: http://www.diyshop.com/alipay/notify.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/apps/home/controllers/SiteController.php:54
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => 'd8937405721a6b85510e38d06bb18ed6a2df6d64af605f02d315e052b2609363a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"k_Fc4jmR9kfd8lHeT8nEAXH1kfgdtwpv\";}'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/alipay/notify.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END

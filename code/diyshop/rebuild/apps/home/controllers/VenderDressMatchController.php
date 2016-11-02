@@ -88,6 +88,8 @@ class VenderDressMatchController extends VController{
 		$managerDressMatchId = (int)Yii::$app->request->post('managerDressMatchId');
 		$aDetailPics = (array)Yii::$app->request->post('aDetailPics');
 		$aPics = (array)Yii::$app->request->post('aPics');
+		$zhenPic = (string)Yii::$app->request->post('zhenPic');
+		$fanPic = (string)Yii::$app->request->post('fanPic');
 		
 		if(!$name){
 			return new Response('请填写搭配别名', -1);
@@ -97,7 +99,7 @@ class VenderDressMatchController extends VController{
 		if(!$mManagerDressMatch){
 			return new Response('找不到搭配信息', -1);
 		}
-		$aPics = array_values(array_diff($aPics, $mManagerDressMatch->pics));
+		//$aPics = array_values(array_diff($aPics, $mManagerDressMatch->pics));
 		$isSuccess = false;
 		if($id){
 			$mVenderDressMatch = VenderDressMatch::findOne($id);
@@ -108,6 +110,8 @@ class VenderDressMatchController extends VController{
 				$mVenderDressMatch->set('manager_dress_match_id', $managerDressMatchId);
 				$mVenderDressMatch->set('detail_pics', $aDetailPics);
 				$mVenderDressMatch->set('pics', $aPics);
+				$mVenderDressMatch->set('zhen_pic', $zhenPic);
+				$mVenderDressMatch->set('fan_pic', $fanPic);
 				$mVenderDressMatch->save();
 				$isSuccess = true;
 			}
@@ -119,6 +123,8 @@ class VenderDressMatchController extends VController{
 				'manager_dress_match_id' => $managerDressMatchId,
 				'detail_pics' => $aDetailPics,
 				'pics' => $aPics,
+				'zhen_pic' => $zhenPic,
+				'fan_pic' => $fanPic,
 				'create_time' => NOW_TIME
 			]);
 		}

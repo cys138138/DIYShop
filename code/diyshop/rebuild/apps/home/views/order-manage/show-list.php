@@ -128,7 +128,7 @@ $this->setTitle('订单管理');
 				}
 				diyHtml += '</p>';
 			}
-			if(typeof(aTemp.dress_decoration_info) != 'undefined' && aTemp.dress_decoration_info.length != 0){console.log(aTemp.dress_decoration_info);
+			if(typeof(aTemp.dress_decoration_info) != 'undefined' && aTemp.dress_decoration_info.length != 0){
 				for(var t in aTemp.dress_decoration_info){
 					var cc = 0;
 					for(var kk in aTemp.decoration_ids){

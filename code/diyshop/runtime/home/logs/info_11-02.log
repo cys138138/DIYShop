@@ -1,0 +1,30 @@
+LOG_START=================================
+[time=2016-11-02 11:41:53] [192.168.0.42][-][-][level=info][category=application] 
+message_start
+haha
+message_end
+
+file: /var/www/diyshop/rebuild/common/model/Order.php
+line: 103
+request_url: http://www.diyshop.com/site/order-failure.html?vender_id=1
+
+trace_start:
+    in /var/www/diyshop/rebuild/common/model/Order.php:103
+    in /var/www/diyshop/rebuild/apps/home/controllers/SiteController.php:119
+trace_end
+
+env_vars_start:
+$_GET = [
+    'vender_id' => '1'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/site/order-failure.html?vender_id=1',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => '',
+]
+env_vars_end
+=================================LOG_END

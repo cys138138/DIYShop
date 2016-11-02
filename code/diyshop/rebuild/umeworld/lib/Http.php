@@ -177,4 +177,15 @@ class Http extends \yii\base\Component{
 		return $result;
 
 	}
+	
+	public static function sendNotWaitGetRequest($url, $para){
+		$curl = curl_init($url . '?' . http_build_query($para));
+		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
+		curl_setopt($curl, CURLOPT_HEADER, 0 );
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($curl, CURLOPT_TIMEOUT, 1);
+		curl_exec($curl);
+		curl_close($curl);
+	}
 }

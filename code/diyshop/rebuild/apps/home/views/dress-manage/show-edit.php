@@ -875,8 +875,11 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		$('.J-dms-pics-list').html('');
 		for(var i in aManagerDressMatchList){
 			if(aManagerDressMatchList[i].catalog_id == id){
-				if(typeof(aManagerDressMatchList[i].pics[0]) != 'undefined'){
+				/*if(typeof(aManagerDressMatchList[i].pics[0]) != 'undefined'){
 					addDmsPic(aManagerDressMatchList[i].id, aManagerDressMatchList[i].name, aManagerDressMatchList[i].pics[0]);
+				}*/
+				if(typeof(aManagerDressMatchList[i].zhen_pic) != 'undefined' && aManagerDressMatchList[i].zhen_pic){
+					addDmsPic(aManagerDressMatchList[i].id, aManagerDressMatchList[i].name, aManagerDressMatchList[i].zhen_pic);
 				}
 			}
 		}

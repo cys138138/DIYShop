@@ -17,6 +17,7 @@ return [
 		''																		=> 'site/index',
 		'home.html'																=> 'site/show-home',
 		'alipay/notify.html'													=> 'site/alipay-notify-mobile',
+		'site/order-failure.html'												=> 'site/order-failure',
 		
 		
 		'index.html'															=> 'login/index',

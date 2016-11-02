@@ -34,7 +34,7 @@ $this->setTitle('搭配管理');
 					'pic'	=>	[
 						'title' => '搭配图片',
 						'content' => function($aData){
-							return '<img width="150" height="100" src="' . Yii::getAlias('@r.url') . (isset($aData['pics'][0]) ? $aData['pics'][0] : '') . '" alt="" />';
+							return '<img width="150" height="100" src="' . Yii::getAlias('@r.url') . (isset($aData['zhen_pic']) ? $aData['zhen_pic'] : '') . '" alt="" />';
 						}
 					],
 					'catalog_path'	=>	['title' => '服饰分类'],

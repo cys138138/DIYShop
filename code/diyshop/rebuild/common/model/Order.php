@@ -3,6 +3,7 @@ namespace common\model;
 
 use Yii;
 use umeworld\lib\Query;
+use yii\helpers\ArrayHelper;
 
 class Order extends \common\lib\DbOrmModel{
 	protected $_aEncodeFields = ['order_info', 'express_info'];
@@ -17,6 +18,7 @@ class Order extends \common\lib\DbOrmModel{
 	const ORDER_STATUS_APPLY_RETURN = 4; 	//申请退货
 	const ORDER_STATUS_EXCHANGE = 5;		//退换货
 	const ORDER_STATUS_FINISH = 6;			//确认收货
+	const ORDER_STATUS_FAILURE = 7;			//失效
 
 	public static function tableName(){
 		return Yii::$app->db->parseTable('_@order');
@@ -75,6 +77,12 @@ class Order extends \common\lib\DbOrmModel{
 		if(isset($aCondition['order_number'])){
 			$aWhere[] = ['order_number' => $aCondition['order_number']];
 		}
+		if(isset($aCondition['start_time']) && $aCondition['start_time']){
+			$aWhere[] = ['>=', 'create_time', $aCondition['start_time']];
+		}
+		if(isset($aCondition['end_time']) && $aCondition['end_time']){
+			$aWhere[] = ['<=', 'create_time', $aCondition['end_time']];
+		}
 		
 		return $aWhere;
 	}
@@ -87,5 +95,52 @@ class Order extends \common\lib\DbOrmModel{
 	
 	public static function generateOrderNum(){
 		return md5(NOW_TIME . mt_rand(1000, 9999));
+	}
+	
+	/**
+	 *	处理失效订单，将3日前的订单失效，并调整库存
+	 */
+	public static function setOrderFailure(){Yii::info('haha');
+		set_time_limit(0);
+		$venderId = (int)Yii::$app->request->get('vender_id');
+		
+		if($venderId){
+			$aCondition = [
+				'vender_id' => $venderId,
+				'status' => static::ORDER_STATUS_WAIT_PAY,
+				'end_time' => NOW_TIME - 3 * 86400,
+			];
+			$aControl = [
+				'page' => 1,
+				'page_size' => 1000,
+				'order_by' => ['create_time' => SORT_DESC],
+			];
+			$aOrderList = static::getList($aCondition, $aControl);
+			
+			$aDressSizeColorCountInfo = [];
+			foreach($aOrderList as $key => $aOrder){
+				$mOrder = static::toModel($aOrder);
+				if(!$mOrder->order_type){
+					foreach($mOrder->order_info as $aOrderInfo){
+						if(isset($aOrderInfo['item_size_color_count_info']) && isset($aOrderInfo['item_size_color_count_info']['id'])){
+							if(!isset($aDressSizeColorCountInfo[$aOrderInfo['item_size_color_count_info']['id']])){
+								$aDressSizeColorCountInfo[$aOrderInfo['item_size_color_count_info']['id']] = 0;
+							}
+							$aDressSizeColorCountInfo[$aOrderInfo['item_size_color_count_info']['id']] += $aOrderInfo['item_count'];
+						}
+					}
+				}
+			}
+			$aOrderIds = ArrayHelper::getColumn($aOrderList, 'id');
+			$sql = 'update `' . static::tableName() . '` set `status`=' . static::ORDER_STATUS_FAILURE . ' where `id` in(' . implode(',', $aOrderIds) . ')';
+			Yii::$app->db->createCommand($sql)->execute();
+			foreach($aDressSizeColorCountInfo as $dressSizeColorCountId => $count){
+				$mDressSizeColorCount = DressSizeColorCount::findOne($dressSizeColorCountId);
+				if($mDressSizeColorCount && $count){
+					$mDressSizeColorCount->set('stock', ['add', $count]);
+					$mDressSizeColorCount->save();
+				}
+			}
+		}
 	}
 }

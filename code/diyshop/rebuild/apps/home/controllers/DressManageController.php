@@ -5,6 +5,7 @@ use Yii;
 use home\lib\VenderController as VController;
 use umeworld\lib\Response;
 use umeworld\lib\Url;
+use umeworld\lib\Http;
 use common\model\DressCatalog;
 use common\model\DressComment;
 use common\model\DressTag;
@@ -20,6 +21,8 @@ use yii\web\UploadedFile;
 class DressManageController extends VController{
 	
     public function actionShowList(){
+		//处理失效订单，将3日前的订单失效，并调整库存
+		Http::sendNotWaitGetRequest(Yii::$app->urlManagerHome->createUrl(['site/order-failure']), ['vender_id' => Yii::$app->vender->id]);
 		$oDressListForm = new DressListForm();
 		$aParams = Yii::$app->request->get();
 		if($aParams && (!$oDressListForm->load($aParams, '') || !$oDressListForm->validate())){

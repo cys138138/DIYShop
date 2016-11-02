@@ -72,6 +72,8 @@ class ManagerDressMatchController extends MController{
 		$sex = (int)Yii::$app->request->post('sex');
 		$catalogId = (int)Yii::$app->request->post('catalogId');
 		$aPics = (array)Yii::$app->request->post('aPics');
+		$zhenPic = (string)Yii::$app->request->post('zhenPic');
+		$fanPic = (string)Yii::$app->request->post('fanPic');
 		
 		if(!$name){
 			return new Response('请填写搭配别名', -1);
@@ -92,6 +94,8 @@ class ManagerDressMatchController extends MController{
 				$mManagerDressMatch->set('sex', $sex);
 				$mManagerDressMatch->set('catalog_id', $catalogId);
 				$mManagerDressMatch->set('pics', $aPics);
+				$mManagerDressMatch->set('zhen_pic', $zhenPic);
+				$mManagerDressMatch->set('fan_pic', $fanPic);
 				$mManagerDressMatch->save();
 				$isSuccess = true;
 			}
@@ -102,6 +106,8 @@ class ManagerDressMatchController extends MController{
 				'sex' => $sex,
 				'catalog_id' => $catalogId,
 				'pics' => $aPics,
+				'zhen_pic' => $zhenPic,
+				'fan_pic' => $fanPic,
 				'create_time' => NOW_TIME
 			]);
 		}
