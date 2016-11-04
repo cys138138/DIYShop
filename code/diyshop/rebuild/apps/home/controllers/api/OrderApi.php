@@ -121,12 +121,13 @@ trait OrderApi{
 				}
 			}
 			$mVenderShop = VenderShop::findOne($mDress->vender_id);
+			$itemPrice = $mDress->discount_price ? $mDress->discount_price * $v['count'] : $mDress->price * $v['count'];
 			array_push($aOrderList[$mDress->vender_id]['order_info'], [
 				'item_info' => $mDress->toArray(),
 				'shop_info' => $mVenderShop->toArray(),
 				'item_size_color_count_info' => $mDressSizeColorCount->toArray(),
 				'item_count' => $v['count'],
-				'item_price' => $mDress->price * $v['count'],
+				'item_price' => $itemPrice,
 				'delivery_address_info' => $mDeliveryAddress->toArray(),
 				'decoration_ids' => isset($v['aDecoration']) && $v['aDecoration'] ? $v['aDecoration'] : [],
 				'diy_pics' => isset($v['aDiyPics']) && $v['aDiyPics'] ? $v['aDiyPics'] : [],
@@ -136,7 +137,7 @@ trait OrderApi{
 				'buyer_msg' => isset($v['buyer_msg']) && $v['buyer_msg'] ? $v['buyer_msg'] : '',
 			]);
 			$aOrderList[$mDress->vender_id]['total_count'] += $v['count'];
-			$aOrderList[$mDress->vender_id]['total_price'] += $mDress->price * $v['count'] + $diyPrice;
+			$aOrderList[$mDress->vender_id]['total_price'] += $itemPrice + $diyPrice;
 		}
 		$aOrderInfo = [];
 		$totalCount = 0;

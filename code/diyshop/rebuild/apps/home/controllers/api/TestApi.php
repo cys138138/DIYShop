@@ -312,6 +312,8 @@ trait TestApi{
 			'mobile' => '15014142555',
 		];
 		
+		//debug($this->_getUserToken(2),11);
+		
 		$aData = [
 			'version' => $version,
 			'timestamp' => $timestamp,
