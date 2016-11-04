@@ -362,7 +362,14 @@ trait OrderApi{
 				if(!$mOrderTemp){
 					return new Response('找不到订单信息', 2404);
 				}
+				if($mOrderTemp->status != Order::ORDER_STATUS_FINISH || $mOrderTemp->status != Order::ORDER_STATUS_FAILURE){
+					return new Response('订单不可删除', 2403);
+				}
 				$mOrderTemp->delete();
+			}
+		}else{
+			if($mOrder->status != Order::ORDER_STATUS_FINISH || $mOrder->status != Order::ORDER_STATUS_FAILURE){
+				return new Response('订单不可删除', 2403);
 			}
 		}
 		$mOrder->delete();
