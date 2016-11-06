@@ -71,8 +71,11 @@ class AlipaySubmit extends \yii\base\Object{
 	 * return 签名结果字符串
 	 */
 	public function buildRequestMysign($para_sort) {
-		//把数组所有元素，按照“参数=参数值”的模式用“&”字符拼接成字符串
-		$prestr = $this->createLinkstring($para_sort);
+		$prestr = $para_sort;
+		if(is_array($para_sort)){
+			//把数组所有元素，按照“参数=参数值”的模式用“&”字符拼接成字符串
+			$prestr = $this->createLinkstring($para_sort);
+		}
 		
 		$mysign = "";
 		switch (strtoupper(trim($this->alipay_config['sign_type']))) {
