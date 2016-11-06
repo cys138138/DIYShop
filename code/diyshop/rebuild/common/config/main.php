@@ -253,6 +253,11 @@ return [
 			'appId' => 'wxd9d3a5c7cd043db9',
 			'appSecret' => 'a316496f3a38c7062fafc700b9cfdd32',
 		],
+		'wxpay' => [
+			'class' => 'umeworld\lib\WxPay',
+			'sslCertPath' => Yii::getAlias('@umeworld') . '/lib/Wxpay/cert/apiclient_cert.pem',
+			'sslKeyPath' => Yii::getAlias('@umeworld') . '/lib/Wxpay/cert/apiclient_key.pem',
+		],
 		//pc版支付宝即时到账
 		'alipay' => [
 			'class' => 'umeworld\lib\Alipay\Alipay',

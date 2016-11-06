@@ -48,6 +48,24 @@ class SiteController extends \yii\web\Controller{
     }
 	
 	/**
+	 * 微信支付异步通知
+	 */
+	public function actionWeixinNotify(){
+		Yii::info(var_export($_POST, true));
+		$oWxPayNotify = Yii::$app->wxpay->payNotifyCallBack();
+		$aSuccess = $notify->IsSuccess();
+		Yii::info(var_export($aSuccess, true));
+		$aData = $aSuccess['data']; 
+		if($aSuccess['code'] == 1){ 
+			//支付成功
+			$this->_afterPaySuccess($aData['transaction_id']);
+		}else{
+			//支付失败
+
+		}
+	}
+	
+	/**
 	 * 移动端支付宝异步通知
 	 */
 	public function actionAlipayNotifyMobile(){
@@ -76,37 +94,40 @@ class SiteController extends \yii\web\Controller{
 				//Yii::error('okokok');
 				//exit($successFlag);
 				//成功,更新订单状态
-				$orderNumber = $orderId;
-				$mOrder = Order::findOne(['order_number' => $orderNumber]);
-				if(!$mOrder){
-					Yii::info('找不到订单信息:' . var_export($_POST, true));
-					exit($failFlag);
-				}
-				if($mOrder->status != Order::ORDER_STATUS_WAIT_PAY){
-					Yii::info('订单状态不正确:' . var_export($_POST, true));
-					exit($failFlag);
-				}
-				
-				$mOrder->set('status', Order::ORDER_STATUS_WAIT_SEND);
-				$mOrder->set('pay_time', NOW_TIME);
-				$mOrder->save();
-				if($mOrder->order_type == Order::ORDER_TYPE_SPECIAL){
-					foreach($mOrder->order_info as $ordernum){
-						$mOrder = Order::findOne(['order_number' => $ordernum]);
-						if(!$mOrder){
-							Yii::info('找不到订单信息:' . var_export($_POST, true));
-							exit($failFlag);
-						}
-						$mOrder->set('status', Order::ORDER_STATUS_WAIT_SEND);
-						$mOrder->set('pay_time', NOW_TIME);
-						$mOrder->save();
-					}
-				}
+				$this->_afterPaySuccess($orderId);
 			}
 			exit($successFlag);
 		}else{
 			Yii::info('验证失败:' . var_export($_POST, true));
 			exit($failFlag);
+		}
+	}
+	
+	private function _afterPaySuccess($orderNumber){
+		$mOrder = Order::findOne(['order_number' => $orderNumber]);
+		if(!$mOrder){
+			Yii::info('找不到订单信息:' . var_export($_POST, true));
+			exit($failFlag);
+		}
+		if($mOrder->status != Order::ORDER_STATUS_WAIT_PAY){
+			Yii::info('订单状态不正确:' . var_export($_POST, true));
+			exit($failFlag);
+		}
+		
+		$mOrder->set('status', Order::ORDER_STATUS_WAIT_SEND);
+		$mOrder->set('pay_time', NOW_TIME);
+		$mOrder->save();
+		if($mOrder->order_type == Order::ORDER_TYPE_SPECIAL){
+			foreach($mOrder->order_info as $ordernum){
+				$mOrder = Order::findOne(['order_number' => $ordernum]);
+				if(!$mOrder){
+					Yii::info('找不到订单信息:' . var_export($_POST, true));
+					exit($failFlag);
+				}
+				$mOrder->set('status', Order::ORDER_STATUS_WAIT_SEND);
+				$mOrder->set('pay_time', NOW_TIME);
+				$mOrder->save();
+			}
 		}
 	}
 	
