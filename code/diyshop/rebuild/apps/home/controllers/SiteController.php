@@ -11,6 +11,7 @@ use common\model\Order;
  * 站点控制器
  */
 class SiteController extends \yii\web\Controller{
+	public $enableCsrfValidation = false;
 	public function actions(){
 		return [
 			'error' => [
