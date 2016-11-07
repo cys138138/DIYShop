@@ -274,7 +274,7 @@ return [
 			'partner_id' => '2088521148380255',
 			'key' => 'u4kvc5qxf1ma3vze8p5fijkfobqcxudg',
 			'private_key_path' => Yii::getAlias('@umeworld') . '/lib/MobileAlipay/key/rsa_private_key.pem',
-			'ali_public_key_path' => Yii::getAlias('@umeworld') . '/lib/MobileAlipay/key/alipay_public_key.pem',
+			'ali_public_key_path' => Yii::getAlias('@umeworld') . '/lib/MobileAlipay/key/rsa_public_key.pem',
 			'cacert_pem' => Yii::getAlias('@umeworld') . '/lib/MobileAlipay/key/cacert.pem',
 			'alipay_gateway_new' => 'https://mapi.alipay.com/gateway.do?',//http://wappaygw.alipay.com/service/rest.htm?',
 			'https_verify_url' => 'https://mapi.alipay.com/gateway.do?service=notify_verify&',
