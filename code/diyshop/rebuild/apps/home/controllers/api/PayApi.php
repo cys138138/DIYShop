@@ -13,7 +13,7 @@ trait PayApi{
 		if($paramStr){
 			$sign = Yii::$app->mobileAlipay->buildRequestMysign($paramStr);
 			
-			return new Response('sign', 1, $sign);
+			return new Response('sign', 1, urlencode($sign));
 		}else{
 			$nonceStr = Yii::$app->request->post('nonce_str');
 			$outTradeNo = Yii::$app->request->post('out_trade_no');
