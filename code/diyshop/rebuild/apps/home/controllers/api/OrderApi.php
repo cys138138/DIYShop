@@ -489,6 +489,7 @@ trait OrderApi{
 	}
 	
 	private function orderPayCallback(){
+		return new Response('接口不可用', 0);
 		$userToken = (string)Yii::$app->request->post('user_token');
 		$orderNumber = (string)Yii::$app->request->post('order_number');
 		
