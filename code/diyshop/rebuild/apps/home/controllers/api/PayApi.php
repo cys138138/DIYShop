@@ -11,9 +11,26 @@ trait PayApi{
 		$paramStr = Yii::$app->request->post('order_info');
 		
 		if($paramStr){
-			$sign = Yii::$app->mobileAlipay->buildRequestMysign($paramStr);
-			
-			return new Response('sign', 1, urlencode($sign));
+			$sign = '';
+			if(is_array($paramStr)){
+				$aParam = [];
+				while (list ($key, $val) = each ($paramStr)) {
+					if($key == "sign" || $key == "sign_type" || $val == ""){
+						continue;
+					}else{
+						$aParam[$key] = $paramStr[$key];
+					}
+				}
+				ksort($aParam);
+				reset($aParam);
+				$sign = Yii::$app->mobileAlipay->buildRequestMysign($aParam);
+				
+				return new Response('sign', 1, $sign);
+			}else{
+				$sign = Yii::$app->mobileAlipay->buildRequestMysign($paramStr);
+				
+				return new Response('sign', 1, urlencode($sign));
+			}
 		}else{
 			$nonceStr = Yii::$app->request->post('nonce_str');
 			$outTradeNo = Yii::$app->request->post('out_trade_no');
