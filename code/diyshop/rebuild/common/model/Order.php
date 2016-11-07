@@ -100,7 +100,7 @@ class Order extends \common\lib\DbOrmModel{
 	/**
 	 *	处理失效订单，将3日前的订单失效，并调整库存
 	 */
-	public static function setOrderFailure(){Yii::info('haha');
+	public static function setOrderFailure(){
 		set_time_limit(0);
 		$venderId = (int)Yii::$app->request->get('vender_id');
 		
@@ -132,6 +132,9 @@ class Order extends \common\lib\DbOrmModel{
 				}
 			}
 			$aOrderIds = ArrayHelper::getColumn($aOrderList, 'id');
+			if(!$aOrderIds){
+				return;
+			}
 			$sql = 'update `' . static::tableName() . '` set `status`=' . static::ORDER_STATUS_FAILURE . ' where `id` in(' . implode(',', $aOrderIds) . ')';
 			Yii::$app->db->createCommand($sql)->execute();
 			foreach($aDressSizeColorCountInfo as $dressSizeColorCountId => $count){
