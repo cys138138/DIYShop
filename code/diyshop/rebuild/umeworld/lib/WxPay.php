@@ -43,11 +43,7 @@ class PayNotifyCallBack extends WxPayNotify
 			$msg = "输入参数不正确";
 			return false;
 		}
-		//查询订单，判断订单真实性
-		if(!$this->Queryorder($data["transaction_id"])){
-			$msg = "订单查询失败";
-			return false;
-		}
+		
 		return true;
 	}
 }

@@ -19,6 +19,7 @@ class Order extends \common\lib\DbOrmModel{
 	const ORDER_STATUS_EXCHANGE = 5;		//退换货
 	const ORDER_STATUS_FINISH = 6;			//确认收货
 	const ORDER_STATUS_FAILURE = 7;			//失效
+	const ORDER_STATUS_CLOSE = 8;			//交易关闭
 
 	public static function tableName(){
 		return Yii::$app->db->parseTable('_@order');

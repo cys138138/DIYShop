@@ -157,6 +157,7 @@ trait OrderApi{
 				'status' => Order::ORDER_STATUS_WAIT_PAY,
 				'buyer_msg' => $buyerMsg,
 				'express_info' => [],
+				'is_comment' => 0,
 				'create_time' => NOW_TIME,
 				'pay_time' => 0,
 				'deliver_time' => 0,
@@ -187,6 +188,7 @@ trait OrderApi{
 				'status' => Order::ORDER_STATUS_WAIT_PAY,
 				'buyer_msg' => $buyerMsg,
 				'express_info' => [],
+				'is_comment' => 0,
 				'create_time' => NOW_TIME,
 				'pay_time' => 0,
 				'deliver_time' => 0,
@@ -261,7 +263,10 @@ trait OrderApi{
 		if(!$mUser){
 			return new Response('找不到用户信息', 2201);
 		}
-		$aCondition = ['order_type' => Order::ORDER_TYPE_NORMAL];
+		$aCondition = [
+			'user_id' => $userId,
+			'order_type' => Order::ORDER_TYPE_NORMAL,
+		];
 		if($status){
 			$aCondition['status'] = $status;
 		}
@@ -362,13 +367,13 @@ trait OrderApi{
 				if(!$mOrderTemp){
 					return new Response('找不到订单信息', 2404);
 				}
-				if($mOrderTemp->status != Order::ORDER_STATUS_FINISH || $mOrderTemp->status != Order::ORDER_STATUS_FAILURE){
+				if($mOrderTemp->status != Order::ORDER_STATUS_FINISH || $mOrderTemp->status != Order::ORDER_STATUS_FAILURE || $mOrderTemp->status != Order::ORDER_STATUS_CLOSE){
 					return new Response('订单不可删除', 2403);
 				}
 				$mOrderTemp->delete();
 			}
 		}else{
-			if($mOrder->status != Order::ORDER_STATUS_FINISH || $mOrder->status != Order::ORDER_STATUS_FAILURE){
+			if($mOrder->status != Order::ORDER_STATUS_FINISH || $mOrder->status != Order::ORDER_STATUS_FAILURE || $mOrder->status != Order::ORDER_STATUS_CLOSE){
 				return new Response('订单不可删除', 2403);
 			}
 		}
@@ -377,15 +382,59 @@ trait OrderApi{
 		return new Response('删除订单成功', 1);
 	}
 	
+	private function closeOrder(){
+		$userToken = Yii::$app->request->post('user_token');
+		$orderNumber = Yii::$app->request->post('order_number');
+		
+		if(!$userToken){
+			return new Response('缺少user_token', 4101);
+		}
+		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 4101);
+		}
+		
+		if(!$orderNumber){
+			return new Response('缺少order_number', 4102);
+		}
+		
+		$mOrder = Order::findOne([
+			'user_id' => $userId,
+			'order_number' => $orderNumber,
+		]);
+		if(!$mOrder){
+			return new Response('找不到订单信息', 4103);
+		}
+		if($mOrder->order_type == Order::ORDER_TYPE_SPECIAL){
+			foreach($mOrder->order_info as $orderNum){
+				$mOrderTemp = Order::findOne([
+					'user_id' => $userId,
+					'order_number' => $orderNum,
+				]);
+				if(!$mOrderTemp){
+					return new Response('找不到订单信息', 4104);
+				}
+				if($mOrderTemp->status != Order::ORDER_STATUS_WAIT_PAY || $mOrderTemp->status != Order::ORDER_STATUS_EXCHANGE){
+					return new Response('订单不可关闭交易', 4103);
+				}
+				$mOrderTemp->set('status', Order::ORDER_STATUS_CLOSE);
+				$mOrderTemp->save();
+			}
+		}else{
+			if($mOrder->status != Order::ORDER_STATUS_WAIT_PAY || $mOrder->status != Order::ORDER_STATUS_EXCHANGE){
+				return new Response('订单不可关闭交易', 4103);
+			}
+		}
+		$mOrder->set('status', Order::ORDER_STATUS_CLOSE);
+		$mOrder->save();
+		
+		return new Response('关闭交易成功', 1);
+	}
+	
 	private function commentDress(){
 		$userToken = Yii::$app->request->post('user_token');
 		$aCommentInfo = Yii::$app->request->post('aCommentInfo');
-		
-		$dressId = Yii::$app->request->post('dress_id');
-		$descPoint = Yii::$app->request->post('desc_point');
-		$deliveryPoint = Yii::$app->request->post('delivery_point');
-		$servicePoint = Yii::$app->request->post('service_point');
-		$comment = Yii::$app->request->post('comment');
 		
 		if(!$userToken){
 			return new Response('缺少user_token', 2501);
@@ -416,22 +465,27 @@ trait OrderApi{
 			if(!isset($aComment['comment'])){
 				return new Response('缺少comment', 2506);
 			}
-			$mDress = Dress::findOne($aComment['dress_id']);
-			if(!$mDress){
-				return new Response('找不到服饰', 2507);
+			$mOrder = Order::findOne(['order_number' => $aComment['order_number']]);
+			if(!$mOrder){
+				return new Response('订单不存在', 2507);
 			}
 			$isSuccess = DressComment::insert([
-				'dress_id' => $mDress->id,
+				'order_number' => $aComment['order_number'],
+				'dress_id' => isset($aComment['dress_id']) ? $aComment['dress_id'] : 0,
 				'user_id' => $userId,
 				'desc_point' => $aComment['desc_point'],
 				'delivery_point' => $aComment['delivery_point'],
 				'service_point' => $aComment['service_point'],
 				'comment' => $aComment['comment'],
+				'pics' => $aComment['pics'],
+				'is_anonymous' => $aComment['is_anonymous'] ? 1 : 0,
 				'create_time' => NOW_TIME,
 			]);
 			if(!$isSuccess){
 				return new Response('评论失败', 2508);
 			}
+			$mOrder->set('is_comment', 1);
+			$mOrder->save();
 		}
 		return new Response('评论成功', 1);
 	}

@@ -6,6 +6,7 @@ use umeworld\lib\Query;
 use yii\helpers\ArrayHelper;
 
 class DressComment extends \common\lib\DbOrmModel{
+	protected $_aEncodeFields = ['pics'];
 
 	public static function tableName(){
 		return Yii::$app->db->parseTable('_@dress_comment');
@@ -30,6 +31,7 @@ class DressComment extends \common\lib\DbOrmModel{
 			$aUserList = User::getList($aUserIds);
 		}
 		foreach($aList as $key => $aValue){
+			$aList[$key]['pics'] = json_decode($aValue['pics'], 1);
 			foreach($aUserList as $k => $v){
 				if($aValue['user_id'] == $v['id']){
 					$mUser = User::toModel($v);
