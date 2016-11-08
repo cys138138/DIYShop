@@ -41,6 +41,10 @@
 						}
 
 						var aResult = $.parseJSON(oPre.innerHTML);
+						if(typeof(aResult.status) == 'undefined'){
+							UBox.show('上传出错！请稍后再试');
+							return;
+						}
 						aOptions.callback(aResult, oThis, file, url);
 
 						$oForm.remove();
