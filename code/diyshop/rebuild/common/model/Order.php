@@ -118,32 +118,39 @@ class Order extends \common\lib\DbOrmModel{
 			];
 			$aOrderList = static::getList($aCondition, $aControl);
 			
-			$aDressSizeColorCountInfo = [];
-			foreach($aOrderList as $key => $aOrder){
-				$mOrder = static::toModel($aOrder);
-				if(!$mOrder->order_type){
-					foreach($mOrder->order_info as $aOrderInfo){
-						if(isset($aOrderInfo['item_size_color_count_info']) && isset($aOrderInfo['item_size_color_count_info']['id'])){
-							if(!isset($aDressSizeColorCountInfo[$aOrderInfo['item_size_color_count_info']['id']])){
-								$aDressSizeColorCountInfo[$aOrderInfo['item_size_color_count_info']['id']] = 0;
-							}
-							$aDressSizeColorCountInfo[$aOrderInfo['item_size_color_count_info']['id']] += $aOrderInfo['item_count'];
+			static::returnOrderDressStock($aOrderList);
+		}
+	}
+	
+	/**
+	 *	返回订单库存
+	 */
+	public static function returnOrderDressStock($aOrderList = []){
+		$aDressSizeColorCountInfo = [];
+		foreach($aOrderList as $key => $aOrder){
+			$mOrder = static::toModel($aOrder);
+			if(!$mOrder->order_type){
+				foreach($mOrder->order_info as $aOrderInfo){
+					if(isset($aOrderInfo['item_size_color_count_info']) && isset($aOrderInfo['item_size_color_count_info']['id'])){
+						if(!isset($aDressSizeColorCountInfo[$aOrderInfo['item_size_color_count_info']['id']])){
+							$aDressSizeColorCountInfo[$aOrderInfo['item_size_color_count_info']['id']] = 0;
 						}
+						$aDressSizeColorCountInfo[$aOrderInfo['item_size_color_count_info']['id']] += $aOrderInfo['item_count'];
 					}
 				}
 			}
-			$aOrderIds = ArrayHelper::getColumn($aOrderList, 'id');
-			if(!$aOrderIds){
-				return;
-			}
-			$sql = 'update `' . static::tableName() . '` set `status`=' . static::ORDER_STATUS_FAILURE . ' where `id` in(' . implode(',', $aOrderIds) . ')';
-			Yii::$app->db->createCommand($sql)->execute();
-			foreach($aDressSizeColorCountInfo as $dressSizeColorCountId => $count){
-				$mDressSizeColorCount = DressSizeColorCount::findOne($dressSizeColorCountId);
-				if($mDressSizeColorCount && $count){
-					$mDressSizeColorCount->set('stock', ['add', $count]);
-					$mDressSizeColorCount->save();
-				}
+		}
+		$aOrderIds = ArrayHelper::getColumn($aOrderList, 'id');
+		if(!$aOrderIds){
+			return;
+		}
+		$sql = 'update `' . static::tableName() . '` set `status`=' . static::ORDER_STATUS_FAILURE . ' where `id` in(' . implode(',', $aOrderIds) . ')';
+		Yii::$app->db->createCommand($sql)->execute();
+		foreach($aDressSizeColorCountInfo as $dressSizeColorCountId => $count){
+			$mDressSizeColorCount = DressSizeColorCount::findOne($dressSizeColorCountId);
+			if($mDressSizeColorCount && $count){
+				$mDressSizeColorCount->set('stock', ['add', $count]);
+				$mDressSizeColorCount->save();
 			}
 		}
 	}

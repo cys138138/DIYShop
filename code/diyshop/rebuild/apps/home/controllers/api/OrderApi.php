@@ -429,6 +429,9 @@ trait OrderApi{
 		$mOrder->set('status', Order::ORDER_STATUS_CLOSE);
 		$mOrder->save();
 		
+		$aOrderList = Order::getList(['order_number' => $orderNumber]);
+		Order::returnOrderDressStock($aOrderList);
+		
 		return new Response('关闭交易成功', 1);
 	}
 	
@@ -464,6 +467,9 @@ trait OrderApi{
 			}
 			if(!isset($aComment['comment'])){
 				return new Response('缺少comment', 2506);
+			}
+			if(!isset($aComment['order_number'])){
+				return new Response('缺少order_number', 2507);
 			}
 			$mOrder = Order::findOne(['order_number' => $aComment['order_number']]);
 			if(!$mOrder){
