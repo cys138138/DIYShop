@@ -31,11 +31,10 @@ class WxPay extends WxPayApi{
 
 class PayNotifyCallBack extends WxPayNotify
 {	
-	public $aResult = [];
 	//重写回调处理函数
 	public function NotifyProcess($data, &$msg)
 	{
-		$this->aResult = $data;
+		$this->SetData('return_data', $data);
 		Yii::info("call back:" . json_encode($data));
 		$notfiyOutput = array();
 		

@@ -52,12 +52,12 @@ class SiteController extends \yii\web\Controller{
 	 * 微信支付异步通知
 	 */
 	public function actionWeixinNotify(){
-		Yii::info(var_export($_POST, true));
 		$oWxPayNotify = Yii::$app->wxpay->payNotifyCallBack();
-		Yii::info(var_export($oWxPayNotify->aResult, true));
-		if(isset($oWxPayNotify->aResult['return_code']) && $oWxPayNotify->aResult['return_code'] == 'SUCCESS'){ 
+		$aReturnData = $oWxPayNotify->GetValues();
+		Yii::info(var_export($aReturnData, true));
+		if(isset($aReturnData['return_code']) && $aReturnData['return_code'] == 'SUCCESS'){ 
 			//支付成功
-			$this->_afterPaySuccess($oWxPayNotify->aResult['out_trade_no']);
+			$this->_afterPaySuccess($aReturnData['return_data']['out_trade_no']);
 		}else{
 			//支付失败
 
