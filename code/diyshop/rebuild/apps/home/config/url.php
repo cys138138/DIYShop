@@ -19,7 +19,6 @@ return [
 		'alipay/notify.html'													=> 'site/alipay-notify-mobile',
 		'weixin/notify.html'													=> 'site/weixin-notify',
 		'site/order-failure.html'												=> 'site/order-failure',
-		'site/alipay-test.html'													=> 'site/alipay-test',
 		
 		
 		'index.html'															=> 'login/index',
