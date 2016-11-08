@@ -57,7 +57,7 @@ class SiteController extends \yii\web\Controller{
 		Yii::info(var_export($aReturnData, true));
 		if(isset($aReturnData['return_code']) && $aReturnData['return_code'] == 'SUCCESS'){ 
 			//支付成功
-			$this->_afterPaySuccess($aReturnData['return_data']['out_trade_no']);
+			$this->_afterPaySuccess($aReturnData['out_trade_no']);
 		}else{
 			//支付失败
 

@@ -34,7 +34,11 @@ class PayNotifyCallBack extends WxPayNotify
 	//重写回调处理函数
 	public function NotifyProcess($data, &$msg)
 	{
-		$this->SetData('return_data', $data);
+		if(is_array($data)){
+			foreach($data as $key => $value){
+				$this->SetData($key, $value);
+			}
+		}
 		Yii::info("call back:" . json_encode($data));
 		$notfiyOutput = array();
 		
