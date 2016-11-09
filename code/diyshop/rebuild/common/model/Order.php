@@ -154,4 +154,15 @@ class Order extends \common\lib\DbOrmModel{
 			}
 		}
 	}
+	
+	public static function updateDressSaleCount($aOrderInfo = []){
+		foreach($aOrderInfo as $aOrder){
+			if(isset($aOrder['item_info']) && isset($aOrder['item_count']) && isset($aOrder['item_info']['id'])){
+				$mDress = Dress::toModel($aOrder['item_info']);
+				$mDress->set('sale_count', ['add', $aOrder['item_count']]);
+				$mDress->save();
+			}
+		}
+	}
+	
 }

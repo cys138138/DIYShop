@@ -126,14 +126,17 @@ class SiteController extends \yii\web\Controller{
 				$mOrder->set('status', Order::ORDER_STATUS_WAIT_SEND);
 				$mOrder->set('pay_time', NOW_TIME);
 				$mOrder->save();
+				Order::updateDressSaleCount($mOrder->order_info);
 			}
+		}else{
+			Order::updateDressSaleCount($mOrder->order_info);
 		}
 	}
 	
 	/**
 	 *	处理失效订单，将3日前的订单失效，并调整库存
 	 */
-	public function actionOrderFailure(){$this->_alipay('2b5ed7f95637a95e4e6a0bc638790b82', 0.01);exit;
+	public function actionOrderFailure(){
 		$venderId = (int)Yii::$app->request->get('vender_id');
 		
 		Order::setOrderFailure($venderId);
