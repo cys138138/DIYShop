@@ -168,6 +168,15 @@ trait DressApi{
 	private function getDressCatalogTree(){
 		$aList = DressCatalog::getDressCatalogTree();
 		
+		foreach($aList as $key => $aValue){
+			if(!$aValue['pid']){
+				$aList[$key]['dress_count'] = Dress::getCount([
+					'catalog_id' => $aValue['id'],
+					'status' => Dress::ON_SALES_STATUS,
+				]);
+			}
+		}
+		
 		return new Response('服饰分类树', 1, $aList);	
 	}
 	
