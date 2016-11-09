@@ -104,6 +104,7 @@ trait DressApi{
 		
 		foreach($aList as $key => $aValue){
 			$aList[$key]['is_collection'] = 0;
+			$aList[$key]['collection_count'] = UserDressCollection::getCount(['dress_id' => $aValue['id']]);
 			foreach($aUserDressCollectionList as $k => $v){
 				if($v['dress_id'] == $aValue['id']){
 					$aList[$key]['is_collection'] = 1;
