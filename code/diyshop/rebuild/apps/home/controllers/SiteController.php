@@ -159,7 +159,7 @@ class SiteController extends \yii\web\Controller{
 		$aVoteRecord = VoteRecord::findAll(['identity' => md5($dressId)]);
 		$aUserIds = ArrayHelper::getColumn($aVoteRecord, 'user_id');
 		if($aUserIds){
-			Yii::$app->jpush->sendNotification('您投票的服饰上线了', '标题', 1, [], [
+			Yii::$app->jpush->sendNotification('亲爱的用户，您有喜欢的服饰上架了', '亲爱的用户，您有喜欢的服饰上架了', 1, [], [
 				'dress_id' => $mDress->id,
 				'user_ids' => $aUserIds,
 			]);

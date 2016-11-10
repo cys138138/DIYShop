@@ -47,8 +47,8 @@ return [
 
 		'jpush'=>[
 			'class' => 'umeworld\lib\Jpush',
-			'appKey' => '863ff5e5eecfa228c1cc625c',
-			'masterSecret' => 'f728efd3424a124159ca4eb7',
+			'appKey' => '863ff5e5eecfa228c1cc625cU',
+			'masterSecret' => 'f728efd3424a124159ca4eb7U',
 		],
 
 		'qiniu'=>[
