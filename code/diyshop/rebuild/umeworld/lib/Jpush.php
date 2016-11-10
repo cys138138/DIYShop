@@ -38,8 +38,8 @@ class Jpush extends \yii\base\Component {
 		$oClient = new JPushClient($this->appKey, $this->masterSecret);
 		try {
 			$oClient->push()
-				->setPlatform(M\Platform('android'))
-				->setAudience(M\Audience(M\alias($aReceiverAliases)))
+				->setPlatform(M\all)
+				->setAudience(M\all)
 				->setMessage(M\message($alert, $title, (string)$type, $aExtras))
 				->send();
 		} catch (APIRequestException $e) {

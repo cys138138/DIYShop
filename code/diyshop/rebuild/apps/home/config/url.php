@@ -19,6 +19,7 @@ return [
 		'alipay/notify.html'													=> 'site/alipay-notify-mobile',
 		'weixin/notify.html'													=> 'site/weixin-notify',
 		'site/order-failure.html'												=> 'site/order-failure',
+		'site/dress-on-sale-jpush-to-user.html'									=> 'site/dress-on-sale-jpush-to-user',
 		
 		
 		'index.html'															=> 'login/index',

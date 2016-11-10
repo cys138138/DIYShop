@@ -18,6 +18,7 @@ use common\model\ManagerDressMatch;
 use common\model\form\DressListForm;
 use common\model\form\ImageUploadForm;
 use yii\web\UploadedFile;
+use umeworld\lib\Xxtea;
 
 class DressManageController extends VController{
 	
@@ -206,7 +207,10 @@ class DressManageController extends VController{
 		$mDress->saveSizeColorCount($aSizeColorCount);
 		$mDress->saveTag($aTag);
 		$mDress->saveMaterial($aMaterial);
-		
+		if($status == Dress::ON_SALES_STATUS){
+			//服饰上架的时候看看这个服饰是否有投票用户，有的话jpush个消息给用户
+			Http::sendNotWaitGetRequest(Yii::$app->urlManagerHome->createUrl(['site/dress-on-sale-jpush-to-user']), ['dress_id' => Xxtea::encrypt($mDress->id)]);
+		}
 		return new Response('保存成功', 1);
 	}
 	

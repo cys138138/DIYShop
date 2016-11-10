@@ -5,7 +5,11 @@ use Yii;
 use home\lib\Controller;
 use umeworld\lib\Response;
 use umeworld\lib\Url;
+use umeworld\lib\Xxtea;
 use common\model\Order;
+use common\model\Dress;
+use common\model\VoteRecord;
+use yii\helpers\ArrayHelper;
 
 /**
  * 站点控制器
@@ -140,6 +144,26 @@ class SiteController extends \yii\web\Controller{
 		$venderId = (int)Yii::$app->request->get('vender_id');
 		
 		Order::setOrderFailure($venderId);
+	}
+
+	/**
+	 *	服饰上架的时候看看这个服饰是否有投票用户，有的话jpush个消息给用户
+	 */
+	public function actionDressOnSaleJpushToUser(){
+		$dressIdStr = (string)Yii::$app->request->get('dress_id');
+		$dressId = Xxtea::decrypt($dressIdStr);
+		$mDress = Dress::findOne($dressId);
+		if(!$mDress){
+			return;
+		}
+		$aVoteRecord = VoteRecord::findAll(['identity' => md5($dressId)]);
+		$aUserIds = ArrayHelper::getColumn($aVoteRecord, 'user_id');
+		if($aUserIds){
+			Yii::$app->jpush->sendNotification('您投票的服饰上线了', '标题', 1, [], [
+				'dress_id' => $mDress->id,
+				'user_ids' => $aUserIds,
+			]);
+		}
 	}
 
 }
