@@ -39,7 +39,7 @@ class Jpush extends \yii\base\Component {
 		try {
 			$oClient->push()
 				->setPlatform(M\all)
-				->setAudience(M\all)
+				->setAudience(M\Audience(M\alias($aReceiverAliases)))
 				->setMessage(M\message($alert, $title, (string)$type, $aExtras))
 				->send();
 		} catch (APIRequestException $e) {
