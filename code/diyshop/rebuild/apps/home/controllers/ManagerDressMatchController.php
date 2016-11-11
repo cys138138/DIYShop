@@ -7,6 +7,7 @@ use umeworld\lib\Response;
 use umeworld\lib\Url;
 use common\model\DressCatalog;
 use common\model\ManagerDressMatch;
+use common\model\VenderDressMatch;
 use common\model\form\ManagerDressMatchListForm;
 use common\model\form\ImageUploadForm;
 use yii\web\UploadedFile;
@@ -124,6 +125,10 @@ class ManagerDressMatchController extends MController{
 		$mManagerDressMatch = ManagerDressMatch::findOne($id);
 		if(!$mManagerDressMatch){
 			return new Response('找不到搭配信息', 0);
+		}
+		$aVenderDressMatchList = VenderDressMatch::findAll(['manager_dress_match_id' => $id]);
+		if($aVenderDressMatchList){
+			return new Response('些搭配还有商家正在使用，不能删除', -1);
 		}
 		$isSuccess = $mManagerDressMatch->delete();
 		if(!$isSuccess){
