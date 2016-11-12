@@ -945,6 +945,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		$('.J-status').val(<?php echo $aDress['status']; ?>);
 		$('.J-is-hot').val(<?php echo $aDress['is_hot']; ?>);
 		$('.J-sex').val(<?php echo $aDress['sex']; ?>);
+		$('.J-catalog').val(<?php echo $aDress['catalog_id']; ?>);
 		<?php } ?>
 		init();
 		$('.J-add-pics-btn').AjaxUpload({

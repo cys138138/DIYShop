@@ -27,6 +27,8 @@ class VenderDressMatch extends \common\lib\DbOrmModel{
 		
 		$aManagerDressMatchIds = ArrayHelper::getColumn($aList, 'manager_dress_match_id');
 		$aManagerDressMatchList = ManagerDressMatch::getList(['id' => $aManagerDressMatchIds]);
+		$aCatalogIds = ArrayHelper::getColumn($aList, 'catalog_id');
+		$aCatalogList = DressCatalog::findAll(['id' => $aCatalogIds]);
 		/*$aDressCatalogIds = ArrayHelper::getColumn($aManagerDressMatchList, 'catalog_id');
 		$aDressCatalogList = DressCatalog::findAll(['id' => $aDressCatalogIds]);
 		foreach($aManagerDressMatchList as $k => $v){
@@ -39,11 +41,20 @@ class VenderDressMatch extends \common\lib\DbOrmModel{
 		foreach($aList as $key => $aValue){
 			$aList[$key]['detail_pics'] = json_decode($aValue['detail_pics'], 1);
 			$aList[$key]['pics'] = json_decode($aValue['pics'], 1);
+			$aList[$key]['catalog_info'] = [];
 			foreach($aManagerDressMatchList as $k => $v){
 				if($v['id'] == $aValue['manager_dress_match_id']){
 					$aList[$key]['catalog_id'] = $v['catalog_id'];
 					$aList[$key]['catalog_info'] = $v['catalog_info'];
 					$aList[$key]['sex'] = $v['sex'];
+				}
+			}
+			if(!$aValue['manager_dress_match_id']){
+				foreach($aCatalogList as $aCatalog){
+					if($aCatalog['id'] == $aValue['catalog_id']){
+						$aList[$key]['catalog_info'] = $aCatalog;
+						break;
+					}
 				}
 			}
 		}

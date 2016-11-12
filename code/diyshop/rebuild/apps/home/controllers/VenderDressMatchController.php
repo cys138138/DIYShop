@@ -25,7 +25,11 @@ class VenderDressMatchController extends VController{
 		
 		foreach($aList as $key => $aValue){
 			$aList[$key]['catalog_path'] = DressCatalog::getDressCatalogPath($aValue['catalog_id']);
-			$aList[$key]['sex_str'] = $aValue['sex'] == \common\model\User::SEX_BOY ? '男' : '女';
+			if(!isset($aValue['sex'])){
+				$aList[$key]['sex_str'] = '';
+			}else{
+				$aList[$key]['sex_str'] = $aValue['sex'] == \common\model\User::SEX_BOY ? '男' : '女';
+			}
 		}
 		
 		return $this->render('show-list', [
@@ -86,6 +90,7 @@ class VenderDressMatchController extends VController{
 		$name = (string)Yii::$app->request->post('name');
 		$price = (string)Yii::$app->request->post('price');
 		$managerDressMatchId = (int)Yii::$app->request->post('managerDressMatchId');
+		$catalogId = (int)Yii::$app->request->post('catalogId');
 		$aDetailPics = (array)Yii::$app->request->post('aDetailPics');
 		$aPics = (array)Yii::$app->request->post('aPics');
 		$zhenPic = (string)Yii::$app->request->post('zhenPic');
@@ -94,10 +99,15 @@ class VenderDressMatchController extends VController{
 		if(!$name){
 			return new Response('请填写搭配别名', -1);
 		}
-		
-		$mManagerDressMatch = ManagerDressMatch::findOne($managerDressMatchId);
-		if(!$mManagerDressMatch){
-			return new Response('找不到搭配信息', -1);
+		if($managerDressMatchId){
+			$mManagerDressMatch = ManagerDressMatch::findOne($managerDressMatchId);
+			if(!$mManagerDressMatch){
+				return new Response('找不到搭配信息', -1);
+			}
+		}
+		$mDressCatalog = DressCatalog::findOne($catalogId);
+		if(!$mDressCatalog){
+			return new Response('找不到分类目录', -1);
 		}
 		//$aPics = array_values(array_diff($aPics, $mManagerDressMatch->pics));
 		$isSuccess = false;
@@ -106,6 +116,7 @@ class VenderDressMatchController extends VController{
 			if($mVenderDressMatch){
 				$mVenderDressMatch->set('vender_id', Yii::$app->vender->id);
 				$mVenderDressMatch->set('name', $name);
+				$mVenderDressMatch->set('catalog_id', $catalogId);
 				$mVenderDressMatch->set('price', $price);
 				$mVenderDressMatch->set('manager_dress_match_id', $managerDressMatchId);
 				$mVenderDressMatch->set('detail_pics', $aDetailPics);
@@ -119,6 +130,7 @@ class VenderDressMatchController extends VController{
 			$isSuccess = VenderDressMatch::insert([
 				'vender_id' => Yii::$app->vender->id,
 				'name' => $name,
+				'catalog_id' => $catalogId,
 				'price' => $price,
 				'manager_dress_match_id' => $managerDressMatchId,
 				'detail_pics' => $aDetailPics,

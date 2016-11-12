@@ -29,7 +29,7 @@ class DressCatalog extends \common\lib\DbOrmModel{
 	}
 	
 	public static function getDressCatalogTree(){
-		$aDressCatalogList = static::findAll();
+		$aDressCatalogList = static::findAll(null, null, 0, 0, ['id' => SORT_DESC]);
 		$aList = [];
 		foreach($aDressCatalogList as $key => $aValue){
 			if(!$aValue['pid']){

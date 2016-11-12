@@ -396,10 +396,35 @@ trait UserApi{
 		$mMark->save();
 		
 		$mUser = User::findOne($userId);
-		$mUser->set('gold', ['add', $mMark->mark_continuous]);
-		$mUser->save();
+		$gold = 0;
+		if($mMark->mark_continuous <= 3){
+			$gold = 1;
+		}else{
+			$a1 = [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5];
+			$a2 = [-15, -14, -13, -12, -11, -10, -9, -8, -7, -6, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+			$a3 = [-20, 20];
+			$rand = mt_rand(1, 100);
+			if($rand <= 80){
+				$gold = $a1[mt_rand(0, count($a1) - 1)];
+			}elseif($rand > 80 && $rand <= 95){
+				$gold = $a2[mt_rand(0, count($a2) - 1)];
+			}elseif($rand > 95){
+				$gold = $a3[mt_rand(0, count($a3) - 1)];
+			}
+		}
+		if($gold < 0){
+			if($mUser->gold + $gold < 0){
+				$mUser->set('gold', 0);
+			}else{
+				$mUser->set('gold', ['sub', -$gold]);
+			}
+			$mUser->save();
+		}elseif($gold > 0){
+			$mUser->set('gold', ['add', $gold]);
+			$mUser->save();
+		}
 		
-		return new Response('签到成功', 1);
+		return new Response('签到成功', 1, $gold);
 	}
 	
 }

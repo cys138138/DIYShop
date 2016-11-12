@@ -56,14 +56,14 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			</select>
 			<br />
 		</div>
-		<div class="form-group">
+		<!--<div class="form-group">
 			<label>性别</label>
 			<select class="J-sex form-control">
 				<option value="<?php echo \common\model\User::SEX_BOY; ?>">男</option>
 				<option value="<?php echo \common\model\User::SEX_GIRL; ?>">女</option>
 			</select>
 			<br />
-		</div>
+		</div>-->
 		<div class="form-group">
 			<label>价格</label>
 			<input class="J-price form-control" placeholder="价格" value="<?php echo $aDressMatch ? $aDressMatch['price'] : ''; ?>">
@@ -219,6 +219,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	function save(o){
 		var id = $('.J-id').val();
 		var name = $('.J-name').val();
+		var catalogId = $('.J-catalog-id').val();
 		var price = $('.J-price').val();
 		var sex = $('.J-sex').val();
 		var managerDressMatchId = $('.J-manager-dress-match-list').val();
@@ -244,6 +245,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			data : {
 				id : id,
 				name : name,
+				catalogId : catalogId,
 				price : price,
 				managerDressMatchId : managerDressMatchId,
 				aDetailPics : aDetailPics,
@@ -432,7 +434,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		<?php if($aDressMatch){ ?>
 			$('.J-catalog').val(<?php echo $aDressMatch['dress_catalog']['pid']; ?>);
 			$('.J-catalog-id').val(<?php echo $aDressMatch['dress_catalog']['id']; ?>);
-			$('.J-sex').val(<?php echo $aDressMatch['sex']; ?>);
+			$('.J-sex').val(<?php echo isset($aDressMatch['sex']) && $aDressMatch['sex'] ? $aDressMatch['sex'] : 1; ?>);
 			setTimeout(function(){
 				setZhenFanPic('<?php echo $aDressMatch['zhen_pic']; ?>', '<?php echo $aDressMatch['fan_pic']; ?>');
 				/*$('.J-pics-list').html('');

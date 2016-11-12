@@ -475,6 +475,9 @@ trait OrderApi{
 			if(!$mOrder){
 				return new Response('订单不存在', 2507);
 			}
+			if(!isset($aComment['pics'])){
+				$aComment['pics'] = [];
+			}
 			$isSuccess = DressComment::insert([
 				'order_number' => $aComment['order_number'],
 				'dress_id' => isset($aComment['dress_id']) ? $aComment['dress_id'] : 0,
