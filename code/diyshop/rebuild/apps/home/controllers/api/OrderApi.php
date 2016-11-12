@@ -536,6 +536,7 @@ trait OrderApi{
 			'reason' => $reason,
 			'desc' => $desc,
 			'pics' => $aPics,
+			'is_handle' => 0,
 			'create_time' => NOW_TIME,
 		]);
 		if(!$isSuccess){

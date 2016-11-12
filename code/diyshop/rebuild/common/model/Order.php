@@ -95,7 +95,7 @@ class Order extends \common\lib\DbOrmModel{
 	}
 	
 	public static function generateOrderNum(){
-		return md5(NOW_TIME . mt_rand(1000, 9999));
+		return date('YmdHis', NOW_TIME) . mt_rand(10, 99);
 	}
 	
 	/**

@@ -78,6 +78,8 @@ return [
 		'order-manage/show-list.html'											=> 'order-manage/show-list',
 		'order-manage/save-express-info.json'									=> 'order-manage/save-express-info',
 		'order-manage/sure-send-goods.json'										=> 'order-manage/sure-send-goods',
+		'order-manage/show-return-exchange-list.html'							=> 'order-manage/show-return-exchange-list',
+		'order-manage/sure-return-exchange.json'								=> 'order-manage/sure-return-exchange',
 		
 		
 		

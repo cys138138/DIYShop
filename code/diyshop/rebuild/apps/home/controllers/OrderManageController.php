@@ -6,7 +6,9 @@ use home\lib\VenderController as VController;
 use umeworld\lib\Response;
 use umeworld\lib\Url;
 use common\model\Order;
+use common\model\ReturnExchange;
 use common\model\form\OrderListForm;
+use common\model\form\ReturnExchangeListForm;
 
 class OrderManageController extends VController{
 	
@@ -66,6 +68,51 @@ class OrderManageController extends VController{
 		$mOrder->set('status', Order::ORDER_STATUS_WAIT_RECEIVE);
 		$mOrder->set('deliver_time', NOW_TIME);
 		$mOrder->save();
+		
+		return new Response('操作成功', 1);
+	}
+	
+	public function actionShowReturnExchangeList(){
+		$oReturnExchangeListForm = new ReturnExchangeListForm();
+		$aParams = Yii::$app->request->get();
+		if($aParams && (!$oReturnExchangeListForm->load($aParams, '') || !$oReturnExchangeListForm->validate())){
+			return new Response(current($oReturnExchangeListForm->getErrors())[0]);
+		}
+		$aList = $oReturnExchangeListForm->getList();
+		$oPage = $oReturnExchangeListForm->getPageObject();
+		
+		return $this->render('show-return-exchange-list', [
+			'aReturnExchangeList' => $aList,
+			'userId' => $oReturnExchangeListForm->userId,
+			'orderNumber' => $oReturnExchangeListForm->orderNumber,
+			'type' => $oReturnExchangeListForm->type,
+			'isHandle' => $oReturnExchangeListForm->isHandle,
+			'oPage' => $oPage,
+		]);
+    }
+	
+	public function actionSureReturnExchange(){
+		$id = (int)Yii::$app->request->post('id');
+		$status = (int)Yii::$app->request->post('status');
+		
+		$mReturnExchange = ReturnExchange::findOne($id);
+		if(!$mReturnExchange){
+			return new Response('找不到退换货信息', 0);
+		}
+		$mOrder = Order::findOne(['order_number' => $mReturnExchange->order_number]);
+		if(!$mOrder){
+			return new Response('找不到订单信息', 0);
+		}
+		if($status){
+			$mOrder->set('status', Order::ORDER_STATUS_EXCHANGE);
+			$mOrder->save();
+		}else{
+			//$mOrder->set('status', Order::ORDER_STATUS_CLOSE);
+			//$mOrder->save();
+		}
+		
+		$mReturnExchange->set('is_handle', 1);
+		$mReturnExchange->save();
 		
 		return new Response('操作成功', 1);
 	}

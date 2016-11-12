@@ -126,7 +126,166 @@ var JsTools = {
     	if(localStorage && localStorage.setItem){
     		return localStorage.setItem(key, value);
     	}
-    }
+    },
+	date: function (format, timestamp, isLocalTime) {
+		if (isLocalTime == undefined) {
+			isLocalTime = true;
+		}
+
+		if (!isLocalTime) {
+			var oLocalDate = new Date();
+			timestamp = timestamp - Math.abs(oLocalDate.getTimezoneOffset()) * 60;
+		}
+
+		var jsdate = new Date(timestamp * 1000);
+
+
+		//补零
+		var pad = function (data, len) {
+			if ((data += '').length < len) {
+				//计算要补多少个零
+				len = len - data.length;
+				var str = '0000';
+				return data = str.substr(0, len) + data;
+			} else {
+				return data;
+			}
+		};
+		var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+		//计算一年中的第几天
+		var inYearDay = function () {
+			var aDay = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+			var day = jsdate.getDate();
+			var month = jsdate.getMonth();
+			var year = jsdate.getFullYear();
+			var $reDay = 0;
+			for (var i = 0; i < month; i++) {
+				$reDay += aDay[i];
+			}
+			$reDay += day;
+			//计算闰年
+			if (month > 1 && (year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+				$reDay += 1;
+			}
+			return $reDay;
+		};
+
+		var fm = {
+			//天
+			j: function () {
+				return jsdate.getDate();
+			},
+			d: function () {
+				return pad(fm.j(), 2);
+			},
+			w: function () {
+				return jsdate.getDay();
+			},
+			l: function () {
+				return weekdays[fm.w()];
+			},
+			D: function () {
+				return fm.l().substr(0, 3);
+			},
+			N: function () {
+				return fm.w() + 1;
+			},
+			z: function () {
+				return inYearDay();
+			},
+
+			//月
+			n: function () {
+				return jsdate.getMonth() + 1;
+			},
+			m: function () {
+				return pad(fm.n(), 2);
+			},
+			t: function () {
+				var n;
+				if ((n = jsdate.getMonth() + 1) == 2) {
+					return 28 + fm.L();
+				} else {
+					if (n & 1 && n < 8 || !(n & 1) && n > 7) {
+						return 31;
+					} else {
+						return 30;
+					}
+				}
+			},
+
+			//年
+			Y: function () {
+				return jsdate.getFullYear();
+			},
+			y: function () {
+				return (jsdate.getFullYear() + "").slice(2);
+			},
+			L: function () {
+				var y = fm.Y();
+				return (!(y & 3) && (y % 1e2 || !(y % 4e2))) ? 1 : 0;
+			},
+
+			//秒
+			s: function () {
+				return pad(jsdate.getSeconds(), 2);
+			},
+
+			//分
+			i: function () {
+				return pad(jsdate.getMinutes(), 2);
+			},
+
+			//时
+			H: function () {
+				return pad(jsdate.getHours(), 2);
+			},
+			g: function () {
+				return jsdate.getHours() % 12 || 12;
+			},
+
+			//am或pm
+			a: function () {
+				return jsdate.getHours() > 11 ? 'pm' : 'am';
+			},
+
+			//AM或PM
+			A: function () {
+				return fm.a().toUpperCase();
+			},
+
+			//周
+			W: function () {
+				var a = fm.z(), b = 364 + fm.L() - a;
+				var nd2, nd = (new Date(jsdate.getFullYear() + '/1/1').getDay() || 7) - 1;
+				if (b <= 2 && ((jsdate.getDay() || 7) - 1) <= 2 - b) {
+					return 1;
+				} else {
+					if (a <= 2 && nd >= 4 && a >= (6 - nd)) {
+						nd2 = new Date(jsdate.getFullYear() - 1 + '/12/31');
+						return self.date("W", Math.round(nd2.getTime() / 1000));
+					} else {
+						return (1 + (nd <= 3 ? ((a + nd) / 7) : (a - (7 - nd)) / 7) >> 0);
+					}
+				}
+			}
+
+		};
+
+		//分析format
+		return format.replace(/[\\]?([a-zA-Z])/g, function (rekey1, rekey2) {
+			var result = '';
+			if (rekey1 != rekey2) {
+				result = rekey2;
+			} else if (fm[rekey2]) {
+				result = fm[rekey2]();
+			} else {
+				result = rekey2;
+			}
+			return result;
+		});
+	}
 };
 
 win.JsTools = $.extend(win.JsTools, JsTools);
