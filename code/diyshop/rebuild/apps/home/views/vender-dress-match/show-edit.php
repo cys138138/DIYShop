@@ -79,7 +79,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			<br />
 		</div>
 		<div class="form-group">
-			<label>服饰搭配</label>
+			<label>管理员DMS服饰搭配</label>
 			<select class="J-manager-dress-match-list form-control"></select>
 			<br />
 		</div>
