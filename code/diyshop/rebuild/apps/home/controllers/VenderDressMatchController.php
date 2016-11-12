@@ -78,9 +78,9 @@ class VenderDressMatchController extends VController{
 	
 	public function actionGetManagerDressMatchList(){
 		$catalogId = (int)Yii::$app->request->post('catalogId');
-		$sex = (int)Yii::$app->request->post('sex');
+		//$sex = (int)Yii::$app->request->post('sex');
 		
-		$aList = ManagerDressMatch::findAll(['catalog_id' => $catalogId, 'sex' => $sex]);
+		$aList = ManagerDressMatch::findAll(['catalog_id' => $catalogId]);
 		
 		return new Response('', 1, $aList);
 	}
