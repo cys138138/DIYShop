@@ -11,7 +11,8 @@ $_oApp = Yii::$app;
 if(window.App && !App.inited){
 	App.config({
 		url : {
-			resource : '<?php echo Yii::getAlias('@r.url'); ?>'
+			resource : '<?php echo Yii::getAlias('@r.url'); ?>',
+			qiniu : '<?php echo 'http://' . Yii::$app->qiniu->privateDomain . '/'; ?>',
 		},
 		domain : '<?php echo $_oApp->domain; ?>'
 	});

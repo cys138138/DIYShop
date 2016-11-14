@@ -32,6 +32,8 @@ class GuessLikeController extends MController{
 					}else{
 						$aList[$key]['pic'] = '';
 					}
+				}else{
+					unset($aList[$key]);
 				}
 			}
 		}else{

@@ -26,6 +26,7 @@ class OrderListForm extends \yii\base\Model{
 		$aControl = [
 			'page' => $this->page,
 			'page_size' => $this->pageSize,
+			'order_by' => ['create_time' => SORT_DESC],
 		];
 		$aList = Order::getList($aCondition, $aControl);
 

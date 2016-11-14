@@ -1,5 +1,6 @@
 <?php 
 use umeworld\lib\Url;
+use common\model\Order;
 use home\widgets\Table;
 use home\widgets\ModuleNavi;
 use yii\widgets\LinkPager;
@@ -78,6 +79,26 @@ $this->setTitle('订单管理');
 			echo Table::widget([
 				'aColumns'	=>	[
 					'order_number'	=>	['title' => '订单编号'],
+					'pay_status'	=>	[
+						'title' => '付款状态',
+						'content' => function($aData){
+							if($aData['status'] == Order::ORDER_STATUS_WAIT_PAY){
+								return '未付款';
+							}else{
+								return '已付款';
+							}
+						}
+					],
+					'send_status'	=>	[
+						'title' => '发货状态',
+						'content' => function($aData){
+							if($aData['status'] == Order::ORDER_STATUS_WAIT_RECEIVE){
+								return '已发货';
+							}else{
+								return '未发货';
+							}
+						}
+					],
 					'operation'	=>	[
 						'title' => '操作',
 						'class' => 'col-sm-1',
@@ -129,7 +150,7 @@ $this->setTitle('订单管理');
 				diyHtml += '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;服饰设计后正反面图片</b></p>';
 				diyHtml += '<p style="height:200px;">';
 				for(var k in aTemp.diy_pics){
-					diyHtml += '<img class="J-dress-diy-pic img-thumbnail" src="' + aTemp.diy_pics[k] + '" alt="">';
+					diyHtml += '<img class="J-dress-diy-pic img-thumbnail" src="' + App.url.qiniu + aTemp.diy_pics[k] + '" alt="">';
 				}
 				diyHtml += '</p>';
 			}
@@ -188,8 +209,10 @@ $this->setTitle('订单管理');
 		}
 		htmlStr += '</select>';
 		htmlStr += '<input class="J-express-number form-control" placeholder="请输入物流单号" value="">';
-		htmlStr += '&nbsp;&nbsp;<button type="button" class="J-save-express-btn btn btn-primary" onclick="saveExpressInfo(this, ' + aData.id + ');">保存</button>';
-		htmlStr += '&nbsp;&nbsp;<button type="button" class="J-sure-send-good-btn btn btn-primary" onclick="sureSendGoods(this, ' + aData.id + ');">确认发货</button>';
+		if(aData.status == <?php echo Order::ORDER_STATUS_WAIT_SEND; ?>){
+			htmlStr += '&nbsp;&nbsp;<button type="button" class="J-save-express-btn btn btn-primary" onclick="saveExpressInfo(this, ' + aData.id + ');">保存</button>';
+			htmlStr += '&nbsp;&nbsp;<button type="button" class="J-sure-send-good-btn btn btn-primary" onclick="sureSendGoods(this, ' + aData.id + ');">确认发货</button>';
+		}
 		htmlStr += '</div>';
 		htmlStr += '</br>';
 		htmlStr += '</div>';

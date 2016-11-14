@@ -29,6 +29,11 @@ $this->setTitle('退换货管理');
 		width:200px;
 		height:200px;
 	}
+	.J-re-pic{
+		float:left;
+		width:200px;
+		height:200px;
+	}
 	.J-express-company{
 		float:left;
 		width:200px;
@@ -156,7 +161,7 @@ $this->setTitle('退换货管理');
 		var picHtml = '';
 		if(aReturnExchange.pics.length != 0){
 			for(var jj in aReturnExchange.pics){
-				picHtml += '<img class="img-thumbnail" src="' + App.url.resource + aReturnExchange.pics[jj] + '" alt="">';
+				picHtml += '<img class="J-re-pic img-thumbnail" src="' + App.url.qiniu + aReturnExchange.pics[jj] + '" alt="">';
 			}
 		}
 		htmlStr += '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;退换货类型：</b>' + typeStr + '</p>';
