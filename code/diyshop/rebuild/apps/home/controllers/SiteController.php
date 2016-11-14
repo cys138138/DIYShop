@@ -61,7 +61,7 @@ class SiteController extends \yii\web\Controller{
 		Yii::info(var_export($aReturnData, true));
 		if(isset($aReturnData['return_code']) && $aReturnData['return_code'] == 'SUCCESS'){ 
 			//支付成功
-			$this->_afterPaySuccess($aReturnData['out_trade_no']);
+			$this->_afterPaySuccess(2, $aReturnData['out_trade_no']);
 		}else{
 			//支付失败
 
@@ -97,7 +97,7 @@ class SiteController extends \yii\web\Controller{
 				//Yii::error('okokok');
 				//exit($successFlag);
 				//成功,更新订单状态
-				$this->_afterPaySuccess($orderId);
+				$this->_afterPaySuccess(1, $orderId);
 			}
 			exit($successFlag);
 		}else{
@@ -106,7 +106,7 @@ class SiteController extends \yii\web\Controller{
 		}
 	}
 	
-	private function _afterPaySuccess($orderNumber){
+	private function _afterPaySuccess($payType, $orderNumber){
 		$mOrder = Order::findOne(['order_number' => $orderNumber]);
 		if(!$mOrder){
 			Yii::info('找不到订单信息:' . var_export($_POST, true));
@@ -118,6 +118,7 @@ class SiteController extends \yii\web\Controller{
 		}
 		
 		$mOrder->set('status', Order::ORDER_STATUS_WAIT_SEND);
+		$mOrder->set('pay_type', $payType);
 		$mOrder->set('pay_time', NOW_TIME);
 		$mOrder->save();
 		if($mOrder->order_type == Order::ORDER_TYPE_SPECIAL){
