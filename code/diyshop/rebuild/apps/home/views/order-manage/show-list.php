@@ -79,6 +79,30 @@ $this->setTitle('订单管理');
 			echo Table::widget([
 				'aColumns'	=>	[
 					'order_number'	=>	['title' => '订单编号'],
+					'status'	=>	[
+						'title' => '订单状态',
+						'content' => function($aData){
+							if($aData['status'] == Order::ORDER_STATUS_WAIT_PAY){
+								return '未付款';
+							}elseif($aData['status'] == Order::ORDER_STATUS_WAIT_SEND){
+								return '待发货';
+							}elseif($aData['status'] == Order::ORDER_STATUS_WAIT_RECEIVE){
+								return '待收货';
+							}elseif($aData['status'] == Order::ORDER_STATUS_APPLY_RETURN){
+								return '申请退货或退款';
+							}elseif($aData['status'] == Order::ORDER_STATUS_EXCHANGE){
+								return '已退货或退款';
+							}elseif($aData['status'] == Order::ORDER_STATUS_FINISH){
+								return '确认收货';
+							}elseif($aData['status'] == Order::ORDER_STATUS_FAILURE){
+								return '失效';
+							}elseif($aData['status'] == Order::ORDER_STATUS_CLOSE){
+								return '交易关闭';
+							}else{
+								return '';
+							}
+						}
+					],
 					'pay_status'	=>	[
 						'title' => '付款状态',
 						'content' => function($aData){
