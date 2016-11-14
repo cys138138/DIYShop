@@ -24,6 +24,7 @@ class OrderManageController extends VController{
 		
 		return $this->render('show-list', [
 			'orderNumber' => $oOrderListForm->orderNumber,
+			'status' => $oOrderListForm->status,
 			'aOrderList' => $aList,
 			'aKuaiDiCompanyList' => $aKuaiDiCompanyList,
 			'oPage' => $oPage,

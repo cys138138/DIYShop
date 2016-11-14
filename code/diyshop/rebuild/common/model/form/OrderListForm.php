@@ -9,15 +9,21 @@ class OrderListForm extends \yii\base\Model{
 	public $page = 1;
 	public $pageSize = 15;
 	public $orderNumber = 0;
+	public $status = 0;
 
 	public function rules(){
 		return [
 			['page', 'compare', 'compareValue' => 0, 'operator' => '>'],
 			['orderNumber', 'checkOrderNumber'],
+			['status', 'checkStatus'],
 		];
 	}
 	
 	public function checkOrderNumber(){
+		return true;
+	}
+
+	public function checkStatus(){
 		return true;
 	}
 
@@ -41,6 +47,9 @@ class OrderListForm extends \yii\base\Model{
 		];
 		if($this->orderNumber){
 			$aCondition['order_number'] = $this->orderNumber;
+		}
+		if($this->status){
+			$aCondition['status'] = $this->status;
 		}
 		return $aCondition;
 	}

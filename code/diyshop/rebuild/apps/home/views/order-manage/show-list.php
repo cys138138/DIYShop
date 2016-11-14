@@ -64,6 +64,20 @@ $this->setTitle('订单管理');
 				<div class="col-sm-2" style="width:130px;">
 					<input type="text" class="J-order-number form-control" name="orderNumber" value="<?php echo $orderNumber ? $orderNumber : ''; ?>" />
 				</div>
+				<label class="control-label" style="float:left;">订单状态</label>
+				<div class="col-sm-2" style="width:130px;">
+					<select class="J-status form-control" name="status">
+						<option value="0">全部</option>
+						<option value="<?php echo Order::ORDER_STATUS_WAIT_PAY; ?>">未付款</option>
+						<option value="<?php echo Order::ORDER_STATUS_WAIT_SEND; ?>">待发货</option>
+						<option value="<?php echo Order::ORDER_STATUS_WAIT_RECEIVE; ?>">待收货</option>
+						<option value="<?php echo Order::ORDER_STATUS_APPLY_RETURN; ?>">申请退货或退款</option>
+						<option value="<?php echo Order::ORDER_STATUS_EXCHANGE; ?>">已退货或退款</option>
+						<option value="<?php echo Order::ORDER_STATUS_FINISH; ?>">确认收货</option>
+						<option value="<?php echo Order::ORDER_STATUS_FAILURE; ?>">失效</option>
+						<option value="<?php echo Order::ORDER_STATUS_CLOSE; ?>">交易关闭</option>
+					</select>
+				</div>
 				<div class="form-group">
 					<div class="col-sm-2" style="width:90px;">
 						<button type="button" class="btn btn-primary" onclick="search();">搜索</button>
@@ -335,6 +349,6 @@ $this->setTitle('订单管理');
 	}
 	
 	$(function(){
-		
+		$('.J-status').val(<?php echo $status; ?>);
 	});
 </script>
