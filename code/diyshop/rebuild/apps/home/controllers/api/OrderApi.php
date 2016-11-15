@@ -270,7 +270,7 @@ trait OrderApi{
 		if($status){
 			$aCondition['status'] = $status;
 		}
-		if($status == Order::ORDER_STATUS_APPLY_RETURN || $status == Order::ORDER_STATUS_EXCHANGE){
+		if(in_array($status, [Order::ORDER_STATUS_RETURN_GOODS, Order::ORDER_STATUS_RETURN_GOODS_SUCCESS, Order::ORDER_STATUS_RETURN_GOODS_CLOSE, Order::ORDER_STATUS_RETURN_MONEY, Order::ORDER_STATUS_RETURN_MONEY_SUCCESS, Order::ORDER_STATUS_RETURN_MONEY_CLOSE, Order::ORDER_STATUS_RETURN_GM, Order::ORDER_STATUS_RETURN_GM_SUCCESS, Order::ORDER_STATUS_RETURN_GM_CLOSE])){
 			unset($aCondition['status']);
 			$aCondition['status_return_exchange'] = 1;
 		}
@@ -367,13 +367,13 @@ trait OrderApi{
 				if(!$mOrderTemp){
 					return new Response('找不到订单信息', 2404);
 				}
-				if($mOrderTemp->status != Order::ORDER_STATUS_FINISH && $mOrderTemp->status != Order::ORDER_STATUS_FAILURE && $mOrderTemp->status != Order::ORDER_STATUS_CLOSE){
+				if($mOrderTemp->status != Order::ORDER_STATUS_FINISH && $mOrderTemp->status != Order::ORDER_STATUS_FAILURE && $mOrderTemp->status != Order::ORDER_STATUS_CLOSE && $mOrderTemp->status != Order::ORDER_STATUS_RETURN_GOODS_SUCCESS && $mOrderTemp->status != Order::ORDER_STATUS_RETURN_GOODS_CLOSE && $mOrderTemp->status != Order::ORDER_STATUS_RETURN_MONEY_SUCCESS && $mOrderTemp->status != Order::ORDER_STATUS_RETURN_MONEY_CLOSE && $mOrderTemp->status != Order::ORDER_STATUS_RETURN_GM_SUCCESS && $mOrderTemp->status != Order::ORDER_STATUS_RETURN_GM_CLOSE){
 					return new Response('订单不可删除', 2403);
 				}
 				$mOrderTemp->delete();
 			}
 		}else{
-			if($mOrder->status != Order::ORDER_STATUS_FINISH && $mOrder->status != Order::ORDER_STATUS_FAILURE && $mOrder->status != Order::ORDER_STATUS_CLOSE){
+			if($mOrder->status != Order::ORDER_STATUS_FINISH && $mOrder->status != Order::ORDER_STATUS_FAILURE && $mOrder->status != Order::ORDER_STATUS_CLOSE && $mOrder->status != Order::ORDER_STATUS_RETURN_GOODS_SUCCESS && $mOrder->status != Order::ORDER_STATUS_RETURN_GOODS_CLOSE && $mOrder->status != Order::ORDER_STATUS_RETURN_MONEY_SUCCESS && $mOrder->status != Order::ORDER_STATUS_RETURN_MONEY_CLOSE && $mOrder->status != Order::ORDER_STATUS_RETURN_GM_SUCCESS && $mOrder->status != Order::ORDER_STATUS_RETURN_GM_CLOSE){
 				return new Response('订单不可删除', 2403);
 			}
 		}
@@ -415,14 +415,14 @@ trait OrderApi{
 				if(!$mOrderTemp){
 					return new Response('找不到订单信息', 4104);
 				}
-				if($mOrderTemp->status != Order::ORDER_STATUS_WAIT_PAY && $mOrderTemp->status != Order::ORDER_STATUS_EXCHANGE){
+				if($mOrderTemp->status != Order::ORDER_STATUS_WAIT_PAY){
 					return new Response('订单不可关闭交易', 4103);
 				}
 				$mOrderTemp->set('status', Order::ORDER_STATUS_CLOSE);
 				$mOrderTemp->save();
 			}
 		}else{
-			if($mOrder->status != Order::ORDER_STATUS_WAIT_PAY && $mOrder->status != Order::ORDER_STATUS_EXCHANGE){
+			if($mOrder->status != Order::ORDER_STATUS_WAIT_PAY){
 				return new Response('订单不可关闭交易', 4103);
 			}
 		}
@@ -546,7 +546,18 @@ trait OrderApi{
 			return new Response('提交失败', 3305);
 		}
 		
-		$mOrder->set('status', Order::ORDER_STATUS_APPLY_RETURN);
+		$status = 0;
+		if($type == ReturnExchange::TYPE_RETURN_AND_EXCHANGE){
+			$status = Order::ORDER_STATUS_RETURN_GM;
+		}elseif($type == ReturnExchange::TYPE_RETURN_MONEY){
+			$status = Order::ORDER_STATUS_RETURN_MONEY;
+		}elseif($type == ReturnExchange::TYPE_RETURN_GOODS){
+			$status = Order::ORDER_STATUS_RETURN_GOODS;
+		}else{
+			return new Response('类型不正确', 3306);
+		}
+		
+		$mOrder->set('status', $status);
 		$mOrder->save();
 		
 		return new Response('提交成功', 1);

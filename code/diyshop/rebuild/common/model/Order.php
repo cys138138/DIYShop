@@ -11,16 +11,45 @@ class Order extends \common\lib\DbOrmModel{
 	const ORDER_TYPE_NORMAL = 0;
 	const ORDER_TYPE_SPECIAL = 1;
 	
-	//const ORDER_STATUS_CONFIRM = 1;			//确认订单
-	const ORDER_STATUS_WAIT_PAY = 1; 		//待付款
-	const ORDER_STATUS_WAIT_SEND = 2; 		//待发货
-	const ORDER_STATUS_WAIT_RECEIVE = 3;	//待收货
-	const ORDER_STATUS_APPLY_RETURN = 4; 	//申请退货
-	const ORDER_STATUS_EXCHANGE = 5;		//退换货
-	const ORDER_STATUS_FINISH = 6;			//确认收货
-	const ORDER_STATUS_FAILURE = 7;			//失效
-	const ORDER_STATUS_CLOSE = 8;			//交易关闭
+	//const ORDER_STATUS_CONFIRM = 1;				//确认订单
+	const ORDER_STATUS_WAIT_PAY = 1; 				//待付款
+	const ORDER_STATUS_WAIT_SEND = 2; 				//待发货
+	const ORDER_STATUS_WAIT_RECEIVE = 3;			//待收货
+	const ORDER_STATUS_APPLY_RETURN = 4; 			//申请退货
+	const ORDER_STATUS_EXCHANGE = 5;				//退换货
+	const ORDER_STATUS_FINISH = 6;					//确认收货
+	const ORDER_STATUS_FAILURE = 7;					//失效
+	const ORDER_STATUS_CLOSE = 8;					//交易关闭
+	const ORDER_STATUS_RETURN_GOODS = 9;			//退货处理中
+	const ORDER_STATUS_RETURN_GOODS_SUCCESS = 10;	//退货成功
+	const ORDER_STATUS_RETURN_GOODS_CLOSE = 11;		//退货关闭
+	const ORDER_STATUS_RETURN_MONEY = 12;			//退款处理中
+	const ORDER_STATUS_RETURN_MONEY_SUCCESS = 13;	//退款成功
+	const ORDER_STATUS_RETURN_MONEY_CLOSE = 14;		//退款关闭
+	const ORDER_STATUS_RETURN_GM = 15;				//退货退款处理中
+	const ORDER_STATUS_RETURN_GM_SUCCESS = 16;		//退货退款成功
+	const ORDER_STATUS_RETURN_GM_CLOSE = 17;		//退货退款关闭
 
+	public static function getStatusList(){
+		return [
+			static::ORDER_STATUS_WAIT_PAY => '待付款',
+			static::ORDER_STATUS_WAIT_SEND => '待发货',
+			static::ORDER_STATUS_WAIT_RECEIVE => '待收货',
+			static::ORDER_STATUS_FINISH => '确认收货',
+			static::ORDER_STATUS_FAILURE => '失效',
+			static::ORDER_STATUS_CLOSE => '交易关闭',
+			static::ORDER_STATUS_RETURN_GOODS => '退货处理中',
+			static::ORDER_STATUS_RETURN_GOODS_SUCCESS => '退货成功',
+			static::ORDER_STATUS_RETURN_GOODS_CLOSE => '退货关闭',
+			static::ORDER_STATUS_RETURN_MONEY => '退款处理中',
+			static::ORDER_STATUS_RETURN_MONEY_SUCCESS => '退款成功',
+			static::ORDER_STATUS_RETURN_MONEY_CLOSE => '退款关闭',
+			static::ORDER_STATUS_RETURN_GM => '退货退款处理中',
+			static::ORDER_STATUS_RETURN_GM_SUCCESS => '退货退款成功',
+			static::ORDER_STATUS_RETURN_GM_CLOSE => '退货退款关闭',
+		];
+	}
+	
 	public static function tableName(){
 		return Yii::$app->db->parseTable('_@order');
 	}
@@ -69,10 +98,22 @@ class Order extends \common\lib\DbOrmModel{
 			$aWhere[] = ['status' => $aCondition['status']];
 		}
 		if(isset($aCondition['status_return_exchange']) && $aCondition['status_return_exchange']){
-			$aWhere[] = [
+			/*$aWhere[] = [
 				'or',
 				['status' => static::ORDER_STATUS_APPLY_RETURN],
 				['status' => static::ORDER_STATUS_EXCHANGE],
+			];*/
+			$aWhere[] = [
+				'or',
+				['status' => static::ORDER_STATUS_RETURN_GOODS],
+				['status' => static::ORDER_STATUS_RETURN_GOODS_SUCCESS],
+				['status' => static::ORDER_STATUS_RETURN_GOODS_CLOSE],
+				['status' => static::ORDER_STATUS_RETURN_MONEY],
+				['status' => static::ORDER_STATUS_RETURN_MONEY_SUCCESS],
+				['status' => static::ORDER_STATUS_RETURN_MONEY_CLOSE],
+				['status' => static::ORDER_STATUS_RETURN_GM],
+				['status' => static::ORDER_STATUS_RETURN_GM_SUCCESS],
+				['status' => static::ORDER_STATUS_RETURN_GM_CLOSE],
 			];
 		}
 		if(isset($aCondition['order_number'])){

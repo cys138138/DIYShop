@@ -92,7 +92,7 @@ class OrderManageController extends VController{
 		]);
     }
 	
-	public function actionSureReturnExchange(){
+	public function actionSureReturnExchange(){return new Response('功能还没做，暂时不可用', 0);
 		$id = (int)Yii::$app->request->post('id');
 		$status = (int)Yii::$app->request->post('status');
 		

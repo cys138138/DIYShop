@@ -68,14 +68,9 @@ $this->setTitle('订单管理');
 				<div class="col-sm-2" style="width:130px;">
 					<select class="J-status form-control" name="status">
 						<option value="0">全部</option>
-						<option value="<?php echo Order::ORDER_STATUS_WAIT_PAY; ?>">未付款</option>
-						<option value="<?php echo Order::ORDER_STATUS_WAIT_SEND; ?>">待发货</option>
-						<option value="<?php echo Order::ORDER_STATUS_WAIT_RECEIVE; ?>">待收货</option>
-						<option value="<?php echo Order::ORDER_STATUS_APPLY_RETURN; ?>">申请退货或退款</option>
-						<option value="<?php echo Order::ORDER_STATUS_EXCHANGE; ?>">已退货或退款</option>
-						<option value="<?php echo Order::ORDER_STATUS_FINISH; ?>">确认收货</option>
-						<option value="<?php echo Order::ORDER_STATUS_FAILURE; ?>">失效</option>
-						<option value="<?php echo Order::ORDER_STATUS_CLOSE; ?>">交易关闭</option>
+						<?php foreach(Order::getStatusList() as $s => $sn){ ?>
+							<option value="<?php echo $s; ?>"><?php echo $sn; ?></option>
+						<?php } ?>
 					</select>
 				</div>
 				<div class="form-group">
@@ -96,25 +91,13 @@ $this->setTitle('订单管理');
 					'status'	=>	[
 						'title' => '订单状态',
 						'content' => function($aData){
-							if($aData['status'] == Order::ORDER_STATUS_WAIT_PAY){
-								return '未付款';
-							}elseif($aData['status'] == Order::ORDER_STATUS_WAIT_SEND){
-								return '待发货';
-							}elseif($aData['status'] == Order::ORDER_STATUS_WAIT_RECEIVE){
-								return '待收货';
-							}elseif($aData['status'] == Order::ORDER_STATUS_APPLY_RETURN){
-								return '申请退货或退款';
-							}elseif($aData['status'] == Order::ORDER_STATUS_EXCHANGE){
-								return '已退货或退款';
-							}elseif($aData['status'] == Order::ORDER_STATUS_FINISH){
-								return '确认收货';
-							}elseif($aData['status'] == Order::ORDER_STATUS_FAILURE){
-								return '失效';
-							}elseif($aData['status'] == Order::ORDER_STATUS_CLOSE){
-								return '交易关闭';
-							}else{
-								return '';
+							$str = '';
+							foreach(Order::getStatusList() as $s => $sn){
+								if($aData['status'] == $s){
+									$str = $sn;
+								}
 							}
+							return $str;
 						}
 					],
 					'pay_status'	=>	[
