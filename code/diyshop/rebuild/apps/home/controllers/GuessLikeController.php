@@ -27,11 +27,11 @@ class GuessLikeController extends MController{
 				if($mDress){
 					$aList[$key]['name'] = $mDress->name;
 					$aList[$key]['vender_id'] = $mDress->vender_id;
-					if(isset($mDress->pics[$aValue['pic_index']])){
+					/*if(isset($mDress->pics[$aValue['pic_index']])){
 						$aList[$key]['pic'] = $mDress->pics[$aValue['pic_index']];
 					}else{
 						$aList[$key]['pic'] = '';
-					}
+					}*/
 				}else{
 					unset($aList[$key]);
 				}
@@ -71,7 +71,7 @@ class GuessLikeController extends MController{
 	
 	public function actionSaveSetting(){
 		$dressId = (int)Yii::$app->request->post('dressId');
-		$picIndex = (int)Yii::$app->request->post('picIndex');
+		//$picIndex = (int)Yii::$app->request->post('picIndex');
 		
 		if(!$dressId){
 			return new Response('服饰不存在！', -1);
@@ -86,7 +86,7 @@ class GuessLikeController extends MController{
 		if($aList){
 			foreach($aList as $key => $aValue){
 				if($aValue['dress_id'] == $dressId){
-					$aList[$key]['pic_index'] = $picIndex;
+					//$aList[$key]['pic_index'] = $picIndex;
 					$isFind = true;
 				}
 			}
@@ -97,7 +97,7 @@ class GuessLikeController extends MController{
 			array_push($aList, [
 				'vender_id' => $mDress->vender_id,
 				'dress_id' => $dressId,
-				'pic_index' => $picIndex
+				//'pic_index' => $picIndex
 			]);
 		}
 		

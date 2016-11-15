@@ -30,12 +30,12 @@ $this->setTitle('猜你喜欢');
 				'aColumns'	=>	[
 					'vender_id'	=>	['title' => '商家编号'],
 					'dress_id'	=>	['title' => '服饰编号'],
-					'pic'	=>	[
+					/*'pic'	=>	[
 						'title' => '服饰图片',
 						'content' => function($aData){
 							return '<img width="234" height="375" class="img-thumbnail" src="' . Yii::getAlias('@r.url') . $aData['pic'] . '" alt="">';
 						}
-					],
+					],*/
 					'operate' => [
 						'title' => '操作',
 						'class' => 'col-sm-1',

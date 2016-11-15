@@ -147,21 +147,21 @@ $this->setTitle('猜你喜欢');
 	}
 	
 	function save(o){
-		if(!hasPic){
+		/*if(!hasPic){
 			UBox.show('该服饰没有图片', -1);
 			return;
 		}
 		if($('.li-select').length == 0){
 			UBox.show('请选择图片', -1);
 			return;
-		}
+		}*/
 		
-		var picIndex = $('.li-select').attr('data-index');
+		//var picIndex = $('.li-select').attr('data-index');
 
 		ajax({
 			url : '<?php echo Url::to(['guess-like/save-setting']); ?>',
 			data : {
-				picIndex : picIndex,
+				//picIndex : picIndex,
 				dressId : aDress.id
 			},
 			beforeSend : function(){
