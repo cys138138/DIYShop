@@ -73,8 +73,13 @@ $this->setTitle('猜你喜欢');
 	</div>
 </div>
 <script type="text/javascript">
+	var hasPic = false;
 	var aDress = [];
 	function showResult(aData){
+		if(!aData){
+			$('.J-save-setting').hide();
+			return;
+		}
 		var picHtml = '';
 		var hasPic = false;
 		for(var i in aData.pics){
@@ -93,11 +98,12 @@ $this->setTitle('猜你喜欢');
 			<br />\
 		';
 		$('.J-result').html(htmlStr);
-		if(hasPic){
+		$('.J-save-setting').show();
+		/*if(hasPic){
 			$('.J-save-setting').show();
 		}else{
 			$('.J-save-setting').hide();
-		}
+		}*/
 	}
 	
 	function selectPic(o){
@@ -141,6 +147,10 @@ $this->setTitle('猜你喜欢');
 	}
 	
 	function save(o){
+		if(!hasPic){
+			UBox.show('该服饰没有图片', -1);
+			return;
+		}
 		if($('.li-select').length == 0){
 			UBox.show('请选择图片', -1);
 			return;

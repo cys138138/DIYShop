@@ -516,10 +516,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		}else{
 			aPics = [];
 		}
-		var detail = $('.J-detail').text();
-		if(detail){
-			detail = $('.J-detail').html();
-		}
+		var detail = $('.J-detail').html();
 		ajax({
 			url : '<?php echo Url::to(['dress-manage/save']); ?>',
 			data : {
