@@ -283,9 +283,11 @@ trait OrderApi{
 		if($status){
 			$aCondition['status'] = $status;
 		}
-		if(in_array($status, [Order::ORDER_STATUS_RETURN_GOODS, Order::ORDER_STATUS_RETURN_GOODS_SUCCESS, Order::ORDER_STATUS_RETURN_GOODS_CLOSE, Order::ORDER_STATUS_RETURN_MONEY, Order::ORDER_STATUS_RETURN_MONEY_SUCCESS, Order::ORDER_STATUS_RETURN_MONEY_CLOSE, Order::ORDER_STATUS_RETURN_GM, Order::ORDER_STATUS_RETURN_GM_SUCCESS, Order::ORDER_STATUS_RETURN_GM_CLOSE])){
-			unset($aCondition['status']);
-			$aCondition['status_return_exchange'] = 1;
+		if(!is_array($status)){
+			if(in_array($status, [Order::ORDER_STATUS_RETURN_GOODS, Order::ORDER_STATUS_RETURN_GOODS_SUCCESS, Order::ORDER_STATUS_RETURN_GOODS_CLOSE, Order::ORDER_STATUS_RETURN_MONEY, Order::ORDER_STATUS_RETURN_MONEY_SUCCESS, Order::ORDER_STATUS_RETURN_MONEY_CLOSE, Order::ORDER_STATUS_RETURN_GM, Order::ORDER_STATUS_RETURN_GM_SUCCESS, Order::ORDER_STATUS_RETURN_GM_CLOSE])){
+				unset($aCondition['status']);
+				$aCondition['status_return_exchange'] = 1;
+			}
 		}
 		$aControl = [
 			'page' => $page,
