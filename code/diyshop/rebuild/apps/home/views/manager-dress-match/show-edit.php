@@ -277,9 +277,12 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		});
 		<?php if($aDressMatch){ ?>
 			$('.J-catalog').val(<?php echo $aDressMatch['dress_catalog']['pid']; ?>);
-			$('.J-catalog-id').val(<?php echo $aDressMatch['dress_catalog']['id']; ?>);
+			$('.J-catalog').change();
 			$('.J-sex').val(<?php echo $aDressMatch['sex']; ?>);
 			setZhenFanPic('<?php echo $aDressMatch['zhen_pic']; ?>', '<?php echo $aDressMatch['fan_pic']; ?>');
+			setTimeout(function(){
+				$('.J-catalog-id').val(<?php echo $aDressMatch['dress_catalog']['id']; ?>);
+			}, 1000);
 			/*<?php foreach($aDressMatch['pics'] as $value){ ?>
 				addPic('<?php echo $value; ?>');
 			<?php } ?>*/
