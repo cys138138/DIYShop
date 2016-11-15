@@ -27,6 +27,7 @@ trait OrderApi{
 		$deliveryAddressId = Yii::$app->request->post('delivery_address_id');
 		$buyerMsg = Yii::$app->request->post('buyer_msg');
 		$aShoppingCartId = (array)Yii::$app->request->post('aShoppingCartId');
+		$payMoney = Yii::$app->request->post('pay_money');
 		
 		if(!$userToken){
 			return new Response('缺少user_token', 2101);
@@ -142,6 +143,7 @@ trait OrderApi{
 		$aOrderInfo = [];
 		$totalCount = 0;
 		$totalPrices = 0;
+		$aTempOrderIds = [];
 		foreach($aOrderList as $k => $v){
 			$totalCount += $v['total_count'];
 			$totalPrices += $v['total_price'];
@@ -159,6 +161,8 @@ trait OrderApi{
 				'express_info' => [],
 				'is_comment' => 0,
 				'create_time' => NOW_TIME,
+				'pay_type' => 0,
+				'pay_money' => $payMoney,
 				'pay_time' => 0,
 				'deliver_time' => 0,
 				'end_time' => 0,
@@ -169,9 +173,16 @@ trait OrderApi{
 			}
 			$aData['id'] = $orderId;
 			array_push($aOrderInfo, $aData);
+			array_push($aTempOrderIds, $orderId);
+		}
+		if(sprintf("%.2f", $totalPrices) != $payMoney){
+			if($aTempOrderIds){
+				Yii::$app->db->createCommand()->delete(Order::tableName(), ['id' => $aTempOrderIds])->execute();
+			}
+			return new Response('计算订单总价出错', 2111);
 		}
 		if(!$aOrderInfo){
-			return new Response('创建订单失败', 2111);
+			return new Response('创建订单失败', 2112);
 		}
 		$orderNumber = $aOrderInfo[0]['order_number'];
 		if($aOrderInfo && count($aOrderInfo) > 1){
@@ -190,13 +201,15 @@ trait OrderApi{
 				'express_info' => [],
 				'is_comment' => 0,
 				'create_time' => NOW_TIME,
+				'pay_type' => 0,
+				'pay_money' => $payMoney,
 				'pay_time' => 0,
 				'deliver_time' => 0,
 				'end_time' => 0,
 			];
 			$orderId = Order::insert($aData);
 			if(!$orderId){
-				return new Response('创建订单失败', 2112);
+				return new Response('创建订单失败', 2113);
 			}
 		}
 		if($aShoppingCartId){
