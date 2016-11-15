@@ -315,21 +315,21 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	
 	function appendManagerDressMatchList(aData){
 		var htmlStr = '';
-		var flag = false;
+		//var flag = false;
 		for(var i in aData){
-			<?php if($aDressMatch){ ?>
+			/*<?php if($aDressMatch){ ?>
 				if(aData[i].id == <?php echo $aDressMatch['manager_dress_match_id']; ?>){
 					flag = true;
 				}
-			<?php } ?>
+			<?php } ?>*/
 			htmlStr += '<option value="' + aData[i].id + '">' + aData[i].name + '</option>';
 		}
 		$('.J-manager-dress-match-list').html(htmlStr);
-		<?php if($aDressMatch){ ?>
+		/*<?php if($aDressMatch){ ?>
 			if(flag){
 				$('.J-manager-dress-match-list').val(<?php echo $aDressMatch['manager_dress_match_id']; ?>);
 			}
-		<?php } ?>
+		<?php } ?>*/
 		showManagerDressMatchPics($('.J-manager-dress-match-list').val());
 	}
 	
@@ -371,6 +371,11 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		});
 		$('.J-catalog-id').on('change', function(){
 			showManagerDressMatchList($(this).val(), $('.J-sex').val());
+			setTimeout(function(){
+				<?php if($aDressMatch){ ?>
+					$('.J-manager-dress-match-list').val(<?php echo $aDressMatch['manager_dress_match_id']; ?>);
+				<?php } ?>
+			}, 1000);	
 		});
 		$('.J-sex').on('change', function(){
 			showManagerDressMatchList($('.J-catalog-id').val(), $(this).val());
@@ -433,9 +438,11 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		});
 		<?php if($aDressMatch){ ?>
 			$('.J-catalog').val(<?php echo $aDressMatch['dress_catalog']['pid']; ?>);
-			$('.J-catalog-id').val(<?php echo $aDressMatch['dress_catalog']['id']; ?>);
+			$('.J-catalog').change();
 			$('.J-sex').val(<?php echo isset($aDressMatch['sex']) && $aDressMatch['sex'] ? $aDressMatch['sex'] : 1; ?>);
 			setTimeout(function(){
+				$('.J-catalog-id').val(<?php echo $aDressMatch['dress_catalog']['id']; ?>);
+				$('.J-catalog-id').change();
 				setZhenFanPic('<?php echo $aDressMatch['zhen_pic']; ?>', '<?php echo $aDressMatch['fan_pic']; ?>');
 				/*$('.J-pics-list').html('');
 				<?php foreach($aDressMatch['pics'] as $value){ ?>
