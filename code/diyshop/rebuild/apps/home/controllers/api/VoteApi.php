@@ -6,6 +6,7 @@ use umeworld\lib\Response;
 use umeworld\lib\Url;
 use yii\helpers\ArrayHelper;
 use common\model\User;
+use common\model\Dress;
 use common\model\Vote;
 use common\model\VoteRecord;
 
@@ -24,11 +25,27 @@ trait VoteApi{
 		}
 		
 		$aList = Vote::findAll();
+		
+		$aDressIds = ArrayHelper::getColumn($aList, 'dress_id');
+		$aDressList = [];
+		if($aDressIds){
+			$aDressList = Dress::findAll(['id' => $aDressIds], ['id', 'status']);
+		}
 		foreach($aList as $key => $aValue){
 			if(strtotime($aValue['onSalesDay']) < NOW_TIME){
 				$aList[$key]['isOnSale'] = 0;
 			}else{
 				$aList[$key]['isOnSale'] = 1;
+			}
+			foreach($aDressList as $aDress){
+				if($aDress['id'] == $aValue['dress_id']){
+					if($aDress['status'] == Dress::ON_SALES_STATUS){
+						$aList[$key]['isOnSale'] = 1;
+					}else{
+						$aList[$key]['isOnSale'] = 0;
+					}
+				}
+				break;
 			}
 			$mVoteRecord = VoteRecord::findOne([
 				'user_id' => $userId,
