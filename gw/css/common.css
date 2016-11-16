@@ -14,7 +14,7 @@ sup{vertical-align:text-top;}
 sub{vertical-align:text-bottom;}
 table{border-collapse:collapse;border-spacing:0;}
 legend{color:#000;}
-fieldset,img{border:0;}
+fieldset,img{border:0;width: 100%;}
 button,input,select,textarea{font-size:100%;}
 input{border:none; outline:none;}
 input:focus{outline:0;}
@@ -130,6 +130,7 @@ html body{
 }
 .inner{
 	min-width:1024px;
+	min-width:375px;
 	max-width: 1300px;
 	margin:0 auto!important;
 }
