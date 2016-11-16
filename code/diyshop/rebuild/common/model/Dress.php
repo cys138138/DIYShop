@@ -72,6 +72,8 @@ class Dress extends \common\lib\DbOrmModel{
 		}
 		$aDressIds = ArrayHelper::getColumn($aList, 'id');
 		$aDressSizeColorCount = DressSizeColorCount::findAll(['dress_id' => $aDressIds]);
+		$aDressMaterial = DressMaterial::findAll(['dress_id' => $aDressIds]);
+		$aDressTag = DressTag::findAll(['dress_id' => $aDressIds]);
 		foreach($aList as $k => $v){
 			$aList[$k]['pics'] = json_decode($v['pics'], 1);
 			$aList[$k]['dress_match_ids'] = json_decode($v['dress_match_ids'], 1);
@@ -86,6 +88,18 @@ class Dress extends \common\lib\DbOrmModel{
 			foreach($aDressSizeColorCount as $aValue){
 				if($aValue['dress_id'] == $v['id']){
 					array_push($aList[$k]['dress_size_color_count_info'], $aValue);
+				}
+			}
+			$aList[$k]['dress_material_info'] = [];
+			foreach($aDressMaterial as $aValue){
+				if($aValue['dress_id'] == $v['id']){
+					array_push($aList[$k]['dress_material_info'], $aValue);
+				}
+			}
+			$aList[$k]['dress_tag_info'] = [];
+			foreach($aDressTag as $aValue){
+				if($aValue['dress_id'] == $v['id']){
+					array_push($aList[$k]['dress_tag_info'], $aValue);
 				}
 			}
 			$aList[$k]['dress_comment_count'] = DressComment::getCount(['dress_id' => $v['id']]);
