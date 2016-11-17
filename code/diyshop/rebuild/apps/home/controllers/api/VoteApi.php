@@ -44,8 +44,8 @@ trait VoteApi{
 					}else{
 						$aList[$key]['isOnSale'] = 0;
 					}
+					break;
 				}
-				break;
 			}
 			$mVoteRecord = VoteRecord::findOne([
 				'user_id' => $userId,
