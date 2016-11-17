@@ -28,6 +28,7 @@ trait OrderApi{
 		$buyerMsg = Yii::$app->request->post('buyer_msg');
 		$aShoppingCartId = (array)Yii::$app->request->post('aShoppingCartId');
 		$payMoney = Yii::$app->request->post('pay_money');
+		$isUseDiscount = (int)Yii::$app->request->post('is_use_discount');
 		
 		if(!$userToken){
 			return new Response('缺少user_token', 2101);
@@ -175,14 +176,27 @@ trait OrderApi{
 			array_push($aOrderInfo, $aData);
 			array_push($aTempOrderIds, $orderId);
 		}
-		if(sprintf("%.2f", $totalPrices) != $payMoney){
-			if($aTempOrderIds){
-				Yii::$app->db->createCommand()->delete(Order::tableName(), ['id' => $aTempOrderIds])->execute();
+		$payPrice = $totalPrices;
+		//满200的订单可以用50金币抵扣10块
+		$subGold = 50;
+		$conditionDiscountPrice = 200;
+		$discountMoney = 10;
+		$subUserGoldFlag = false;
+		if($isUseDiscount && $payPrice >= $conditionDiscountPrice){
+			if($mUser->gold < $subGold){
+				$this->_deleteOrderByIds($aTempOrderIds);
+				return new Response('用户金币不足', 2111);
+			}else{
+				$subUserGoldFlag = true;
+				$payPrice = $payPrice - $discountMoney;
 			}
-			return new Response('计算订单总价出错', 2111);
+		}
+		if(sprintf("%.2f", $payPrice) != $payMoney){
+			$this->_deleteOrderByIds($aTempOrderIds);
+			return new Response('计算订单总价出错', 2112);
 		}
 		if(!$aOrderInfo){
-			return new Response('创建订单失败', 2112);
+			return new Response('创建订单失败', 2113);
 		}
 		$orderNumber = $aOrderInfo[0]['order_number'];
 		if($aOrderInfo && count($aOrderInfo) > 1){
@@ -209,8 +223,13 @@ trait OrderApi{
 			];
 			$orderId = Order::insert($aData);
 			if(!$orderId){
-				return new Response('创建订单失败', 2113);
+				$this->_deleteOrderByIds($aTempOrderIds);
+				return new Response('创建订单失败', 2114);
 			}
+		}
+		if($subUserGoldFlag){
+			$mUser->set('gold', ['sub', $subGold]);
+			$mUser->save();
 		}
 		if($aShoppingCartId){
 			foreach($aShoppingCartId as $shoppingCartId){
@@ -222,6 +241,12 @@ trait OrderApi{
 		}
 		
 		return new Response('创建订单成功', 1, $orderNumber);
+	}
+	
+	private function _deleteOrderByIds($aOrderIds){
+		if($aOrderIds){
+			Yii::$app->db->createCommand()->delete(Order::tableName(), ['id' => $aOrderIds])->execute();
+		}
 	}
 	
 	private function getOrderInfo(){
