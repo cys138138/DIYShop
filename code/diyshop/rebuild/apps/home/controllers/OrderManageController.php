@@ -92,9 +92,10 @@ class OrderManageController extends VController{
 		]);
     }
 	
-	public function actionSureReturnExchange(){return new Response('功能还没做，暂时不可用', 0);
+	public function actionSureReturnExchange(){
 		$id = (int)Yii::$app->request->post('id');
 		$status = (int)Yii::$app->request->post('status');
+		$reason = (string)Yii::$app->request->post('reason');
 		
 		$mReturnExchange = ReturnExchange::findOne($id);
 		if(!$mReturnExchange){
@@ -104,16 +105,54 @@ class OrderManageController extends VController{
 		if(!$mOrder){
 			return new Response('找不到订单信息', 0);
 		}
-		if($status){
-			$mOrder->set('status', Order::ORDER_STATUS_EXCHANGE);
-			$mOrder->save();
-		}else{
-			//$mOrder->set('status', Order::ORDER_STATUS_CLOSE);
-			//$mOrder->save();
+		$msg = '';
+		$msgType = 0;
+		/*
+		2.4.6 商家已同意您的换货/退款/退货申请，稍后会与您联系，请保持电话畅通。
+		3.5.7 商家没有同意您的换货/退款/退货申请。详情请查看“我的订单”，如有疑问，可咨询Unique Design官方客服
+		*/
+		if($mReturnExchange->type == ReturnExchange::TYPE_RETURN_AND_EXCHANGE){
+			if($status){
+				$msgType = 6;
+				$msg = '商家已同意您的退货申请，稍后会与您联系，请保持电话畅通。';
+				$mOrder->set('status', Order::ORDER_STATUS_RETURN_GM_SUCCESS);
+			}else{
+				$msgType = 7;
+				$msg = '商家没有同意您的退货申请。详情请查看“我的订单”，如有疑问，可咨询Unique Design官方客服';
+				$mOrder->set('status', Order::ORDER_STATUS_RETURN_GM_CLOSE);
+			}
+		}elseif($mReturnExchange->type == ReturnExchange::TYPE_RETURN_MONEY){
+			if($status){
+				$msgType = 4;
+				$msg = '商家已同意您的退款申请，稍后会与您联系，请保持电话畅通。';
+				$mOrder->set('status', Order::ORDER_STATUS_RETURN_MONEY_SUCCESS);
+			}else{
+				$msgType = 5;
+				$msg = '商家没有同意您的退款申请。详情请查看“我的订单”，如有疑问，可咨询Unique Design官方客服';
+				$mOrder->set('status', Order::ORDER_STATUS_RETURN_MONEY_CLOSE);
+			}
+		}elseif($mReturnExchange->type == ReturnExchange::TYPE_RETURN_GOODS){
+			if($status){
+				$msgType = 2;
+				$msg = '商家已同意您的换货申请，稍后会与您联系，请保持电话畅通。';
+				$mOrder->set('status', Order::ORDER_STATUS_RETURN_GOODS_SUCCESS);
+			}else{
+				$msgType = 3;
+				$msg = '商家没有同意您的换货申请。详情请查看“我的订单”，如有疑问，可咨询Unique Design官方客服';
+				$mOrder->set('status', Order::ORDER_STATUS_RETURN_GOODS_CLOSE);
+			}
 		}
+		$mOrder->save();
 		
 		$mReturnExchange->set('is_handle', 1);
+		$mReturnExchange->set('handle_reason', $reason);
 		$mReturnExchange->save();
+		//Jpush通知用户
+		Yii::$app->jpush->sendNotification($msg, $msg, $msgType, [$mReturnExchange->user_id], [
+			'record_id' => $mReturnExchange->id,
+			'user_ids' => [$mReturnExchange->user_id],
+			'reason' => $reason,
+		]);
 		
 		return new Response('操作成功', 1);
 	}

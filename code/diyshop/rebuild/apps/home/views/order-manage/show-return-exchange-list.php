@@ -145,6 +145,11 @@ $this->setTitle('退换货管理');
 	}
 	
 	function buildOrderBoxHtml(aReturnExchange){
+		var aBtnStr = {
+			<?php echo ReturnExchange::TYPE_RETURN_AND_EXCHANGE; ?> : ['退货退款成功', '退货退款关闭'],
+			<?php echo ReturnExchange::TYPE_RETURN_MONEY; ?> : ['退款成功', '退款关闭'],
+			<?php echo ReturnExchange::TYPE_RETURN_GOODS; ?> : ['退货成功', '退货关闭'],
+		};
 		var aData = aReturnExchange.order_info;
 		var htmlStr = '';
 		
@@ -173,8 +178,8 @@ $this->setTitle('退换货管理');
 			htmlStr += '<p style="height:200px;">' + picHtml + '</p>';
 		}
 		if(aReturnExchange.is_handle != 1){
-			htmlStr += '&nbsp;&nbsp;<button type="button" class=" btn btn-primary" onclick="sureRetuenExchange(this, ' + aReturnExchange.id + ', 1);">同意申请</button>';
-			htmlStr += '&nbsp;&nbsp;<button type="button" class=" btn btn-primary" onclick="sureRetuenExchange(this, ' + aReturnExchange.id + ', 0);">忽略申请</button>';
+			htmlStr += '&nbsp;&nbsp;<button type="button" class=" btn btn-primary" onclick="sureRetuenExchange(this, ' + aReturnExchange.id + ', 1);">' + aBtnStr[aReturnExchange.type][0]+ '</button>';
+			htmlStr += '&nbsp;&nbsp;<button type="button" class=" btn btn-primary" onclick="sureRetuenExchange(this, ' + aReturnExchange.id + ', 0);">' + aBtnStr[aReturnExchange.type][1]+ '</button>';
 		}
 		htmlStr += '</div>';
 		htmlStr += '<hr />';
@@ -264,7 +269,7 @@ $this->setTitle('退换货管理');
 		htmlStr += '<input class="J-express-number form-control" placeholder="请输入物流单号" value="">';
 		htmlStr += '&nbsp;&nbsp;<button type="button" class="J-save-express-btn btn btn-primary" onclick="saveExpressInfo(this, ' + aData.id + ');">保存</button>';
 		htmlStr += '&nbsp;&nbsp;<button type="button" class="J-sure-send-good-btn btn btn-primary" onclick="sureSendGoods(this, ' + aData.id + ');">确认发货</button>';*/
-		htmlStr += '</div>';
+		//htmlStr += '</div>';
 		htmlStr += '</br>';
 		htmlStr += '</div>';
 		
@@ -272,21 +277,23 @@ $this->setTitle('退换货管理');
 	}
 	
 	function sureRetuenExchange(o, id, status){
-		ajax({
-			url : '<?php echo Url::to(['order-manage/sure-return-exchange']); ?>',
-			data : {
-				id : id,
-				status : status
-			},
-			beforeSend : function(){
-				$(o).attr('disabled', 'disabled');
-			},
-			complete : function(){
-				$(o).attr('disabled', false);
-			},
-			success : function(aResult){
-				UBox.show(aResult.msg, aResult.status);
-			}
+		UBox.confirm('确定操作？操作前请确保已处理完成', function(){
+			ajax({
+				url : '<?php echo Url::to(['order-manage/sure-return-exchange']); ?>',
+				data : {
+					id : id,
+					status : status
+				},
+				beforeSend : function(){
+					$(o).attr('disabled', 'disabled');
+				},
+				complete : function(){
+					$(o).attr('disabled', false);
+				},
+				success : function(aResult){
+					UBox.show(aResult.msg, aResult.status);
+				}
+			});
 		});
 	}
 	
