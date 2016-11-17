@@ -42,6 +42,10 @@ $this->setTitle('退换货管理');
 		float:left;
 		width:200px;
 	}
+	.J-handle-reason{
+		width:400px;
+		margin-left:15px;
+	}
 </style>
 <div class="row">
 	<?php echo ModuleNavi::widget([
@@ -177,6 +181,8 @@ $this->setTitle('退换货管理');
 			htmlStr += '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;退换货图片</b></p>';
 			htmlStr += '<p style="height:200px;">' + picHtml + '</p>';
 		}
+		htmlStr += '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;处理原因：</b><textarea class="J-handle-reason form-control" rows="3">' + (aReturnExchange.handle_reason ? aReturnExchange.handle_reason : '') +'</textarea></p>';
+			
 		if(aReturnExchange.is_handle != 1){
 			htmlStr += '&nbsp;&nbsp;<button type="button" class=" btn btn-primary" onclick="sureRetuenExchange(this, ' + aReturnExchange.id + ', 1);">' + aBtnStr[aReturnExchange.type][0]+ '</button>';
 			htmlStr += '&nbsp;&nbsp;<button type="button" class=" btn btn-primary" onclick="sureRetuenExchange(this, ' + aReturnExchange.id + ', 0);">' + aBtnStr[aReturnExchange.type][1]+ '</button>';
@@ -282,7 +288,8 @@ $this->setTitle('退换货管理');
 				url : '<?php echo Url::to(['order-manage/sure-return-exchange']); ?>',
 				data : {
 					id : id,
-					status : status
+					status : status,
+					reason : $('.J-handle-reason').val()
 				},
 				beforeSend : function(){
 					$(o).attr('disabled', 'disabled');

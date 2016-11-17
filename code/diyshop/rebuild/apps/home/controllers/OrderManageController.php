@@ -101,16 +101,16 @@ class OrderManageController extends VController{
 		if(!$mReturnExchange){
 			return new Response('找不到退换货信息', 0);
 		}
+		if($mReturnExchange->is_handle){
+			return new Response('此记录已处理过了', 0);
+		}
 		$mOrder = Order::findOne(['order_number' => $mReturnExchange->order_number]);
 		if(!$mOrder){
 			return new Response('找不到订单信息', 0);
 		}
 		$msg = '';
 		$msgType = 0;
-		/*
-		2.4.6 商家已同意您的换货/退款/退货申请，稍后会与您联系，请保持电话畅通。
-		3.5.7 商家没有同意您的换货/退款/退货申请。详情请查看“我的订单”，如有疑问，可咨询Unique Design官方客服
-		*/
+		
 		if($mReturnExchange->type == ReturnExchange::TYPE_RETURN_AND_EXCHANGE){
 			if($status){
 				$msgType = 6;
