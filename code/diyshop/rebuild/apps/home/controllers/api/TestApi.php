@@ -89,13 +89,17 @@ trait TestApi{
 		//createOrder
 		$aParams = [
 			'api_name' => 'createOrder',
-			'user_token' => 'ufR21YjhDm_ugsadu_AfXKQBtPHMg_e83ce__e83ce_',
-			'delivery_address_id' => 1,
+			'user_token' => 'zyLIVJ2fXqaRMOvB4ePW4g_e83ce__e83ce_',
+			'delivery_address_id' => 14,
+			'pay_money' => '0.01',
 			'buyer_msg' => '不要发错货',
 			'aOrderInfo' => [
-				['dress_id' => 1, 'dress_size_color_count_id' => 22, 'count' => 2],
-				['dress_id' => 2, 'dress_size_color_count_id' => 28, 'count' => 1],
-				['dress_id' => 3, 'dress_size_color_count_id' => 30, 'count' => 1],
+				[
+					'buyer_msg' => '',
+					'count' => '1',
+					'dress_id' => '13',
+					'dress_size_color_count_id' => '132',
+				]
 			],
 		];
 		

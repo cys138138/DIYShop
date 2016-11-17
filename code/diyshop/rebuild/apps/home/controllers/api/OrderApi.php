@@ -38,7 +38,7 @@ trait OrderApi{
 			return new Response('找不到用户信息', 2101);
 		}
 		
-		$aDressList = Dress::getList(['dress_id' => ArrayHelper::getColumn($aOrderInfo, 'dress_id')]);
+		$aDressList = Dress::getList(['id' => ArrayHelper::getColumn($aOrderInfo, 'dress_id')]);
 		$aDressSizeColorCountList = DressSizeColorCount::findAll(['id' => ArrayHelper::getColumn($aOrderInfo, 'dress_size_color_count_id')]);
 		
 		if(!$aDressList){
