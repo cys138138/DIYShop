@@ -1,0 +1,485 @@
+LOG_START=================================
+[time=2016-11-18 09:50:25] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:64] 
+message_start
+exception 'yii\base\ErrorException' with message 'Cannot make static method umeworld\lib\Wxpay\lib\WxPayApi::refund() non static in class umeworld\lib\WxPay' in /var/www/diyshop/rebuild/umeworld/lib/WxPay.php:11
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/vender/index.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '681e1e58fc635e6c754ffe6631aac889ed8c24827fd08c218ff3df00d7357102a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"xFfOOotw0867bHcHymyRXBJSWMW24iYl\";}'
+    'venderId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/vender/index.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-11-18 09:51:33] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:64] 
+message_start
+exception 'yii\base\ErrorException' with message 'Cannot make static method umeworld\lib\Wxpay\lib\WxPayApi::refund() non static in class umeworld\lib\WxPay' in /var/www/diyshop/rebuild/umeworld/lib/WxPay.php:11
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/vender/index.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '681e1e58fc635e6c754ffe6631aac889ed8c24827fd08c218ff3df00d7357102a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"xFfOOotw0867bHcHymyRXBJSWMW24iYl\";}'
+    'venderId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/vender/index.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-11-18 09:51:46] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:64] 
+message_start
+exception 'yii\base\ErrorException' with message 'Cannot make static method umeworld\lib\Wxpay\lib\WxPayApi::refund() non static in class umeworld\lib\WxPay' in /var/www/diyshop/rebuild/umeworld/lib/WxPay.php:11
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/vender/index.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '681e1e58fc635e6c754ffe6631aac889ed8c24827fd08c218ff3df00d7357102a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"xFfOOotw0867bHcHymyRXBJSWMW24iYl\";}'
+    'venderId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/vender/index.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-11-18 10:51:50] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:1] 
+message_start
+exception 'yii\base\ErrorException' with message 'Class 'umeworld\lib\MobileAlipay\AopClient' not found' in /var/www/diyshop/rebuild/umeworld/lib/MobileAlipay/AlipaySubmit.php:588
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/vender/index.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '681e1e58fc635e6c754ffe6631aac889ed8c24827fd08c218ff3df00d7357102a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"xFfOOotw0867bHcHymyRXBJSWMW24iYl\";}'
+    'venderId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/vender/index.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-11-18 10:55:09] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:64] 
+message_start
+exception 'yii\base\ErrorException' with message 'umeworld\lib\MobileAlipay\AlipaySubmit::refund(): Failed opening required '/var/www/diyshop/rebuild/umeworld/lib/Alipay/aopsdk/aopAopClient.php' (include_path='.:/usr/share/pear:/usr/share/php')' in /var/www/diyshop/rebuild/umeworld/lib/MobileAlipay/AlipaySubmit.php:588
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/vender/index.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '681e1e58fc635e6c754ffe6631aac889ed8c24827fd08c218ff3df00d7357102a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"xFfOOotw0867bHcHymyRXBJSWMW24iYl\";}'
+    'venderId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/vender/index.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-11-18 10:55:33] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:1] 
+message_start
+exception 'yii\base\ErrorException' with message 'Class 'umeworld\lib\MobileAlipay\AopClient' not found' in /var/www/diyshop/rebuild/umeworld/lib/MobileAlipay/AlipaySubmit.php:590
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/vender/index.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '681e1e58fc635e6c754ffe6631aac889ed8c24827fd08c218ff3df00d7357102a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"xFfOOotw0867bHcHymyRXBJSWMW24iYl\";}'
+    'venderId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/vender/index.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-11-18 10:58:25] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:1] 
+message_start
+exception 'yii\base\ErrorException' with message 'Class 'umeworld\lib\MobileAlipay\AopClient' not found' in /var/www/diyshop/rebuild/umeworld/lib/MobileAlipay/AlipaySubmit.php:589
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/vender/index.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '681e1e58fc635e6c754ffe6631aac889ed8c24827fd08c218ff3df00d7357102a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"xFfOOotw0867bHcHymyRXBJSWMW24iYl\";}'
+    'venderId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/vender/index.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-11-18 11:04:20] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:1] 
+message_start
+exception 'yii\base\ErrorException' with message 'Class 'umeworld\lib\MobileAlipay\createAlipayTradeRefundRequestObject' not found' in /var/www/diyshop/rebuild/umeworld/lib/MobileAlipay/AlipaySubmit.php:597
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/vender/index.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '681e1e58fc635e6c754ffe6631aac889ed8c24827fd08c218ff3df00d7357102a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"xFfOOotw0867bHcHymyRXBJSWMW24iYl\";}'
+    'venderId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/vender/index.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-11-18 11:05:24] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:1] 
+message_start
+exception 'yii\base\ErrorException' with message 'Class 'umeworld\lib\MobileAlipay\createAlipayTradeRefundRequestObject' not found' in /var/www/diyshop/rebuild/umeworld/lib/MobileAlipay/AlipaySubmit.php:597
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/vender/index.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '681e1e58fc635e6c754ffe6631aac889ed8c24827fd08c218ff3df00d7357102a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"xFfOOotw0867bHcHymyRXBJSWMW24iYl\";}'
+    'venderId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/vender/index.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-11-18 11:05:46] [192.168.0.175][-][-][level=error][category=Exception] 
+message_start
+exception 'Exception' with message '文件编码：[UTF-8] 与表单提交编码：[GBK]两者不一致!' in /var/www/diyshop/rebuild/umeworld/lib/Alipay/aopsdk/aop/AopClient.php:369
+Stack trace:
+#0 /var/www/diyshop/rebuild/umeworld/lib/MobileAlipay/AlipaySubmit.php(609): AopClient->execute(Object(AlipayTradeRefundRequest))
+#1 /var/www/diyshop/rebuild/apps/home/controllers/VenderController.php(11): umeworld\lib\MobileAlipay\AlipaySubmit->refund('147939882286288...', 0.01)
+#2 [internal function]: home\controllers\VenderController->actionIndex()
+#3 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#5 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#6 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('vender/index', Array)
+#7 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#8 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#9 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/vender/index.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '681e1e58fc635e6c754ffe6631aac889ed8c24827fd08c218ff3df00d7357102a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"xFfOOotw0867bHcHymyRXBJSWMW24iYl\";}'
+    'venderId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/vender/index.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-11-18 11:06:09] [192.168.0.175][-][-][level=error][category=yii\base\ErrorException:8] 
+message_start
+exception 'yii\base\ErrorException' with message 'Undefined property: stdClass::$sign' in /var/www/diyshop/rebuild/umeworld/lib/Alipay/aopsdk/aop/AopClient.php:816
+Stack trace:
+#0 /var/www/diyshop/rebuild/umeworld/lib/Alipay/aopsdk/aop/AopClient.php(816): yii\base\ErrorHandler->handleError(8, 'Undefined prope...', '/var/www/diysho...', 816, Array)
+#1 /var/www/diyshop/rebuild/umeworld/lib/Alipay/aopsdk/aop/AopClient.php(768): AopClient->parserJSONSign(Object(stdClass))
+#2 /var/www/diyshop/rebuild/umeworld/lib/Alipay/aopsdk/aop/AopClient.php(464): AopClient->parserJSONSignData(Object(AlipayTradeRefundRequest), '{"alipay_trade_...', Object(stdClass))
+#3 /var/www/diyshop/rebuild/umeworld/lib/MobileAlipay/AlipaySubmit.php(610): AopClient->execute(Object(AlipayTradeRefundRequest))
+#4 /var/www/diyshop/rebuild/apps/home/controllers/VenderController.php(11): umeworld\lib\MobileAlipay\AlipaySubmit->refund('147939882286288...', 0.01)
+#5 [internal function]: home\controllers\VenderController->actionIndex()
+#6 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#7 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#9 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('vender/index', Array)
+#10 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#11 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#12 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/vender/index.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '681e1e58fc635e6c754ffe6631aac889ed8c24827fd08c218ff3df00d7357102a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"xFfOOotw0867bHcHymyRXBJSWMW24iYl\";}'
+    'venderId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/vender/index.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-11-18 11:11:17] [192.168.0.175][-][-][level=error][category=Exception] 
+message_start
+exception 'Exception' with message ' check sign Fail! The reason : signData is Empty' in /var/www/diyshop/rebuild/umeworld/lib/Alipay/aopsdk/aop/AopClient.php:919
+Stack trace:
+#0 /var/www/diyshop/rebuild/umeworld/lib/Alipay/aopsdk/aop/AopClient.php(484): AopClient->checkResponseSign(Object(AlipayTradeRefundRequest), Object(SignData), '{"alipay_trade_...', Object(stdClass))
+#1 /var/www/diyshop/rebuild/umeworld/lib/MobileAlipay/AlipaySubmit.php(610): AopClient->execute(Object(AlipayTradeRefundRequest))
+#2 /var/www/diyshop/rebuild/apps/home/controllers/VenderController.php(11): umeworld\lib\MobileAlipay\AlipaySubmit->refund('147939882286288...', 0.01)
+#3 [internal function]: home\controllers\VenderController->actionIndex()
+#4 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#5 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#6 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#7 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('vender/index', Array)
+#8 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#10 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/vender/index.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '681e1e58fc635e6c754ffe6631aac889ed8c24827fd08c218ff3df00d7357102a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"xFfOOotw0867bHcHymyRXBJSWMW24iYl\";}'
+    'venderId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/vender/index.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END
+LOG_START=================================
+[time=2016-11-18 11:44:23] [192.168.0.175][-][-][level=error][category=yii\base\UnknownPropertyException] 
+message_start
+exception 'yii\base\UnknownPropertyException' with message 'Setting unknown property: umeworld\lib\MobileAlipay\AlipaySubmit::app_id' in /var/www/diyshop/framework/yiisoft/yii2/base/Object.php:161
+Stack trace:
+#0 /var/www/diyshop/framework/yiisoft/yii2/BaseYii.php(518): yii\base\Object->__set('app_id', '201610290240509...')
+#1 /var/www/diyshop/framework/yiisoft/yii2/base/Object.php(105): yii\BaseYii::configure(Object(umeworld\lib\MobileAlipay\AlipaySubmit), Array)
+#2 [internal function]: yii\base\Object->__construct(Array)
+#3 /var/www/diyshop/framework/yiisoft/yii2/di/Container.php(372): ReflectionClass->newInstanceArgs(Array)
+#4 /var/www/diyshop/framework/yiisoft/yii2/di/Container.php(151): yii\di\Container->build('umeworld\lib\Mo...', Array, Array)
+#5 /var/www/diyshop/framework/yiisoft/yii2/BaseYii.php(344): yii\di\Container->get('umeworld\lib\Mo...', Array, Array)
+#6 /var/www/diyshop/framework/yiisoft/yii2/di/ServiceLocator.php(133): yii\BaseYii::createObject(Array)
+#7 /var/www/diyshop/framework/yiisoft/yii2/di/ServiceLocator.php(71): yii\di\ServiceLocator->get('mobileAlipay')
+#8 /var/www/diyshop/rebuild/apps/home/controllers/VenderController.php(11): yii\di\ServiceLocator->__get('mobileAlipay')
+#9 [internal function]: home\controllers\VenderController->actionIndex()
+#10 /var/www/diyshop/framework/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#11 /var/www/diyshop/framework/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#12 /var/www/diyshop/framework/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('index', Array)
+#13 /var/www/diyshop/framework/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('vender/index', Array)
+#14 /var/www/diyshop/framework/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#15 /var/www/diyshop/rebuild/apps/home/web/index.php(4): yii\base\Application->run()
+#16 {main}
+message_end
+
+file: /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php
+line: 25
+request_url: http://www.diyshop.com/vender/index.html
+
+trace_start:
+    in /var/www/diyshop/rebuild/umeworld/lib/ErrorHandler.php:25
+    in /var/www/diyshop/rebuild/common/lib/ErrorHandler.php:25
+trace_end
+
+env_vars_start:
+$_COOKIE = [
+    '_csrf' => '681e1e58fc635e6c754ffe6631aac889ed8c24827fd08c218ff3df00d7357102a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"xFfOOotw0867bHcHymyRXBJSWMW24iYl\";}'
+    'venderId' => 'T2aJb2L68_ugsadu_w_e83ce_'
+]
+
+
+$_SERVER = [
+	'HTTP_HOST' => 'www.diyshop.com',
+	'REQUEST_URI' => '/vender/index.html',
+	'HTTP_REFERER' => '',
+	'REQUEST_METHOD' => 'GET',
+	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36',
+]
+env_vars_end
+=================================LOG_END

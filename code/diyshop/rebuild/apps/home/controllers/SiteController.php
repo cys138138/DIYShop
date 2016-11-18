@@ -61,7 +61,7 @@ class SiteController extends \yii\web\Controller{
 		Yii::info(var_export($aReturnData, true));
 		if(isset($aReturnData['return_code']) && $aReturnData['return_code'] == 'SUCCESS'){ 
 			//支付成功
-			$this->_afterPaySuccess(2, $aReturnData['out_trade_no']);
+			$this->_afterPaySuccess(2, $aReturnData['out_trade_no'], $aReturnData['transaction_id']);
 		}else{
 			//支付失败
 
@@ -97,7 +97,7 @@ class SiteController extends \yii\web\Controller{
 				//Yii::error('okokok');
 				//exit($successFlag);
 				//成功,更新订单状态
-				$this->_afterPaySuccess(1, $orderId);
+				$this->_afterPaySuccess(1, $orderId, $tradeNo);
 			}
 			exit($successFlag);
 		}else{
@@ -106,7 +106,7 @@ class SiteController extends \yii\web\Controller{
 		}
 	}
 	
-	private function _afterPaySuccess($payType, $orderNumber){
+	private function _afterPaySuccess($payType, $orderNumber, $tradeNo){
 		$mOrder = Order::findOne(['order_number' => $orderNumber]);
 		if(!$mOrder){
 			Yii::info('找不到订单信息:' . var_export($_POST, true));
@@ -120,6 +120,7 @@ class SiteController extends \yii\web\Controller{
 		$mOrder->set('status', Order::ORDER_STATUS_WAIT_SEND);
 		$mOrder->set('pay_type', $payType);
 		$mOrder->set('pay_time', NOW_TIME);
+		$mOrder->set('trace_num', $tradeNo);
 		$mOrder->save();
 		if($mOrder->order_type == Order::ORDER_TYPE_SPECIAL){
 			foreach($mOrder->order_info as $ordernum){
@@ -129,7 +130,9 @@ class SiteController extends \yii\web\Controller{
 					exit($failFlag);
 				}
 				$mOrder->set('status', Order::ORDER_STATUS_WAIT_SEND);
+				$mOrder->set('pay_type', $payType);
 				$mOrder->set('pay_time', NOW_TIME);
+				$mOrder->set('trace_num', $tradeNo);
 				$mOrder->save();
 				Order::updateDressSaleCount($mOrder->order_info);
 			}

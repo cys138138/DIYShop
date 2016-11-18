@@ -271,6 +271,7 @@ return [
 		//手机版支付宝即时到账
 		'mobileAlipay' => [
 			'class' => 'umeworld\lib\MobileAlipay\AlipaySubmit',
+			'app_id' => '2016102902405090',
 			'partner_id' => '2088521148380255',
 			'key' => 'u4kvc5qxf1ma3vze8p5fijkfobqcxudg',
 			'private_key_path' => Yii::getAlias('@umeworld') . '/lib/MobileAlipay/key/rsa_private_key.pem',
@@ -279,6 +280,10 @@ return [
 			'alipay_gateway_new' => 'https://mapi.alipay.com/gateway.do?',//http://wappaygw.alipay.com/service/rest.htm?',
 			'https_verify_url' => 'https://mapi.alipay.com/gateway.do?service=notify_verify&',
 			'http_verify_url' => 'http://notify.alipay.com/trade/notify_query.do?',
+		],
+		
+		'excel' => [
+			'class' => 'umeworld\lib\PHPExcel\excel',
 		],
     ],
 ];

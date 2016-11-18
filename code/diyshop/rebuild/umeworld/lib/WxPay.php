@@ -3,8 +3,10 @@ namespace umeworld\lib;
 
 use Yii;
 use umeworld\lib\Wxpay\lib\WxPayApi;
+use umeworld\lib\Wxpay\lib\WxPayConfig;
 use umeworld\lib\Wxpay\lib\WxPayNotify;
 use umeworld\lib\Wxpay\lib\WxPayUnifiedOrder;
+use umeworld\lib\Wxpay\lib\WxPayRefund;
 
 class WxPay extends WxPayApi{
 	public $sslCertPath = '';
@@ -25,6 +27,21 @@ class WxPay extends WxPayApi{
 		$oPayUnifiedOrder->nonceStr = $param['nonceStr'];
 		
 		return $oPayUnifiedOrder->unifiedOrder();
+	}
+	
+	public function refundOrder($outTradeNo, $totalFee, $refundFee){
+		$input = new WxPayRefund();
+		$input->SetOut_trade_no($outTradeNo);
+		$input->SetTotal_fee($totalFee);
+		$input->SetRefund_fee($refundFee);
+		$input->SetOut_refund_no(WxPayConfig::MCHID . date("YmdHis"));
+		$input->SetOp_user_id(WxPayConfig::MCHID);
+		$aResult = static::refund($input);
+		Yii::info("refund order:" . json_encode($aResult));
+		if($aResult['return_code'] == 'SUCCESS'){
+			return true;
+		}
+		return false;
 	}
 	
 }

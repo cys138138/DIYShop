@@ -13,6 +13,8 @@ class AlipaySubmit extends \yii\base\Object{
 	 * partnerID(应用ID)
 	 */
 	public $partner_id = '';
+	
+	public $app_id = '';
 
 	/**
 	 * key(应用密钥)
@@ -583,5 +585,39 @@ class AlipaySubmit extends \yii\base\Object{
 	   openssl_free_key($res);
 	   return $result;
    }
+   
+   public function refund($outTradeNo, $refundFee){
+		require_once Yii::getAlias('@umeworld/lib/Alipay/aopsdk/') . 'AopSdk.php';
+		$aop = createAopClientObject();
+		$aop->gatewayUrl = 'https://openapi.alipay.com/gateway.do';
+		$aop->appId = $this->app_id;
+		$aop->rsaPrivateKeyFilePath = $this->private_key_path;
+		$aop->alipayPublicKey = $this->ali_public_key_path;
+		$aop->apiVersion = '1.0';
+		$aop->postCharset = 'UTF-8';
+		//$aop->postCharset = 'GBK';
+		$aop->format = 'json';
+		$request = createAlipayTradeRefundRequestObject();
+		$request->setBizContent("{" .
+		"    \"out_trade_no\":\"" . $outTradeNo . "\"," .
+		"    \"refund_amount\":" . $refundFee .
+		//"    \"refund_amount\":" . $refundFee . "," .
+		//"    \"refund_reason\":\"正常退款\"," .
+		//"    \"out_request_no\":\"HZ01RF001\"," .
+		//"    \"operator_id\":\"OP001\"," .
+		//"    \"store_id\":\"NJ_S_001\"," .
+		//"    \"terminal_id\":\"NJ_T_001\"" .
+		"  }");
+		$result = $aop->execute($request);
+		Yii::info('refund result:' . var_export($result, true));
+		 
+		$responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";
+		$resultCode = $result->$responseNode->code;
+		if(!empty($resultCode) && $resultCode == 10000){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
 
