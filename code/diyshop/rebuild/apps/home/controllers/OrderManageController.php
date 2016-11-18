@@ -45,6 +45,9 @@ class OrderManageController extends VController{
 		if(!$mOrder){
 			return new Response('找不到订单信息', 0);
 		}
+		if($mOrder->vender_id != Yii::$app->vender->id){
+			return new Response('非法操作', 0);
+		}
 		$mOrder->set('express_info', [
 			'express_type' => $expressType,
 			'express_number' => $expressNumber,
@@ -62,6 +65,9 @@ class OrderManageController extends VController{
 		$mOrder = Order::findOne($id);
 		if(!$mOrder){
 			return new Response('找不到订单信息', 0);
+		}
+		if($mOrder->vender_id != Yii::$app->vender->id){
+			return new Response('非法操作', 0);
 		}
 		if($mOrder->status != Order::ORDER_STATUS_WAIT_SEND){
 			return new Response('订单不是在待发货状态', 0);
@@ -100,6 +106,9 @@ class OrderManageController extends VController{
 		$mReturnExchange = ReturnExchange::findOne($id);
 		if(!$mReturnExchange){
 			return new Response('找不到退换货信息', 0);
+		}
+		if($mReturnExchange->vender_id != Yii::$app->vender->id){
+			return new Response('非法操作', 0);
 		}
 		if($mReturnExchange->is_handle){
 			return new Response('此记录已处理过了', 0);

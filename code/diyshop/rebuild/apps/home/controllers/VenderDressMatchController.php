@@ -114,6 +114,9 @@ class VenderDressMatchController extends VController{
 		if($id){
 			$mVenderDressMatch = VenderDressMatch::findOne($id);
 			if($mVenderDressMatch){
+				if($mVenderDressMatch->vender_id != Yii::$app->vender->id){
+					return new Response('非法操作', 0);
+				}
 				$mVenderDressMatch->set('vender_id', Yii::$app->vender->id);
 				$mVenderDressMatch->set('name', $name);
 				$mVenderDressMatch->set('catalog_id', $catalogId);
@@ -153,6 +156,9 @@ class VenderDressMatchController extends VController{
 		$mVenderDressMatch = VenderDressMatch::findOne($id);
 		if(!$mVenderDressMatch){
 			return new Response('找不到搭配信息', 0);
+		}
+		if($mVenderDressMatch->vender_id != Yii::$app->vender->id){
+			return new Response('非法操作', 0);
 		}
 		$isSuccess = $mVenderDressMatch->delete();
 		if(!$isSuccess){

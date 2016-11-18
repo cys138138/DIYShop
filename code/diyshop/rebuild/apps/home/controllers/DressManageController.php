@@ -162,6 +162,9 @@ class DressManageController extends VController{
 		if($id){
 			$mDress = Dress::findOne($id);
 			if($mDress){
+				if($mDress->vender_id != Yii::$app->vender->id){
+					return new Response('非法操作', 0);
+				}
 				$mDress->set('name', $name);
 				$mDress->set('desc', $desc);
 				$mDress->set('detail', $detail);
@@ -221,7 +224,9 @@ class DressManageController extends VController{
 		if(!$mDress){
 			return new Response('找不到服饰信息', 0);
 		}
-		
+		if($mDress->vender_id != Yii::$app->vender->id){
+			return new Response('非法操作', 0);
+		}
 		$aList = Vote::findAll();
 		foreach($aList as $key => $aValue){
 			if($aValue['dress_id'] == $id){
