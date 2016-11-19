@@ -29,11 +29,11 @@ function tag($tags)
     if ($num < 1) {
         throw new InvalidArgumentException("Length of the tags(Array) must be greater than 0");
     }
-    for ($i=0; $i<count($tags); $i++) {
+    /*for ($i=0; $i<count($tags); $i++) {
         if (!is_string($tags[$i])) {
             throw new InvalidArgumentException("Invalid tags[" . $i . "], tags[" . $i . "] must be a string");
         }
-    }
+    }*/
     return array("tag" => $tags);
 }
 
@@ -63,11 +63,11 @@ function alias($alias)
     if ($num < 1) {
         throw new InvalidArgumentException("Length of the alias(Array) must be greater than 0");
     }
-    for ($i=0; $i<count($alias); $i++) {
+    /*for ($i=0; $i<count($alias); $i++) {
         if (!is_string($alias[$i])) {
             throw new InvalidArgumentException("Invalid alias[" . $i . "], alias[" . $i . "] must be a string");
         }
-    }
+    }*/
     return array("alias" => $alias);
 }
 
