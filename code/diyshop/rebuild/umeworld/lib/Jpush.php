@@ -41,7 +41,7 @@ class Jpush extends \yii\base\Component {
 				->setPlatform(M\all)
 				->setAudience(M\Audience(M\alias($aReceiverAliases)))
 				->setMessage(M\message($alert, $title, (string)$type, $aExtras))
-				->setOptions(M\options(mt_rand(100000, 999999), 60, null, true, null))
+				->setOptions(M\options(mt_rand(100000, 999999), null, null, true, null))
 				->send();
 		} catch (APIRequestException $e) {
 			$br = '<br/>';
