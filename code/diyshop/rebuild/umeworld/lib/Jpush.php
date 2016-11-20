@@ -40,6 +40,10 @@ class Jpush extends \yii\base\Component {
 			$oClient->push()
 				->setPlatform(M\all)
 				->setAudience(M\Audience(M\alias($aReceiverAliases)))
+				->setNotification(M\notification($alert,
+					M\android($alert, $title, null, $aExtras),
+					M\ios($alert, 'default', "+1", false, $aExtras, null)
+				))
 				->setMessage(M\message($alert, $title, (string)$type, $aExtras))
 				->setOptions(M\options(mt_rand(100000, 999999), null, null, true, null))
 				->send();
