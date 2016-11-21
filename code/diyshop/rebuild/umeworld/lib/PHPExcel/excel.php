@@ -57,7 +57,7 @@ class Excel extends \yii\base\Object{
 	 * @param $outputPath excel文件路径
 	 * @param $sheetIndex 读取excel文件表格下标
 	 */
-	public function setSheetDataFromArray($outputPath = '', $aData, $sheetIndex = 0, $startCell = 'A1'){
+	public function setSheetDataFromArray($outputPath = '', $aData, $isOutPutDirectory = false, $sheetIndex = 0, $startCell = 'A1'){
 		if(!$outputPath){
 			return false;
 		}
@@ -78,9 +78,16 @@ class Excel extends \yii\base\Object{
 			}
 			$row++;
 		}
-		$objWriter->save($outputPath);
 		
-		return true;
+		if($isOutPutDirectory){
+			header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+			header('Content-Disposition: attachment;filename="' . $outputPath . '"');
+			header('Cache-Control: max-age=1');
+			$objWriter->save('php://output');
+		}else{
+			$objWriter->save($outputPath);
+			return true;
+		}
 	}
 	
 	/*
@@ -89,7 +96,7 @@ class Excel extends \yii\base\Object{
 	 * @param $outputPath excel文件路径
 	 * @param $sheetIndex 读取excel文件表格下标
 	 */
-	public function setSheetDataFromHtmlTable($outputPath, $htmlTable){
+	public function setSheetDataFromHtmlTable($outputPath, $htmlTable, $isOutPutDirectory = false){
 		if(!$outputPath){
 			return false;
 		}
@@ -101,9 +108,12 @@ class Excel extends \yii\base\Object{
 		$oHtmlPHPExcelObject = PHPExcel_IOFactory::createHtmlPHPExcelObject();
 		$oHtmlPHPExcelObject->setExcelObject(PHPExcel_IOFactory::createPHPExcelObject());
 		$oHtmlPHPExcelObject->setHtmlStringOrFile($htmlTable);
-		$oHtmlPHPExcelObject->process()->save($outputPath, $excelWriterType);
-		
-		return true;
+		if($isOutPutDirectory){
+			$oHtmlPHPExcelObject->process()->output($outputPath, $excelWriterType);
+		}else{
+			$oHtmlPHPExcelObject->process()->save($outputPath, $excelWriterType);
+			return true;
+		}
 	}
 }
 ?>
