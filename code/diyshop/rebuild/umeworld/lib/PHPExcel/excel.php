@@ -18,13 +18,15 @@ class Excel extends \yii\base\Object{
         parent::__construct();
     }
 	
-	/*
+	/**
 	 * 读excel表数据放入数组中
 	 * @author jay
 	 * @param $inputPath excel文件路径
+	 * @param $page 页码
+	 * @param $pageSize 页个数
 	 * @param $sheetIndex 读取excel文件表格下标
 	 */
-	public function getSheetDataInArray($inputPath = '', $sheetIndex = 0){
+	public function getSheetDataInArray($inputPath = '', $page = 0, $pageSize = 0, $sheetIndex = 0){
 		if(!$inputPath){
 			return [];
 		}
@@ -34,24 +36,39 @@ class Excel extends \yii\base\Object{
 		}else{
 			$className = 'Excel5';
 		}
-		$objReader = PHPExcel_IOFactory::createReader($className);$objReader->setReadDataOnly(false);
+		$objReader = PHPExcel_IOFactory::createReader($className);
 		$objPHPExcel = $objReader->load($inputPath);
 		$sheet = $objPHPExcel->getSheet($sheetIndex);
 		$highestRow = $sheet->getHighestRow();
 		$highestColumn = $sheet->getHighestColumn();
 		$aReturn = [];
+		$offset = 0;
+		if($page && $pageSize){
+			$offset = ($page - 1) * $pageSize;
+		}
+		$count = 0;
 		for($j = 1; $j <= $highestRow; $j++){
 			$index = 0;
 			$aRow = [];
 			for($k = 'A'; $k <= $highestColumn; $k++){
 				$aRow[$index++] = mb_convert_encoding($objPHPExcel->getActiveSheet()->getCell("$k$j")->getValue(), 'utf8', 'auto');
 			}
-			array_push($aReturn, $aRow);
+			if($page && $pageSize){
+				if($count >= $offset){
+					array_push($aReturn, $aRow);
+				}
+				if(count($aReturn) == $pageSize){
+					break;
+				}
+				$count = $count + 1;
+			}else{
+				array_push($aReturn, $aRow);
+			}
 		}
 		return $aReturn;
 	}
 	
-	/*
+	/**
 	 * 将数组写到excel表中
 	 * @author jay
 	 * @param $outputPath excel文件路径
@@ -90,7 +107,7 @@ class Excel extends \yii\base\Object{
 		}
 	}
 	
-	/*
+	/**
 	 * 将Html table写到excel表中
 	 * @author jay
 	 * @param $outputPath excel文件路径
