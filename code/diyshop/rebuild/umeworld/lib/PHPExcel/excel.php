@@ -39,7 +39,7 @@ class Excel extends \yii\base\Object{
 		$sheet = $objPHPExcel->getSheet($sheetIndex);
 		$highestRow = $sheet->getHighestRow();
 		$highestColumn = $sheet->getHighestColumn();
-		$aReturn = [];$objPHPExcel->getActiveSheet()->setCellValue('A30', 'PHPExcel');
+		$aReturn = [];
 		for($j = 1; $j <= $highestRow; $j++){
 			$index = 0;
 			$aRow = [];
