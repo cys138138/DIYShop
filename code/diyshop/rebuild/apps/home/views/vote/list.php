@@ -31,7 +31,7 @@ $this->setTitle('投票');
 					'pic'	=>	[
 						'title' => '投票图片',
 						'content' => function($aData){
-							return '<img width="234" height="375" class="img-thumbnail" src="' . Yii::getAlias('@r.url') . $aData['pic'] . '" alt="">';
+							return '<img width="234" height="375" class="img-thumbnail" src="' . Yii::getAlias('@r.url') . $aData['pic'][0] . '" alt="">';
 						}
 					],
 					'vote_count'	=>	['title' => '投票数量'],

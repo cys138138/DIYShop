@@ -40,6 +40,16 @@ $this->registerAssetBundle('common\assets\WdatePickerAsset');
 	.J-select-size-list li{
 		cursor:pointer;
 	}
+	#wrapper .J-pic-item{
+		width:375px;
+		height:298px;
+		float:left;
+		margin:2px;
+	}
+	#wrapper .J-pic-item img{
+		width:375px;
+		height:234px;
+	}
 </style>
 <div class="row">
 	<?php echo ModuleNavi::widget([
@@ -121,8 +131,11 @@ $this->registerAssetBundle('common\assets\WdatePickerAsset');
 		</div>
 		<div class="form-group">
 			<div class="row">
-				<div class="J-pic-wraper col-lg-12"></div>
+				<div class="col-lg-12">
+					<ul class="J-pic-list list-group"></ul>
+				</div>
 			</div>
+			<br />
 		</div>
 		<br />
 		<div class="form-group">
@@ -213,7 +226,7 @@ $this->registerAssetBundle('common\assets\WdatePickerAsset');
 				onSalesDay : onSalesDay,
 				description : description,
 				aSize : aSize,
-				pic : currentPic
+				pic : getPics()
 			},
 			beforeSend : function(){
 				$(o).attr('disabled', 'disabled');
@@ -222,12 +235,44 @@ $this->registerAssetBundle('common\assets\WdatePickerAsset');
 				$(o).attr('disabled', false);
 			},
 			success : function(aResult){
-				UBox.show(aResult.msg, aResult.status, function(){
-					location.href = '<?php echo Url::to(['vote/show-list']); ?>';
-				}, 3);
+				if(aResult.status == 1){
+					UBox.show(aResult.msg, aResult.status, function(){
+						location.href = '<?php echo Url::to(['vote/show-list']); ?>';
+					}, 3);
+				}else{
+					UBox.show(aResult.msg, aResult.status);
+				}
 			}
 		});
 	}
+	
+	function setPic(pic){
+		var htmlStr = '\
+			<li class="list-group-item J-pic-item" data-pic="' + pic + '">\
+				<p><img class="img-thumbnail" src="' + App.url.resource + pic + '" alt=""></p>\
+				<p><center><button type="button" class="btn btn-sm btn-danger" onclick="deletePic(this);">删除</button></center></p>\
+			</li>\
+		';
+		$('.J-pic-list').append(htmlStr);
+	}
+	
+	function deletePic(o){
+		$(o).parent().parent().remove();
+	}
+	
+	function getPics(){
+		var aPics = [];
+		if($('.J-pic-list li').length == 0){
+			UBox.show('请上传图片', -1);
+			return false;
+		}
+		$('.J-pic-list li').each(function(){
+			aPics.push($(this).attr('data-pic'));
+		});
+		
+		return aPics;
+	}
+	
 	
 	$(function(){
 		$('.J-form-upload-btn').AjaxUpload({
@@ -235,9 +280,10 @@ $this->registerAssetBundle('common\assets\WdatePickerAsset');
 			fileKey : 'image',
 			callback : function(aResult){
 				if(aResult.status == 1){
-					currentPic = aResult.data;
-					$('.J-pic-wraper').html('<p><img class="img-thumbnail" src="' + App.url.resource + currentPic + '" alt=""></p>');
-					$('.J-pic-wraper').show();
+					setPic(aResult.data);
+					/*currentPic = aResult.data;
+					$('.J-pic-wraper').append('<p><img class="img-thumbnail" src="' + App.url.resource + currentPic + '" alt=""></p>');
+					$('.J-pic-wraper').show();*/
 				}else{
 					UBox.show(aResult.msg, aResult.status);
 				}

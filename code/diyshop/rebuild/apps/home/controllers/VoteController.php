@@ -41,7 +41,7 @@ class VoteController extends MController{
 		$material = (string)Yii::$app->request->post('material');
 		$aSize = array_unique((array)Yii::$app->request->post('aSize'));
 		$onSalesDay = (string)Yii::$app->request->post('onSalesDay');
-		$pic = (string)Yii::$app->request->post('pic');
+		$pic = (array)Yii::$app->request->post('pic');
 		
 		$mVote = Vote::findOne(['dress_id' => $dressId]);
 		if($mVote){
