@@ -30,16 +30,6 @@ trait DressApi{
 		if($pageSize < 1){
 			$pageSize = 5;
 		}
-		
-		if(!$userToken){
-			return new Response('缺少user_token', 2801);
-		}
-		$userId = $this->_getUserIdByUserToken($userToken);
-		$mUser = User::findOne($userId);
-		if(!$mUser){
-			return new Response('找不到用户信息', 2802);
-		}
-		
 		$aCondition = ['status' => $status];
 		if($catalogId){
 			$aCondition['catalog_id'] = $catalogId;
@@ -62,7 +52,15 @@ trait DressApi{
 			'order_by' => $aOrderBy,
 		];
 		$aList = Dress::getList($aCondition, $aControl);
-		$aList = $this->_appendUserDressCollectionInfo($userId, $aList);
+		
+		if($userToken){
+			$userId = $this->_getUserIdByUserToken($userToken);
+			$mUser = User::findOne($userId);
+			if(!$mUser){
+				return new Response('找不到用户信息', 2802);
+			}
+			$aList = $this->_appendUserDressCollectionInfo($userId, $aList);
+		}
 		
 		return new Response('服饰列表', 1, $aList);
 	}
@@ -70,16 +68,7 @@ trait DressApi{
 	private function getDressDetail(){
 		$userToken = Yii::$app->request->post('user_token');
 		$dressId = Yii::$app->request->post('dress_id');
-		
-		if(!$userToken){
-			return new Response('缺少user_token', 2801);
-		}
-		$userId = $this->_getUserIdByUserToken($userToken);
-		$mUser = User::findOne($userId);
-		if(!$mUser){
-			return new Response('找不到用户信息', 2802);
-		}
-		
+				
 		$aCondition = ['id' => $dressId];
 		
 		$aControl = [];
@@ -87,7 +76,14 @@ trait DressApi{
 		if(!$aList){
 			return new Response('找不到服饰', 2801);
 		}
-		$aList = $this->_appendUserDressCollectionInfo($userId, $aList);
+		if($userToken){
+			$userId = $this->_getUserIdByUserToken($userToken);
+			$mUser = User::findOne($userId);
+			if(!$mUser){
+				return new Response('找不到用户信息', 2802);
+			}
+			$aList = $this->_appendUserDressCollectionInfo($userId, $aList);
+		}
 		
 		return new Response('服饰详细', 1, $aList[0]);
 	}
