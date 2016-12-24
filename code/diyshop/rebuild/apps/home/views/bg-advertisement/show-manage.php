@@ -80,6 +80,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		var htmlStr = '\
 			<li class="list-group-item" data-pic="' + pic + '">\
 				<p><img class="img-thumbnail" src="' + App.url.resource + pic + '" alt=""></p>\
+				<p><input type="text" class="J-url form-control" placeholder="链接地址" value="' + url + '" /></p>\
 				<p><center><button type="button" class="btn btn-sm btn-danger" onclick="deletePic(this);">删除</button></center></p>\
 			</li>\
 		';
@@ -87,8 +88,14 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	}
 	
 	function save(o){
-		var boyPic = $('.J-pics-list_boy .list-group-item').attr('data-pic');
-		var girlPic = $('.J-pics-list_girl .list-group-item').attr('data-pic');
+		var boyPic = {
+			pic : $('.J-pics-list_boy .list-group-item').attr('data-pic'),
+			url : $('.J-pics-list_boy .list-group-item').find('.J-url').val()
+		};
+		var girlPic = {
+			pic : $('.J-pics-list_girl .list-group-item').attr('data-pic'),
+			url : $('.J-pics-list_girl .list-group-item').find('.J-url').val()
+		};
 		ajax({
 			url : '<?php echo Url::to(['bg-advertisement/save-advertisement-config']); ?>',
 			data : {
@@ -112,8 +119,8 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 	
 	$(function(){
 		<?php if($aBgAdvertisementConfig){ ?>
-			$('.J-pics-list_boy').append(bulidImgHtml(aBgAdvertisementConfig[0]));
-			$('.J-pics-list_girl').append(bulidImgHtml(aBgAdvertisementConfig[1]));
+			$('.J-pics-list_boy').append(bulidImgHtml(aBgAdvertisementConfig[0].pic, aBgAdvertisementConfig[0].url));
+			$('.J-pics-list_girl').append(bulidImgHtml(aBgAdvertisementConfig[1].pic, aBgAdvertisementConfig[1].url));
 		<?php } ?>
 		$('.J-form-upload-btn_boy').AjaxUpload({
 			uploadUrl : '<?php echo Url::to(['bg-advertisement/upload-file']); ?>',
@@ -121,7 +128,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			callback : function(aResult){
 				if(aResult.status == 1){
 					$('.J-pics-list_boy').html('');
-					$('.J-pics-list_boy').append(bulidImgHtml(aResult.data));
+					$('.J-pics-list_boy').append(bulidImgHtml(aResult.data, ''));
 				}else{
 					UBox.show(aResult.msg, aResult.status);
 				}
@@ -133,7 +140,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			callback : function(aResult){
 				if(aResult.status == 1){
 					$('.J-pics-list_girl').html('');
-					$('.J-pics-list_girl').append(bulidImgHtml(aResult.data));
+					$('.J-pics-list_girl').append(bulidImgHtml(aResult.data, ''));
 				}else{
 					UBox.show(aResult.msg, aResult.status);
 				}

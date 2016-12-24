@@ -64,6 +64,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		var htmlStr = '\
 			<li class="list-group-item" data-pic="' + pic + '">\
 				<p><img class="img-thumbnail" src="' + App.url.resource + pic + '" alt=""></p>\
+				<p><input type="text" class="J-url form-control" placeholder="链接地址" value="' + url + '" /></p>\
 				<p><center><button type="button" class="btn btn-sm btn-danger" onclick="deletePic(this);">删除</button></center></p>\
 			</li>\
 		';
@@ -77,7 +78,11 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			return false;
 		}*/
 		$('.J-pics-list li').each(function(){
-			aPics.push($(this).attr('data-pic'));
+			var aTemp = {
+				pic : $(this).attr('data-pic'),
+				url : $(this).find('.J-url').val()
+			};
+			aPics.push(aTemp);
 		});
 		
 		return aPics;
@@ -106,10 +111,10 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		$(o).parent().parent().remove();
 	}
 	
-	$(function(){console.log(aTopAdvertisementConfig);
+	$(function(){
 		if(aTopAdvertisementConfig.length != 0){
 			for(var i in aTopAdvertisementConfig){
-				$('.J-pics-list').append(bulidImgHtml(aTopAdvertisementConfig[i]));
+				$('.J-pics-list').append(bulidImgHtml(aTopAdvertisementConfig[i].pic, aTopAdvertisementConfig[i].url));
 			}
 		}
 		$('.J-form-upload-btn_top').AjaxUpload({
@@ -117,7 +122,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			fileKey : 'image',
 			callback : function(aResult){
 				if(aResult.status == 1){
-					$('.J-pics-list').append(bulidImgHtml(aResult.data));
+					$('.J-pics-list').append(bulidImgHtml(aResult.data, ''));
 				}else{
 					UBox.show(aResult.msg, aResult.status);
 				}

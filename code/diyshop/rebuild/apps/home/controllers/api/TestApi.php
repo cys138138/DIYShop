@@ -321,6 +321,12 @@ trait TestApi{
 			'api_name' => 'getPrePayParams',
 			'order_info' => 'app_id=2016102902405090&biz_content={"timeout_express":"30m","seller_id":"","product_code":"QUICK_MSECURITY_PAY","total_amount":"0.01","subject":"Unique Design","body":"Unique Design 服饰","out_trade_no":"1d1739962e17239ec1cb8664a5ff2426"}&charset=utf-8&method=alipay.trade.app.pay&notify_url=http://unique.xdh-syy.com/alipay/notify.html&sign_type=RSA&timestamp=2016-11-06 10:35:57&version=1.0',
 		];
+			
+		//getUserOrderStatusCount
+		$aParams = [
+			'api_name' => 'getUserOrderStatusCount',
+			'user_token' => 'zyLIVJ2fXqaRMOvB4ePW4g_e83ce__e83ce_',
+		];
 		
 		//debug($this->_getUserToken(2),11);//zyLIVJ2fXqaRMOvB4ePW4g_e83ce__e83ce_
 		

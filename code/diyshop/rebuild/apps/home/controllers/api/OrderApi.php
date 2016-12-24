@@ -746,4 +746,36 @@ trait OrderApi{
 		}
 		return new Response('物流信息', 1, $aData);
 	}*/
+	
+	private function getUserOrderStatusCount(){
+		$userToken = (string)Yii::$app->request->post('user_token');
+		
+		if(!$userToken){
+			return new Response('缺少user_token', 4201);
+		}
+		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 4201);
+		}
+		$aCondition = [
+			'order_type' => Order::ORDER_TYPE_NORMAL,
+			'user_id' => $userId,
+			'status' => Order::ORDER_STATUS_WAIT_PAY,
+		];
+		$waitPayCount = Order::getCount($aCondition);
+		$aCondition['status'] = Order::ORDER_STATUS_WAIT_SEND;
+		$waitSendCount = Order::getCount($aCondition);
+		$aCondition['status'] = Order::ORDER_STATUS_FINISH;
+		$finishCount = Order::getCount($aCondition);
+		$aCondition['is_comment'] = 0;
+		$waitCommentCount = Order::getCount($aCondition);
+		
+		return new Response('各订单状态数量列表', 1, [
+			'wait_pay_count' => $waitPayCount,
+			'wait_send_count' => $waitSendCount,
+			'finish_count' => $finishCount,
+			'wait_comment_count' => $waitCommentCount,
+		]);
+	}
 }
