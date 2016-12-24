@@ -139,6 +139,10 @@ class Order extends \common\lib\DbOrmModel{
 		return (microtime(true) * 10000) . mt_rand(10, 99);
 	}
 	
+	public function createOrderNum(){
+		return date('YmdH') . $this->id;
+	}
+	
 	/**
 	 *	处理失效订单，将3日前的订单失效，并调整库存
 	 */

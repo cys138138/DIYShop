@@ -152,7 +152,7 @@ trait OrderApi{
 				'order_type' => Order::ORDER_TYPE_NORMAL,
 				'user_id' => $userId,
 				'vender_id' => $k,
-				'order_number' => Order::generateOrderNum(),
+				'order_number' => '',
 				'trace_num' => '',
 				'order_info' => $v['order_info'],
 				'dress_count' => $v['total_count'],
@@ -174,6 +174,11 @@ trait OrderApi{
 				return new Response('创建订单失败', 2110);
 			}
 			$aData['id'] = $orderId;
+			$mOrder = Order::toModel($aData);
+			$orderNumber = $mOrder->createOrderNum();
+			$mOrder->set('order_number', $orderNumber);
+			$mOrder->save();
+			$aData['order_number'] = $orderNumber;
 			array_push($aOrderInfo, $aData);
 			array_push($aTempOrderIds, $orderId);
 		}
@@ -201,12 +206,11 @@ trait OrderApi{
 		}
 		$orderNumber = $aOrderInfo[0]['order_number'];
 		if($aOrderInfo && count($aOrderInfo) > 1){
-			$orderNumber = Order::generateOrderNum();
 			$aData = [
 				'order_type' => Order::ORDER_TYPE_SPECIAL,
 				'user_id' => $userId,
 				'vender_id' => 0,
-				'order_number' => $orderNumber,
+				'order_number' => '',
 				'trace_num' => '',
 				'order_info' => ArrayHelper::getColumn($aOrderInfo, 'order_number'),
 				'dress_count' => $totalCount,
@@ -228,6 +232,12 @@ trait OrderApi{
 				$this->_deleteOrderByIds($aTempOrderIds);
 				return new Response('创建订单失败', 2114);
 			}
+			$aData['id'] = $orderId;
+			$mOrder = Order::toModel($aData);
+			$orderNumber = $mOrder->createOrderNum();
+			$mOrder->set('order_number', $orderNumber);
+			$mOrder->save();
+			$aData['order_number'] = $orderNumber;
 		}
 		if($subUserGoldFlag){
 			$mUser->set('gold', ['sub', $subGold]);
