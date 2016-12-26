@@ -10,7 +10,7 @@ use yii\web\UploadedFile;
 use common\model\Setting;
 
 class AdvertisementController extends MController{
-	const DATA_SETTING_KEY = 'advertisement_catalog_config';
+	const DATA_SETTING_KEY = Setting::ADVERTISEMENT_CATALOG;
 	const MAX_PIC_COUNT = 5;
 
 	private function _getAdvertisementCatalogConfig(){

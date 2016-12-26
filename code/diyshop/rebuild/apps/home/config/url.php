@@ -139,6 +139,10 @@ return [
 		'manager-dress-decoration/upload-file.html'								=> 'manager-dress-decoration/upload-file',
 		
 		
+		'setting/index.html'													=> 'setting/index',
+		'setting/save-is-show-advertisement.json'								=> 'setting/save-is-show-advertisement',
+		
+		
 		
 		'api/test.html'															=> 'api/test',
 		'api.json'																=> 'api/index',

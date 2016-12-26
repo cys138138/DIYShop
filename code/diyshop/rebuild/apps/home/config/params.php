@@ -144,5 +144,13 @@ return [
 			'icon_class' => 'star',	
 			'child' => [],
 		],
+		[
+			'title' => '设置',
+			'en_title' => 'manager_setting',
+			'url' => ['setting/index'],
+			'permission' => ['manager'],
+			'icon_class' => 'star',	
+			'child' => [],
+		],
 	],
 ];
