@@ -20,7 +20,7 @@ class ApiController extends \yii\web\Controller{
 	
 	const REGISTER_USER_GIVE_GOLD = 100; //注册新用户送100金币
 	
-	private $_version = '1.0.0';
+	private $_version = '1.0.1';
 	private $_appCode = [
 		'android_diyshop' => 'ce854c997d463edcfb54ac4e0732d139',	//app_code => app_key
 		'ios_diyshop' => '538982ef3dcdad018e59d2884fd8add1'			//app_code => app_key

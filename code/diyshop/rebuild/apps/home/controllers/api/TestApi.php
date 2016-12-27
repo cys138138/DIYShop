@@ -6,7 +6,7 @@ use Yii;
 trait TestApi{
 	
 	public function actionTest(){
-		$version = '1.0.0';
+		$version = '1.0.1';
 		$appCode = 'ios_diyshop';
 		$timestamp = date('Y-m-d H:i:s');
 		
