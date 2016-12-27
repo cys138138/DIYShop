@@ -33,11 +33,7 @@ trait AdvertisementApi{
 				'is_show_advertisement' => $isShowAdvertisement,
 			];
 		}
-		return new Response('首页广告图片', 1, [
-			'top' => $aTopAdertisement,
-			'bg' => $aBgAdertisement,
-			'is_show_advertisement' => $isShowAdvertisement,
-		]);
+		return new Response('首页广告图片', 1, $aReturn);
 	}
 
 }
