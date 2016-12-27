@@ -10,7 +10,7 @@ use common\model\Setting;
 trait AdvertisementApi{
 	
 	private function getHomePageAdvertisement(){
-		$isShowAdvertisement = Setting::getSetting(self::IS_SHOW_ADVERTISEMENT);
+		$isShowAdvertisement = Setting::getSetting(Setting::IS_SHOW_ADVERTISEMENT);
 		$aTopAdertisement = json_decode(Setting::getSetting(Setting::TOP_ADVERTISEMENT), true);
 		$aBgAdertisement = json_decode(Setting::getSetting(Setting::BG_ADVERTISEMENT), true);
 		
