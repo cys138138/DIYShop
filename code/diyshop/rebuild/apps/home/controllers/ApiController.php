@@ -20,7 +20,7 @@ class ApiController extends \yii\web\Controller{
 	
 	const REGISTER_USER_GIVE_GOLD = 100; //注册新用户送100金币
 	
-	private $_version = '1.0.1';
+	private $_version = ['1.0.1', '1.0.1'];
 	private $_appCode = [
 		'android_diyshop' => 'ce854c997d463edcfb54ac4e0732d139',	//app_code => app_key
 		'ios_diyshop' => '538982ef3dcdad018e59d2884fd8add1'			//app_code => app_key
@@ -55,7 +55,7 @@ class ApiController extends \yii\web\Controller{
 		if(!$version){
 			return new Response('缺少版本号', 1000);
 		}
-		if($version != $this->_version){
+		if(!in_array($version, $this->_version)){
 			return new Response('版本号错误', 1001);
 		}
 		if(!$appCode){
