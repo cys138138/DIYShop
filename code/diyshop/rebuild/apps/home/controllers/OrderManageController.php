@@ -6,6 +6,7 @@ use home\lib\VenderController as VController;
 use umeworld\lib\Response;
 use umeworld\lib\Url;
 use common\model\Order;
+use common\model\SystemSns;
 use common\model\ReturnExchange;
 use common\model\form\OrderListForm;
 use common\model\form\ReturnExchangeListForm;
@@ -75,7 +76,14 @@ class OrderManageController extends VController{
 		$mOrder->set('status', Order::ORDER_STATUS_WAIT_RECEIVE);
 		$mOrder->set('deliver_time', NOW_TIME);
 		$mOrder->save();
-		
+		//发送系统通知：发货
+		SystemSns::insert([
+			'user_id' => $mOrder->user_id,
+			'type' => SystemSns::TYPE_SEND_GOODS,
+			'content' => '',
+			'data_id' => $mOrder->id,
+			'create_time' => NOW_TIME,
+		]);
 		return new Response('操作成功', 1);
 	}
 	

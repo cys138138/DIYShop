@@ -26,7 +26,7 @@ use umeworld\lib\Url;
 	</ul>
 	<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
-		<ul class="nav navbar-nav side-nav">
+		<ul class="J-side-menu nav navbar-nav side-nav">
 		<?php 
 			$controllerId = Yii::$app->controller->id;
 			$actionId = Yii::$app->controller->action->id;
@@ -78,5 +78,7 @@ use umeworld\lib\Url;
 	<!-- /.navbar-collapse -->
 </nav>
 <script type="text/javascript">
-
+	$(function(){
+		$('.J-side-menu').css({'max-height': $('#page-wrapper').css('min-height')});
+	});
 </script>

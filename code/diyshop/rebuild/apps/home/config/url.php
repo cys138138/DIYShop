@@ -142,6 +142,9 @@ return [
 		'setting/index.html'													=> 'setting/index',
 		'setting/save-is-show-advertisement.json'								=> 'setting/save-is-show-advertisement',
 		
+		'system-sns/index.html'													=> 'system-sns/index',
+		'system-sns/send-system-sns.json'										=> 'system-sns/send-system-sns',
+		
 		
 		
 		'api/test.html'															=> 'api/test',

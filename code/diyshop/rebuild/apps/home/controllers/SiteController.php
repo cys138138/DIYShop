@@ -9,6 +9,7 @@ use umeworld\lib\Xxtea;
 use common\model\Order;
 use common\model\Dress;
 use common\model\VoteRecord;
+use common\model\SystemSns;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -122,6 +123,14 @@ class SiteController extends \yii\web\Controller{
 		$mOrder->set('pay_time', NOW_TIME);
 		$mOrder->set('trace_num', $tradeNo);
 		$mOrder->save();
+		//发送系统通知：付款成功
+		SystemSns::insert([
+			'user_id' => $mOrder->user_id,
+			'type' => SystemSns::TYPE_PAY_ORDER,
+			'content' => '',
+			'data_id' => $mOrder->id,
+			'create_time' => NOW_TIME,
+		]);
 		if($mOrder->order_type == Order::ORDER_TYPE_SPECIAL){
 			foreach($mOrder->order_info as $ordernum){
 				$mOrder = Order::findOne(['order_number' => $ordernum]);
@@ -167,6 +176,21 @@ class SiteController extends \yii\web\Controller{
 				'dress_id' => $mDress->id,
 				'user_ids' => $aUserIds,
 			]);
+		}
+		//发送系统通知：您有喜欢的服饰上架了
+		$aData = [];
+		foreach($aUserIds as $userId){
+			$aTemp = [
+				'user_id' => $userId,
+				'type' => SystemSns::TYPE_LIKE_DRESS_ON_SALES,
+				'content' => '',
+				'data_id' => $dressId,
+				'create_time' => NOW_TIME,
+			];
+			array_push($aData, $aTemp);
+		}
+		if($aData){
+			SystemSns::batchInsertRecord($aData);
 		}
 	}
 

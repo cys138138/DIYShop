@@ -327,6 +327,12 @@ trait TestApi{
 			'api_name' => 'getUserOrderStatusCount',
 			'user_token' => 'zyLIVJ2fXqaRMOvB4ePW4g_e83ce__e83ce_',
 		];
+			
+		//getSystemSnsList
+		$aParams = [
+			'api_name' => 'getSystemSnsList',
+			'user_token' => 'zyLIVJ2fXqaRMOvB4ePW4g_e83ce__e83ce_',
+		];
 		
 		//debug($this->_getUserToken(2),11);//zyLIVJ2fXqaRMOvB4ePW4g_e83ce__e83ce_
 		

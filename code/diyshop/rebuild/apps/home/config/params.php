@@ -152,5 +152,13 @@ return [
 			'icon_class' => 'star',	
 			'child' => [],
 		],
+		[
+			'title' => '系统通知',
+			'en_title' => 'system_sns',
+			'url' => ['system-sns/index'],
+			'permission' => ['manager'],
+			'icon_class' => 'star',	
+			'child' => [],
+		],
 	],
 ];
