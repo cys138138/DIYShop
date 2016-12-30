@@ -591,6 +591,8 @@ trait OrderApi{
 			'reason' => $reason,
 			'desc' => $desc,
 			'pics' => $aPics,
+			'refund_money' => 0,
+			'refund_time' => 0,
 			'is_handle' => 0,
 			'create_time' => NOW_TIME,
 		]);
@@ -787,5 +789,45 @@ trait OrderApi{
 			'finish_count' => $finishCount,
 			'wait_comment_count' => $waitCommentCount,
 		]);
+	}
+	
+	private function getReturnExchangeList(){
+		$userToken = (string)Yii::$app->request->post('user_token');
+		$id = Yii::$app->request->post('id');
+		$type = Yii::$app->request->post('type');
+		$page = Yii::$app->request->post('page');
+		$pageSize = Yii::$app->request->post('page_size');
+		
+		if($page < 1){
+			$page = 1;
+		}
+		if($pageSize < 1){
+			$pageSize = 5;
+		}
+		
+		$userId = $this->_getUserIdByUserToken($userToken);
+		$mUser = User::findOne($userId);
+		if(!$mUser){
+			return new Response('找不到用户信息', 4401);
+		}
+		
+		$aCondition = [
+			'user_id' => $userId,
+		];
+		if($id){
+			$aCondition['id'] = $id;
+		}
+		if($type){
+			$aCondition['type'] = $type;
+		}
+		$aControl = [
+			'page' => $page,
+			'page_size' => $pageSize,
+			'order_by' => ['create_time' => SORT_DESC],
+		];
+		$aList = ReturnExchange::getList($aCondition, $aControl);
+		
+		return new Response('退换货列表', 1, $aList);
+		
 	}
 }

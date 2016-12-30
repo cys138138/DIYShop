@@ -333,6 +333,12 @@ trait TestApi{
 			'api_name' => 'getSystemSnsList',
 			'user_token' => 'zyLIVJ2fXqaRMOvB4ePW4g_e83ce__e83ce_',
 		];
+			
+		//getReturnExchangeList
+		$aParams = [
+			'api_name' => 'getReturnExchangeList',
+			'user_token' => 'zyLIVJ2fXqaRMOvB4ePW4g_e83ce__e83ce_',
+		];
 		
 		//debug($this->_getUserToken(2),11);//zyLIVJ2fXqaRMOvB4ePW4g_e83ce__e83ce_
 		

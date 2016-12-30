@@ -7,6 +7,7 @@ use umeworld\lib\Wxpay\lib\WxPayConfig;
 use umeworld\lib\Wxpay\lib\WxPayNotify;
 use umeworld\lib\Wxpay\lib\WxPayUnifiedOrder;
 use umeworld\lib\Wxpay\lib\WxPayRefund;
+use umeworld\lib\Wxpay\lib\WxPayRefundQuery;
 
 class WxPay extends WxPayApi{
 	public $sslCertPath = '';
@@ -40,6 +41,19 @@ class WxPay extends WxPayApi{
 		Yii::info("refund order:" . json_encode($aResult));
 		if($aResult['return_code'] == 'SUCCESS'){
 			return true;
+		}
+		return false;
+	}
+	
+	public function refundMoneyQuery($outTradeNo){
+		$input = new WxPayRefundQuery();
+		$input->SetOut_trade_no($outTradeNo);
+		$aResult = static::refundQuery($input);
+		Yii::info("query_refund order:" . json_encode($aResult));
+		if($aResult['return_code'] == 'SUCCESS'){
+			if(isset($aResult['refund_status_0']) && $aResult['refund_status_0'] == 'SUCCESS'){
+				return true;		
+			}
 		}
 		return false;
 	}

@@ -44,6 +44,7 @@ class ReturnExchange extends \common\lib\DbOrmModel{
 		}
 		foreach($aList as $k => $v){
 			$aList[$k]['pics'] = json_decode($v['pics'], 1);
+			$aList[$k]['order_info'] = [];
 			foreach($aUserList as $aUser){
 				if($aUser['id'] == $v['user_id']){
 					$aList[$k]['user_info'] = $aUser;
@@ -88,5 +89,15 @@ class ReturnExchange extends \common\lib\DbOrmModel{
 		}
 		
 		return $aWhere;
+	}
+	
+	public static function getVenderRefundingRecordList($venderId){
+		$aWhere = [
+			'and',
+			['vender_id' => $venderId],
+			['refund_time' => 0],
+			['>', 'refund_money', 0],
+		];
+		return (new Query())->from(self::tableName())->where($aWhere)->all();
 	}
 }

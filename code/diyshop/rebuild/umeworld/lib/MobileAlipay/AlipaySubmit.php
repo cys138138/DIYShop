@@ -619,5 +619,33 @@ class AlipaySubmit extends \yii\base\Object{
 			return false;
 		}
 	}
+	
+   public function refundMoneyQuery($outTradeNo){
+		require_once Yii::getAlias('@umeworld/lib/Alipay/aopsdk/') . 'AopSdk.php';
+		$aop = createAopClientObject();
+		$aop->gatewayUrl = 'https://openapi.alipay.com/gateway.do';
+		$aop->appId = $this->app_id;
+		$aop->rsaPrivateKeyFilePath = $this->private_key_path;
+		$aop->alipayPublicKey = $this->ali_public_key_path;
+		$aop->apiVersion = '1.0';
+		$aop->postCharset = 'UTF-8';
+		//$aop->postCharset = 'GBK';
+		$aop->format = 'json';
+		$request = createAlipayTradeFastpayRefundQueryRequestObject();
+		$request->setBizContent("{" .
+		"    \"out_request_no\":\"" . $outTradeNo . "\"," .
+		"  }");
+		$result = $aop->execute($request);
+		Yii::info('refund result:' . var_export($result, true));
+		 
+		$responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";
+		$resultCode = $result->$responseNode->code;
+		if(!empty($resultCode) && $resultCode == 10000){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
 }
 

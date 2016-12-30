@@ -8,6 +8,9 @@ use yii\helpers\ArrayHelper;
 class Order extends \common\lib\DbOrmModel{
 	protected $_aEncodeFields = ['order_info', 'express_info'];
 	
+	const PAY_TYPE_ALIPAY = 1;	//支付宝
+	const PAY_TYPE_WEIXIN = 2;	//微信
+	
 	const ORDER_TYPE_NORMAL = 0;
 	const ORDER_TYPE_SPECIAL = 1;
 	

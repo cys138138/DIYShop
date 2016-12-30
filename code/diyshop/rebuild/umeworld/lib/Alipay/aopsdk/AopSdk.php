@@ -49,3 +49,7 @@ function createAopClientObject(){
 function createAlipayTradeRefundRequestObject(){
 	return new AlipayTradeRefundRequest();
 }
+
+function createAlipayTradeFastpayRefundQueryRequestObject(){
+	return new AlipayTradeFastpayRefundQueryRequest();
+}

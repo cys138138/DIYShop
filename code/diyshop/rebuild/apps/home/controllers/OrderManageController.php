@@ -5,6 +5,7 @@ use Yii;
 use home\lib\VenderController as VController;
 use umeworld\lib\Response;
 use umeworld\lib\Url;
+use umeworld\lib\Http;
 use common\model\Order;
 use common\model\SystemSns;
 use common\model\ReturnExchange;
@@ -95,7 +96,8 @@ class OrderManageController extends VController{
 		}
 		$aList = $oReturnExchangeListForm->getList();
 		$oPage = $oReturnExchangeListForm->getPageObject();
-		
+		//检查更新退款记录
+		Http::sendNotWaitGetRequest(Yii::$app->urlManagerHome->createUrl(['site/query-refund-money']), ['vender_id' => Yii::$app->vender->id]);
 		return $this->render('show-return-exchange-list', [
 			'aReturnExchangeList' => $aList,
 			'userId' => $oReturnExchangeListForm->userId,
@@ -172,6 +174,39 @@ class OrderManageController extends VController{
 		]);
 		
 		return new Response('操作成功', 1);
+	}
+	
+	public function actionSureRefundMoney(){
+		$id = (int)Yii::$app->request->post('id');
+		
+		$mReturnExchange = ReturnExchange::findOne($id);
+		if(!$mReturnExchange){
+			return new Response('找不到退换货信息', 0);
+		}
+		if($mReturnExchange->vender_id != Yii::$app->vender->id){
+			return new Response('非法操作', 0);
+		}
+		
+		$mOrder = Order::findOne(['order_number' => $mReturnExchange->order_number]);
+		if(!$mOrder){
+			return new Response('找不到订单信息', 0);
+		}
+		
+		$outTradeNo = $mOrder->order_number;
+		$refundMoney = $mOrder->pay_money;
+		$isSuccess = false;
+		if($mOrder->pay_type == Order::PAY_TYPE_ALIPAY){
+			$isSuccess = Yii::$app->mobileAlipay->refund($outTradeNo, $refundMoney);
+		}elseif($mOrder->pay_type == Order::PAY_TYPE_WEIXIN){
+			$isSuccess = Yii::$app->wxpay->refundOrder($outTradeNo, $refundMoney, $refundMoney);
+		}
+		if($isSuccess){
+			$mReturnExchange->set('refund_money', $refundMoney);
+			$mReturnExchange->save();
+		}else{
+			return new Response('申请退款失败', 0);
+		}
+		return new Response('申请退款成功', 1);
 	}
 	
 }

@@ -10,6 +10,7 @@ use common\model\Order;
 use common\model\Dress;
 use common\model\VoteRecord;
 use common\model\SystemSns;
+use common\model\ReturnExchange;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -194,4 +195,25 @@ class SiteController extends \yii\web\Controller{
 		}
 	}
 
+	public function actionQueryRefundMoney(){
+		$venderId = Yii::$app->request->get('vender_id');
+		
+		$aList = ReturnExchange::getVenderRefundingRecordList($venderId);
+		foreach($aList as $key => $aValue){
+			$mReturnExchange = ReturnExchange::toModel($aValue);
+			$mOrder = Order::findOne(['order_number' => $mReturnExchange->order_number]);
+			if($mOrder){
+				$isSuccess = false;
+				if($mOrder->pay_type == Order::PAY_TYPE_WEIXIN){
+					$isSuccess = Yii::$app->wxpay->refundMoneyQuery($mReturnExchange->order_number);
+				}elseif($mOrder->pay_type == Order::PAY_TYPE_ALIPAY){
+					$isSuccess = Yii::$app->mobileAlipay->refundMoneyQuery($mReturnExchange->order_number);
+				}
+				if($isSuccess){
+					$mReturnExchange->set('refund_time', NOW_TIME);
+					$mReturnExchange->save();
+				}
+			}
+		}
+	}
 }

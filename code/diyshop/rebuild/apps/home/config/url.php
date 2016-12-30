@@ -20,6 +20,7 @@ return [
 		'weixin/notify.html'													=> 'site/weixin-notify',
 		'site/order-failure.html'												=> 'site/order-failure',
 		'site/dress-on-sale-jpush-to-user.html'									=> 'site/dress-on-sale-jpush-to-user',
+		'site/query-refund-money.html'											=> 'site/query-refund-money',
 		
 		
 		'index.html'															=> 'login/index',
@@ -80,6 +81,7 @@ return [
 		'order-manage/sure-send-goods.json'										=> 'order-manage/sure-send-goods',
 		'order-manage/show-return-exchange-list.html'							=> 'order-manage/show-return-exchange-list',
 		'order-manage/sure-return-exchange.json'								=> 'order-manage/sure-return-exchange',
+		'order-manage/sure-refund-money.json'									=> 'order-manage/sure-refund-money',
 		
 		
 		

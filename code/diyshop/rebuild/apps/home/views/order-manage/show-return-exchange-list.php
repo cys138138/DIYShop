@@ -182,7 +182,9 @@ $this->setTitle('退换货管理');
 			htmlStr += '<p style="height:200px;">' + picHtml + '</p>';
 		}
 		htmlStr += '<p><b>&nbsp;&nbsp;&nbsp;&nbsp;处理原因：</b><textarea class="J-handle-reason form-control" rows="3">' + (aReturnExchange.handle_reason ? aReturnExchange.handle_reason : '') +'</textarea></p>';
-			
+		if((aReturnExchange.type == <?php echo ReturnExchange::TYPE_RETURN_AND_EXCHANGE; ?> || aReturnExchange.type == <?php echo ReturnExchange::TYPE_RETURN_MONEY; ?>) && aReturnExchange.refund_money == 0){
+			htmlStr += '&nbsp;&nbsp;<button type="button" class=" btn btn-primary" onclick="sureRefundMoney(this, ' + aReturnExchange.id + ');">全额退款</button>';
+		}
 		if(aReturnExchange.is_handle != 1){
 			htmlStr += '&nbsp;&nbsp;<button type="button" class=" btn btn-primary" onclick="sureRetuenExchange(this, ' + aReturnExchange.id + ', 1);">' + aBtnStr[aReturnExchange.type][0]+ '</button>';
 			htmlStr += '&nbsp;&nbsp;<button type="button" class=" btn btn-primary" onclick="sureRetuenExchange(this, ' + aReturnExchange.id + ', 0);">' + aBtnStr[aReturnExchange.type][1]+ '</button>';
@@ -290,6 +292,26 @@ $this->setTitle('退换货管理');
 					id : id,
 					status : status,
 					reason : $('.J-handle-reason').val()
+				},
+				beforeSend : function(){
+					$(o).attr('disabled', 'disabled');
+				},
+				complete : function(){
+					$(o).attr('disabled', false);
+				},
+				success : function(aResult){
+					UBox.show(aResult.msg, aResult.status);
+				}
+			});
+		});
+	}
+	
+	function sureRefundMoney(o, id){
+		UBox.confirm('确定全额退款操作？（说明：此操作向支付平台提交退款申请，支付平台收到退款请求并且验证成功之后，按照退款规则将支付款按原路退到买家帐号上。）', function(){
+			ajax({
+				url : '<?php echo Url::to(['order-manage/sure-refund-money']); ?>',
+				data : {
+					id : id,
 				},
 				beforeSend : function(){
 					$(o).attr('disabled', 'disabled');
