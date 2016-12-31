@@ -36,26 +36,53 @@ class SystemSns extends \common\lib\DbOrmModel{
 		}
 		
 		foreach($aList as $key => $aValue){
-			if($aValue['type'] == static::TYPE_LIKE_DRESS_ON_SALES){
-				$aList[$key]['dress_id'] = $aValue['data_id'];
-				$aList[$key]['picUrl'] = '';
+			$aTemp = [
+				'id' => $aValue['id'],
+				'type' => $aValue['type'],
+				'create_time' => $aValue['create_time']
+			];
+			if($aValue['type'] == static::TYPE_DEFAULT){
+				$aTemp['title'] = $aValue['content'];
+			}elseif($aValue['type'] == static::TYPE_LIKE_DRESS_ON_SALES){
+				$aTemp['title'] = '亲，您之前关注的服饰现在已经上架了！点击此处即可前往查看！';
+				$aTemp['dress_id'] = $aValue['data_id'];
+				$aTemp['pic_url'] = '';
 				$mDressSizeColorCount = DressSizeColorCount::findOne(['dress_id' => $aValue['data_id']]);
 				if($mDressSizeColorCount && isset($mDressSizeColorCount->pic[0]) && $mDressSizeColorCount->pic[0]){
-					$aList[$key]['picUrl'] = $mDressSizeColorCount->pic[0];
+					$aTemp['pic_url'] = $mDressSizeColorCount->pic[0];
 				}
 			}elseif($aValue['type'] == static::TYPE_PAY_ORDER || $aValue['type'] == static::TYPE_SEND_GOODS){
+				$aTemp['title'] = '';
+				$aTemp['order_number'] = '';
+				$aTemp['express_number'] = '';
 				$mOrder = Order::findOne($aValue['data_id']);
 				if($mOrder){
-					$aList[$key]['order_number'] = $mOrder->order_number;
-					$aList[$key]['title'] = '';
+					$aTemp['order_number'] = $mOrder->order_number;
 					if($mOrder->order_type == Order::ORDER_TYPE_SPECIAL){
 						$aOrderList = Order::getList(['order_number' => $mOrder->order_info]);
-						$aList[$key]['title'] = $aOrderList[0]['order_info'][0]['item_info']['name'];
+						$aTemp['title'] = $aOrderList[0]['order_info'][0]['item_info']['name'];
+						if(isset($aOrderList[0]['order_number'])){
+							$aTemp['order_number'] = $aOrderList[0]['order_number'];
+						}
+						if(isset($aOrderList[0]['express_info']['express_number'])){
+							$aTemp['express_number'] = $aOrderList[0]['express_info']['express_number'];
+						}
 					}else{
-						$aList[$key]['title'] = $mOrder->order_info[0]['item_info']['name'];
+						$aTemp['title'] = $mOrder->order_info[0]['item_info']['name'];
+						if(isset($mOrder->express_info['express_number'])){
+							$aTemp['express_number'] = $mOrder->express_info['express_number'];
+						}
+					}
+				}
+				if($aTemp['title']){
+					if($aValue['type'] == static::TYPE_PAY_ORDER){
+						$aTemp['title'] = '亲，您的' . $aTemp['title'] . '订单已付款，请留意订单动态。';
+					}elseif($aValue['type'] == static::TYPE_SEND_GOODS){
+						$aTemp['title'] = '亲，您的' . $aTemp['title'] . '已经发货，请留意物流详情。';
 					}
 				}
 			}
+			$aList[$key] = $aTemp;
 		}
 		
 		return $aList;
