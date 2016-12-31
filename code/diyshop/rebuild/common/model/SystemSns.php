@@ -60,7 +60,9 @@ class SystemSns extends \common\lib\DbOrmModel{
 					$aTemp['order_number'] = $mOrder->order_number;
 					if($mOrder->order_type == Order::ORDER_TYPE_SPECIAL){
 						$aOrderList = Order::getList(['order_number' => $mOrder->order_info]);
-						$aTemp['title'] = $aOrderList[0]['order_info'][0]['item_info']['name'];
+						if(isset($aOrderList[0]['order_info'][0]['item_info']['name'])){
+							$aTemp['title'] = $aOrderList[0]['order_info'][0]['item_info']['name'];
+						}
 						if(isset($aOrderList[0]['order_number'])){
 							$aTemp['order_number'] = $aOrderList[0]['order_number'];
 						}
