@@ -43,6 +43,9 @@ class SystemSnsController extends MController{
 		if(!$isSuccess){
 			return new Response('发送失败', 0);
 		}
+		Yii::$app->jpush->sendNotification($content, $content, 8, [$userId], [
+			'user_ids' => [$userId],
+		], true);
 		return new Response('发送成功', 1);
 	}
 }

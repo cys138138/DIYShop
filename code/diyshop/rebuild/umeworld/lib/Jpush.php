@@ -34,15 +34,22 @@ class Jpush extends \yii\base\Component {
 	 * @param int $builderId 指定客户端使用的通知栏样式ID
 	 * @return null
 	 */
-	public function sendNotification($alert, $title, $type, $aReceiverAliases = [], $aExtras = []) {
+	public function sendNotification($alert, $title, $type, $aReceiverAliases = [], $aExtras = [], $contentAvailable = false) {
 		$oClient = new JPushClient($this->appKey, $this->masterSecret);
 		try {
+			$sound = 'default';
+			$badge = "+1";
+			if($contentAvailable){
+				$alert = '';
+				$sound = null;
+				$badge = null;
+			}
 			$oClient->push()
 				->setPlatform(M\all)
 				->setAudience(M\Audience(M\alias($aReceiverAliases)))
 				->setNotification(M\notification($alert,
 					M\android($alert, $title, null, $aExtras),
-					M\ios($alert, 'default', "+1", false, $aExtras, null)
+					M\ios($alert, $sound, $badge, $contentAvailable, $aExtras, null)
 				))
 				->setMessage(M\message($alert, $title, (string)$type, $aExtras))
 				->setOptions(M\options(mt_rand(100000, 999999), null, null, true, null))

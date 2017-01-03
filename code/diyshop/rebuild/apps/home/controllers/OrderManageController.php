@@ -78,13 +78,19 @@ class OrderManageController extends VController{
 		$mOrder->set('deliver_time', NOW_TIME);
 		$mOrder->save();
 		//发送系统通知：发货
-		SystemSns::insert([
+		$id = SystemSns::insert([
 			'user_id' => $mOrder->user_id,
 			'type' => SystemSns::TYPE_SEND_GOODS,
 			'content' => '',
 			'data_id' => $mOrder->id,
 			'create_time' => NOW_TIME,
 		]);
+		$aRecord = SystemSns::getList(['id' => $id]);
+		if($aRecord){
+			Yii::$app->jpush->sendNotification($aRecord[0]['title'], $aRecord[0]['title'], 8, [$mOrder->user_id], array_merge([
+				'user_ids' => [$mOrder->user_id],
+			], $aRecord[0]), true);
+		}
 		return new Response('操作成功', 1);
 	}
 	
