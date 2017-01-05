@@ -204,6 +204,7 @@ class OrderManageController extends VController{
 		if($mOrder->pay_type == Order::PAY_TYPE_ALIPAY){
 			$isSuccess = Yii::$app->mobileAlipay->refund($outTradeNo, $refundMoney);
 		}elseif($mOrder->pay_type == Order::PAY_TYPE_WEIXIN){
+			$refundMoney = $refundMoney * 100;
 			$isSuccess = Yii::$app->wxpay->refundOrder($outTradeNo, $refundMoney, $refundMoney);
 		}
 		if($isSuccess){
