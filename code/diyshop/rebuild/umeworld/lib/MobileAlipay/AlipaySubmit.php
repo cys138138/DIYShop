@@ -601,6 +601,7 @@ class AlipaySubmit extends \yii\base\Object{
 		$request->setBizContent("{" .
 		"    \"out_trade_no\":\"" . $outTradeNo . "\"," .
 		"    \"refund_amount\":" . $refundFee .
+		"    \"out_request_no\":\"" . $outTradeNo . "\"," .
 		//"    \"refund_amount\":" . $refundFee . "," .
 		//"    \"refund_reason\":\"正常退款\"," .
 		//"    \"out_request_no\":\"HZ01RF001\"," .
@@ -633,6 +634,7 @@ class AlipaySubmit extends \yii\base\Object{
 		$aop->format = 'json';
 		$request = createAlipayTradeFastpayRefundQueryRequestObject();
 		$request->setBizContent("{" .
+		"    \"out_trade_no\":\"" . $outTradeNo . "\"," .
 		"    \"out_request_no\":\"" . $outTradeNo . "\"," .
 		"  }");
 		$result = $aop->execute($request);

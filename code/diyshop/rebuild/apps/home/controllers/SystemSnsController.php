@@ -43,6 +43,12 @@ class SystemSnsController extends MController{
 		if(!$isSuccess){
 			return new Response('发送失败', 0);
 		}
+		$aRecord = SystemSns::getList(['id' => $isSuccess]);
+		if($aRecord){
+			Yii::$app->jpush->sendNotification($aRecord[0]['title'], $aRecord[0]['title'], 8, [$userId], array_merge([
+				'user_ids' => [$userId],
+			], $aRecord[0]), true);
+		}
 		return new Response('发送成功', 1);
 	}
 }

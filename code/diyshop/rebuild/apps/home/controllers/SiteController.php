@@ -125,7 +125,7 @@ class SiteController extends \yii\web\Controller{
 		$mOrder->set('trace_num', $tradeNo);
 		$mOrder->save();
 		//发送系统通知：付款成功
-		SystemSns::insert([
+		$id = SystemSns::insert([
 			'user_id' => $mOrder->user_id,
 			'type' => SystemSns::TYPE_PAY_ORDER,
 			'content' => '',
@@ -148,6 +148,12 @@ class SiteController extends \yii\web\Controller{
 			}
 		}else{
 			Order::updateDressSaleCount($mOrder->order_info);
+		}
+		$aRecord = SystemSns::getList(['id' => $id]);
+		if($aRecord){
+			Yii::$app->jpush->sendNotification($aRecord[0]['title'], $aRecord[0]['title'], 8, [$mOrder->user_id], array_merge([
+				'user_ids' => [$mOrder->user_id],
+			], $aRecord[0]), true);
 		}
 	}
 	
