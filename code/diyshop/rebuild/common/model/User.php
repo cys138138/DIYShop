@@ -93,6 +93,22 @@ class User extends \common\lib\DbOrmModel implements IdentityInterface{
 			$oQuery->offset($offset)->limit($aControl['page_size']);
 		}
 		$aList = $oQuery->all();
+		if(!$aList){
+			return [];
+		}
+		if(isset($aControl['width_total_consumption']) && $aControl['width_total_consumption']){
+			$aUserIds = ArrayHelper::getColumn($aList, 'id');
+			$sql = 'SELECT `user_id`,SUM(`total_price`) AS `total_consumption` FROM `order` WHERE `order_type`=0 AND `user_id` IN (3, 9, 13) AND `pay_time`>0 GROUP BY `user_id`';
+			$aTotalConsumptionList = Yii::$app->db->createCommand($sql)->queryAll();
+			foreach($aList as $key => $aValue){
+				$aList[$key]['total_consumption'] = 0;
+				foreach($aTotalConsumptionList as $k => $v){
+					if($v['user_id'] == $aValue['id']){
+						$aList[$key]['total_consumption'] = $v['total_consumption'];
+					}
+				}
+			}
+		}
 		
 		return $aList;
 	}

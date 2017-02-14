@@ -358,6 +358,12 @@ $this->setTitle('退换货管理');
 					$('.J-express-number').val(aReturnExchange.order_info.express_info.express_number);
 				}*/
 				$('.J-order-win').parent().css({"max-height":"500px"});
+				$('.J-re-pic').on('click', function(){
+					function dispearImg(o){
+						$(o).remove();
+					}
+					$('body').append('<img onclick="$(this).remove();" onmouseleave="$(this).remove();" style="position:absolute;top:160px;left:' + (parseInt($(this).offset().left) + 200) + 'px;width:550px;height:700px;z-index:99999;border:1px solid #000000;" src="' + $(this).attr('src') + '" alt="" />');
+				});
 			},
 			dialogHide : function(){
 				//alert('即将关闭对话框');

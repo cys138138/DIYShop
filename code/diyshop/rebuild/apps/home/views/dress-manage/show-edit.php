@@ -162,6 +162,18 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			</select>
 			<br />
 		</div>
+		<div class="J-pics-content form-group">
+			<label>服饰轮播图片</label>
+			<div class="form-group">
+				<button type="button" class="J-add-pics-btn btn btn-info">添加图片</button>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<ul class="J-pics-list list-group"></ul>
+				</div>
+			</div>
+			<br />
+		</div>
 		<div class="form-group">
 			<label>状态</label>
 			<select class="J-status form-control">
@@ -195,18 +207,6 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			</div>
 		</div>
 		<br />
-		<div class="J-pics-content form-group" style="display:none;">
-			<label>服饰正反面图片</label>
-			<div class="form-group">
-				<button type="button" class="J-add-pics-btn btn btn-info">添加图片</button>
-			</div>
-			<div class="row">
-				<div class="col-lg-12">
-					<ul class="J-pics-list list-group"></ul>
-				</div>
-			</div>
-			<br />
-		</div>
 		<div class="form-group" style="margin-bottom: 0px;">
 			<label>尺码颜色库存图片</label>
 		</div>
@@ -514,7 +514,7 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 		if($('.J-dress-match-chk').is(':checked')){
 			aDressMatchIds = getDressMatch();
 		}else{
-			aPics = [];
+			//aPics = [];
 		}
 		var detail = $('.J-detail').html();
 		ajax({
@@ -967,12 +967,12 @@ $this->registerAssetBundle('common\assets\AjaxUploadAsset');
 			if($(this).is(':checked')){
 				$('.J-dress-match-content').show();
 				//$('.J-pics-content').show();
-				$('.J-pics-content').hide();
+				//$('.J-pics-content').hide();
 				$('.J-up-pic').show();
 				$('.J-down-pic').show();
 			}else{
 				$('.J-dress-match-content').hide();
-				$('.J-pics-content').hide();
+				//$('.J-pics-content').hide();
 				$('.J-up-pic').hide();
 				$('.J-down-pic').hide();
 			}

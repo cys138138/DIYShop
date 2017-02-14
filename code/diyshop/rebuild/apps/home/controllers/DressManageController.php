@@ -202,6 +202,7 @@ class DressManageController extends VController{
 				'create_time' => NOW_TIME
 			]);
 			$mDress = Dress::findOne($isSuccess);
+			$mDress->setSerialNumber();
 		}
 		
 		if(!$isSuccess){

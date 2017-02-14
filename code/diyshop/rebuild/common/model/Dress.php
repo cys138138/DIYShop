@@ -218,4 +218,8 @@ class Dress extends \common\lib\DbOrmModel{
 		return (new Query())->select('name')->distinct('name')->from(DressMaterial::tableName())->where(['vender_id' => [0, $id]])->all();
 	}
 	
+	public function setSerialNumber(){
+		$this->set('serial_number', date('Y') . str_pad($this->id, 7, '0', STR_PAD_LEFT));
+		$this->save();
+	}
 }

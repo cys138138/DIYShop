@@ -45,6 +45,7 @@ $this->setTitle('用户管理');
 					'name'	=>	['title' => '姓名'],
 					'user_name'	=>	['title' => '用户名'],
 					'gold'	=>	['title' => '金币数'],
+					'total_consumption'	=>	['title' => '消费总额(单位：元)'],
 					'email'	=>	['title' => '邮箱'],
 					'mobile'	=>	['title' => '手机号'],
 					'operate' => [
